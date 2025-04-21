@@ -95,10 +95,6 @@ public partial class DotClusterRootAttributes : DotEntityAttributesWithMetadata<
     [DotAttributeKey(DotAttributeKeys.NoJustify)]
     public virtual partial bool? DisableLabelJustification { get; set; }
 
-    /// <inheritdoc cref="IDotClusterAttributes.Peripheries"/>
-    [DotAttributeKey(DotAttributeKeys.Peripheries)]
-    public virtual partial int? Peripheries { get; set; }
-
     /// <inheritdoc cref="IDotClusterAttributes.Tooltip"/>
     [DotAttributeKey(DotAttributeKeys.Tooltip)]
     public virtual partial DotEscapeString? Tooltip { get; set; }

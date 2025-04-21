@@ -28,10 +28,6 @@ public partial class DotNodeGeometryAttributes : DotEntityAttributesWithMetadata
     [DotAttributeKey(DotAttributeKeys.Regular)]
     public virtual partial bool? Regular { get; set; }
 
-    /// <inheritdoc cref="IDotNodeGeometryAttributes.Peripheries"/>
-    [DotAttributeKey(DotAttributeKeys.Peripheries)]
-    public virtual partial int? Peripheries { get; set; }
-
     /// <inheritdoc cref="IDotNodeGeometryAttributes.Rotation"/>
     [DotAttributeKey(DotAttributeKeys.Orientation)]
     public virtual partial double? Rotation { get; set; }
@@ -53,9 +49,6 @@ public partial class DotNodeGeometryAttributes : DotEntityAttributesWithMetadata
     /// <param name="regular">
     ///     Determines whether the shape should be regular.
     /// </param>
-    /// <param name="peripheries">
-    ///     The number of peripheries.
-    /// </param>
     /// <param name="rotation">
     ///     The rotation angle.
     /// </param>
@@ -65,11 +58,10 @@ public partial class DotNodeGeometryAttributes : DotEntityAttributesWithMetadata
     /// <param name="distortion">
     ///     The distortion factor.
     /// </param>
-    public virtual void Set(int? sides = null, bool? regular = null, int? peripheries = null, double? rotation = null, double? skew = null, double? distortion = null)
+    public virtual void Set(int? sides = null, bool? regular = null, double? rotation = null, double? skew = null, double? distortion = null)
     {
         Sides = sides;
         Regular = regular;
-        Peripheries = peripheries;
         Rotation = rotation;
         Skew = skew;
         Distortion = distortion;
@@ -83,6 +75,6 @@ public partial class DotNodeGeometryAttributes : DotEntityAttributesWithMetadata
     /// </param>
     public virtual void Set(DotPolygon attributes)
     {
-        Set(attributes.Sides, attributes.Regular, attributes.Peripheries, attributes.Rotation, attributes.Skew, attributes.Distortion);
+        Set(attributes.Sides, attributes.Regular, attributes.Rotation, attributes.Skew, attributes.Distortion);
     }
 }

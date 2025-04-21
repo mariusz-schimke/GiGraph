@@ -78,12 +78,6 @@ public interface IDotClusterAttributes
     DotEscapeString? Tooltip { get; set; }
 
     /// <summary>
-    ///     Sets the number of peripheries used in cluster boundaries (default: 1, minimum: 0, maximum: 1). Setting peripheries to 0 will
-    ///     remove the boundaries.
-    /// </summary>
-    int? Peripheries { get; set; }
-
-    /// <summary>
     ///     Specifies the space between the nodes in the cluster and bounding box of the cluster. By default, this is 8 points.
     /// </summary>
     DotPoint? Padding { get; set; }

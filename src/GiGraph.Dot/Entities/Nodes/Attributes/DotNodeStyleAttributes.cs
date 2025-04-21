@@ -97,6 +97,10 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     [DotAttributeKey(DotAttributeKeys.PenWidth)]
     public virtual partial double? BorderWidth { get; set; }
 
+    /// <inheritdoc cref="IDotNodeStyleAttributes.Peripheries"/>
+    [DotAttributeKey(DotAttributeKeys.Peripheries)]
+    public virtual partial int? Peripheries { get; set; }
+
     /// <summary>
     ///     Applies the specified style modifiers.
     /// </summary>
@@ -130,8 +134,14 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// <param name="invisible">
     ///     Determines whether the node should be invisible.
     /// </param>
-    public virtual void SetStyleModifiers(DotNodeFillStyle fillStyle = default, DotBorderStyle borderStyle = default, DotBorderWeight borderWeight = default,
-        DotCornerStyle cornerStyle = default, bool diagonals = false, bool invisible = false)
+    public virtual void SetStyleModifiers(
+        DotNodeFillStyle fillStyle = default,
+        DotBorderStyle borderStyle = default,
+        DotBorderWeight borderWeight = default,
+        DotCornerStyle cornerStyle = default,
+        bool diagonals = false,
+        bool invisible = false
+    )
     {
         FillStyle = fillStyle;
         BorderStyle = borderStyle;

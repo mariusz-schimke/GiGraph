@@ -31,4 +31,8 @@ public partial class DotClusterStyleAttributes : DotGraphClusterCommonStyleAttri
     /// <inheritdoc cref="IDotClusterStyleAttributes.BackgroundColor"/>
     [DotAttributeKey(DotAttributeKeys.BgColor)]
     public virtual partial DotColorDefinition? BackgroundColor { get; set; }
+
+    /// <inheritdoc cref="IDotClusterStyleAttributes.Peripheries"/>
+    [DotAttributeKey(DotAttributeKeys.Peripheries)]
+    public virtual partial int? Peripheries { get; set; }
 }

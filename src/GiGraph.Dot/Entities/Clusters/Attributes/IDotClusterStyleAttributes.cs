@@ -37,4 +37,10 @@ public interface IDotClusterStyleAttributes : IDotGraphClusterCommonStyleAttribu
     ///     the value. If unset, the default angle is 0.
     /// </summary>
     int? GradientFillAngle { get; set; }
+
+    /// <summary>
+    ///     Sets the number of peripheries used in cluster boundaries (default: 1, minimum: 0, maximum: 1). Setting peripheries to 0 will
+    ///     remove the boundaries.
+    /// </summary>
+    int? Peripheries { get; set; }
 }

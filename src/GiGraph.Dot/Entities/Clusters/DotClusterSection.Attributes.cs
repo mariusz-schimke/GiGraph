@@ -58,13 +58,6 @@ public partial class DotClusterSection : IDotClusterRootAttributes
         set => Attributes.Implementation.Tooltip = value;
     }
 
-    /// <inheritdoc cref="IDotClusterAttributes.Peripheries"/>
-    public virtual int? Peripheries
-    {
-        get => Attributes.Implementation.Peripheries;
-        set => Attributes.Implementation.Peripheries = value;
-    }
-
     /// <inheritdoc cref="IDotClusterAttributes.Padding"/>
     public virtual DotPoint? Padding
     {

@@ -290,8 +290,8 @@
     "Edge": "Style.LineWidth: Double?"
   },
   "peripheries": {
-    "Cluster": "Peripheries: Int32?",
-    "Node": "Geometry.Peripheries: Int32?"
+    "Cluster": "Style.Peripheries: Int32?",
+    "Node": "Style.Peripheries: Int32?"
   },
   "rank": {
     "Graph": "Layout.NodeRank: DotRank?",
