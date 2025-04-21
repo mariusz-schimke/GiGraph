@@ -122,10 +122,6 @@ public partial class DotEdgeRootAttributes : DotEntityAttributesWithMetadata<IDo
     [DotAttributeKey(DotAttributeKeys.Dir)]
     public virtual partial DotEdgeDirections? Directions { get; set; }
 
-    /// <inheritdoc cref="IDotEdgeAttributes.DrawLabelConnector"/>
-    [DotAttributeKey(DotAttributeKeys.Decorate)]
-    public virtual partial bool? DrawLabelConnector { get; set; }
-
     /// <inheritdoc cref="IDotEdgeAttributes.DisableLabelJustification"/>
     [DotAttributeKey(DotAttributeKeys.NoJustify)]
     public virtual partial bool? DisableLabelJustification { get; set; }

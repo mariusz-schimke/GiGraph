@@ -116,12 +116,6 @@ public interface IDotEdgeAttributes
     DotEdgeDirections? Directions { get; set; }
 
     /// <summary>
-    ///     If true, attaches label to the edge by a 2-segment polyline, underlining the label, then going to the closest point of
-    ///     spline. Default: false.
-    /// </summary>
-    bool? DrawLabelConnector { get; set; }
-
-    /// <summary>
     ///     Comments are inserted into output. Device-dependent.
     /// </summary>
     string? Comment { get; set; }

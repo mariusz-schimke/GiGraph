@@ -58,7 +58,7 @@
     "Edge": "Layout.IncludeInNodeRanking: Boolean?"
   },
   "decorate": {
-    "Edge": "DrawLabelConnector: Boolean?"
+    "Edge": "Style.DrawLabelConnector: Boolean?"
   },
   "dir": {
     "Edge": "Directions: DotEdgeDirections?"
