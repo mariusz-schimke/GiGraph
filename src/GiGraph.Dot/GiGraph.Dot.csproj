@@ -49,11 +49,15 @@
 
         <PackageReleaseNotes>- All style-related attributes have been consolidated under the `Style` property of the graph and its elements. This includes attributes such as `Color`, `FillColor`, `BackgroundColor`, and others, which are now exposed in a more structured and consistent way.
 
+- Similarly, layout-related properties have been consolidated under the `Layout` property of the graph and its elements.
+
 - The `Build()` method on graph has been renamed to `ToDot()`, which is more descriptive of its purpose. This method generates the DOT representation of the graph.
 
 - Several `Save` and `SaveAsync` method overloads have been added, including ones that save the DOT output to stream.
 
 - The `SaveToFile` method has been renamed to `Save` for consistency with the new naming convention.
+
+- Minor refactoring and optimizations.
 
 See also https://github.com/$(Repository)/releases</PackageReleaseNotes>
     </PropertyGroup>
