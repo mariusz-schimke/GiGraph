@@ -538,8 +538,8 @@ The shape of a node is determined by the *Shape* attribute. By default it is an 
 ```c#
 using GiGraph.Dot.Extensions;
 
-// for convenience, just use the SetAsRecord or SetAsRoundedRecord extension method on a node
-graph.Nodes.Add("Foo").SetAsRecord(new DotRecord("Hello", "World!"));
+// for convenience, just use the SetRecordAsLabel or SetRoundedRecordAsLabel extension method on a node
+graph.Nodes.Add("Foo").SetRecordAsLabel(new DotRecord("Hello", "World!"));
 
 // or set shape and label explicitly
 graph.Nodes.Add("Foo", node =>
@@ -567,7 +567,7 @@ A *DotRecord* may be composed of textual fields (*DotRecordTextField*), as well 
 using GiGraph.Dot.Extensions;
 
 // note that string is implicitly converted to DotRecordTextField here for convenience
-graph.Nodes.Add("Foo").SetAsRecord(
+graph.Nodes.Add("Foo").SetRecordAsLabel(
     new DotRecord("Foo", new DotRecord("Bar", "Baz"), "Qux")
 );
 ```
@@ -594,13 +594,13 @@ var builder = new DotRecordBuilder()
    .AppendSubrecord("Bar", "Baz")
    .AppendField("Qux");
 
-graph.Nodes.Add("Bar").SetAsRecord(builder.Build());
+graph.Nodes.Add("Bar").SetRecordAsLabel(builder.Build());
 ```
 
 ```c#
 using GiGraph.Dot.Extensions;
 
-graph.Nodes.Add("Bar").SetAsRecord(rb =>
+graph.Nodes.Add("Bar").SetRecordAsLabel(rb =>
 {
     rb.AppendField("Foo")
       .AppendSubrecord("Bar", "Baz")
@@ -622,7 +622,7 @@ The fields of record nodes may have a **port** specified as well. The port may h
 
 
 ```c#
-graph.Nodes.Add("Baz").SetAsRecord(rb1 => rb1
+graph.Nodes.Add("Baz").SetRecordAsLabel(rb1 => rb1
    .AppendField($"Foo{Environment.NewLine}Bar")
    .AppendSubrecord(rb2 => rb2
        .AppendField(tf => tf.AppendLeftJustifiedLine("Baz"))
@@ -715,7 +715,7 @@ table.AddRow(row =>
 );
 
 // sets a borderless (plain) shape of the node so that the HTML table fully determines the shape
-graph.Nodes.Add("Bar").SetAsHtmlTable(table);
+graph.Nodes.Add("Bar").SetHtmlTableAsLabel(table);
 ```
 
 The code above renders:
@@ -736,8 +736,8 @@ An identical result may be achieved by composing the HTML table directly, as tex
 ```c#
 using GiGraph.Dot.Extensions;
 
-// the SetAsHtml extension method sets a borderless (plain) shape of the node so that the HTML table fully determines the shape
-graph.Nodes.Add("Bar").SetAsHtml
+// the SetHtmlAsLabel extension method sets a borderless (plain) shape of the node so that the HTML table fully determines the shape
+graph.Nodes.Add("Bar").SetHtmlAsLabel
 (
     @"<table border=""0"" cellborder=""1"" cellspacing=""0"" cellpadding=""4"">
         <tr>
