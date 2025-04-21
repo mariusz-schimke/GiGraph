@@ -77,18 +77,23 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
         set => SetStyleModifier(DotStyles.Invisible, value);
     }
 
+    /// <inheritdoc cref="IDotNodeStyleAttributes.Color"/>
     [DotAttributeKey(DotAttributeKeys.Color)]
     public virtual partial DotColorDefinition? Color { get; set; }
 
+    /// <inheritdoc cref="IDotNodeStyleAttributes.ColorScheme"/>
     [DotAttributeKey(DotAttributeKeys.ColorScheme)]
     public virtual partial string? ColorScheme { get; set; }
 
+    /// <inheritdoc cref="IDotNodeStyleAttributes.FillColor"/>
     [DotAttributeKey(DotAttributeKeys.FillColor)]
     public virtual partial DotColorDefinition? FillColor { get; set; }
 
+    /// <inheritdoc cref="IDotNodeStyleAttributes.GradientFillAngle"/>
     [DotAttributeKey(DotAttributeKeys.GradientAngle)]
     public virtual partial int? GradientFillAngle { get; set; }
 
+    /// <inheritdoc cref="IDotNodeStyleAttributes.BorderWidth"/>
     [DotAttributeKey(DotAttributeKeys.PenWidth)]
     public virtual partial double? BorderWidth { get; set; }
 

@@ -49,15 +49,19 @@ public partial class DotEdgeStyleAttributes : DotEntityStyleAttributesWithMetada
         set => SetStyleModifier(DotStyles.Invisible, value);
     }
 
+    /// <inheritdoc cref="IDotEdgeStyleAttributes.Color"/>
     [DotAttributeKey(DotAttributeKeys.Color)]
     public virtual partial DotColorDefinition? Color { get; set; }
 
+    /// <inheritdoc cref="IDotEdgeStyleAttributes.ColorScheme"/>
     [DotAttributeKey(DotAttributeKeys.ColorScheme)]
     public virtual partial string? ColorScheme { get; set; }
 
+    /// <inheritdoc cref="IDotEdgeStyleAttributes.FillColor"/>
     [DotAttributeKey(DotAttributeKeys.FillColor)]
     public virtual partial DotColorDefinition? FillColor { get; set; }
 
+    /// <inheritdoc cref="IDotEdgeStyleAttributes.LineWidth"/>
     [DotAttributeKey(DotAttributeKeys.PenWidth)]
     public virtual partial double? LineWidth { get; set; }
 
