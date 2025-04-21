@@ -18,8 +18,17 @@ public partial class DotEdgeRootAttributes : DotEntityAttributesWithMetadata<IDo
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeRootAttributes, IDotEdgeAttributes>().BuildLazy();
 
     public DotEdgeRootAttributes(DotAttributeCollection attributes)
-        : this(attributes, AttributeKeyLookup, new DotEdgeHeadAttributes(attributes), new DotEdgeTailAttributes(attributes), new DotFontAttributes(attributes), new DotHyperlinkAttributes(attributes),
-            new DotEdgeEndpointLabelsAttributes(attributes), new DotEdgeLabelHyperlinkAttributes(attributes), new DotEdgeHyperlinkAttributes(attributes), new DotEdgeStyleAttributes(attributes),
+        : this(
+            attributes,
+            AttributeKeyLookup,
+            new DotEdgeHeadAttributes(attributes),
+            new DotEdgeTailAttributes(attributes),
+            new DotFontAttributes(attributes),
+            new DotHyperlinkAttributes(attributes),
+            new DotEdgeEndpointLabelsAttributes(attributes),
+            new DotEdgeLabelHyperlinkAttributes(attributes),
+            new DotEdgeHyperlinkAttributes(attributes),
+            new DotEdgeStyleAttributes(attributes),
             new DotSvgStyleSheetAttributes(attributes)
         )
     {
@@ -114,10 +123,6 @@ public partial class DotEdgeRootAttributes : DotEntityAttributesWithMetadata<IDo
     /// <inheritdoc cref="IDotEdgeAttributes.MinLength"/>
     [DotAttributeKey(DotAttributeKeys.MinLen)]
     public virtual partial int? MinLength { get; set; }
-
-    /// <inheritdoc cref="IDotEdgeAttributes.ArrowheadScaleFactor"/>
-    [DotAttributeKey(DotAttributeKeys.ArrowSize)]
-    public virtual partial double? ArrowheadScaleFactor { get; set; }
 
     /// <inheritdoc cref="IDotEdgeAttributes.Directions"/>
     [DotAttributeKey(DotAttributeKeys.Dir)]

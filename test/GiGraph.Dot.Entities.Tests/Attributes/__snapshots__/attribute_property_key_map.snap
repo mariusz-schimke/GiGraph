@@ -3,7 +3,7 @@
     "Edge": "Head.Arrowhead: DotArrowheadDefinition"
   },
   "arrowsize": {
-    "Edge": "ArrowheadScaleFactor: Double?"
+    "Edge": "Style.ArrowheadScaleFactor: Double?"
   },
   "arrowtail": {
     "Edge": "Tail.Arrowhead: DotArrowheadDefinition"

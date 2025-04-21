@@ -65,6 +65,10 @@ public partial class DotEdgeStyleAttributes : DotEntityStyleAttributesWithMetada
     [DotAttributeKey(DotAttributeKeys.PenWidth)]
     public virtual partial double? LineWidth { get; set; }
 
+    /// <inheritdoc cref="IDotEdgeStyleAttributes.ArrowheadScaleFactor"/>
+    [DotAttributeKey(DotAttributeKeys.ArrowSize)]
+    public virtual partial double? ArrowheadScaleFactor { get; set; }
+
     /// <summary>
     ///     Applies the specified style modifiers to the edge.
     /// </summary>

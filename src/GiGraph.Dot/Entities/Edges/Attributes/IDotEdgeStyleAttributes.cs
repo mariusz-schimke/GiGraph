@@ -43,4 +43,9 @@ public interface IDotEdgeStyleAttributes
     ///     effect on text. Default: 1.0, minimum: 0.0.
     /// </summary>
     double? LineWidth { get; set; }
+
+    /// <summary>
+    ///     Gets or sets the multiplicative scale factor for arrowheads (default: 1.0, minimum: 0.0).
+    /// </summary>
+    double? ArrowheadScaleFactor { get; set; }
 }

@@ -116,11 +116,6 @@ public interface IDotEdgeAttributes
     DotEscapeString? Tooltip { get; set; }
 
     /// <summary>
-    ///     Gets or sets the multiplicative scale factor for arrowheads (default: 1.0, minimum: 0.0).
-    /// </summary>
-    double? ArrowheadScaleFactor { get; set; }
-
-    /// <summary>
     ///     <para>
     ///         Gets or sets edge type for drawing arrowheads. Default: <see cref="DotEdgeDirections.Forward"/> (for directed graphs),
     ///         <see cref="DotEdgeDirections.None"/> (for undirected graphs).
