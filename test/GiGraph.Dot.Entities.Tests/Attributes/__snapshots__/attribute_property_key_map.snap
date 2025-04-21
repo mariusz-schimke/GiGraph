@@ -123,7 +123,7 @@
     "Node": "Style.GradientFillAngle: Int32?"
   },
   "group": {
-    "Node": "GroupName: String"
+    "Node": "Layout.GroupName: String"
   },
   "headclip": {
     "Edge": "Head.ClipToNodeBoundary: Boolean?"
@@ -261,7 +261,7 @@
   },
   "ordering": {
     "Graph": "Layout.EdgeOrderingMode: DotEdgeOrderingMode?",
-    "Node": "EdgeOrderingMode: DotEdgeOrderingMode?"
+    "Node": "Layout.EdgeOrderingMode: DotEdgeOrderingMode?"
   },
   "orientation": {
     "Graph": "Canvas.Orientation: DotOrientation?",
@@ -318,7 +318,7 @@
   },
   "root": {
     "Graph": "Layout.RootNodeId: DotId",
-    "Node": "IsLayoutRoot: Boolean?"
+    "Node": "Layout.IsLayoutRoot: Boolean?"
   },
   "rotate": {
     "Graph": "Canvas.OrientationAngle: Int32?"
@@ -347,7 +347,7 @@
   "sortv": {
     "Graph": "Layout.SortIndex: Int32?",
     "Cluster": "SortIndex: Int32?",
-    "Node": "SortIndex: Int32?"
+    "Node": "Layout.SortIndex: Int32?"
   },
   "splines": {
     "Graph": "EdgeShape: DotEdgeShape?"
