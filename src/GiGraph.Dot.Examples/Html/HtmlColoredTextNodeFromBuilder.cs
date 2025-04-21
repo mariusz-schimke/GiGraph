@@ -14,7 +14,7 @@ public static class HtmlColoredTextNodeFromBuilder
     {
         var graph = new DotGraph();
 
-        graph.Nodes.Add("Bar").SetAsHtml(builder => builder.AppendText(DotEscapeString.NodeIdPlaceholder, new DotFont(Color.Red)));
+        graph.Nodes.Add("Bar").SetHtmlAsLabel(builder => builder.AppendText(DotEscapeString.NodeIdPlaceholder, new DotFont(Color.Red)));
 
         return graph;
     }

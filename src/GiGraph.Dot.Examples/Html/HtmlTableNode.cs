@@ -64,7 +64,7 @@ public static class HtmlTableNode
         );
 
         // sets a borderless (plain) shape of the node so that the HTML table fully determines the shape
-        graph.Nodes.Add("Bar").SetAsHtmlTable(table);
+        graph.Nodes.Add("Bar").SetHtmlTableAsLabel(table);
 
         // sets an attribute of the edge (can be set globally)
         graph.Edges.Add("Foo", "Bar").Head.Port = new DotEndpointPort("port1", DotCompassPoint.NorthEast);
