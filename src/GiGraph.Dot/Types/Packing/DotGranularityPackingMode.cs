@@ -4,12 +4,13 @@ using GiGraph.Dot.Output.Options;
 namespace GiGraph.Dot.Types.Packing;
 
 /// <summary>
-///     A graph packing mode based on a granularity option.
+///     A graph packing mode based on a granularity option. Indicates that components should be packed together tightly, using the
+///     specified granularity.
 /// </summary>
 /// <param name="granularity">
 ///     The granularity option.
 /// </param>
-public class DotGranularPackingMode(DotPackingGranularity granularity) : DotPackingModeDefinition
+public class DotGranularityPackingMode(DotPackingGranularity granularity) : DotPackingModeDefinition
 {
     /// <summary>
     ///     The granularity option.
