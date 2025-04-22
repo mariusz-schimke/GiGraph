@@ -41,10 +41,17 @@ public enum DotArrayPackingOptions
     AlignLeft = 1 << 4,
 
     /// <summary>
-    ///     Causes the insertion order of elements in the array to be determined by user-supplied values. Each component can specify its
-    ///     sort value by a non-negative integer using the sort index attribute on a graph, on a cluster, or on a node. Components are
-    ///     inserted in order, starting with the one with the smallest sort value. If no sort value is specified, zero is used.
+    ///     By default, the insertion order is determined by sorting the graphs by size, largest to smallest. If this flag is specified,
+    ///     it causes the insertion order of elements in the array to be determined by user-supplied values. Each component can specify
+    ///     its sort value by a non-negative integer using the sort index attribute on a graph, on a cluster, or on a node. Components
+    ///     are inserted in order, starting with the one with the smallest sort value. If no sort value is specified, zero is used.
     /// </summary>
     [DotAttributeValue("u")]
-    SortByIndex = 1 << 5
+    SortByIndex = 1 << 5,
+
+    /// <summary>
+    ///     Indicates that no sorting is done, with the graphs inserted in input order. See also <see cref="SortByIndex"/>.
+    /// </summary>
+    [DotAttributeValue("i")]
+    SortByInputOrder = 1 << 6
 }
