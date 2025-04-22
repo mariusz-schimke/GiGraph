@@ -27,12 +27,5 @@ public enum DotPackingGranularity
     ///     elements of any other component.
     /// </summary>
     [DotAttributeValue("graph")]
-    Graph,
-
-    /// <summary>
-    ///     Indicates that the components should be packed at the graph level into an array of graphs. By default, the components are in
-    ///     row-major order, with the number of columns roughly the square root of the number of components.
-    /// </summary>
-    [DotAttributeValue("array")]
-    Array
+    Graph
 }
