@@ -16,7 +16,7 @@ public static class DotStringExtension
     ///     The string to convert.
     /// </param>
     [Pure]
-    public static DotEscapedString AsEscapedString(this string @string) => @string;
+    public static DotEscapeString AsFormattedString(this string @string) => (DotEscapedString) @string;
 
     /// <summary>
     ///     Converts the string to <see cref="DotHtmlString"/> without modifying it in any way. When assigned to a label of an element,
