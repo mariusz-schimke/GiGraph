@@ -13,12 +13,12 @@ public class DotCompositeArrowhead : DotArrowheadDefinition
     /// <param name="arrowheads">
     ///     <para>
     ///         The consecutive arrowheads to use. Note that the first arrowhead specified occurs closest to the node. Subsequent shapes,
-    ///         if specified, occur further from the node. Also, a shape of <see cref="DotArrowheadShape.None" /> uses space, so it can
-    ///         be used as a separator between two consecutive shapes.
+    ///         if specified, occur further from the node. Also, a shape of <see cref="DotArrowheadShape.None"/> uses space, so it can be
+    ///         used as a separator between two consecutive shapes.
     ///     </para>
     ///     <para>
-    ///         You can use <see cref="DotArrowheadShape" /> as well as <see cref="DotArrowhead" /> (<see cref="DotArrowheadShape" /> is
-    ///         implicitly convertible to <see cref="DotArrowhead" />).
+    ///         You can use <see cref="DotArrowheadShape"/> as well as <see cref="DotArrowhead"/> (<see cref="DotArrowheadShape"/> is
+    ///         implicitly convertible to <see cref="DotArrowhead"/>).
     ///     </para>
     /// </param>
     public DotCompositeArrowhead(params DotArrowhead[] arrowheads)
@@ -31,7 +31,7 @@ public class DotCompositeArrowhead : DotArrowheadDefinition
     /// </summary>
     /// <param name="arrowheads">
     ///     The consecutive arrowheads to use. Note that the first arrowhead specified occurs closest to the node. Subsequent shapes, if
-    ///     specified, occur further from the node. Also, a shape of <see cref="DotArrowheadShape.None" /> uses space, so it can be used
+    ///     specified, occur further from the node. Also, a shape of <see cref="DotArrowheadShape.None"/> uses space, so it can be used
     ///     as a separator between two consecutive shapes.
     /// </param>
     public DotCompositeArrowhead(IEnumerable<DotArrowhead> arrowheads)
@@ -44,7 +44,7 @@ public class DotCompositeArrowhead : DotArrowheadDefinition
     /// </summary>
     /// <param name="shapes">
     ///     The consecutive shapes of the arrowheads to use. Note that the first arrowhead specified occurs closest to the node.
-    ///     Subsequent shapes, if specified, occur further from the node. Also, a shape of <see cref="DotArrowheadShape.None" /> uses
+    ///     Subsequent shapes, if specified, occur further from the node. Also, a shape of <see cref="DotArrowheadShape.None"/> uses
     ///     space, so it can be used as a separator between two consecutive shapes.
     /// </param>
     public DotCompositeArrowhead(IEnumerable<DotArrowheadShape> shapes)

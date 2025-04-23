@@ -61,7 +61,7 @@ public class DotAttributeKeyAssociationTest
         { typeof(DotRank), DotRank.Same },
         { typeof(DotStyles), (DotStyles) 0xff },
         { typeof(DotVerticalAlignment), DotVerticalAlignment.Bottom },
-        { typeof(DotArrowheadDefinition), new DotArrowhead(DotArrowheadShape.Dot, DotArrowheadParts.Both) },
+        { typeof(DotArrowheadDefinition), new DotArrowhead(DotArrowheadShape.Dot) },
         { typeof(DotClusterId), new DotClusterId("cluster_id") },
         { typeof(DotColor), new DotColor(Color.Red) },
         { typeof(DotColorDefinition), new DotWeightedColor(Color.Red, 1, DotColorSchemes.Default) },

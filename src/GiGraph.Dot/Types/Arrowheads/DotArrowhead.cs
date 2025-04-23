@@ -20,56 +20,15 @@ public class DotArrowhead : DotArrowheadDefinition
     /// <param name="shape">
     ///     Determines the shape of the arrowhead to use.
     /// </param>
-    public DotArrowhead(DotArrowheadShape shape)
+    /// <param name="filled">
+    ///     Determines whether to use a filled version of the shape.
+    /// </param>
+    /// <param name="visibleParts">
+    ///     Determines whether and how to clip the shape, leaving visible only the part to the left or to the right of the edge.
+    /// </param>
+    public DotArrowhead(DotArrowheadShape shape, bool filled = true, DotArrowheadParts visibleParts = DotArrowheadParts.Both)
     {
         Shape = shape;
-    }
-
-    /// <summary>
-    ///     Creates and initializes a new arrowhead definition instance.
-    /// </summary>
-    /// <param name="shape">
-    ///     Determines the shape of the arrowhead to use.
-    /// </param>
-    /// <param name="filled">
-    ///     Determines whether to use a filled version of the shape.
-    /// </param>
-    public DotArrowhead(DotArrowheadShape shape, bool filled)
-        : this(shape)
-    {
-        IsFilled = filled;
-    }
-
-    /// <summary>
-    ///     Creates and initializes a new arrowhead definition instance.
-    /// </summary>
-    /// <param name="shape">
-    ///     Determines the shape of the arrowhead to use.
-    /// </param>
-    /// <param name="visibleParts">
-    ///     Determines whether and how to clip the shape, leaving visible only the part to the left or to the right of the edge.
-    /// </param>
-    public DotArrowhead(DotArrowheadShape shape, DotArrowheadParts visibleParts)
-        : this(shape)
-    {
-        VisibleParts = visibleParts;
-    }
-
-    /// <summary>
-    ///     Creates and initializes a new arrowhead definition instance.
-    /// </summary>
-    /// <param name="shape">
-    ///     Determines the shape of the arrowhead to use.
-    /// </param>
-    /// <param name="filled">
-    ///     Determines whether to use a filled version of the shape.
-    /// </param>
-    /// <param name="visibleParts">
-    ///     Determines whether and how to clip the shape, leaving visible only the part to the left or to the right of the edge.
-    /// </param>
-    public DotArrowhead(DotArrowheadShape shape, bool filled, DotArrowheadParts visibleParts)
-        : this(shape)
-    {
         IsFilled = filled;
         VisibleParts = visibleParts;
     }
@@ -82,12 +41,12 @@ public class DotArrowhead : DotArrowheadDefinition
     /// <summary>
     ///     Determines whether to use a filled version of the shape.
     /// </summary>
-    public bool IsFilled { get; init; } = true;
+    public bool IsFilled { get; init; }
 
     /// <summary>
     ///     Determines whether and how to clip the shape, leaving visible only the part to the left or to the right of the edge.
     /// </summary>
-    public DotArrowheadParts VisibleParts { get; init; } = DotArrowheadParts.Both;
+    public DotArrowheadParts VisibleParts { get; init; }
 
     protected internal override string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
     {
@@ -107,7 +66,7 @@ public class DotArrowhead : DotArrowheadDefinition
     }
 
     /// <summary>
-    ///     Creates a filled arrowhead with the <see cref="DotArrowheadShape.Normal" /> shape.
+    ///     Creates a filled arrowhead with the <see cref="DotArrowheadShape.Normal"/> shape.
     /// </summary>
     /// <param name="visibleParts">
     ///     Determines whether and how to clip the shape, leaving visible only the part to the left or to the right of the edge.
@@ -126,7 +85,7 @@ public class DotArrowhead : DotArrowheadDefinition
     public static DotArrowhead Filled(DotArrowheadShape shape, DotArrowheadParts visibleParts = DotArrowheadParts.Both) => new(shape, filled: true, visibleParts);
 
     /// <summary>
-    ///     Creates a non-filled arrowhead with the <see cref="DotArrowheadShape.Normal" /> shape.
+    ///     Creates a non-filled arrowhead with the <see cref="DotArrowheadShape.Normal"/> shape.
     /// </summary>
     /// <param name="visibleParts">
     ///     Determines whether and how to clip the shape, leaving visible only the part to the left or to the right of the edge.
