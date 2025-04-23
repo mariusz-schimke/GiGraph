@@ -5,15 +5,15 @@ namespace GiGraph.Dot.Types.Packing;
 /// <summary>
 ///     Used as the size, in points, of a margin around each graph part being packed.
 /// </summary>
-/// <param name="size">
+/// <param name="margin">
 ///     The size, in points, of a margin around each graph part being packed.
 /// </param>
-public class DotPackingMargin(int size) : DotPackingDefinition
+public class DotPackingMargin(int margin) : DotPackingDefinition
 {
     /// <summary>
     ///     The size, in points, of a margin around each graph part being packed.
     /// </summary>
-    public int Size { get; } = size;
+    public int Margin { get; } = margin;
 
-    protected override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => Size.ToString(syntaxRules.Culture);
+    protected override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => Margin.ToString(syntaxRules.Culture);
 }
