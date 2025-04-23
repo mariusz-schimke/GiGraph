@@ -11,11 +11,11 @@ public partial class DotGraphLayoutAttributes
     ///     </para>
     ///     <para>
     ///         In twopi, specifies the radial separation of concentric circles (default: 1, minimum: 0.02). For twopi, this can also be
-    ///         a list of doubles (see <see cref="SetRadialRankSeparation"/>).
+    ///         a list of doubles (see <see cref="SetRadialSpacing"/>).
     ///     </para>
     ///     <para>
-    ///         Calling this method is equivalent to setting the <see cref="RankSeparation"/> property directly, using
-    ///         <see cref="DotRankSeparation"/>.
+    ///         Calling this method is equivalent to setting the <see cref="RankSpacing"/> property directly, using
+    ///         <see cref="DotRankSpacing"/>.
     ///     </para>
     /// </summary>
     /// <param name="distance">
@@ -25,12 +25,12 @@ public partial class DotGraphLayoutAttributes
     ///     Determines if the centers of all ranks should be spaced equally apart.
     /// </param>
     /// <remarks>
-    ///     Rank separation may be set by calling this method, <see cref="SetRankSeparation(bool)"/>, or
-    ///     <see cref="SetRadialRankSeparation"/>. Only one of them should be used, as they write the same graph attribute.
+    ///     Rank separation may be set by calling this method, <see cref="SetRankSpacing(bool)"/>, or <see cref="SetRadialSpacing"/>.
+    ///     Only one of them should be used, as they write the same graph attribute.
     /// </remarks>
-    public void SetRankSeparation(double distance, bool equalSpacing = false)
+    public void SetRankSpacing(double distance, bool equalSpacing = false)
     {
-        RankSeparation = new DotRankSeparation(distance, equalSpacing);
+        RankSpacing = new DotRankSpacing(distance, equalSpacing);
     }
 
     /// <summary>
@@ -40,23 +40,23 @@ public partial class DotGraphLayoutAttributes
     ///     </para>
     ///     <para>
     ///         In twopi, specifies the radial separation of concentric circles (default: 1, minimum: 0.02). For twopi, this can also be
-    ///         a list of doubles (see <see cref="SetRadialRankSeparation"/>).
+    ///         a list of doubles (see <see cref="SetRadialSpacing"/>).
     ///     </para>
     ///     <para>
-    ///         Calling this method is equivalent to setting the <see cref="RankSeparation"/> property directly, using
-    ///         <see cref="DotRankSeparation"/>.
+    ///         Calling this method is equivalent to setting the <see cref="RankSpacing"/> property directly, using
+    ///         <see cref="DotRankSpacing"/>.
     ///     </para>
     /// </summary>
     /// <param name="equalSpacing">
     ///     Determines if the centers of all ranks should be spaced equally apart.
     /// </param>
     /// <remarks>
-    ///     Rank separation may be set by calling this method, <see cref="SetRankSeparation(double,bool)"/>, or
-    ///     <see cref="SetRadialRankSeparation"/>. Only one of them should be used, as they write the same graph attribute.
+    ///     Rank separation may be set by calling this method, <see cref="SetRankSpacing(double,bool)"/>, or
+    ///     <see cref="SetRadialSpacing"/>. Only one of them should be used, as they write the same graph attribute.
     /// </remarks>
-    public void SetRankSeparation(bool equalSpacing)
+    public void SetRankSpacing(bool equalSpacing)
     {
-        RankSeparation = new DotRankSeparation(equalSpacing);
+        RankSpacing = new DotRankSpacing(equalSpacing);
     }
 
     /// <summary>
@@ -64,8 +64,8 @@ public partial class DotGraphLayoutAttributes
     ///         In twopi, specifies the radial separation of concentric circles.
     ///     </para>
     ///     <para>
-    ///         Calling this method is equivalent to setting the <see cref="RankSeparation"/> property directly, using
-    ///         <see cref="DotRadialRankSeparation"/>.
+    ///         Calling this method is equivalent to setting the <see cref="RankSpacing"/> property directly, using
+    ///         <see cref="DotRadialSpacing"/>.
     ///     </para>
     /// </summary>
     /// <param name="radii">
@@ -74,11 +74,11 @@ public partial class DotGraphLayoutAttributes
     ///     remainder.
     /// </param>
     /// <remarks>
-    ///     Rank separation may be set by calling this method, <see cref="SetRankSeparation(double,bool)"/>, or
-    ///     <see cref="SetRankSeparation(bool)"/>. Only one of them should be used, as they write the same graph attribute.
+    ///     Rank separation may be set by calling this method, <see cref="SetRankSpacing(double,bool)"/>, or
+    ///     <see cref="SetRankSpacing(bool)"/>. Only one of them should be used, as they write the same graph attribute.
     /// </remarks>
-    public void SetRadialRankSeparation(params IEnumerable<double> radii)
+    public void SetRadialSpacing(params IEnumerable<double> radii)
     {
-        RankSeparation = new DotRadialRankSeparation(radii);
+        RankSpacing = new DotRadialSpacing(radii);
     }
 }

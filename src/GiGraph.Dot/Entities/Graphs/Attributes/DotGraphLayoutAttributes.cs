@@ -61,9 +61,9 @@ public partial class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<
     [DotAttributeKey(DotAttributeKeys.NodeSep)]
     public virtual partial double? NodeSeparation { get; set; }
 
-    /// <inheritdoc cref="IDotGraphLayoutAttributes.RankSeparation"/>
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.RankSpacing"/>
     [DotAttributeKey(DotAttributeKeys.RankSep)]
-    public virtual partial DotRankSeparationDefinition? RankSeparation { get; set; }
+    public virtual partial DotRankSpacingDefinition? RankSpacing { get; set; }
 
     /// <inheritdoc cref="IDotGraphLayoutAttributes.ConcentrateEdges"/>
     [DotAttributeKey(DotAttributeKeys.Concentrate)]

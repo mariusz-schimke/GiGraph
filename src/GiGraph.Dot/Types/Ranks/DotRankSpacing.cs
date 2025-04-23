@@ -5,7 +5,7 @@ namespace GiGraph.Dot.Types.Ranks;
 /// <summary>
 ///     Rank separation, in inches.
 /// </summary>
-public class DotRankSeparation : DotRankSeparationDefinition
+public class DotRankSpacing : DotRankSpacingDefinition
 {
     /// <summary>
     ///     Creates a new rank separation instance.
@@ -16,7 +16,7 @@ public class DotRankSeparation : DotRankSeparationDefinition
     /// <param name="equalSpacing">
     ///     Determines if the centers of all ranks should be spaced equally apart.
     /// </param>
-    public DotRankSeparation(double distance, bool equalSpacing = false)
+    public DotRankSpacing(double distance, bool equalSpacing = false)
         : this(equalSpacing)
     {
         Distance = distance;
@@ -28,7 +28,7 @@ public class DotRankSeparation : DotRankSeparationDefinition
     /// <param name="equalSpacing">
     ///     Determines if the centers of all ranks should be spaced equally apart.
     /// </param>
-    public DotRankSeparation(bool equalSpacing)
+    public DotRankSpacing(bool equalSpacing)
     {
         EqualSpacing = equalSpacing;
     }

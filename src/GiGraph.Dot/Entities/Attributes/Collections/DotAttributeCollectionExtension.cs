@@ -190,10 +190,10 @@ public static class DotAttributeCollectionExtension
 
     /// <summary>
     ///     Checks if an attribute with the specified key exists in the collection, and returns its value as
-    ///     <see cref="DotRankSeparationDefinition" />. If the attribute is found, but its value cannot be cast nor converted to the
+    ///     <see cref="DotRankSpacingDefinition" />. If the attribute is found, but its value cannot be cast nor converted to the
     ///     returned type, an exception is thrown.
     /// </summary>
-    public static bool GetComplexValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotRankSeparationDefinition value)
+    public static bool GetComplexValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotRankSpacingDefinition value)
     {
         if (@this.Get(key) is not { } attribute)
         {
