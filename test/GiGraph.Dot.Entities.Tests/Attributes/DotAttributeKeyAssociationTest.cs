@@ -73,7 +73,7 @@ public class DotAttributeKeyAssociationTest
         { typeof(DotPackingDefinition), new DotPackingMargin(12) },
         { typeof(DotPackingModeDefinition), new DotArrayPackingMode(DotArrayPackingOptions.AlignBottom) },
         { typeof(DotPoint), new DotPoint(1, 2) },
-        { typeof(DotRankSpacingDefinition), new DotRadialSpacing(1) },
+        { typeof(DotRankSeparationDefinition), new DotRadialRankSeparation(1) },
         { typeof(DotViewport), new DotViewport(1, 2, 3) }
     };
 

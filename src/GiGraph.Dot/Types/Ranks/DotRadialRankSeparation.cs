@@ -6,7 +6,7 @@ namespace GiGraph.Dot.Types.Ranks;
 /// <summary>
 ///     Radial separation of concentric circles in twopi.
 /// </summary>
-public class DotRadialSpacing : DotRankSpacingDefinition
+public class DotRadialRankSeparation : DotRankSeparationDefinition
 {
     /// <summary>
     ///     Creates a new rank separation instance.
@@ -16,7 +16,7 @@ public class DotRadialSpacing : DotRankSpacingDefinition
     ///     circle to the second; etc. If there are more circles than numbers, the last number is used as the increment for the
     ///     remainder.
     /// </param>
-    public DotRadialSpacing(params double[] radii)
+    public DotRadialRankSeparation(params double[] radii)
     {
         Radii = radii ?? throw new ArgumentNullException(nameof(radii), "Radii collection must not be null.");
     }
@@ -29,7 +29,7 @@ public class DotRadialSpacing : DotRankSpacingDefinition
     ///     circle to the second; etc. If there are more circles than numbers, the last number is used as the increment for the
     ///     remainder.
     /// </param>
-    public DotRadialSpacing(IEnumerable<double> radii)
+    public DotRadialRankSeparation(IEnumerable<double> radii)
         : this(radii.ToArray())
     {
     }
