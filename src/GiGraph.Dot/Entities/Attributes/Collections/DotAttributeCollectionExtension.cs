@@ -16,8 +16,8 @@ namespace GiGraph.Dot.Entities.Attributes.Collections;
 public static class DotAttributeCollectionExtension
 {
     /// <summary>
-    ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="double"/>. If the
-    ///     attribute is found, but its value cannot be cast nor converted to the returned type, an exception is thrown.
+    ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="double" />. If
+    ///     the attribute is found, but its value cannot be cast nor converted to the returned type, an exception is thrown.
     /// </summary>
     public static bool GetNumberValue(this DotAttributeCollection @this, string key, out double value)
     {
@@ -37,7 +37,7 @@ public static class DotAttributeCollectionExtension
     }
 
     /// <summary>
-    ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="DotColor"/>. If
+    ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="DotColor" />. If
     ///     the attribute is found, but its value cannot be cast nor converted to the returned type, an exception is thrown.
     /// </summary>
     public static bool GetComplexValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotColor value)
@@ -59,8 +59,8 @@ public static class DotAttributeCollectionExtension
 
     /// <summary>
     ///     Checks if an attribute with the specified key exists in the collection, and returns its value as
-    ///     <see cref="DotColorDefinition"/>. If the attribute is found, but its value cannot be cast nor converted to the returned type,
-    ///     an exception is thrown.
+    ///     <see cref="DotColorDefinition" />. If the attribute is found, but its value cannot be cast nor converted to the returned
+    ///     type, an exception is thrown.
     /// </summary>
     public static bool GetComplexValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotColorDefinition value)
     {
@@ -81,8 +81,8 @@ public static class DotAttributeCollectionExtension
 
     /// <summary>
     ///     Checks if an attribute with the specified key exists in the collection, and returns its value as
-    ///     <see cref="DotEscapeString"/>. If the attribute is found, but its value cannot be cast nor converted to the returned type, an
-    ///     exception is thrown.
+    ///     <see cref="DotEscapeString" />. If the attribute is found, but its value cannot be cast nor converted to the returned type,
+    ///     an exception is thrown.
     /// </summary>
     public static bool GetComplexValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotEscapeString value)
     {
@@ -102,7 +102,7 @@ public static class DotAttributeCollectionExtension
     }
 
     /// <summary>
-    ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="DotLabel"/>. If
+    ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="DotLabel" />. If
     ///     the attribute is found, but its value cannot be cast nor converted to the returned type, an exception is thrown.
     /// </summary>
     public static bool GetComplexValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotLabel value)
@@ -124,7 +124,7 @@ public static class DotAttributeCollectionExtension
 
     /// <summary>
     ///     Checks if an attribute with the specified key exists in the collection, and returns its value as
-    ///     <see cref="DotArrowheadDefinition"/>. If the attribute is found, but its value cannot be cast nor converted to the returned
+    ///     <see cref="DotArrowheadDefinition" />. If the attribute is found, but its value cannot be cast nor converted to the returned
     ///     type, an exception is thrown.
     /// </summary>
     public static bool GetComplexValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotArrowheadDefinition value)
@@ -146,7 +146,7 @@ public static class DotAttributeCollectionExtension
 
     /// <summary>
     ///     Checks if an attribute with the specified key exists in the collection, and returns its value as
-    ///     <see cref="DotPackingDefinition"/>. If the attribute is found, but its value cannot be cast nor converted to the returned
+    ///     <see cref="DotPackingDefinition" />. If the attribute is found, but its value cannot be cast nor converted to the returned
     ///     type, an exception is thrown.
     /// </summary>
     public static bool GetComplexValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotPackingDefinition value)
@@ -168,8 +168,8 @@ public static class DotAttributeCollectionExtension
 
     /// <summary>
     ///     Checks if an attribute with the specified key exists in the collection, and returns its value as
-    ///     <see cref="DotPackingModeDefinition"/>. If the attribute is found, but its value cannot be cast nor converted to the returned
-    ///     type, an exception is thrown.
+    ///     <see cref="DotPackingModeDefinition" />. If the attribute is found, but its value cannot be cast nor converted to the
+    ///     returned type, an exception is thrown.
     /// </summary>
     public static bool GetComplexValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotPackingModeDefinition value)
     {
@@ -190,8 +190,8 @@ public static class DotAttributeCollectionExtension
 
     /// <summary>
     ///     Checks if an attribute with the specified key exists in the collection, and returns its value as
-    ///     <see cref="DotRankSpacingDefinition"/>. If the attribute is found, but its value cannot be cast nor converted to the returned
-    ///     type, an exception is thrown.
+    ///     <see cref="DotRankSpacingDefinition" />. If the attribute is found, but its value cannot be cast nor converted to the
+    ///     returned type, an exception is thrown.
     /// </summary>
     public static bool GetComplexValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotRankSpacingDefinition value)
     {
@@ -201,21 +201,21 @@ public static class DotAttributeCollectionExtension
             return false;
         }
 
-        if (attribute.TryGetValueAs<int>(out var rankSpacingInt))
+        if (attribute.TryGetValueAs<int>(out var rankSeparationInt))
         {
-            value = rankSpacingInt;
+            value = rankSeparationInt;
             return true;
         }
 
-        if (attribute.TryGetValueAs<double>(out var rankSpacingDouble))
+        if (attribute.TryGetValueAs<double>(out var rankSeparationDouble))
         {
-            value = rankSpacingDouble;
+            value = rankSeparationDouble;
             return true;
         }
 
-        if (attribute.TryGetValueAs<double[]>(out var radialSpacing))
+        if (attribute.TryGetValueAs<double[]>(out var radialRankSeparation))
         {
-            value = radialSpacing;
+            value = radialRankSeparation;
             return true;
         }
 
@@ -224,7 +224,7 @@ public static class DotAttributeCollectionExtension
 
     /// <summary>
     ///     Checks if an attribute with the specified key exists in the collection, and returns its value as
-    ///     <see cref="DotGraphScalingDefinition"/>. If the attribute is found, but its value cannot be cast nor converted to the
+    ///     <see cref="DotGraphScalingDefinition" />. If the attribute is found, but its value cannot be cast nor converted to the
     ///     returned type, an exception is thrown.
     /// </summary>
     public static bool GetComplexValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotGraphScalingDefinition value)
@@ -258,8 +258,8 @@ public static class DotAttributeCollectionExtension
 
     /// <summary>
     ///     Checks if an attribute with the specified key exists in the collection, and returns its value as
-    ///     <see cref="DotEndpointPort"/>. If the attribute is found, but its value cannot be cast nor converted to the returned type, an
-    ///     exception is thrown.
+    ///     <see cref="DotEndpointPort" />. If the attribute is found, but its value cannot be cast nor converted to the returned type,
+    ///     an exception is thrown.
     /// </summary>
     public static bool GetComplexValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotEndpointPort value)
     {
@@ -285,7 +285,7 @@ public static class DotAttributeCollectionExtension
     }
 
     /// <summary>
-    ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="DotId"/>. If the
+    ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="DotId" />. If the
     ///     attribute is found, but its value cannot be cast nor converted to the returned type, an exception is thrown.
     /// </summary>
     public static bool GetComplexValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotId value)
@@ -306,7 +306,7 @@ public static class DotAttributeCollectionExtension
     }
 
     /// <summary>
-    ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="DotClusterId"/>.
+    ///     Checks if an attribute with the specified key exists in the collection, and returns its value as <see cref="DotClusterId" />.
     ///     If the attribute is found, but its value cannot be cast nor converted to the returned type, an exception is thrown.
     /// </summary>
     public static bool GetComplexValue(this DotAttributeCollection @this, string key, [MaybeNullWhen(false)] out DotClusterId value)

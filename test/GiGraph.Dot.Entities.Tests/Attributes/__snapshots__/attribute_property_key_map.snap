@@ -302,7 +302,7 @@
     "Graph": "Layout.Direction: DotLayoutDirection?"
   },
   "ranksep": {
-    "Graph": "Layout.RankSpacing: DotRankSpacingDefinition"
+    "Graph": "Layout.RankSeparation: DotRankSeparationDefinition"
   },
   "ratio": {
     "Graph": "Canvas.Scaling: DotGraphScalingDefinition"
