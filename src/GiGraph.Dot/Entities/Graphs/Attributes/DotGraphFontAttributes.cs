@@ -4,7 +4,6 @@ using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Fonts;
-using GiGraph.Dot.Types.Graphs;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes;
 

@@ -17,7 +17,6 @@ using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Fonts;
 using GiGraph.Dot.Types.Geometry;
-using GiGraph.Dot.Types.Graphs;
 using GiGraph.Dot.Types.Identifiers;
 using GiGraph.Dot.Types.Images;
 using GiGraph.Dot.Types.Layout;

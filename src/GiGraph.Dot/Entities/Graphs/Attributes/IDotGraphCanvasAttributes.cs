@@ -1,6 +1,6 @@
 ﻿using GiGraph.Dot.Types.Geometry;
-using GiGraph.Dot.Types.Graphs;
 using GiGraph.Dot.Types.Orientation;
+using GiGraph.Dot.Types.Scaling;
 using GiGraph.Dot.Types.Viewport;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes;

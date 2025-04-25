@@ -1,6 +1,6 @@
 using GiGraph.Dot.Types.Clusters;
 
-namespace GiGraph.Dot.Types.Graphs;
+namespace GiGraph.Dot.Types.Scaling;
 
 /// <summary>
 ///     Graph style modifiers.
