@@ -3,9 +3,9 @@ using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Geometry;
-using GiGraph.Dot.Types.Orientation;
-using GiGraph.Dot.Types.Scaling;
-using GiGraph.Dot.Types.Viewport;
+using GiGraph.Dot.Types.Graphs.Canvas;
+using GiGraph.Dot.Types.Graphs.Canvas.Scaling;
+using GiGraph.Dot.Types.Graphs.Canvas.Viewport;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes;
 

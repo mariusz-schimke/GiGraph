@@ -5,7 +5,6 @@ using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Clusters;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Graphs;
-using GiGraph.Dot.Types.Scaling;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes;
 

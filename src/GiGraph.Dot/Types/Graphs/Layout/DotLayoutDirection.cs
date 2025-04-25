@@ -1,6 +1,6 @@
 ﻿using GiGraph.Dot.Output.Metadata;
 
-namespace GiGraph.Dot.Types.Layout;
+namespace GiGraph.Dot.Types.Graphs.Layout;
 
 /// <summary>
 ///     The direction of graph layout.

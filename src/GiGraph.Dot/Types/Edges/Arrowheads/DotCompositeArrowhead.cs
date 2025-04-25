@@ -1,6 +1,6 @@
 using GiGraph.Dot.Output.Options;
 
-namespace GiGraph.Dot.Types.Arrowheads;
+namespace GiGraph.Dot.Types.Edges.Arrowheads;
 
 /// <summary>
 ///     Defines an arrowhead composed of multiple shapes.

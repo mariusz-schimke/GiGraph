@@ -1,6 +1,6 @@
 ﻿using GiGraph.Dot.Output.Metadata;
 
-namespace GiGraph.Dot.Types.Scaling;
+namespace GiGraph.Dot.Types.Graphs.Canvas.Scaling;
 
 /// <summary>
 ///     Graph scaling options for the drawing.

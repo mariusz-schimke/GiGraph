@@ -2,9 +2,9 @@ using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Labels;
-using GiGraph.Dot.Types.Arrowheads;
 using GiGraph.Dot.Types.Clusters;
 using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.Edges.Arrowheads;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 

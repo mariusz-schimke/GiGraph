@@ -2,7 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Qualities;
 
-namespace GiGraph.Dot.Types.Packing;
+namespace GiGraph.Dot.Types.Graphs.Layout.Packing;
 
 /// <summary>
 ///     Determines whether packing is enabled (see <see cref="DotPackingEnabled" />) or specifies a margin around each laid out

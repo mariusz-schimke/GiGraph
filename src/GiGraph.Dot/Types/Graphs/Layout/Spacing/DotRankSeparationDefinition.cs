@@ -2,7 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Qualities;
 
-namespace GiGraph.Dot.Types.Ranks;
+namespace GiGraph.Dot.Types.Graphs.Layout.Spacing;
 
 /// <summary>
 ///     Rank separation (see <see cref="DotRankSeparation" /> and <see cref="DotRadialRankSeparation" />).

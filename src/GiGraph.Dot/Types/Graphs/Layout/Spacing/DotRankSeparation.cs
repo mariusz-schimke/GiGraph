@@ -1,6 +1,6 @@
 using GiGraph.Dot.Output.Options;
 
-namespace GiGraph.Dot.Types.Ranks;
+namespace GiGraph.Dot.Types.Graphs.Layout.Spacing;
 
 /// <summary>
 ///     Rank separation, in inches.

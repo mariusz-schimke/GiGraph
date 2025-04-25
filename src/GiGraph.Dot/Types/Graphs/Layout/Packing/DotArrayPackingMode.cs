@@ -2,7 +2,7 @@ using System.Text;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Output.Options;
 
-namespace GiGraph.Dot.Types.Packing;
+namespace GiGraph.Dot.Types.Graphs.Layout.Packing;
 
 /// <summary>
 ///     Array packing mode parameters. Indicates that the components should be packed at the graph level into an array of graphs. By

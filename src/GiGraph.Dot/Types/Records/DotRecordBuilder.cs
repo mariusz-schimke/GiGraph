@@ -1,5 +1,5 @@
 using System.Diagnostics.Contracts;
-using GiGraph.Dot.Types.Layout;
+using GiGraph.Dot.Types.Graphs.Layout;
 
 namespace GiGraph.Dot.Types.Records;
 

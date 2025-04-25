@@ -3,7 +3,7 @@ using System.Text;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Output.Options;
 
-namespace GiGraph.Dot.Types.Arrowheads;
+namespace GiGraph.Dot.Types.Edges.Arrowheads;
 
 /// <summary>
 ///     Defines an arrowhead shape. See the

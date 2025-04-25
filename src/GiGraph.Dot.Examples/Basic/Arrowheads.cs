@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.Contracts;
 using GiGraph.Dot.Entities.Graphs;
-using GiGraph.Dot.Types.Arrowheads;
 using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.Edges.Arrowheads;
 
 namespace GiGraph.Dot.Examples.Basic;
 

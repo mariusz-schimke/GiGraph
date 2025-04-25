@@ -1,6 +1,6 @@
 using GiGraph.Dot.Output.Metadata;
 
-namespace GiGraph.Dot.Types.Output;
+namespace GiGraph.Dot.Types.Graphs.Layout;
 
 /// <summary>
 ///     Specifies the order in which nodes and edges are drawn in output.

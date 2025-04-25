@@ -1,6 +1,6 @@
 ﻿using GiGraph.Dot.Output.Metadata;
 
-namespace GiGraph.Dot.Types.Arrowheads;
+namespace GiGraph.Dot.Types.Edges.Arrowheads;
 
 /// <summary>
 ///     The arrowhead shape. See the

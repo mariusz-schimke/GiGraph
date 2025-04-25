@@ -2,11 +2,10 @@
 using GiGraph.Dot.Entities.Nodes.Attributes;
 using GiGraph.Dot.Entities.Subgraphs.Attributes;
 using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.Graphs.Layout;
+using GiGraph.Dot.Types.Graphs.Layout.Packing;
+using GiGraph.Dot.Types.Graphs.Layout.Spacing;
 using GiGraph.Dot.Types.Identifiers;
-using GiGraph.Dot.Types.Layout;
-using GiGraph.Dot.Types.Output;
-using GiGraph.Dot.Types.Packing;
-using GiGraph.Dot.Types.Ranks;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes;
 

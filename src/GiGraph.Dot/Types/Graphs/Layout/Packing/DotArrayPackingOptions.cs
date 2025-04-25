@@ -1,6 +1,6 @@
 using GiGraph.Dot.Output.Metadata;
 
-namespace GiGraph.Dot.Types.Packing;
+namespace GiGraph.Dot.Types.Graphs.Layout.Packing;
 
 /// <summary>
 ///     The flags used for customizing component distribution in the array packing mode.

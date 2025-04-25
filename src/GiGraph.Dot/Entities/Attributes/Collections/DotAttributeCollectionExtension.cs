@@ -1,15 +1,15 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using GiGraph.Dot.Entities.Labels;
-using GiGraph.Dot.Types.Arrowheads;
 using GiGraph.Dot.Types.Clusters;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.Edges.Arrowheads;
 using GiGraph.Dot.Types.EscapeString;
+using GiGraph.Dot.Types.Graphs.Canvas.Scaling;
+using GiGraph.Dot.Types.Graphs.Layout.Packing;
+using GiGraph.Dot.Types.Graphs.Layout.Spacing;
 using GiGraph.Dot.Types.Identifiers;
-using GiGraph.Dot.Types.Packing;
-using GiGraph.Dot.Types.Ranks;
-using GiGraph.Dot.Types.Scaling;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections;
 

@@ -1,6 +1,6 @@
 using GiGraph.Dot.Output.Metadata;
 
-namespace GiGraph.Dot.Types.Arrowheads;
+namespace GiGraph.Dot.Types.Edges.Arrowheads;
 
 /// <summary>
 ///     Determines the parts of an arrowhead. Left and right are defined as those directions determined by looking from the edge

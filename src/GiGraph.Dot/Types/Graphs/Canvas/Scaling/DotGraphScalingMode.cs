@@ -1,7 +1,7 @@
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Output.Options;
 
-namespace GiGraph.Dot.Types.Scaling;
+namespace GiGraph.Dot.Types.Graphs.Canvas.Scaling;
 
 /// <summary>
 ///     Scaling mode of the graph drawing.

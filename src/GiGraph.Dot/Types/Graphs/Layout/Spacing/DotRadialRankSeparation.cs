@@ -1,7 +1,7 @@
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.Encoders;
 
-namespace GiGraph.Dot.Types.Ranks;
+namespace GiGraph.Dot.Types.Graphs.Layout.Spacing;
 
 /// <summary>
 ///     Radial separation of concentric circles in twopi.

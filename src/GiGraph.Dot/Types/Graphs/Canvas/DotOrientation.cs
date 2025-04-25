@@ -1,6 +1,6 @@
 ﻿using GiGraph.Dot.Output.Metadata;
 
-namespace GiGraph.Dot.Types.Orientation;
+namespace GiGraph.Dot.Types.Graphs.Canvas;
 
 /// <summary>
 ///     The orientation options.

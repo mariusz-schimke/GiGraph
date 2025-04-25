@@ -2,7 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Qualities;
 
-namespace GiGraph.Dot.Types.Scaling;
+namespace GiGraph.Dot.Types.Graphs.Canvas.Scaling;
 
 /// <summary>
 ///     Represents the scaling mode of the graph. Accepts either a numeric value (<see cref="DotGraphAspectRatio" />), or an

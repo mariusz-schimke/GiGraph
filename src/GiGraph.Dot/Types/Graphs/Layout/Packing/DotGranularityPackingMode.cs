@@ -1,7 +1,7 @@
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Output.Options;
 
-namespace GiGraph.Dot.Types.Packing;
+namespace GiGraph.Dot.Types.Graphs.Layout.Packing;
 
 /// <summary>
 ///     A graph packing mode based on a granularity option. Indicates that components should be packed together tightly, using the

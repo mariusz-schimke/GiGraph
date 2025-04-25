@@ -1,6 +1,6 @@
 using GiGraph.Dot.Output.Options;
 
-namespace GiGraph.Dot.Types.Viewport;
+namespace GiGraph.Dot.Types.Graphs.Canvas.Viewport;
 
 /// <summary>
 ///     Specifies a viewport for the graph image, with a node as the central point.

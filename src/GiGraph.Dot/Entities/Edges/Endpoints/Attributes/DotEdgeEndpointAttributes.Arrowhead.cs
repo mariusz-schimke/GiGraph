@@ -1,4 +1,4 @@
-using GiGraph.Dot.Types.Arrowheads;
+using GiGraph.Dot.Types.Edges.Arrowheads;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 

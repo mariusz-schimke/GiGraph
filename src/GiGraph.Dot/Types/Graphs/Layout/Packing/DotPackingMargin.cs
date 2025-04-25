@@ -1,6 +1,6 @@
 using GiGraph.Dot.Output.Options;
 
-namespace GiGraph.Dot.Types.Packing;
+namespace GiGraph.Dot.Types.Graphs.Layout.Packing;
 
 /// <summary>
 ///     Used as the size, in points, of a margin around each graph part being packed.

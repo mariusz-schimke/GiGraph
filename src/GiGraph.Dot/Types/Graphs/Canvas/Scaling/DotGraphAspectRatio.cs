@@ -1,6 +1,6 @@
 using GiGraph.Dot.Output.Options;
 
-namespace GiGraph.Dot.Types.Scaling;
+namespace GiGraph.Dot.Types.Graphs.Canvas.Scaling;
 
 /// <summary>
 ///     The aspect ratio of the graph. If ratio = x where x is a floating point number, then the drawing is scaled up in one

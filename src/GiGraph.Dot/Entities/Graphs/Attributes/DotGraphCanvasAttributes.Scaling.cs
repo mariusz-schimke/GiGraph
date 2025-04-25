@@ -1,4 +1,4 @@
-using GiGraph.Dot.Types.Scaling;
+using GiGraph.Dot.Types.Graphs.Canvas.Scaling;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes;
 
