@@ -2,10 +2,10 @@ using System.Drawing;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Subgraphs;
-using GiGraph.Dot.Types.Arrowheads;
 using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.Edges.Arrowheads;
+using GiGraph.Dot.Types.Graphs.Layout.Spacing;
 using GiGraph.Dot.Types.Nodes;
-using GiGraph.Dot.Types.Ranks;
 using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Output.Tests;
@@ -28,31 +28,37 @@ public class DotGraphFactory
         };
 
 
-        graph.Subgraphs.Add("Subgraph2", sg =>
-        {
-            sg.NodeRank = DotRank.Max;
+        graph.Subgraphs.Add(
+            "Subgraph2",
+            sg =>
+            {
+                sg.NodeRank = DotRank.Max;
 
-            sg.Nodes.Style.Color = Color.Chartreuse;
-            sg.Nodes.Label = "nodes_label";
+                sg.Nodes.Style.Color = Color.Chartreuse;
+                sg.Nodes.Label = "nodes_label";
 
-            sg.Edges.Style.Color = Color.Chocolate;
-            sg.Edges.Label = "edges_label";
-        });
+                sg.Edges.Style.Color = Color.Chocolate;
+                sg.Edges.Label = "edges_label";
+            }
+        );
 
         graph.Subgraphs.Add("Subgraph1");
 
 
-        graph.Clusters.Add("Cluster2", cluster =>
-        {
-            cluster.Label = "cluster label";
-            cluster.Padding = 10;
+        graph.Clusters.Add(
+            "Cluster2",
+            cluster =>
+            {
+                cluster.Label = "cluster label";
+                cluster.Padding = 10;
 
-            cluster.Nodes.Style.Color = Color.Chartreuse;
-            cluster.Nodes.Label = "nodes label";
+                cluster.Nodes.Style.Color = Color.Chartreuse;
+                cluster.Nodes.Label = "nodes label";
 
-            cluster.Edges.Style.Color = Color.Chocolate;
-            cluster.Edges.Label = "edges label";
-        });
+                cluster.Edges.Style.Color = Color.Chocolate;
+                cluster.Edges.Label = "edges label";
+            }
+        );
 
         graph.Clusters.Add("Cluster1");
 
@@ -64,38 +70,59 @@ public class DotGraphFactory
         graph.Edges.Label = "edge_label";
 
         graph.Nodes.Add("no_attributes");
-        graph.Nodes.Add("node3", node =>
-        {
-            node.Shape = DotNodeShape.AssemblyScar;
-            node.Style.BorderWeight = DotBorderWeight.Bold;
-        });
+        graph.Nodes.Add(
+            "node3",
+            node =>
+            {
+                node.Shape = DotNodeShape.AssemblyScar;
+                node.Style.BorderWeight = DotBorderWeight.Bold;
+            }
+        );
 
-        graph.Nodes.AddGroup(nodeGroup =>
-        {
-            nodeGroup.Shape = DotNodeShape.Box;
-            nodeGroup.Style.BorderWeight = DotBorderWeight.Bold;
-            nodeGroup.Style.BorderStyle = DotBorderStyle.Dashed;
-        }, "node1", "node2");
+        graph.Nodes.AddGroup(
+            nodeGroup =>
+            {
+                nodeGroup.Shape = DotNodeShape.Box;
+                nodeGroup.Style.BorderWeight = DotBorderWeight.Bold;
+                nodeGroup.Style.BorderStyle = DotBorderStyle.Dashed;
+            },
+            "node1",
+            "node2"
+        );
 
         graph.Edges.AddLoop("no_attributes");
-        graph.Edges.Add("node6", "node7", edge =>
-        {
-            edge.Tail.Endpoint.Port = new DotEndpointPort("port6", DotCompassPoint.East);
-            edge.Style.Color = Color.Gold;
-            edge.Style.LineStyle = DotLineStyle.Dotted;
-        });
+        graph.Edges.Add(
+            "node6",
+            "node7",
+            edge =>
+            {
+                edge.Tail.Endpoint.Port = new DotEndpointPort("port6", DotCompassPoint.East);
+                edge.Style.Color = Color.Gold;
+                edge.Style.LineStyle = DotLineStyle.Dotted;
+            }
+        );
 
-        graph.Edges.AddSequence(edge =>
-        {
-            edge.Layout.IncludeInNodeRanking = true;
-            edge.Style.LineStyle = DotLineStyle.Solid;
-        }, "node4", DotSubgraph.FromNodes("snode1", "snode2"), "node5");
+        graph.Edges.AddSequence(
+            edge =>
+            {
+                edge.Layout.IncludeInNodeRanking = true;
+                edge.Style.LineStyle = DotLineStyle.Solid;
+            },
+            "node4",
+            DotSubgraph.FromNodes("snode1", "snode2"),
+            "node5"
+        );
 
-        graph.Edges.AddSequence(edge =>
-        {
-            edge.Style.Color = Color.Beige;
-            edge.Style.Invisible = true;
-        }, "node1", "node2", "node3");
+        graph.Edges.AddSequence(
+            edge =>
+            {
+                edge.Style.Color = Color.Beige;
+                edge.Style.Invisible = true;
+            },
+            "node1",
+            "node2",
+            "node3"
+        );
 
         graph.Edges.Add(
             new DotEndpointGroup(
@@ -132,36 +159,43 @@ public class DotGraphFactory
         graph.Edges.Add("node1", "node2");
 
         graph.Subgraphs.Add(sg =>
-        {
-            sg.Annotation = "subgraph comment";
-            sg.NodeRank = DotRank.Min;
-
-            sg.Subsections.Add(ss =>
             {
-                ss.Annotation = "subgraph subsection comment";
-                ss.NodeRank = DotRank.Max;
-            });
-        });
+                sg.Annotation = "subgraph comment";
+                sg.NodeRank = DotRank.Min;
 
-        graph.Clusters.Add("cluster1", c =>
-        {
-            c.Annotation = "cluster comment";
-            c.Style.Color = Color.Blue;
+                sg.Subsections.Add(ss =>
+                    {
+                        ss.Annotation = "subgraph subsection comment";
+                        ss.NodeRank = DotRank.Max;
+                    }
+                );
+            }
+        );
 
-            c.Subsections.Add(ss =>
+        graph.Clusters.Add(
+            "cluster1",
+            c =>
             {
-                ss.Annotation = "cluster subsection comment";
-                ss.Style.Color = Color.Magenta;
-            });
-        });
+                c.Annotation = "cluster comment";
+                c.Style.Color = Color.Blue;
+
+                c.Subsections.Add(ss =>
+                    {
+                        ss.Annotation = "cluster subsection comment";
+                        ss.Style.Color = Color.Magenta;
+                    }
+                );
+            }
+        );
 
         graph.Subsections.Add(ss =>
-        {
-            ss.Annotation = "graph section comment";
-            ss.Style.BackgroundColor = Color.Blue;
-            ss.Nodes.Add("section 1 node");
-            ss.Edges.AddLoop("section 1 node");
-        });
+            {
+                ss.Annotation = "graph section comment";
+                ss.Style.BackgroundColor = Color.Blue;
+                ss.Nodes.Add("section 1 node");
+                ss.Edges.AddLoop("section 1 node");
+            }
+        );
 
         return graph;
     }
@@ -188,19 +222,25 @@ public class DotGraphFactory
 
         // nodes
         graph.Nodes.Annotation = "nodes";
-        graph.Nodes.Add("foo", node =>
-        {
-            node.Annotation = "node comment";
-            node.Attributes.Annotation = "node attributes";
-            node.Attributes.SetValue(a => a.Label, "foo").Annotation = "label";
-        });
+        graph.Nodes.Add(
+            "foo",
+            node =>
+            {
+                node.Annotation = "node comment";
+                node.Attributes.Annotation = "node attributes";
+                node.Attributes.SetValue(a => a.Label, "foo").Annotation = "label";
+            }
+        );
 
-        graph.Nodes.AddGroup(["foo", "bar", "baz"], node =>
-        {
-            node.Annotation = "node group comment";
-            node.Attributes.Annotation = "node group attributes";
-            node.Attributes.SetValue(a => a.Label, "foo").Annotation = "label";
-        });
+        graph.Nodes.AddGroup(
+            ["foo", "bar", "baz"],
+            node =>
+            {
+                node.Annotation = "node group comment";
+                node.Attributes.Annotation = "node group attributes";
+                node.Attributes.SetValue(a => a.Label, "foo").Annotation = "label";
+            }
+        );
 
         // edge defaults
         graph.Edges.Attributes.Annotation = "global edge attributes";
@@ -208,29 +248,36 @@ public class DotGraphFactory
 
         // edges
         graph.Edges.Annotation = "edges";
-        graph.Edges.Add("foo", "bar", edge =>
-        {
-            edge.Annotation = "edge comment";
-
-            edge.Head.Endpoint.Annotation = "head";
-            edge.Tail.Endpoint.Annotation = "tail";
-
-            edge.Attributes.Annotation = "edge attributes";
-            edge.Style.Attributes.SetValue(a => a.Color, Color.Red).Annotation = "color";
-        });
-
-        graph.Edges.AddSequence(["foo", "bar", "baz"], edge =>
-        {
-            var i = 1;
-            foreach (var endpoint in edge.Endpoints)
+        graph.Edges.Add(
+            "foo",
+            "bar",
+            edge =>
             {
-                endpoint.Annotation = $"endpoint {i++}";
-            }
+                edge.Annotation = "edge comment";
 
-            edge.Annotation = "edge sequence comment";
-            edge.Attributes.Annotation = "edge sequence attributes";
-            edge.Style.Attributes.SetValue(a => a.Color, Color.Red).Annotation = "color";
-        });
+                edge.Head.Endpoint.Annotation = "head";
+                edge.Tail.Endpoint.Annotation = "tail";
+
+                edge.Attributes.Annotation = "edge attributes";
+                edge.Style.Attributes.SetValue(a => a.Color, Color.Red).Annotation = "color";
+            }
+        );
+
+        graph.Edges.AddSequence(
+            ["foo", "bar", "baz"],
+            edge =>
+            {
+                var i = 1;
+                foreach (var endpoint in edge.Endpoints)
+                {
+                    endpoint.Annotation = $"endpoint {i++}";
+                }
+
+                edge.Annotation = "edge sequence comment";
+                edge.Attributes.Annotation = "edge sequence attributes";
+                edge.Style.Attributes.SetValue(a => a.Color, Color.Red).Annotation = "color";
+            }
+        );
 
         // endpoint groups / endpoint subgraphs / clusters as endpoints
         var endpointGroup = new DotEndpointGroup(
@@ -253,22 +300,24 @@ public class DotGraphFactory
 
         // subsections
         graph.Subsections.Add(sub =>
-        {
-            sub.Annotation = "subsection 1";
+            {
+                sub.Annotation = "subsection 1";
 
-            // clusters
-            sub.Clusters.Annotation = "clusters";
-            sub.Clusters.Add("cluster 1").Annotation = "cluster";
+                // clusters
+                sub.Clusters.Annotation = "clusters";
+                sub.Clusters.Add("cluster 1").Annotation = "cluster";
 
-            // subgraphs
-            sub.Subgraphs.Annotation = "subgraphs";
-            sub.Subgraphs.Add().Annotation = "subgraph";
-        });
+                // subgraphs
+                sub.Subgraphs.Annotation = "subgraphs";
+                sub.Subgraphs.Add().Annotation = "subgraph";
+            }
+        );
 
         graph.Subsections.Add(sub =>
-        {
-            sub.Annotation = string.Empty;
-        });
+            {
+                sub.Annotation = string.Empty;
+            }
+        );
 
         return graph;
     }

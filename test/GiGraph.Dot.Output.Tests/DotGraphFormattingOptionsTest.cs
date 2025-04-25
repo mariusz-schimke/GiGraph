@@ -3,7 +3,7 @@ using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.Edges;
-using GiGraph.Dot.Types.Ranks;
+using GiGraph.Dot.Types.Graphs.Layout.Spacing;
 using Snapshooter.Xunit;
 using Xunit;
 

@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.Contracts;
 using GiGraph.Dot.Entities.Graphs;
-using GiGraph.Dot.Types.Layout;
-using GiGraph.Dot.Types.Ranks;
+using GiGraph.Dot.Types.Graphs.Layout;
+using GiGraph.Dot.Types.Graphs.Layout.Spacing;
 
 namespace GiGraph.Dot.Examples.Complex;
 

@@ -1,4 +1,4 @@
-using GiGraph.Dot.Types.Packing;
+using GiGraph.Dot.Types.Graphs.Layout.Packing;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes;
 

@@ -2,7 +2,7 @@
 using GiGraph.Dot.Entities.Graphs.Collections;
 using GiGraph.Dot.Output.Entities;
 using GiGraph.Dot.Output.Qualities;
-using GiGraph.Dot.Types.Ranks;
+using GiGraph.Dot.Types.Graphs.Layout.Spacing;
 
 namespace GiGraph.Dot.Entities.Subgraphs;
 

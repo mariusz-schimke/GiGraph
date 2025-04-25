@@ -1,4 +1,4 @@
-using GiGraph.Dot.Types.Ranks;
+using GiGraph.Dot.Types.Graphs.Layout.Spacing;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes;
 

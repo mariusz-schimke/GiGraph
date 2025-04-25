@@ -2,10 +2,10 @@
 using System.Drawing;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
-using GiGraph.Dot.Types.Arrowheads;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Edges;
-using GiGraph.Dot.Types.Layout;
+using GiGraph.Dot.Types.Edges.Arrowheads;
+using GiGraph.Dot.Types.Graphs.Layout;
 using GiGraph.Dot.Types.Nodes;
 using GiGraph.Dot.Types.Styling;
 

@@ -1,7 +1,7 @@
 ﻿using GiGraph.Dot.Types.Geometry;
-using GiGraph.Dot.Types.Graphs;
-using GiGraph.Dot.Types.Orientation;
-using GiGraph.Dot.Types.Viewport;
+using GiGraph.Dot.Types.Graphs.Canvas;
+using GiGraph.Dot.Types.Graphs.Canvas.Scaling;
+using GiGraph.Dot.Types.Graphs.Canvas.Viewport;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes;
 
@@ -94,7 +94,7 @@ public interface IDotGraphCanvasAttributes
     ///         the final drawing size may only approximate what is desired.
     ///     </para>
     ///     <para>
-    ///         If ratio is numeric (<see cref="DotGraphScalingAspectRatio"/>), it is taken as the desired aspect ratio. Then, if the
+    ///         If ratio is numeric (<see cref="DotGraphAspectRatio"/>), it is taken as the desired aspect ratio. Then, if the
     ///         actual aspect ratio is less than the desired ratio, the drawing height is scaled up to achieve the desired ratio; if the
     ///         actual ratio is greater than that desired ratio, the drawing width is scaled up.
     ///     </para>
