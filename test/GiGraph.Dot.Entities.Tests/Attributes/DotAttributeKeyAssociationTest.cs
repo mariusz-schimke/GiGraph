@@ -25,6 +25,7 @@ using GiGraph.Dot.Types.Orientation;
 using GiGraph.Dot.Types.Output;
 using GiGraph.Dot.Types.Packing;
 using GiGraph.Dot.Types.Ranks;
+using GiGraph.Dot.Types.Scaling;
 using GiGraph.Dot.Types.Styling;
 using GiGraph.Dot.Types.Viewport;
 using Snapshooter.Xunit;
@@ -66,7 +67,7 @@ public class DotAttributeKeyAssociationTest
         { typeof(DotColorDefinition), new DotWeightedColor(Color.Red, 1, DotColorSchemes.Default) },
         { typeof(DotEndpointPort), new DotEndpointPort("port1", DotCompassPoint.East) },
         { typeof(DotEscapeString), (DotEscapeString) "escape" },
-        { typeof(DotGraphScalingDefinition), new DotGraphScalingOption(DotGraphScaling.Auto) },
+        { typeof(DotGraphScalingDefinition), new DotGraphScalingMode(DotGraphScaling.Auto) },
         { typeof(DotId), new DotId("id") },
         { typeof(DotLabel), new DotTextLabel("text") },
         { typeof(DotPackingDefinition), new DotPackingMargin(12) },
