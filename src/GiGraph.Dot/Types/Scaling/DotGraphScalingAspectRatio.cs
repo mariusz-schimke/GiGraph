@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Types.Scaling;
 ///     as high as it is wide.
 /// </summary>
 /// <param name="aspectRatio">
-///     The aspect ratio.
+///     The aspect ratio to use.
 /// </param>
 public class DotGraphScalingAspectRatio(double aspectRatio) : DotGraphScalingDefinition
 {

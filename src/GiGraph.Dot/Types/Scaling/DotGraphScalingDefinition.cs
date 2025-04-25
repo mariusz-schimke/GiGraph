@@ -16,7 +16,7 @@ public abstract class DotGraphScalingDefinition : IDotEncodable
     public static implicit operator DotGraphScalingDefinition?(double? value) => value.HasValue ? new DotGraphScalingAspectRatio(value.Value) : null;
 
     [return: NotNullIfNotNull(nameof(value))]
-    public static implicit operator DotGraphScalingDefinition?(DotGraphScaling? value) => value.HasValue ? new DotGraphScalingOption(value.Value) : null;
+    public static implicit operator DotGraphScalingDefinition?(DotGraphScaling? value) => value.HasValue ? new DotGraphScalingMode(value.Value) : null;
 
     protected abstract string? GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
 }
