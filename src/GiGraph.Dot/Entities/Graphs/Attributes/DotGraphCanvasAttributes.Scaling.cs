@@ -20,7 +20,7 @@ public partial class DotGraphCanvasAttributes
     ///     </para>
     ///     <para>
     ///         Calling this method is equivalent to setting the <see cref="Scaling"/> property directly, using
-    ///         <see cref="DotGraphScalingAspectRatio"/>.
+    ///         <see cref="DotGraphAspectRatio"/>.
     ///     </para>
     /// </summary>
     /// <param name="aspectRatio">
@@ -34,7 +34,7 @@ public partial class DotGraphCanvasAttributes
     /// </remarks>
     public void SetAspectRatio(double aspectRatio)
     {
-        Scaling = new DotGraphScalingAspectRatio(aspectRatio);
+        Scaling = new DotGraphAspectRatio(aspectRatio);
     }
 
     /// <summary>
