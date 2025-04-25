@@ -10,45 +10,34 @@ public class DotRankSeparation : DotRankSeparationDefinition
     /// <summary>
     ///     Creates a new rank separation instance.
     /// </summary>
-    /// <param name="distance">
+    /// <param name="minNodeDistance">
     ///     The minimum vertical distance in inches between the bottom of the nodes in one rank and the tops of nodes in the next.
     /// </param>
-    /// <param name="equalSpacing">
+    /// <param name="equalRankSpacing">
     ///     Determines if the centers of all ranks should be spaced equally apart.
     /// </param>
-    public DotRankSeparation(double distance, bool equalSpacing = false)
-        : this(equalSpacing)
+    public DotRankSeparation(double? minNodeDistance, bool equalRankSpacing = false)
     {
-        Distance = distance;
-    }
-
-    /// <summary>
-    ///     Creates a new rank separation instance.
-    /// </summary>
-    /// <param name="equalSpacing">
-    ///     Determines if the centers of all ranks should be spaced equally apart.
-    /// </param>
-    public DotRankSeparation(bool equalSpacing)
-    {
-        EqualSpacing = equalSpacing;
+        MinNodeDistance = minNodeDistance;
+        EqualRankSpacing = equalRankSpacing;
     }
 
     /// <summary>
     ///     The minimum vertical distance in inches between the bottom of the nodes in one rank and the tops of nodes in the next.
     /// </summary>
-    public double? Distance { get; }
+    public double? MinNodeDistance { get; }
 
     /// <summary>
     ///     Indicates if the centers of all ranks should be spaced equally apart.
     /// </summary>
-    public bool EqualSpacing { get; }
+    public bool EqualRankSpacing { get; }
 
     protected override string? GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
     {
         const string equally = "equally";
-        var result = Distance?.ToString(syntaxRules.Culture);
+        var result = MinNodeDistance?.ToString(syntaxRules.Culture);
 
-        if (EqualSpacing)
+        if (EqualRankSpacing)
         {
             return result is not null ? $"{result} {equally}" : equally;
         }

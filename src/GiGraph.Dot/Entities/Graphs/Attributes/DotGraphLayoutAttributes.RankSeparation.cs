@@ -18,45 +18,19 @@ public partial class DotGraphLayoutAttributes
     ///         <see cref="DotRankSeparation"/>.
     ///     </para>
     /// </summary>
-    /// <param name="distance">
+    /// <param name="minNodeDistance">
     ///     The minimum vertical distance in inches between the bottom of the nodes in one rank and the tops of nodes in the next.
     /// </param>
-    /// <param name="equalSpacing">
+    /// <param name="equalRankSpacing">
     ///     Determines if the centers of all ranks should be spaced equally apart.
     /// </param>
     /// <remarks>
-    ///     Rank separation may be set by calling this method, <see cref="SetRankSeparation(bool)"/>, or
-    ///     <see cref="SetRadialRankSeparation"/>. Only one of them should be used, as they write the same graph attribute.
+    ///     Rank separation may be set by calling this method or <see cref="SetRadialRankSeparation"/>. Only one of them should be used,
+    ///     as they write the same graph attribute.
     /// </remarks>
-    public void SetRankSeparation(double distance, bool equalSpacing = false)
+    public void SetRankSeparation(double? minNodeDistance, bool equalRankSpacing = false)
     {
-        RankSeparation = new DotRankSeparation(distance, equalSpacing);
-    }
-
-    /// <summary>
-    ///     <para>
-    ///         In dot, sets the desired rank separation, in inches (default: 0.5, minimum: 0.02). This is the minimum vertical distance
-    ///         between the bottom of the nodes in one rank and the tops of nodes in the next.
-    ///     </para>
-    ///     <para>
-    ///         In twopi, specifies the radial separation of concentric circles (default: 1, minimum: 0.02). For twopi, this can also be
-    ///         a list of doubles (see <see cref="SetRadialRankSeparation"/>).
-    ///     </para>
-    ///     <para>
-    ///         Calling this method is equivalent to setting the <see cref="RankSeparation"/> property directly, using
-    ///         <see cref="DotRankSeparation"/>.
-    ///     </para>
-    /// </summary>
-    /// <param name="equalSpacing">
-    ///     Determines if the centers of all ranks should be spaced equally apart.
-    /// </param>
-    /// <remarks>
-    ///     Rank separation may be set by calling this method, <see cref="SetRankSeparation(double,bool)"/>, or
-    ///     <see cref="SetRadialRankSeparation"/>. Only one of them should be used, as they write the same graph attribute.
-    /// </remarks>
-    public void SetRankSeparation(bool equalSpacing)
-    {
-        RankSeparation = new DotRankSeparation(equalSpacing);
+        RankSeparation = new DotRankSeparation(minNodeDistance, equalRankSpacing);
     }
 
     /// <summary>
@@ -74,8 +48,8 @@ public partial class DotGraphLayoutAttributes
     ///     remainder.
     /// </param>
     /// <remarks>
-    ///     Rank separation may be set by calling this method, <see cref="SetRankSeparation(double,bool)"/>, or
-    ///     <see cref="SetRankSeparation(bool)"/>. Only one of them should be used, as they write the same graph attribute.
+    ///     Rank separation may be set by calling this method or <see cref="SetRankSeparation"/>. Only one of them should be used, as
+    ///     they write the same graph attribute.
     /// </remarks>
     public void SetRadialRankSeparation(params IEnumerable<double> radii)
     {
