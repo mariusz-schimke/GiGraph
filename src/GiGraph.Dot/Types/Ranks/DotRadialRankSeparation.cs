@@ -11,26 +11,26 @@ public class DotRadialRankSeparation : DotRankSeparationDefinition
     /// <summary>
     ///     Creates a new rank separation instance.
     /// </summary>
-    /// <param name="values">
+    /// <param name="radii">
     ///     The first double specifies the radius of the inner circle; the second double specifies the increase in radius from the first
     ///     circle to the second; etc. If there are more circles than numbers, the last number is used as the increment for the
     ///     remainder.
     /// </param>
-    public DotRadialRankSeparation(params double[] values)
+    public DotRadialRankSeparation(params double[] radii)
     {
-        Values = values ?? throw new ArgumentNullException(nameof(values), "Value collection must not be null.");
+        Radii = radii ?? throw new ArgumentNullException(nameof(radii), "Radii collection must not be null.");
     }
 
     /// <summary>
     ///     Creates a new rank separation instance.
     /// </summary>
-    /// <param name="value">
+    /// <param name="radii">
     ///     The first double specifies the radius of the inner circle; the second double specifies the increase in radius from the first
     ///     circle to the second; etc. If there are more circles than numbers, the last number is used as the increment for the
     ///     remainder.
     /// </param>
-    public DotRadialRankSeparation(IEnumerable<double> value)
-        : this(value.ToArray())
+    public DotRadialRankSeparation(IEnumerable<double> radii)
+        : this(radii.ToArray())
     {
     }
 
@@ -39,7 +39,7 @@ public class DotRadialRankSeparation : DotRankSeparationDefinition
     ///     circle to the second; etc. If there are more circles than numbers, the last number is used as the increment for the
     ///     remainder.
     /// </summary>
-    public double[] Values { get; }
+    public double[] Radii { get; }
 
-    protected override string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => DotDoubleListEncoder.Encode(Values, syntaxRules);
+    protected override string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => DotDoubleListEncoder.Encode(Radii, syntaxRules);
 }

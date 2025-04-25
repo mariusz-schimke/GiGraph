@@ -117,7 +117,7 @@ public interface IDotGraphLayoutAttributes
 
     /// <summary>
     ///     <para>
-    ///         In dot, this gives the desired rank separation, in inches (<see cref="DotRankSeparation"/>; default: 0.5, minimum: 0.02.
+    ///         In dot, this gives the desired rank separation, in inches (<see cref="DotRankSeparation"/>; default: 0.5, minimum: 0.02).
     ///         This is the minimum vertical distance between the bottom of the nodes in one rank and the tops of nodes in the next.
     ///     </para>
     ///     <para>

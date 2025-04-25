@@ -10,45 +10,34 @@ public class DotRankSeparation : DotRankSeparationDefinition
     /// <summary>
     ///     Creates a new rank separation instance.
     /// </summary>
-    /// <param name="value">
+    /// <param name="minNodeDistance">
     ///     The minimum vertical distance in inches between the bottom of the nodes in one rank and the tops of nodes in the next.
     /// </param>
-    /// <param name="equal">
+    /// <param name="equalRankSpacing">
     ///     Determines if the centers of all ranks should be spaced equally apart.
     /// </param>
-    public DotRankSeparation(double value, bool equal = false)
-        : this(equal)
+    public DotRankSeparation(double? minNodeDistance, bool equalRankSpacing = false)
     {
-        Value = value;
-    }
-
-    /// <summary>
-    ///     Creates a new rank separation instance.
-    /// </summary>
-    /// <param name="equal">
-    ///     Determines if the centers of all ranks should be spaced equally apart.
-    /// </param>
-    public DotRankSeparation(bool equal)
-    {
-        Equal = equal;
+        MinNodeDistance = minNodeDistance;
+        EqualRankSpacing = equalRankSpacing;
     }
 
     /// <summary>
     ///     The minimum vertical distance in inches between the bottom of the nodes in one rank and the tops of nodes in the next.
     /// </summary>
-    public double? Value { get; }
+    public double? MinNodeDistance { get; }
 
     /// <summary>
     ///     Indicates if the centers of all ranks should be spaced equally apart.
     /// </summary>
-    public bool Equal { get; }
+    public bool EqualRankSpacing { get; }
 
     protected override string? GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
     {
         const string equally = "equally";
-        var result = Value?.ToString(syntaxRules.Culture);
+        var result = MinNodeDistance?.ToString(syntaxRules.Culture);
 
-        if (Equal)
+        if (EqualRankSpacing)
         {
             return result is not null ? $"{result} {equally}" : equally;
         }
