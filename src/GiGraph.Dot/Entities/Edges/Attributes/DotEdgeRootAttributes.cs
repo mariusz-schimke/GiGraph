@@ -30,7 +30,8 @@ public partial class DotEdgeRootAttributes : DotEntityAttributesWithMetadata<IDo
             new DotEdgeHyperlinkAttributes(attributes),
             new DotEdgeStyleAttributes(attributes),
             new DotSvgStyleSheetAttributes(attributes),
-            new DotEdgeLayoutAttributes(attributes)
+            new DotEdgeLayoutAttributes(attributes),
+            new DotEdgeLabelOptionsAttributes(attributes)
         )
     {
     }
@@ -47,7 +48,8 @@ public partial class DotEdgeRootAttributes : DotEntityAttributesWithMetadata<IDo
         DotEdgeHyperlinkAttributes edgeHyperlinkAttributes,
         DotEdgeStyleAttributes edgeStyleAttributes,
         DotSvgStyleSheetAttributes svgStyleSheetAttributes,
-        DotEdgeLayoutAttributes layoutAttributes
+        DotEdgeLayoutAttributes layoutAttributes,
+        DotEdgeLabelOptionsAttributes labelOptionsAttributes
     )
         : base(attributes, attributeKeyLookup)
     {
@@ -61,6 +63,7 @@ public partial class DotEdgeRootAttributes : DotEntityAttributesWithMetadata<IDo
         EdgeHyperlink = edgeHyperlinkAttributes;
         LabelHyperlink = labelHyperlinkAttributes;
         Layout = layoutAttributes;
+        LabelOptions = labelOptionsAttributes;
     }
 
     /// <inheritdoc cref="IDotEdgeRootAttributes.Head"/>
@@ -93,6 +96,9 @@ public partial class DotEdgeRootAttributes : DotEntityAttributesWithMetadata<IDo
     /// <inheritdoc cref="IDotEdgeRootAttributes.Layout"/>
     public DotEdgeLayoutAttributes Layout { get; }
 
+    /// <inheritdoc cref="IDotEdgeRootAttributes.LabelOptions"/>
+    public DotEdgeLabelOptionsAttributes LabelOptions { get; }
+
     [DotAttributeKey(DotAttributeKeys.Style)]
     DotStyles? IDotEdgeAttributes.Style
     {
@@ -121,10 +127,6 @@ public partial class DotEdgeRootAttributes : DotEntityAttributesWithMetadata<IDo
     /// <inheritdoc cref="IDotEdgeAttributes.Directions"/>
     [DotAttributeKey(DotAttributeKeys.Dir)]
     public virtual partial DotEdgeDirections? Directions { get; set; }
-
-    /// <inheritdoc cref="IDotEdgeAttributes.DisableLabelJustification"/>
-    [DotAttributeKey(DotAttributeKeys.NoJustify)]
-    public virtual partial bool? DisableLabelJustification { get; set; }
 
     /// <inheritdoc cref="IDotEdgeAttributes.ObjectId"/>
     [DotAttributeKey(DotAttributeKeys.Id)]

@@ -56,4 +56,9 @@ public interface IDotEdgeRootAttributes : IDotEdgeAttributes
     ///     Layout attributes.
     /// </summary>
     DotEdgeLayoutAttributes Layout { get; }
+
+    /// <summary>
+    ///     Label options attributes.
+    /// </summary>
+    DotEdgeLabelOptionsAttributes LabelOptions { get; }
 }

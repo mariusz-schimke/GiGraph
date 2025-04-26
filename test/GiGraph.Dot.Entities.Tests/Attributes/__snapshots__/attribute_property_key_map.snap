@@ -254,7 +254,7 @@
     "Graph": "DisableLabelJustification: Boolean?",
     "Cluster": "DisableLabelJustification: Boolean?",
     "Node": "DisableLabelJustification: Boolean?",
-    "Edge": "DisableLabelJustification: Boolean?"
+    "Edge": "LabelOptions.DisableJustification: Boolean?"
   },
   "oneblock": {
     "Graph": "Layout.UseCircularLayout: Boolean?"

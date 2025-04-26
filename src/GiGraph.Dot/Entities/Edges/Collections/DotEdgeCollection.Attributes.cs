@@ -43,6 +43,9 @@ public partial class DotEdgeCollection : IDotEdgeRootAttributes
     /// <inheritdoc cref="IDotEdgeRootAttributes.Layout"/>
     public DotEdgeLayoutAttributes Layout => Attributes.Implementation.Layout;
 
+    /// <inheritdoc cref="IDotEdgeRootAttributes.LabelOptions"/>
+    public DotEdgeLabelOptionsAttributes LabelOptions => Attributes.Implementation.LabelOptions;
+
     DotStyles? IDotEdgeAttributes.Style
     {
         get => ((IDotEdgeAttributes) Attributes.Implementation).Style;
@@ -61,13 +64,6 @@ public partial class DotEdgeCollection : IDotEdgeRootAttributes
     {
         get => Attributes.Implementation.ExternalLabel;
         set => Attributes.Implementation.ExternalLabel = value;
-    }
-
-    /// <inheritdoc cref="IDotEdgeAttributes.DisableLabelJustification"/>
-    public virtual bool? DisableLabelJustification
-    {
-        get => Attributes.Implementation.DisableLabelJustification;
-        set => Attributes.Implementation.DisableLabelJustification = value;
     }
 
     /// <inheritdoc cref="IDotEdgeAttributes.Tooltip"/>
