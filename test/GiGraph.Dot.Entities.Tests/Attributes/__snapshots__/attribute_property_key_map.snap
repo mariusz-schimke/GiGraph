@@ -201,12 +201,12 @@
     "Edge": "LabelHyperlink.Href: DotEscapeString"
   },
   "labeljust": {
-    "Graph": "LabelAlignment.Horizontal: DotHorizontalAlignment?",
-    "Cluster": "LabelAlignment.Horizontal: DotHorizontalAlignment?"
+    "Graph": "LabelOptions.HorizontalAlignment: DotHorizontalAlignment?",
+    "Cluster": "LabelOptions.HorizontalAlignment: DotHorizontalAlignment?"
   },
   "labelloc": {
-    "Graph": "LabelAlignment.Vertical: DotVerticalAlignment?",
-    "Cluster": "LabelAlignment.Vertical: DotVerticalAlignment?",
+    "Graph": "LabelOptions.VerticalAlignment: DotVerticalAlignment?",
+    "Cluster": "LabelOptions.VerticalAlignment: DotVerticalAlignment?",
     "Node": "LabelAlignment: DotVerticalAlignment?"
   },
   "labeltarget": {
@@ -251,8 +251,8 @@
     "Graph": "Layout.NodeSeparation: Double?"
   },
   "nojustify": {
-    "Graph": "DisableLabelJustification: Boolean?",
-    "Cluster": "DisableLabelJustification: Boolean?",
+    "Graph": "LabelOptions.DisableJustification: Boolean?",
+    "Cluster": "LabelOptions.DisableJustification: Boolean?",
     "Node": "DisableLabelJustification: Boolean?",
     "Edge": "LabelOptions.DisableJustification: Boolean?"
   },

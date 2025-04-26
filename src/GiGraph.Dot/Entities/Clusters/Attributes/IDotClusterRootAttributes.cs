@@ -1,6 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Properties.Common.Font;
+using GiGraph.Dot.Entities.Attributes.Properties.Common.GraphCluster;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
-using GiGraph.Dot.Entities.Attributes.Properties.Common.LabelAlignment;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
 
 namespace GiGraph.Dot.Entities.Clusters.Attributes;
@@ -18,9 +18,9 @@ public interface IDotClusterRootAttributes : IDotClusterAttributes
     new DotClusterStyleAttributes Style { get; }
 
     /// <summary>
-    ///     Horizontal and vertical label alignment options.
+    ///     Label options attributes.
     /// </summary>
-    DotLabelAlignmentAttributes LabelAlignment { get; }
+    DotLabelOptionsAttributes LabelOptions { get; }
 
     /// <summary>
     ///     Style sheet attributes used for SVG output.

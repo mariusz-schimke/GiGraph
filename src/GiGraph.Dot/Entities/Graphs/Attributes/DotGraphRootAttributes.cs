@@ -1,7 +1,7 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties;
+using GiGraph.Dot.Entities.Attributes.Properties.Common.GraphCluster;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
-using GiGraph.Dot.Entities.Attributes.Properties.Common.LabelAlignment;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Output.Metadata;
@@ -25,7 +25,7 @@ public partial class DotGraphRootAttributes : DotEntityAttributesWithMetadata<ID
             new DotGraphSvgStyleSheetAttributes(attributes),
             new DotGraphLayoutAttributes(attributes),
             new DotGraphCanvasAttributes(attributes),
-            new DotLabelAlignmentAttributes(attributes)
+            new DotLabelOptionsAttributes(attributes)
         )
     {
     }
@@ -40,7 +40,7 @@ public partial class DotGraphRootAttributes : DotEntityAttributesWithMetadata<ID
         DotGraphSvgStyleSheetAttributes svgStyleSheetAttributes,
         DotGraphLayoutAttributes layoutAttributes,
         DotGraphCanvasAttributes canvasAttributes,
-        DotLabelAlignmentAttributes labelAlignmentAttributes
+        DotLabelOptionsAttributes labelOptionsAttributes
     )
         : base(attributes, attributeKeyLookup)
     {
@@ -50,7 +50,7 @@ public partial class DotGraphRootAttributes : DotEntityAttributesWithMetadata<ID
         SvgStyleSheet = svgStyleSheetAttributes;
         Layout = layoutAttributes;
         Canvas = canvasAttributes;
-        LabelAlignment = labelAlignmentAttributes;
+        LabelOptions = labelOptionsAttributes;
         Hyperlink = hyperlinkAttributes;
     }
 
@@ -72,8 +72,8 @@ public partial class DotGraphRootAttributes : DotEntityAttributesWithMetadata<ID
     /// <inheritdoc cref="IDotGraphRootAttributes.Canvas"/>
     public DotGraphCanvasAttributes Canvas { get; }
 
-    /// <inheritdoc cref="IDotGraphRootAttributes.LabelAlignment"/>
-    public DotLabelAlignmentAttributes LabelAlignment { get; }
+    /// <inheritdoc cref="IDotGraphRootAttributes.LabelOptions"/>
+    public DotLabelOptionsAttributes LabelOptions { get; }
 
     /// <inheritdoc cref="IDotGraphRootAttributes.Hyperlink"/>
     public DotHyperlinkAttributes Hyperlink { get; }
@@ -90,10 +90,6 @@ public partial class DotGraphRootAttributes : DotEntityAttributesWithMetadata<ID
     /// <inheritdoc cref="IDotGraphAttributes.Label"/>
     [DotAttributeKey(DotAttributeKeys.Label)]
     public virtual partial DotLabel? Label { get; set; }
-
-    /// <inheritdoc cref="IDotGraphAttributes.DisableLabelJustification"/>
-    [DotAttributeKey(DotAttributeKeys.NoJustify)]
-    public virtual partial bool? DisableLabelJustification { get; set; }
 
     /// <inheritdoc cref="IDotGraphAttributes.Comment"/>
     [DotAttributeKey(DotAttributeKeys.Comment)]

@@ -1,5 +1,5 @@
-﻿using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
-using GiGraph.Dot.Entities.Attributes.Properties.Common.LabelAlignment;
+﻿using GiGraph.Dot.Entities.Attributes.Properties.Common.GraphCluster;
+using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Graphs.Attributes;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Types.EscapeString;
@@ -27,8 +27,8 @@ public partial class DotGraphSection : IDotGraphRootAttributes
     /// <inheritdoc cref="IDotGraphRootAttributes.Canvas"/>
     public DotGraphCanvasAttributes Canvas => Attributes.Implementation.Canvas;
 
-    /// <inheritdoc cref="IDotGraphRootAttributes.LabelAlignment"/>
-    public DotLabelAlignmentAttributes LabelAlignment => Attributes.Implementation.LabelAlignment;
+    /// <inheritdoc cref="IDotGraphRootAttributes.LabelOptions"/>
+    public DotLabelOptionsAttributes LabelOptions => Attributes.Implementation.LabelOptions;
 
     /// <inheritdoc cref="IDotGraphRootAttributes.Hyperlink"/>
     public DotHyperlinkAttributes Hyperlink => Attributes.Implementation.Hyperlink;
@@ -44,13 +44,6 @@ public partial class DotGraphSection : IDotGraphRootAttributes
     {
         get => Attributes.Implementation.Label;
         set => Attributes.Implementation.Label = value;
-    }
-
-    /// <inheritdoc cref="IDotGraphAttributes.DisableLabelJustification"/>
-    public virtual bool? DisableLabelJustification
-    {
-        get => Attributes.Implementation.DisableLabelJustification;
-        set => Attributes.Implementation.DisableLabelJustification = value;
     }
 
     /// <inheritdoc cref="IDotGraphAttributes.Charset"/>

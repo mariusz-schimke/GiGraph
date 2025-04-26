@@ -1,6 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Properties.Common.Font;
+using GiGraph.Dot.Entities.Attributes.Properties.Common.GraphCluster;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
-using GiGraph.Dot.Entities.Attributes.Properties.Common.LabelAlignment;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
 using GiGraph.Dot.Entities.Clusters.Attributes;
 using GiGraph.Dot.Entities.Labels;
@@ -18,8 +18,8 @@ public partial class DotClusterSection : IDotClusterRootAttributes
     /// <inheritdoc cref="IDotClusterRootAttributes.Style"/>
     public DotClusterStyleAttributes Style => Attributes.Implementation.Style;
 
-    /// <inheritdoc cref="IDotClusterRootAttributes.LabelAlignment"/>
-    public DotLabelAlignmentAttributes LabelAlignment => Attributes.Implementation.LabelAlignment;
+    /// <inheritdoc cref="IDotClusterRootAttributes.LabelOptions"/>
+    public DotLabelOptionsAttributes LabelOptions => Attributes.Implementation.LabelOptions;
 
     /// <inheritdoc cref="IDotClusterRootAttributes.SvgStyleSheet"/>
     public DotSvgStyleSheetAttributes SvgStyleSheet => Attributes.Implementation.SvgStyleSheet;
@@ -42,13 +42,6 @@ public partial class DotClusterSection : IDotClusterRootAttributes
     {
         get => Attributes.Implementation.Label;
         set => Attributes.Implementation.Label = value;
-    }
-
-    /// <inheritdoc cref="IDotClusterAttributes.DisableLabelJustification"/>
-    public virtual bool? DisableLabelJustification
-    {
-        get => Attributes.Implementation.DisableLabelJustification;
-        set => Attributes.Implementation.DisableLabelJustification = value;
     }
 
     /// <inheritdoc cref="IDotClusterAttributes.Tooltip"/>

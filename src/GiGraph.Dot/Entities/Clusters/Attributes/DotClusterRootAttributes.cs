@@ -1,8 +1,8 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Font;
+using GiGraph.Dot.Entities.Attributes.Properties.Common.GraphCluster;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
-using GiGraph.Dot.Entities.Attributes.Properties.Common.LabelAlignment;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Labels;
@@ -25,7 +25,7 @@ public partial class DotClusterRootAttributes : DotEntityAttributesWithMetadata<
             new DotFontAttributes(attributes),
             new DotClusterStyleAttributes(attributes),
             new DotSvgStyleSheetAttributes(attributes),
-            new DotLabelAlignmentAttributes(attributes),
+            new DotLabelOptionsAttributes(attributes),
             new DotClusterLayoutAttributes(attributes)
         )
     {
@@ -38,14 +38,14 @@ public partial class DotClusterRootAttributes : DotEntityAttributesWithMetadata<
         DotFontAttributes fontAttributes,
         DotClusterStyleAttributes styleAttributes,
         DotSvgStyleSheetAttributes svgStyleSheetAttributes,
-        DotLabelAlignmentAttributes labelAlignmentAttributes,
+        DotLabelOptionsAttributes labelOptionsAttributes,
         DotClusterLayoutAttributes layoutAttributes
     )
         : base(attributes, attributeKeyLookup)
     {
         Font = fontAttributes;
         Style = styleAttributes;
-        LabelAlignment = labelAlignmentAttributes;
+        LabelOptions = labelOptionsAttributes;
         SvgStyleSheet = svgStyleSheetAttributes;
         Hyperlink = hyperlinkAttributes;
         Layout = layoutAttributes;
@@ -66,8 +66,8 @@ public partial class DotClusterRootAttributes : DotEntityAttributesWithMetadata<
     /// <inheritdoc cref="IDotClusterRootAttributes.Style"/>
     public DotClusterStyleAttributes Style { get; }
 
-    /// <inheritdoc cref="IDotClusterRootAttributes.LabelAlignment"/>
-    public DotLabelAlignmentAttributes LabelAlignment { get; }
+    /// <inheritdoc cref="IDotClusterRootAttributes.LabelOptions"/>
+    public DotLabelOptionsAttributes LabelOptions { get; }
 
     /// <inheritdoc cref="IDotClusterRootAttributes.SvgStyleSheet"/>
     public DotSvgStyleSheetAttributes SvgStyleSheet { get; }
@@ -90,10 +90,6 @@ public partial class DotClusterRootAttributes : DotEntityAttributesWithMetadata<
     /// <inheritdoc cref="IDotClusterAttributes.Label"/>
     [DotAttributeKey(DotAttributeKeys.Label)]
     public virtual partial DotLabel? Label { get; set; }
-
-    /// <inheritdoc cref="IDotClusterAttributes.DisableLabelJustification"/>
-    [DotAttributeKey(DotAttributeKeys.NoJustify)]
-    public virtual partial bool? DisableLabelJustification { get; set; }
 
     /// <inheritdoc cref="IDotClusterAttributes.Tooltip"/>
     [DotAttributeKey(DotAttributeKeys.Tooltip)]
