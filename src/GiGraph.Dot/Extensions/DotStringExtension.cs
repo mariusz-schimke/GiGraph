@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Html;
@@ -16,7 +17,8 @@ public static class DotStringExtension
     ///     The string to convert.
     /// </param>
     [Pure]
-    public static DotEscapeString AsFormattedString(this string @string) => (DotEscapedString) @string;
+    [return: NotNullIfNotNull(nameof(@string))]
+    public static DotEscapeString? AsFormattedString(this string? @string) => (DotEscapedString?) @string;
 
     /// <summary>
     ///     Converts the string to <see cref="DotHtmlString"/> without modifying it in any way. When assigned to a label of an element,
@@ -26,5 +28,6 @@ public static class DotStringExtension
     ///     The string to convert.
     /// </param>
     [Pure]
-    public static DotHtmlString AsHtml(this string @string) => @string;
+    [return: NotNullIfNotNull(nameof(@string))]
+    public static DotHtmlString? AsHtml(this string? @string) => @string;
 }
