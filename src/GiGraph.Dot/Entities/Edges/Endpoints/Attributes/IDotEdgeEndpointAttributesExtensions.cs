@@ -2,16 +2,20 @@ using GiGraph.Dot.Types.Edges.Arrowheads;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 
-public abstract partial class DotEdgeEndpointAttributes
+public static class IDotEdgeEndpointAttributesExtensions
 {
     /// <summary>
     ///     <para>
     ///         Sets an arrowhead shape to be used at the current end of the edge.
     ///     </para>
     ///     <para>
-    ///         It is equivalent to setting the <see cref="Arrowhead"/> property directly, using <see cref="DotArrowhead"/>.
+    ///         It is equivalent to setting the <see cref="IDotEdgeEndpointAttributes.Arrowhead"/> property directly, using
+    ///         <see cref="DotArrowhead"/>.
     ///     </para>
     /// </summary>
+    /// <param name="attributes">
+    ///     The current edge endpoint attributes instance.
+    /// </param>
     /// <param name="shape">
     ///     Determines the shape of the arrowhead to use.
     /// </param>
@@ -21,9 +25,9 @@ public abstract partial class DotEdgeEndpointAttributes
     /// <param name="visibleParts">
     ///     Determines whether and how to clip the shape, leaving visible only the part to the left or to the right of the edge.
     /// </param>
-    public void SetArrowhead(DotArrowheadShape shape, bool filled = true, DotArrowheadParts visibleParts = DotArrowheadParts.Both)
+    public static void SetArrowhead(this IDotEdgeEndpointAttributes attributes, DotArrowheadShape shape, bool filled = true, DotArrowheadParts visibleParts = DotArrowheadParts.Both)
     {
-        Arrowhead = new DotArrowhead(shape, filled, visibleParts);
+        attributes.Arrowhead = new DotArrowhead(shape, filled, visibleParts);
     }
 
     /// <summary>
@@ -31,9 +35,13 @@ public abstract partial class DotEdgeEndpointAttributes
     ///         Sets a composite arrowhead shape to be used at the current end of the edge.
     ///     </para>
     ///     <para>
-    ///         It is equivalent to setting the <see cref="Arrowhead"/> property directly, using <see cref="DotCompositeArrowhead"/>.
+    ///         It is equivalent to setting the <see cref="IDotEdgeEndpointAttributes.Arrowhead"/> property directly, using
+    ///         <see cref="DotCompositeArrowhead"/>.
     ///     </para>
     /// </summary>
+    /// <param name="attributes">
+    ///     The current edge endpoint attributes instance.
+    /// </param>
     /// <param name="arrowheads">
     ///     <para>
     ///         The consecutive arrowheads to use. Note that the first arrowhead specified occurs closest to the node. Subsequent shapes,
@@ -48,9 +56,9 @@ public abstract partial class DotEdgeEndpointAttributes
     /// <example>
     ///     SetCompositeArrowhead(DotArrowheadShape.Dot, new DotArrowhead(DotArrowheadShape.Vee, filled: false))
     /// </example>
-    public void SetCompositeArrowhead(params IEnumerable<DotArrowhead> arrowheads)
+    public static void SetCompositeArrowhead(this IDotEdgeEndpointAttributes attributes, params IEnumerable<DotArrowhead> arrowheads)
     {
-        Arrowhead = new DotCompositeArrowhead(arrowheads);
+        attributes.Arrowhead = new DotCompositeArrowhead(arrowheads);
     }
 
     /// <summary>
@@ -58,16 +66,20 @@ public abstract partial class DotEdgeEndpointAttributes
     ///         Sets a composite arrowhead shape to be used at the current end of the edge.
     ///     </para>
     ///     <para>
-    ///         It is equivalent to setting the <see cref="Arrowhead"/> property directly, using <see cref="DotCompositeArrowhead"/>.
+    ///         It is equivalent to setting the <see cref="IDotEdgeEndpointAttributes.Arrowhead"/> property directly, using
+    ///         <see cref="DotCompositeArrowhead"/>.
     ///     </para>
     /// </summary>
+    /// <param name="attributes">
+    ///     The current edge endpoint attributes instance.
+    /// </param>
     /// <param name="arrowheads">
     ///     The consecutive arrowheads to use. Note that the first arrowhead specified occurs closest to the node. Subsequent shapes, if
     ///     specified, occur further from the node. Also, a shape of <see cref="DotArrowheadShape.None"/> uses space, so it can be used
     ///     as a separator between two consecutive shapes.
     /// </param>
-    public void SetCompositeArrowhead(params IEnumerable<DotArrowheadShape> arrowheads)
+    public static void SetCompositeArrowhead(this IDotEdgeEndpointAttributes attributes, params IEnumerable<DotArrowheadShape> arrowheads)
     {
-        Arrowhead = new DotCompositeArrowhead(arrowheads);
+        attributes.Arrowhead = new DotCompositeArrowhead(arrowheads);
     }
 }

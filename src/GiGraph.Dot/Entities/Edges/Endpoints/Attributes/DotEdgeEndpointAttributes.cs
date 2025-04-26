@@ -8,7 +8,7 @@ using GiGraph.Dot.Types.Edges.Arrowheads;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 
-public abstract partial class DotEdgeEndpointAttributes : DotEntityAttributesWithMetadata<IDotEdgeEndpointAttributes, DotEdgeEndpointAttributes>, IDotEdgeEndpointRootAttributes
+public abstract class DotEdgeEndpointAttributes : DotEntityAttributesWithMetadata<IDotEdgeEndpointAttributes, DotEdgeEndpointAttributes>, IDotEdgeEndpointRootAttributes
 {
     protected DotEdgeEndpointAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
         DotEdgeEndpointHyperlinkAttributes hyperlinkAttributes
