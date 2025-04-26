@@ -3,9 +3,7 @@ using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Entities.Nodes.Attributes;
-using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.EscapeString;
-using GiGraph.Dot.Types.Geometry;
 using GiGraph.Dot.Types.Nodes;
 using GiGraph.Dot.Types.Styling;
 
@@ -37,6 +35,9 @@ public partial class DotNodeCollection : IDotNodeRootAttributes
     /// <inheritdoc cref="IDotNodeRootAttributes.Layout"/>
     public DotNodeLayoutAttributes Layout => Attributes.Implementation.Layout;
 
+    /// <inheritdoc cref="IDotNodeRootAttributes.LabelOptions"/>
+    public DotNodeLabelOptionsAttributes LabelOptions => Attributes.Implementation.LabelOptions;
+
     DotStyles? IDotNodeAttributes.Style
     {
         get => ((IDotNodeAttributes) Attributes.Implementation).Style;
@@ -57,20 +58,6 @@ public partial class DotNodeCollection : IDotNodeRootAttributes
         set => Attributes.Implementation.ExternalLabel = value;
     }
 
-    /// <inheritdoc cref="IDotNodeAttributes.LabelAlignment"/>
-    public virtual DotVerticalAlignment? LabelAlignment
-    {
-        get => Attributes.Implementation.LabelAlignment;
-        set => Attributes.Implementation.LabelAlignment = value;
-    }
-
-    /// <inheritdoc cref="IDotNodeAttributes.DisableLabelJustification"/>
-    public virtual bool? DisableLabelJustification
-    {
-        get => Attributes.Implementation.DisableLabelJustification;
-        set => Attributes.Implementation.DisableLabelJustification = value;
-    }
-
     /// <inheritdoc cref="IDotNodeAttributes.Tooltip"/>
     public virtual DotEscapeString? Tooltip
     {
@@ -83,13 +70,6 @@ public partial class DotNodeCollection : IDotNodeRootAttributes
     {
         get => Attributes.Implementation.Shape;
         set => Attributes.Implementation.Shape = value;
-    }
-
-    /// <inheritdoc cref="IDotNodeAttributes.Padding"/>
-    public virtual DotPoint? Padding
-    {
-        get => Attributes.Implementation.Padding;
-        set => Attributes.Implementation.Padding = value;
     }
 
     /// <inheritdoc cref="IDotNodeAttributes.Comment"/>

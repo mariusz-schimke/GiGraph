@@ -6,9 +6,7 @@ using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Output.Metadata;
-using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.EscapeString;
-using GiGraph.Dot.Types.Geometry;
 using GiGraph.Dot.Types.Nodes;
 using GiGraph.Dot.Types.Styling;
 
@@ -29,7 +27,8 @@ public partial class DotNodeRootAttributes : DotEntityAttributesWithMetadata<IDo
             new DotNodeSizeAttributes(attributes),
             new DotNodeStyleAttributes(attributes),
             new DotSvgStyleSheetAttributes(attributes),
-            new DotNodeLayoutAttributes(attributes)
+            new DotNodeLayoutAttributes(attributes),
+            new DotNodeLabelOptionsAttributes(attributes)
         )
     {
     }
@@ -44,7 +43,8 @@ public partial class DotNodeRootAttributes : DotEntityAttributesWithMetadata<IDo
         DotNodeSizeAttributes sizeAttributes,
         DotNodeStyleAttributes styleAttributes,
         DotSvgStyleSheetAttributes svgStyleSheetAttributes,
-        DotNodeLayoutAttributes layoutAttributes
+        DotNodeLayoutAttributes layoutAttributes,
+        DotNodeLabelOptionsAttributes labelOptionsAttributes
     )
         : base(attributes, attributeKeyLookup)
     {
@@ -56,6 +56,7 @@ public partial class DotNodeRootAttributes : DotEntityAttributesWithMetadata<IDo
         Style = styleAttributes;
         SvgStyleSheet = svgStyleSheetAttributes;
         Layout = layoutAttributes;
+        LabelOptions = labelOptionsAttributes;
     }
 
     /// <inheritdoc cref="IDotNodeRootAttributes.Font"/>
@@ -82,6 +83,9 @@ public partial class DotNodeRootAttributes : DotEntityAttributesWithMetadata<IDo
     /// <inheritdoc cref="IDotNodeRootAttributes.Layout"/>
     public DotNodeLayoutAttributes Layout { get; }
 
+    /// <inheritdoc cref="IDotNodeRootAttributes.LabelOptions"/>
+    public DotNodeLabelOptionsAttributes LabelOptions { get; }
+
     [DotAttributeKey(DotAttributeKeys.Style)]
     DotStyles? IDotNodeAttributes.Style
     {
@@ -99,10 +103,6 @@ public partial class DotNodeRootAttributes : DotEntityAttributesWithMetadata<IDo
     [DotAttributeKey(DotAttributeKeys.Tooltip)]
     public virtual partial DotEscapeString? Tooltip { get; set; }
 
-    /// <inheritdoc cref="IDotNodeAttributes.Padding"/>
-    [DotAttributeKey(DotAttributeKeys.Margin)]
-    public virtual partial DotPoint? Padding { get; set; }
-
     /// <inheritdoc cref="IDotNodeAttributes.Comment"/>
     [DotAttributeKey(DotAttributeKeys.Comment)]
     public virtual partial string? Comment { get; set; }
@@ -110,14 +110,6 @@ public partial class DotNodeRootAttributes : DotEntityAttributesWithMetadata<IDo
     /// <inheritdoc cref="IDotNodeAttributes.ExternalLabel"/>
     [DotAttributeKey(DotAttributeKeys.XLabel)]
     public virtual partial DotLabel? ExternalLabel { get; set; }
-
-    /// <inheritdoc cref="IDotNodeAttributes.LabelAlignment"/>
-    [DotAttributeKey(DotAttributeKeys.LabelLoc)]
-    public virtual partial DotVerticalAlignment? LabelAlignment { get; set; }
-
-    /// <inheritdoc cref="IDotNodeAttributes.DisableLabelJustification"/>
-    [DotAttributeKey(DotAttributeKeys.NoJustify)]
-    public virtual partial bool? DisableLabelJustification { get; set; }
 
     /// <inheritdoc cref="IDotNodeAttributes.Shape"/>
     [DotAttributeKey(DotAttributeKeys.Shape)]

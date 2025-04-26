@@ -2,9 +2,7 @@
 using GiGraph.Dot.Entities.Html.Builder;
 using GiGraph.Dot.Entities.Html.Font.Styles;
 using GiGraph.Dot.Entities.Labels;
-using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.EscapeString;
-using GiGraph.Dot.Types.Geometry;
 using GiGraph.Dot.Types.Html;
 using GiGraph.Dot.Types.Nodes;
 using GiGraph.Dot.Types.Records;
@@ -78,29 +76,6 @@ public interface IDotNodeAttributes
     DotLabel? ExternalLabel { get; set; }
 
     /// <summary>
-    ///     Vertical placement of the label (default: <see cref="DotVerticalAlignment.Center"/>). This attribute is used only when the
-    ///     height of the node is larger than the height of its label.
-    /// </summary>
-    DotVerticalAlignment? LabelAlignment { get; set; }
-
-    /// <summary>
-    ///     <para>
-    ///         Determines whether to justify multiline text vs the previous text line rather than the side of the container (default:
-    ///         false).
-    ///     </para>
-    ///     <para>
-    ///         By default, the justification of multi-line labels is done within the largest context that makes sense. Thus, in the
-    ///         label of a polygonal node, a left-justified line will align with the left side of the node (shifted by the prescribed
-    ///         margin). In record nodes, left-justified line will line up with the left side of the enclosing column of fields. If
-    ///         <see cref="DisableLabelJustification"/> is true, multi-line labels will be justified in the context of itself. For
-    ///         example, if <see cref="DisableLabelJustification"/> is set, the first label line is long, and the second is shorter and
-    ///         left-justified, the second will align with the left-most character in the first line, regardless of how large the node
-    ///         might be.
-    ///     </para>
-    /// </summary>
-    bool? DisableLabelJustification { get; set; }
-
-    /// <summary>
     ///     Tooltip annotation attached to the node (svg, cmap only). If unset, Graphviz will use the <see cref="Label"/> attribute if
     ///     defined. Note that if the label is a record specification or an HTML-like label, the resulting tooltip may be unhelpful. In
     ///     this case, if tooltips will be generated, the user should set a tooltip attribute explicitly.
@@ -111,11 +86,6 @@ public interface IDotNodeAttributes
     ///     Gets or sets the shape of the node (default: <see cref="DotNodeShape.Ellipse"/>).
     /// </summary>
     DotNodeShape? Shape { get; set; }
-
-    /// <summary>
-    ///     Specifies space left around the node's label. By default, the value is (0.11, 0.055).
-    /// </summary>
-    DotPoint? Padding { get; set; }
 
     /// <summary>
     ///     Comments are inserted into output. Device-dependent.

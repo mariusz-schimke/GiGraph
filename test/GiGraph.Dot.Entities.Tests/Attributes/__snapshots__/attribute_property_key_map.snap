@@ -207,7 +207,7 @@
   "labelloc": {
     "Graph": "LabelOptions.VerticalAlignment: DotVerticalAlignment?",
     "Cluster": "LabelOptions.VerticalAlignment: DotVerticalAlignment?",
-    "Node": "LabelAlignment: DotVerticalAlignment?"
+    "Node": "LabelOptions.VerticalAlignment: DotVerticalAlignment?"
   },
   "labeltarget": {
     "Edge": "LabelHyperlink.Target: DotEscapeString"
@@ -236,7 +236,7 @@
   "margin": {
     "Graph": "Canvas.Margin: DotPoint",
     "Cluster": "Padding: DotPoint",
-    "Node": "Padding: DotPoint"
+    "Node": "LabelOptions.Margin: DotPoint"
   },
   "mclimit": {
     "Graph": "Layout.EdgeCrossingMinimizationScaleFactor: Double?"
@@ -253,7 +253,7 @@
   "nojustify": {
     "Graph": "LabelOptions.DisableJustification: Boolean?",
     "Cluster": "LabelOptions.DisableJustification: Boolean?",
-    "Node": "DisableLabelJustification: Boolean?",
+    "Node": "LabelOptions.DisableJustification: Boolean?",
     "Edge": "LabelOptions.DisableJustification: Boolean?"
   },
   "oneblock": {

@@ -45,4 +45,9 @@ public interface IDotNodeRootAttributes : IDotNodeAttributes
     ///     Layout attributes.
     /// </summary>
     DotNodeLayoutAttributes Layout { get; }
+
+    /// <summary>
+    ///     Label options attributes.
+    /// </summary>
+    DotNodeLabelOptionsAttributes LabelOptions { get; }
 }
