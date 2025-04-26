@@ -54,7 +54,7 @@ public partial class DotHtmlTableRow : DotHtmlElement
     /// <param name="init">
     ///     A cell initializer delegate.
     /// </param>
-    public virtual DotHtmlTableCell AddImageCell(string source, DotImageScaling? scaling = null, Action<DotHtmlTableCell>? init = null) =>
+    public virtual DotHtmlTableCell AddImageCell(string? source, DotImageScaling? scaling = null, Action<DotHtmlTableCell>? init = null) =>
         Content.Add([new DotHtmlImage(source, scaling)], init);
 
     /// <summary>

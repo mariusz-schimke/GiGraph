@@ -28,5 +28,5 @@ public class DotHtmlEntity<TEntity> : DotHtmlEntity
     /// </summary>
     public TEntity Entity { get; }
 
-    protected internal override string ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => Entity.ToHtml(options, syntaxRules);
+    protected internal override string? ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => Entity.ToHtml(options, syntaxRules);
 }

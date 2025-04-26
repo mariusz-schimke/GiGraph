@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Entities.Html.Text;
 public class DotHtmlText : DotHtmlEntity
 {
     protected static readonly string[] LineBreaks = [DotNewLine.Windows, DotNewLine.Unix];
-    protected readonly string _text;
+    protected readonly string? _text;
 
     /// <summary>
     ///     Initializes a new HTML text instance.
@@ -22,7 +22,7 @@ public class DotHtmlText : DotHtmlEntity
     /// <param name="lineAlignment">
     ///     Specifies horizontal placement of lines if multiline text is specified.
     /// </param>
-    public DotHtmlText(string text, DotHorizontalAlignment? lineAlignment = null)
+    public DotHtmlText(string? text, DotHorizontalAlignment? lineAlignment = null)
     {
         _text = text;
         LineAlignment = lineAlignment;
@@ -33,7 +33,7 @@ public class DotHtmlText : DotHtmlEntity
     /// </summary>
     public DotHorizontalAlignment? LineAlignment { get; }
 
-    public override string ToString() => _text;
+    public override string? ToString() => _text;
 
     protected internal override string ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
     {

@@ -27,7 +27,7 @@ public class DotHtmlStrikethrough : DotHtmlFontStyle
     /// <param name="lineAlignment">
     ///     Specifies horizontal placement of lines if multiline text is specified.
     /// </param>
-    public DotHtmlStrikethrough(string text, DotHorizontalAlignment? lineAlignment = null)
+    public DotHtmlStrikethrough(string? text, DotHorizontalAlignment? lineAlignment = null)
         : base(TagName, text, lineAlignment)
     {
     }

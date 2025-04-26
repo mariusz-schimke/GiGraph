@@ -28,9 +28,9 @@ public static class DotNodeHtmlExtension
     /// <param name="html">
     ///     The HTML text to assign to node label.
     /// </param>
-    public static void SetHtmlAsLabel(this DotNodeDefinition node, string html)
+    public static void SetHtmlAsLabel(this DotNodeDefinition node, string? html)
     {
-        node.SetHtmlAsLabel((DotHtmlLabel) (DotHtmlString) html);
+        node.SetHtmlAsLabel((DotHtmlLabel?) (DotHtmlString?) html);
     }
 
     /// <summary>
@@ -101,7 +101,7 @@ public static class DotNodeHtmlExtension
         SetHtmlAsLabel(node, table);
     }
 
-    private static void SetHtmlAsLabel(this DotNodeDefinition node, DotHtmlLabel label)
+    private static void SetHtmlAsLabel(this DotNodeDefinition node, DotHtmlLabel? label)
     {
         node.Shape = DotNodeShape.Plain;
         node.Label = label;
