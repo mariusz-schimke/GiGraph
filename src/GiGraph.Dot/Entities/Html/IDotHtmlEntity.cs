@@ -11,5 +11,5 @@ public interface IDotHtmlEntity : IDotHtmlEncodable
     /// <summary>
     ///     Converts the object to an HTML string. Applies the default (global) HTML syntax and formatting rules.
     /// </summary>
-    DotHtmlString ToHtml();
+    DotHtmlString? ToHtml();
 }

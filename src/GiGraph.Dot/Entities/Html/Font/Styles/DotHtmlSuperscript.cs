@@ -27,7 +27,7 @@ public class DotHtmlSuperscript : DotHtmlFontStyle
     /// <param name="lineAlignment">
     ///     Specifies horizontal placement of lines if multiline text is specified.
     /// </param>
-    public DotHtmlSuperscript(string text, DotHorizontalAlignment? lineAlignment = null)
+    public DotHtmlSuperscript(string? text, DotHorizontalAlignment? lineAlignment = null)
         : base(TagName, text, lineAlignment)
     {
     }

@@ -24,5 +24,5 @@ public class DotHtmlReadOnlyEntity<TEntity> : DotHtmlEntity
         _entity = entity;
     }
 
-    protected internal override string ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => _entity.ToHtml(options, syntaxRules);
+    protected internal override string? ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => _entity.ToHtml(options, syntaxRules);
 }

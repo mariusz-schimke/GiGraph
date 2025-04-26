@@ -39,5 +39,5 @@ public partial class DotHtmlFontStyle
     /// <param name="lineAlignment">
     ///     Specifies horizontal placement of lines if multiline text is specified.
     /// </param>
-    public static DotHtmlEntity WithText(string text, DotFontStyles style, DotHorizontalAlignment? lineAlignment = null) => WithEntity(new DotHtmlText(text, lineAlignment), style);
+    public static DotHtmlEntity WithText(string? text, DotFontStyles style, DotHorizontalAlignment? lineAlignment = null) => WithEntity(new DotHtmlText(text, lineAlignment), style);
 }

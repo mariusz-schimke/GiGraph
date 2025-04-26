@@ -27,7 +27,7 @@ public class DotHtmlBold : DotHtmlFontStyle
     /// <param name="lineAlignment">
     ///     Specifies horizontal placement of lines if multiline text is specified.
     /// </param>
-    public DotHtmlBold(string text, DotHorizontalAlignment? lineAlignment = null)
+    public DotHtmlBold(string? text, DotHorizontalAlignment? lineAlignment = null)
         : base(TagName, text, lineAlignment)
     {
     }

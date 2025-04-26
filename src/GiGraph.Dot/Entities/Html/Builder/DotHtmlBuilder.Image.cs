@@ -14,5 +14,5 @@ public partial class DotHtmlBuilder
     /// <param name="scaling">
     ///     Specifies how the image will use any extra space available in its cell.
     /// </param>
-    public virtual DotHtmlBuilder AppendImage(string source, DotImageScaling? scaling = null) => AppendEntity(new DotHtmlImage(source, scaling));
+    public virtual DotHtmlBuilder AppendImage(string? source, DotImageScaling? scaling = null) => AppendEntity(new DotHtmlImage(source, scaling));
 }

@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Types.EscapeString;
 /// </summary>
 public class DotFormattedTextBuilder
 {
-    protected readonly List<DotEscapeString> _items = [];
+    protected readonly List<DotEscapeString?> _items = [];
 
     /// <summary>
     ///     Creates a new instance.
@@ -24,7 +24,7 @@ public class DotFormattedTextBuilder
     /// <param name="text">
     ///     The text to initialize the instance with.
     /// </param>
-    public DotFormattedTextBuilder(DotEscapeString text)
+    public DotFormattedTextBuilder(DotEscapeString? text)
     {
         _items.Add(text);
     }
@@ -40,7 +40,7 @@ public class DotFormattedTextBuilder
     /// <param name="text">
     ///     The text to append to the instance.
     /// </param>
-    public virtual DotFormattedTextBuilder Append(DotEscapeString text)
+    public virtual DotFormattedTextBuilder Append(DotEscapeString? text)
     {
         _items.Add(text);
         return this;
@@ -57,7 +57,7 @@ public class DotFormattedTextBuilder
     /// <param name="line">
     ///     The line of text to append to the instance.
     /// </param>
-    public virtual DotFormattedTextBuilder AppendLine(DotEscapeString line) => Append(line).AppendLine();
+    public virtual DotFormattedTextBuilder AppendLine(DotEscapeString? line) => Append(line).AppendLine();
 
     /// <summary>
     ///     Causes the last line of text in this instance to be left-justified. Further appended text will start from a new line.
@@ -71,7 +71,7 @@ public class DotFormattedTextBuilder
     /// <param name="line">
     ///     The line of text to append to the instance.
     /// </param>
-    public virtual DotFormattedTextBuilder AppendLeftJustifiedLine(DotEscapeString line) => Append(line).AppendLeftJustificationLineBreak();
+    public virtual DotFormattedTextBuilder AppendLeftJustifiedLine(DotEscapeString? line) => Append(line).AppendLeftJustificationLineBreak();
 
     /// <summary>
     ///     Causes the last line of text in this instance to be right-justified. Further appended text will start from a new line.
@@ -85,7 +85,7 @@ public class DotFormattedTextBuilder
     /// <param name="line">
     ///     The line of text to append to the instance.
     /// </param>
-    public virtual DotFormattedTextBuilder AppendRightJustifiedLine(DotEscapeString line) => Append(line).AppendRightJustificationLineBreak();
+    public virtual DotFormattedTextBuilder AppendRightJustifiedLine(DotEscapeString? line) => Append(line).AppendRightJustificationLineBreak();
 
     /// <summary>
     ///     Appends a placeholder replaced with the label of the current object when the graph is visualized.

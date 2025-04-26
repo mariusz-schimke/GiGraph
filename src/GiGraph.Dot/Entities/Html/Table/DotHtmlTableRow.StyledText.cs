@@ -19,7 +19,7 @@ public partial class DotHtmlTableRow
     /// <param name="init">
     ///     A cell initializer delegate.
     /// </param>
-    public virtual DotHtmlTableCell AddCell(string text, DotFontStyles style, Action<DotHtmlTableCell>? init = null) =>
+    public virtual DotHtmlTableCell AddCell(string? text, DotFontStyles style, Action<DotHtmlTableCell>? init = null) =>
         AddCell(text, style, lineAlignment: null, init);
 
     /// <summary>
@@ -37,7 +37,7 @@ public partial class DotHtmlTableRow
     /// <param name="init">
     ///     A cell initializer delegate.
     /// </param>
-    public virtual DotHtmlTableCell AddCell(string text, DotFontStyles style, DotHorizontalAlignment? lineAlignment, Action<DotHtmlTableCell>? init = null) =>
+    public virtual DotHtmlTableCell AddCell(string? text, DotFontStyles style, DotHorizontalAlignment? lineAlignment, Action<DotHtmlTableCell>? init = null) =>
         Content.Add([DotHtmlFontStyle.WithText(text, style, lineAlignment)], init);
 
     /// <summary>
@@ -52,7 +52,7 @@ public partial class DotHtmlTableRow
     /// <param name="init">
     ///     A cell initializer delegate.
     /// </param>
-    public virtual DotHtmlTableCell AddCell(string text, DotStyledFont font, Action<DotHtmlTableCell>? init = null) =>
+    public virtual DotHtmlTableCell AddCell(string? text, DotStyledFont font, Action<DotHtmlTableCell>? init = null) =>
         AddCell(text, font, lineAlignment: null, init);
 
     /// <summary>
@@ -70,6 +70,6 @@ public partial class DotHtmlTableRow
     /// <param name="init">
     ///     A cell initializer delegate.
     /// </param>
-    public virtual DotHtmlTableCell AddCell(string text, DotStyledFont font, DotHorizontalAlignment? lineAlignment, Action<DotHtmlTableCell>? init = null) =>
+    public virtual DotHtmlTableCell AddCell(string? text, DotStyledFont font, DotHorizontalAlignment? lineAlignment, Action<DotHtmlTableCell>? init = null) =>
         Content.Add([DotHtmlFont.WithText(text, font, lineAlignment)], init);
 }

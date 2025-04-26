@@ -45,7 +45,7 @@ public partial class DotHtmlElement : DotHtmlTag, IDotHtmlContentEntity
     }
 
     /// <inheritdoc cref="IDotHtmlContentEntity.SetContent(string,System.Nullable{GiGraph.Dot.Types.Alignment.DotHorizontalAlignment})" />
-    public virtual void SetContent(string text, DotHorizontalAlignment? lineAlignment = null)
+    public virtual void SetContent(string? text, DotHorizontalAlignment? lineAlignment = null)
     {
         ((IDotHtmlContentEntity) Content).SetContent(text, lineAlignment);
     }
@@ -57,7 +57,7 @@ public partial class DotHtmlElement : DotHtmlTag, IDotHtmlContentEntity
     }
 
     /// <inheritdoc cref="IDotHtmlContentEntity.SetHtmlContent" />
-    public virtual void SetHtmlContent(string html)
+    public virtual void SetHtmlContent(string? html)
     {
         ((IDotHtmlContentEntity) Content).SetHtmlContent(html);
     }

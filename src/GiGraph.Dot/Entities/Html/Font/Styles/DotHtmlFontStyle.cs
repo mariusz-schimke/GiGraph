@@ -15,7 +15,7 @@ public abstract partial class DotHtmlFontStyle : DotHtmlElement
     {
     }
 
-    protected DotHtmlFontStyle(string tagName, string text, DotHorizontalAlignment? lineAlignment)
+    protected DotHtmlFontStyle(string tagName, string? text, DotHorizontalAlignment? lineAlignment)
         : base(tagName, new DotHtmlAttributeCollection())
     {
         SetContent(text, lineAlignment);

@@ -53,12 +53,12 @@ public class DotHtmlEntityCollection : List<IDotHtmlEntity>, IDotHtmlContentEnti
         Add(entity);
     }
 
-    void IDotHtmlContentEntity.SetContent(string text, DotHorizontalAlignment? lineAlignment)
+    void IDotHtmlContentEntity.SetContent(string? text, DotHorizontalAlignment? lineAlignment)
     {
         ((IDotHtmlContentEntity) this).SetContent(new DotHtmlText(text, lineAlignment));
     }
 
-    void IDotHtmlContentEntity.SetHtmlContent(string html)
+    void IDotHtmlContentEntity.SetHtmlContent(string? html)
     {
         ((IDotHtmlContentEntity) this).SetContent(new DotHtml(html));
     }
@@ -113,7 +113,7 @@ public class DotHtmlEntityCollection : List<IDotHtmlEntity>, IDotHtmlContentEnti
     /// <param name="html">
     ///     The html to add to the content of the element.
     /// </param>
-    public virtual void AddHtml(string html)
+    public virtual void AddHtml(string? html)
     {
         Add(new DotHtml(html), init: null);
     }

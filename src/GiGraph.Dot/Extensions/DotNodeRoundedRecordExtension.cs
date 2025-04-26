@@ -22,7 +22,7 @@ public static class DotNodeRoundedRecordExtension
     /// <param name="record">
     ///     The record to use as the label of the node.
     /// </param>
-    public static void SetRoundedRecordAsLabel(this DotNodeDefinition node, DotRecord record)
+    public static void SetRoundedRecordAsLabel(this DotNodeDefinition node, DotRecord? record)
     {
         node.Shape = DotNodeShape.RoundedRecord;
         node.Label = record;

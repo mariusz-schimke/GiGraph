@@ -27,7 +27,7 @@ public class DotHtmlSubscript : DotHtmlFontStyle
     /// <param name="lineAlignment">
     ///     Specifies horizontal placement of lines if multiline text is specified.
     /// </param>
-    public DotHtmlSubscript(string text, DotHorizontalAlignment? lineAlignment = null)
+    public DotHtmlSubscript(string? text, DotHorizontalAlignment? lineAlignment = null)
         : base(TagName, text, lineAlignment)
     {
     }

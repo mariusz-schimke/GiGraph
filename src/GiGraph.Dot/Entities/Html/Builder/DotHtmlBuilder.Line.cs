@@ -15,7 +15,7 @@ public partial class DotHtmlBuilder
     /// <param name="lineAlignment">
     ///     Specifies horizontal placement of the line.
     /// </param>
-    public virtual DotHtmlBuilder AppendLine(string text, DotHorizontalAlignment? lineAlignment = null)
+    public virtual DotHtmlBuilder AppendLine(string? text, DotHorizontalAlignment? lineAlignment = null)
     {
         AppendText(text, lineAlignment);
         return AppendLine(lineAlignment);

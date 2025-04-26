@@ -19,7 +19,7 @@ public partial class DotHtmlImage : DotHtmlVoidElement
     /// <param name="scaling">
     ///     Specifies how the image will use any extra space available in its cell.
     /// </param>
-    public DotHtmlImage(string source, DotImageScaling? scaling = null)
+    public DotHtmlImage(string? source, DotImageScaling? scaling = null)
         : this(new DotHtmlAttributeCollection())
     {
         Source = source;
