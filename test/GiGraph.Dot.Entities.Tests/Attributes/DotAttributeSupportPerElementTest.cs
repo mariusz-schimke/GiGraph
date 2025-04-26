@@ -1,8 +1,8 @@
 using System.Collections.Immutable;
 using System.Reflection;
 using GiGraph.Dot.Entities.Tests.Attributes.Factories;
-using GiGraph.Dot.Helpers;
 using GiGraph.Dot.Output.Metadata;
+using GiGraph.Dot.Types;
 using Snapshooter.Xunit;
 using Xunit;
 

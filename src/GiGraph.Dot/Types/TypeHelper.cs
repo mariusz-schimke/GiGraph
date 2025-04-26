@@ -1,4 +1,4 @@
-namespace GiGraph.Dot.Helpers;
+namespace GiGraph.Dot.Types;
 
 internal static class TypeHelper
 {

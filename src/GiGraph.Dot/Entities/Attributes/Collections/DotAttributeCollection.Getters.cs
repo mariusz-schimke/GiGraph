@@ -1,5 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
-using GiGraph.Dot.Helpers;
+using GiGraph.Dot.Types;
 
 namespace GiGraph.Dot.Entities.Attributes.Collections;
 

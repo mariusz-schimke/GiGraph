@@ -1,9 +1,9 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
-using GiGraph.Dot.Helpers;
 using GiGraph.Dot.Output.Entities;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Output.Qualities;
+using GiGraph.Dot.Types;
 
 namespace GiGraph.Dot.Entities.Attributes;
 
