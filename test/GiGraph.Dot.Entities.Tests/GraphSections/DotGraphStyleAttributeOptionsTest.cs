@@ -1,7 +1,7 @@
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
-using GiGraph.Dot.Types.Clusters;
-using GiGraph.Dot.Types.Graphs;
+using GiGraph.Dot.Types.Clusters.Style;
+using GiGraph.Dot.Types.Graphs.Style;
 using GiGraph.Dot.Types.Styling;
 using Snapshooter.Xunit;
 using Xunit;
@@ -16,15 +16,15 @@ public class DotGraphStyleAttributeOptionsTest
         const string snapshotName = "styled_graph";
         var graph = new DotGraph();
 
-        graph.Style.SetStyleModifiers(new DotGraphStyleModifiers(
-            DotClusterFillStyle.Striped
+        graph.Style.SetStyleOptions(new DotGraphStyleOptions(
+            DotGraphFillStyle.Striped
         ));
 
         Assert.False(graph.Style.HasDefaultStyleOptions());
         Assert.False(graph.Clusters.Style.HasDefaultStyleOptions());
 
-        graph.Clusters.Style.SetStyleModifiers(new DotClusterStyleModifiers(
-            DotClusterFillStyle.Striped,
+        graph.Clusters.Style.SetStyleOptions(new DotClusterStyleOptions(
+            DotGraphFillStyle.Striped,
             DotBorderStyle.Dotted,
             DotBorderWeight.Bold,
             DotCornerStyle.Rounded,
@@ -38,16 +38,16 @@ public class DotGraphStyleAttributeOptionsTest
         Assert.True(graph.Clusters.Style.HasDefaultStyleOptions());
 
         // set the same another way
-        graph.Clusters.Style.SetStyleModifiers(
-            DotClusterFillStyle.Radial, // this one is shared with one directly on the graph (see below)
+        graph.Clusters.Style.SetStyleOptions(
+            DotGraphFillStyle.Radial, // this one is shared with one directly on the graph (see below)
             DotBorderStyle.Dotted,
             DotBorderWeight.Bold,
             DotCornerStyle.Rounded,
             true
         );
 
-        graph.Style.SetStyleModifiers(new DotGraphStyleModifiers(
-            DotClusterFillStyle.Striped // overwrites the one set on the clusters above
+        graph.Style.SetStyleOptions(new DotGraphStyleOptions(
+            DotGraphFillStyle.Striped // overwrites the one set on the clusters above
         ));
 
         Snapshot.Match(graph.ToDot(), snapshotName);

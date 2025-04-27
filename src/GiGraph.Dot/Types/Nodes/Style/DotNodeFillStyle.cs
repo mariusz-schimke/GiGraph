@@ -1,7 +1,7 @@
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Styling;
 
-namespace GiGraph.Dot.Types.Nodes;
+namespace GiGraph.Dot.Types.Nodes.Style;
 
 /// <summary>
 ///     Fill style applicable to clusters.

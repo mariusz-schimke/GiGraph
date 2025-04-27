@@ -1,7 +1,7 @@
 using System.Drawing;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
-using GiGraph.Dot.Types.Clusters;
+using GiGraph.Dot.Types.Graphs.Style;
 using GiGraph.Dot.Types.Styling;
 using Snapshooter.Xunit;
 using Xunit;
@@ -16,11 +16,11 @@ public partial class DotFillableExtensionTest
         var graph = new DotGraph();
 
         graph.Clusters.Add("", c =>
-                c.Style.SetStyleModifiers(DotClusterFillStyle.None, DotBorderStyle.Solid, DotBorderWeight.Bold, DotCornerStyle.Rounded, true)
+                c.Style.SetStyleOptions(DotGraphFillStyle.None, DotBorderStyle.Solid, DotBorderWeight.Bold, DotCornerStyle.Rounded, true)
             )
             .SetPlainColorFill(Color.Red);
 
-        graph.Clusters.Style.SetStyleModifiers(DotClusterFillStyle.None, DotBorderStyle.Solid, DotBorderWeight.Bold, DotCornerStyle.Rounded, true);
+        graph.Clusters.Style.SetStyleOptions(DotGraphFillStyle.None, DotBorderStyle.Solid, DotBorderWeight.Bold, DotCornerStyle.Rounded, true);
         graph.Clusters.SetPlainColorFill(Color.Red);
 
         Snapshot.Match(graph.ToDot(), "gradient_fill_on_clusters_with_other_styles_set");

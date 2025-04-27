@@ -1,6 +1,6 @@
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
-using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.Edges.Style;
 using GiGraph.Dot.Types.Styling;
 using Snapshooter.Xunit;
 using Xunit;
@@ -17,7 +17,7 @@ public class DotEdgeStyleAttributeOptionsTest
         var edge = graph.Edges.Add("n1", "n2");
 
         // set by class
-        edge.Style.SetStyleModifiers(new DotEdgeStyleModifiers(
+        edge.Style.SetStyleOptions(new DotEdgeStyleOptions(
             DotLineStyle.Dashed,
             DotLineWeight.Bold,
             true
@@ -30,7 +30,7 @@ public class DotEdgeStyleAttributeOptionsTest
         Assert.True(edge.Style.HasDefaultStyleOptions());
 
         // set the same another way
-        edge.Style.SetStyleModifiers(
+        edge.Style.SetStyleOptions(
             DotLineStyle.Dashed,
             DotLineWeight.Bold,
             true

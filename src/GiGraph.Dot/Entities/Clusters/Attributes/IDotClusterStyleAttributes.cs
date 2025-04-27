@@ -1,6 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Properties.Common.GraphCluster;
-using GiGraph.Dot.Types.Clusters;
 using GiGraph.Dot.Types.Colors;
+using GiGraph.Dot.Types.Graphs.Style;
 
 namespace GiGraph.Dot.Entities.Clusters.Attributes;
 
@@ -9,12 +9,12 @@ public interface IDotClusterStyleAttributes : IDotGraphClusterCommonStyleAttribu
     /// <summary>
     ///     <para>
     ///         Gets or sets the background color of the cluster (default: none). Used as the initial background for the cluster. If the
-    ///         <see cref="DotClusterFillStyle.Normal"/> fill style is used for the cluster, its
+    ///         <see cref="DotGraphFillStyle.Normal"/> fill style is used for the cluster, its
     ///         <see cref="IDotGraphClusterCommonStyleAttributes.FillColor"/> will overlay the background color.
     ///     </para>
     ///     <para>
     ///         When <see cref="DotGradientColor"/> is used, a gradient fill is generated. By default, this is a linear fill; applying
-    ///         the <see cref="DotClusterFillStyle.Radial"/> fill style to the cluster will cause a radial fill. If the second color is
+    ///         the <see cref="DotGraphFillStyle.Radial"/> fill style to the cluster will cause a radial fill. If the second color is
     ///         <see cref="System.Drawing.Color.Empty"/>, the default color is used for it. See also the <see cref="GradientFillAngle"/>
     ///         attribute for setting a gradient angle.
     ///     </para>

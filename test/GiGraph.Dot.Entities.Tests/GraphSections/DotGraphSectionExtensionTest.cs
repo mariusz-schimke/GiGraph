@@ -1,8 +1,8 @@
 using System.Drawing;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
-using GiGraph.Dot.Types.Clusters;
 using GiGraph.Dot.Types.Colors;
+using GiGraph.Dot.Types.Graphs.Style;
 using Snapshooter.Xunit;
 using Xunit;
 
@@ -27,7 +27,7 @@ public class DotGraphSectionExtensionTest
         var graph = new DotGraph();
 
         // this should be removed by the extension method (radial style by none)
-        graph.Clusters.Style.FillStyle = DotClusterFillStyle.Radial;
+        graph.Clusters.Style.FillStyle = DotGraphFillStyle.Radial;
 
         graph.SetGradientBackground(new DotGradientColor(Color.Gold, Color.DarkMagenta));
 
@@ -38,7 +38,7 @@ public class DotGraphSectionExtensionTest
         graph.Subsections.Add(s =>
             {
                 // this setting should not be removed by the extension method called below (this is a non-radial style)
-                s.Clusters.Style.FillStyle = DotClusterFillStyle.Striped;
+                s.Clusters.Style.FillStyle = DotGraphFillStyle.Striped;
             })
             .SetGradientBackground(new DotGradientColor(Color.Gold, Color.DarkMagenta), 20);
 
@@ -51,7 +51,7 @@ public class DotGraphSectionExtensionTest
         var graph = new DotGraph();
 
         // this setting should be overwritten by the extension method (a non-radial style by the radial style)
-        graph.Clusters.Style.FillStyle = DotClusterFillStyle.Striped;
+        graph.Clusters.Style.FillStyle = DotGraphFillStyle.Striped;
         graph.SetRadialGradientBackground(new DotGradientColor(Color.Gold, Color.DarkMagenta));
 
         // an overload (with the same result as the call above)

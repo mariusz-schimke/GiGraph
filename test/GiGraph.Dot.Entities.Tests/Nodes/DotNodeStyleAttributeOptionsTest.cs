@@ -1,6 +1,6 @@
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
-using GiGraph.Dot.Types.Nodes;
+using GiGraph.Dot.Types.Nodes.Style;
 using GiGraph.Dot.Types.Styling;
 using Snapshooter.Xunit;
 using Xunit;
@@ -17,7 +17,7 @@ public class DotNodeStyleAttributeOptionsTest
         var node = graph.Nodes.Add("n1");
 
         // set by class
-        node.Style.SetStyleModifiers(new DotNodeStyleModifiers(
+        node.Style.SetStyleOptions(new DotNodeStyleOptions(
             DotNodeFillStyle.Radial,
             DotBorderStyle.Dashed,
             DotBorderWeight.Bold,
@@ -33,7 +33,7 @@ public class DotNodeStyleAttributeOptionsTest
         Assert.True(node.Style.HasDefaultStyleOptions());
 
         // set the same another way
-        node.Style.SetStyleModifiers(
+        node.Style.SetStyleOptions(
             DotNodeFillStyle.Radial,
             DotBorderStyle.Dashed,
             DotBorderWeight.Bold,

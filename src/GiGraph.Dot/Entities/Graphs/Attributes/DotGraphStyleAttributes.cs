@@ -2,9 +2,8 @@ using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
-using GiGraph.Dot.Types.Clusters;
 using GiGraph.Dot.Types.Colors;
-using GiGraph.Dot.Types.Graphs;
+using GiGraph.Dot.Types.Graphs.Style;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes;
 
@@ -24,15 +23,15 @@ public partial class DotGraphStyleAttributes : DotEntityStyleAttributesWithMetad
 
     /// <summary>
     ///     <para>
-    ///         Gets or sets the fill style of the graph. The only option applicable is <see cref="DotClusterFillStyle.Radial"/>.
+    ///         Gets or sets the fill style of the graph. The only option applicable is <see cref="DotGraphFillStyle.Radial"/>.
     ///     </para>
     ///     <para>
-    ///         Note that this setting is shared with clusters and can't be applied independently.
+    ///         Note that this setting is shared with clusters and they can't be applied independently.
     ///     </para>
     /// </summary>
-    public virtual DotClusterFillStyle FillStyle
+    public virtual DotGraphFillStyle? FillStyle
     {
-        get => GetPartialStyleOption<DotClusterFillStyle>();
+        get => GetPartialStyleOption<DotGraphFillStyle>();
         set => SetPartialStyleOption(value);
     }
 
@@ -49,13 +48,13 @@ public partial class DotGraphStyleAttributes : DotEntityStyleAttributesWithMetad
     public virtual partial int? GradientFillAngle { get; set; }
 
     /// <summary>
-    ///     Applies the specified style modifiers to the graph.
+    ///     Applies the specified style options to the graph.
     /// </summary>
-    /// <param name="modifiers">
+    /// <param name="options">
     ///     The options to apply.
     /// </param>
-    public virtual void SetStyleModifiers(DotGraphStyleModifiers modifiers)
+    public virtual void SetStyleOptions(DotGraphStyleOptions options)
     {
-        FillStyle = modifiers.FillStyle;
+        FillStyle = options.FillStyle;
     }
 }

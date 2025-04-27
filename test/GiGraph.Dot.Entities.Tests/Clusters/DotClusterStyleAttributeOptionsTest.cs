@@ -1,6 +1,7 @@
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
-using GiGraph.Dot.Types.Clusters;
+using GiGraph.Dot.Types.Clusters.Style;
+using GiGraph.Dot.Types.Graphs.Style;
 using GiGraph.Dot.Types.Styling;
 using Snapshooter.Xunit;
 using Xunit;
@@ -17,8 +18,8 @@ public class DotClusterStyleAttributeOptionsTest
         var cluster = graph.Clusters.Add("c1");
 
         // set by class
-        cluster.Style.SetStyleModifiers(new DotClusterStyleModifiers(
-            DotClusterFillStyle.Striped,
+        cluster.Style.SetStyleOptions(new DotClusterStyleOptions(
+            DotGraphFillStyle.Striped,
             DotBorderStyle.Dotted,
             DotBorderWeight.Bold,
             DotCornerStyle.Rounded,
@@ -32,8 +33,8 @@ public class DotClusterStyleAttributeOptionsTest
         Assert.True(cluster.Style.HasDefaultStyleOptions());
         
         // set the same another way
-        cluster.Style.SetStyleModifiers(
-            DotClusterFillStyle.Striped,
+        cluster.Style.SetStyleOptions(
+            DotGraphFillStyle.Striped,
             DotBorderStyle.Dotted,
             DotBorderWeight.Bold,
             DotCornerStyle.Rounded,

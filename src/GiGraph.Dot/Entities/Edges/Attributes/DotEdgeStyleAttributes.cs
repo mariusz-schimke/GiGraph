@@ -3,7 +3,7 @@ using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Colors;
-using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.Edges.Style;
 using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Edges.Attributes;
@@ -25,7 +25,7 @@ public partial class DotEdgeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// <summary>
     ///     Gets or sets a line style for the edge (default: <see cref="DotLineStyle.Normal"/>).
     /// </summary>
-    public virtual DotLineStyle LineStyle
+    public virtual DotLineStyle? LineStyle
     {
         get => GetPartialStyleOption<DotLineStyle>();
         set => SetPartialStyleOption(value);
@@ -34,7 +34,7 @@ public partial class DotEdgeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// <summary>
     ///     Gets or sets a line weight for the edge (default: <see cref="DotLineWeight.Normal"/>).
     /// </summary>
-    public virtual DotLineWeight LineWeight
+    public virtual DotLineWeight? LineWeight
     {
         get => GetPartialStyleOption<DotLineWeight>();
         set => SetPartialStyleOption(value);
@@ -43,7 +43,7 @@ public partial class DotEdgeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// <summary>
     ///     Gets or sets a value indicating if the edge is invisible.
     /// </summary>
-    public virtual bool Invisible
+    public virtual bool? Invisible
     {
         get => HasStyleOption(DotStyles.Invisible);
         set => SetStyleOption(DotStyles.Invisible, value);
@@ -74,18 +74,18 @@ public partial class DotEdgeStyleAttributes : DotEntityStyleAttributesWithMetada
     public virtual partial bool? DrawLabelConnector { get; set; }
 
     /// <summary>
-    ///     Applies the specified style modifiers to the edge.
+    ///     Applies the specified style options to the edge.
     /// </summary>
-    /// <param name="modifiers">
+    /// <param name="options">
     ///     The options to apply.
     /// </param>
-    public virtual void SetStyleModifiers(DotEdgeStyleModifiers modifiers)
+    public virtual void SetStyleOptions(DotEdgeStyleOptions options)
     {
-        SetStyleModifiers(modifiers.LineStyle, modifiers.LineWeight, modifiers.Invisible);
+        SetStyleOptions(options.LineStyle, options.LineWeight, options.Invisible);
     }
 
     /// <summary>
-    ///     Applies the specified style modifiers to the edge.
+    ///     Applies the specified style options to the edge.
     /// </summary>
     /// <param name="lineStyle">
     ///     The line style to set.
@@ -96,7 +96,7 @@ public partial class DotEdgeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// <param name="invisible">
     ///     Determines whether the edge should be invisible.
     /// </param>
-    public virtual void SetStyleModifiers(DotLineStyle lineStyle = default, DotLineWeight lineWeight = default, bool invisible = false)
+    public virtual void SetStyleOptions(DotLineStyle? lineStyle = null, DotLineWeight? lineWeight = null, bool? invisible = null)
     {
         LineStyle = lineStyle;
         LineWeight = lineWeight;

@@ -1,5 +1,5 @@
-﻿using GiGraph.Dot.Types.Clusters;
-using GiGraph.Dot.Types.Colors;
+﻿using GiGraph.Dot.Types.Colors;
+using GiGraph.Dot.Types.Graphs.Style;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes;
 
@@ -11,7 +11,7 @@ public interface IDotGraphStyleAttributes
     ///     </para>
     ///     <para>
     ///         When <see cref="DotGradientColor"/> is used, a gradient fill is generated. By default, this is a linear fill; applying
-    ///         the <see cref="DotClusterFillStyle.Radial"/> fill style to the graph will cause a radial fill. If the second color is
+    ///         the <see cref="DotGraphFillStyle.Radial"/> fill style to the graph will cause a radial fill. If the second color is
     ///         <see cref="System.Drawing.Color.Empty"/>, the default color is used for it. See also the <see cref="GradientFillAngle"/>
     ///         attribute for setting a gradient angle.
     ///     </para>

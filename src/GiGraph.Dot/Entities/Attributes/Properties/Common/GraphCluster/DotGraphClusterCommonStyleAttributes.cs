@@ -2,8 +2,9 @@ using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
-using GiGraph.Dot.Types.Clusters;
+using GiGraph.Dot.Types.Clusters.Style;
 using GiGraph.Dot.Types.Colors;
+using GiGraph.Dot.Types.Graphs.Style;
 using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common.GraphCluster;
@@ -18,46 +19,46 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
     /// <summary>
     ///     Gets or sets a fill style.
     /// </summary>
-    public virtual DotClusterFillStyle FillStyle
+    public virtual DotGraphFillStyle? FillStyle
     {
-        get => GetPartialStyleModifier<DotClusterFillStyle>();
-        set => SetPartialStyleModifier(value);
+        get => GetPartialStyleOption<DotGraphFillStyle>();
+        set => SetPartialStyleOption(value);
     }
 
     /// <summary>
     ///     Gets or sets a border style.
     /// </summary>
-    public virtual DotBorderStyle BorderStyle
+    public virtual DotBorderStyle? BorderStyle
     {
-        get => GetPartialStyleModifier<DotBorderStyle>();
-        set => SetPartialStyleModifier(value);
+        get => GetPartialStyleOption<DotBorderStyle>();
+        set => SetPartialStyleOption(value);
     }
 
     /// <summary>
     ///     Gets or sets a border weight.
     /// </summary>
-    public virtual DotBorderWeight BorderWeight
+    public virtual DotBorderWeight? BorderWeight
     {
-        get => GetPartialStyleModifier<DotBorderWeight>();
-        set => SetPartialStyleModifier(value);
+        get => GetPartialStyleOption<DotBorderWeight>();
+        set => SetPartialStyleOption(value);
     }
 
     /// <summary>
     ///     Gets or sets a corner style.
     /// </summary>
-    public virtual DotCornerStyle CornerStyle
+    public virtual DotCornerStyle? CornerStyle
     {
-        get => GetPartialStyleModifier<DotCornerStyle>();
-        set => SetPartialStyleModifier(value);
+        get => GetPartialStyleOption<DotCornerStyle>();
+        set => SetPartialStyleOption(value);
     }
 
     /// <summary>
     ///     When set, makes the element invisible.
     /// </summary>
-    public virtual bool Invisible
+    public virtual bool? Invisible
     {
-        get => HasStyleModifier(DotStyles.Invisible);
-        set => SetStyleModifier(DotStyles.Invisible, value);
+        get => HasStyleOption(DotStyles.Invisible);
+        set => SetStyleOption(DotStyles.Invisible, value);
     }
 
     [DotAttributeKey(DotAttributeKeys.Color)]
@@ -73,18 +74,18 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
     public virtual partial double? BorderWidth { get; set; }
 
     /// <summary>
-    ///     Applies the specified style modifiers.
+    ///     Applies the specified style options.
     /// </summary>
-    /// <param name="modifiers">
+    /// <param name="options">
     ///     The options to apply.
     /// </param>
-    public virtual void SetStyleModifiers(DotClusterStyleModifiers modifiers)
+    public virtual void SetStyleOptions(DotClusterStyleOptions options)
     {
-        SetStyleModifiers(modifiers.FillStyle, modifiers.BorderStyle, modifiers.BorderWeight, modifiers.CornerStyle, modifiers.Invisible);
+        SetStyleOptions(options.FillStyle, options.BorderStyle, options.BorderWeight, options.CornerStyle, options.Invisible);
     }
 
     /// <summary>
-    ///     Applies the specified style modifiers.
+    ///     Applies the specified style options.
     /// </summary>
     /// <param name="fillStyle">
     ///     The fill style to set.
@@ -101,8 +102,13 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
     /// <param name="invisible">
     ///     Determines whether the node should be invisible.
     /// </param>
-    public virtual void SetStyleModifiers(DotClusterFillStyle fillStyle = default, DotBorderStyle borderStyle = default,
-        DotBorderWeight borderWeight = default, DotCornerStyle cornerStyle = default, bool invisible = false)
+    public virtual void SetStyleOptions(
+        DotGraphFillStyle? fillStyle = null,
+        DotBorderStyle? borderStyle = null,
+        DotBorderWeight? borderWeight = null,
+        DotCornerStyle? cornerStyle = null,
+        bool? invisible = null
+    )
     {
         FillStyle = fillStyle;
         BorderStyle = borderStyle;
