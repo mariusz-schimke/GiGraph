@@ -17,11 +17,13 @@ public class DotEdgeStyleAttributeOptionsTest
         var edge = graph.Edges.Add("n1", "n2");
 
         // set by class
-        edge.Style.SetStyleOptions(new DotEdgeStyleOptions(
-            DotLineStyle.Dashed,
-            DotLineWeight.Bold,
-            true
-        ));
+        edge.Style.SetStyleOptions(
+            new DotEdgeStyleOptions(
+                DotLineStyle.Dashed,
+                DotLineWeight.Bold,
+                true
+            )
+        );
 
         Snapshot.Match(graph.ToDot(), snapshotName);
 
@@ -37,5 +39,37 @@ public class DotEdgeStyleAttributeOptionsTest
         );
 
         Snapshot.Match(graph.ToDot(), snapshotName);
+    }
+
+    [Fact]
+    public void nullifying_last_style_option_nullifies_style()
+    {
+        var graph = new DotGraph();
+        var edge = graph.Edges.Add("n1", "n2");
+
+        Assert.False(edge.Style.HasStyleOptions());
+
+        edge.Style.SetStyleOptions(
+            new DotEdgeStyleOptions(
+                DotLineStyle.Dashed,
+                DotLineWeight.Bold,
+                true
+            )
+        );
+
+        Assert.True(edge.Style.HasStyleOptions());
+        Assert.False(edge.Style.HasDefaultStyleOptions());
+
+        edge.Style.LineStyle = null;
+        edge.Style.Invisible = null;
+
+        Assert.True(edge.Style.HasStyleOptions());
+        Assert.False(edge.Style.HasDefaultStyleOptions());
+
+        edge.Style.LineWeight = DotLineWeight.Normal;
+        Assert.True(edge.Style.HasDefaultStyleOptions());
+
+        edge.Style.LineWeight = null;
+        Assert.False(edge.Style.HasStyleOptions());
     }
 }
