@@ -40,7 +40,7 @@ public interface IDotEdgeRootAttributes : IDotEdgeAttributes
     /// <summary>
     ///     Style attributes.
     /// </summary>
-    new DotEdgeStyleAttributes Style { get; }
+    DotEdgeStyleAttributes Style { get; }
 
     /// <summary>
     ///     Style sheet attributes used for SVG output.
