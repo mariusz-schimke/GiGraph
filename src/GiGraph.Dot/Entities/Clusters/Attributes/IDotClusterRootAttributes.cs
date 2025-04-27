@@ -15,7 +15,7 @@ public interface IDotClusterRootAttributes : IDotClusterAttributes
     /// <summary>
     ///     Style attributes.
     /// </summary>
-    new DotClusterStyleAttributes Style { get; }
+    DotClusterStyleAttributes Style { get; }
 
     /// <summary>
     ///     Label options attributes.
