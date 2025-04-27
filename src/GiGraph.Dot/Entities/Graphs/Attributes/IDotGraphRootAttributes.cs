@@ -13,7 +13,7 @@ public interface IDotGraphRootAttributes : IDotGraphAttributes
     /// <summary>
     ///     Style attributes.
     /// </summary>
-    new DotGraphStyleAttributes Style { get; }
+    DotGraphStyleAttributes Style { get; }
 
     /// <summary>
     ///     Font attributes.

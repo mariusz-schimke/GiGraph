@@ -1,10 +1,23 @@
 ﻿using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Graphs.Style;
+using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes;
 
 public interface IDotGraphStyleAttributes
 {
+    /// <summary>
+    ///     <para>
+    ///         Gets or sets the style of the graph (default: unset). See the descriptions of individual <see cref="DotStyles"/> values
+    ///         to learn which styles are applicable to this type of element.
+    ///     </para>
+    ///     <para>
+    ///         Multiple styles can be used at once, for example: <see cref="Style"/> = <see cref="DotStyles.Rounded"/> |
+    ///         <see cref="DotStyles.Bold"/>;
+    ///     </para>
+    /// </summary>
+    DotStyles? Style { get; set; }
+
     /// <summary>
     ///     <para>
     ///         Gets or sets the background color of the graph (default: none). Used as the background for entire canvas.
