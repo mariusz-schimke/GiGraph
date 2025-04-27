@@ -18,71 +18,111 @@ public abstract partial class DotEntityStyleAttributesWithMetadata<TIEntityAttri
     protected virtual partial DotStyles? Style { get; set; }
 
     /// <summary>
-    ///     Determines if any style is assigned to the element, that is, if the Graphviz 'style' attribute is set.
+    ///     Determines if any style is assigned to the element, that is, if the Graphviz 'style' attribute has any value specified (is
+    ///     not null).
     /// </summary>
     [Pure]
-    public virtual bool HasStyleModifiers() => Style.HasValue;
+    public virtual bool HasStyleOptions() => Style.HasValue;
 
     /// <summary>
     ///     Determines if the default style is assigned to the element, that is, if the Graphviz 'style' attribute is set and has the
-    ///     value of <see cref="DotStyles.Default"/>. Use the <see cref="RestoreDefaultStyleModifiers"/> method to set the default style on
-    ///     the element.
+    ///     value of <see cref="DotStyles.Default"/>. Use the <see cref="SetDefaultStyleOptions"/> method to set the default style on the
+    ///     element.
     /// </summary>
     [Pure]
-    public virtual bool HasDefaultStyleModifiers() => Style == DotStyles.Default;
+    public virtual bool HasDefaultStyleOptions() => Style == DotStyles.Default;
 
     /// <summary>
-    ///     Clears the style flags of the element so that no style is set. This implies that the Graphviz 'style' attribute won't be
-    ///     rendered for the current element.
+    ///     Assigns the default style option flags to the element. Useful when the style of elements of the current type is set globally
+    ///     and needs to be restored to the default value for the current element. To check if the default style is set for the current
+    ///     element, use the <see cref="HasDefaultStyleOptions"/> method.
     /// </summary>
-    public virtual void RemoveStyleModifiers()
+    public virtual void SetDefaultStyleOptions()
+    {
+        Style = DotStyles.Default;
+    }
+
+    /// <summary>
+    ///     Clears the style option flags of the element so that no style is set. This implies that the Graphviz 'style' attribute won't
+    ///     be rendered for the current element at all.
+    /// </summary>
+    public virtual void ClearStyleOptions()
     {
         Style = null;
     }
 
     /// <summary>
-    ///     Assigns the default style to the element. Useful when the style of elements of the current type is set globally, and needs to
-    ///     be restored to the default value for the current element. To check if the default style is set for the current element, use
-    ///     the <see cref="HasDefaultStyleModifiers"/> method.
+    ///     Includes the specified option in the style.
     /// </summary>
-    public virtual void RestoreDefaultStyleModifiers()
+    protected virtual void SetStyleOption(DotStyles option)
     {
-        Style = DotStyles.Default;
+        Style = Style.GetValueOrDefault(option) | option;
     }
 
-    protected virtual void SetStyleModifier(DotStyles flag)
+    /// <summary>
+    ///     Resets the specified style option in the style. If the style isn't set yet (is null), it will be set to the default value.
+    /// </summary>
+    protected virtual void ResetStyleOption(DotStyles option)
     {
-        Style = Style.GetValueOrDefault(flag) | flag;
+        Style = ResetStyleOption(Style, option);
     }
 
-    protected virtual void ResetStyleModifier(DotStyles flag)
+    /// <summary>
+    ///     Removes the specified style option from the style. If the style isn't set yet, it will remain unset (null). If the result of
+    ///     the removal is the default style, the style will be nullified.
+    /// </summary>
+    protected virtual void RemoveStyleOption(DotStyles option)
     {
-        Style &= ~flag;
+        var result = ResetStyleOption(Style, option);
+        SetStyleOrNullIfDefault(result);
     }
 
     [Pure]
-    protected virtual bool HasStyleModifier(DotStyles flag) => Style.GetValueOrDefault(DotStyles.Default).HasFlag(flag);
+    protected virtual bool? HasStyleOption(DotStyles option) => Style?.HasFlag(option);
 
-    protected virtual void SetStyleModifier(DotStyles flag, bool value)
+    protected virtual void SetStyleOption(DotStyles option, bool? value)
     {
-        if (value)
+        switch (value)
         {
-            SetStyleModifier(flag);
+            case true:
+                SetStyleOption(option);
+                break;
+            case false:
+                ResetStyleOption(option);
+                break;
+            default:
+                RemoveStyleOption(option);
+                break;
+        }
+    }
+
+    protected virtual void SetPartialStyleOption<TPartialStyle>(TPartialStyle? option)
+        where TPartialStyle : struct, Enum
+    {
+        var currentStyle = Style.GetValueOrDefault(DotStyles.Default);
+
+        if (option.HasValue)
+        {
+            Style = DotPartialEnumMapper.ReplacePartialFlags(option.Value, currentStyle);
         }
         else
         {
-            ResetStyleModifier(flag);
+            var result = DotPartialEnumMapper.ClearPartialFlags<TPartialStyle, DotStyles>(currentStyle);
+            SetStyleOrNullIfDefault(result);
         }
     }
 
-    protected virtual void SetPartialStyleModifier<TPart>(TPart style)
-        where TPart : struct, Enum
+    [Pure]
+    protected virtual TPartialStyle? GetPartialStyleOption<TPartialStyle>()
+        where TPartialStyle : struct, Enum =>
+        Style.HasValue
+            ? DotPartialEnumMapper.ExtractPartialFlags<TPartialStyle, DotStyles>(Style.Value)
+            : null;
+
+    private void SetStyleOrNullIfDefault(DotStyles result)
     {
-        Style = DotPartialEnumMapper.ToComplete(style, Style.GetValueOrDefault(DotStyles.Default));
+        Style = result == DotStyles.Default ? null : result;
     }
 
-    [Pure]
-    protected virtual TPart GetPartialStyleModifier<TPart>()
-        where TPart : struct, Enum =>
-        DotPartialEnumMapper.ToPartial<DotStyles, TPart>(Style.GetValueOrDefault(DotStyles.Default));
+    protected static DotStyles ResetStyleOption(DotStyles? style, DotStyles option) => style.GetValueOrDefault(option) & ~option;
 }

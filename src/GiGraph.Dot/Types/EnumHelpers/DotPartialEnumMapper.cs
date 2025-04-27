@@ -4,23 +4,23 @@ public static class DotPartialEnumMapper
 {
     /// <summary>
     ///     Returns a partial enum value by taking only the bits allowed by the partial enum type from a complete enum value. All other
-    ///     bits are cleared.
+    ///     bits are cleared. It is assumed that <typeparamref name="TPartial"/> partially overlaps <typeparamref name="TComplete"/>.
     /// </summary>
     /// <param name="complete">
     ///     The full enum value that may have more bits than the partial enum supports.
     /// </param>
-    /// <typeparam name="TComplete">
-    ///     The full enum type.
-    /// </typeparam>
     /// <typeparam name="TPartial">
     ///     The partial enum type that defines which bits are valid.
+    /// </typeparam>
+    /// <typeparam name="TComplete">
+    ///     The full enum type.
     /// </typeparam>
     /// <returns>
     ///     A value of the partial enum type, containing only the valid bits from the complete value.
     /// </returns>
-    public static TPartial ExtractPartialFlags<TComplete, TPartial>(TComplete complete)
-        where TComplete : struct, Enum
+    public static TPartial ExtractPartialFlags<TPartial, TComplete>(TComplete complete)
         where TPartial : struct, Enum
+        where TComplete : struct, Enum
     {
         var partialMask = GetMask<TPartial>();
         var completeInt = Convert.ToInt32(complete);
@@ -33,7 +33,8 @@ public static class DotPartialEnumMapper
 
     /// <summary>
     ///     Updates a complete enum value with bits from a partial enum value. Bits defined by the partial enum type are replaced; all
-    ///     other bits in the complete value stay unchanged.
+    ///     other bits in the complete value stay unchanged. It is assumed that <typeparamref name="TPartial"/> partially overlaps
+    ///     <typeparamref name="TComplete"/>.
     /// </summary>
     /// <param name="partial">
     ///     The partial enum value to apply.
@@ -60,7 +61,7 @@ public static class DotPartialEnumMapper
 
     /// <summary>
     ///     Clears (sets to 0) only the bits in the complete enum value that are defined by the partial enum type. All other bits remain
-    ///     unchanged.
+    ///     unchanged. It is assumed that <typeparamref name="TPartial"/> partially overlaps <typeparamref name="TComplete"/>.
     /// </summary>
     /// <param name="complete">
     ///     The full enum value to clear bits from.

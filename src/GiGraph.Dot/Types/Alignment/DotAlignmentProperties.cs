@@ -31,8 +31,8 @@ public record DotAlignmentProperties()
     /// </param>
     public DotAlignmentProperties(DotAlignment alignment)
         : this(
-            DotPartialEnumMapper.ExtractPartialFlags<DotAlignment, DotHorizontalAlignment>(alignment),
-            DotPartialEnumMapper.ExtractPartialFlags<DotAlignment, DotVerticalAlignment>(alignment)
+            DotPartialEnumMapper.ExtractPartialFlags<DotHorizontalAlignment, DotAlignment>(alignment),
+            DotPartialEnumMapper.ExtractPartialFlags<DotVerticalAlignment, DotAlignment>(alignment)
         )
     {
     }

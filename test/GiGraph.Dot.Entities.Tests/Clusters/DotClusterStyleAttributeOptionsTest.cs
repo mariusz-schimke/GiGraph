@@ -27,9 +27,9 @@ public class DotClusterStyleAttributeOptionsTest
 
         Snapshot.Match(graph.ToDot(), snapshotName);
 
-        Assert.False(cluster.Style.HasDefaultStyleModifiers());
-        cluster.Style.RestoreDefaultStyleModifiers();
-        Assert.True(cluster.Style.HasDefaultStyleModifiers());
+        Assert.False(cluster.Style.HasDefaultStyleOptions());
+        cluster.Style.SetDefaultStyleOptions();
+        Assert.True(cluster.Style.HasDefaultStyleOptions());
         
         // set the same another way
         cluster.Style.SetStyleModifiers(

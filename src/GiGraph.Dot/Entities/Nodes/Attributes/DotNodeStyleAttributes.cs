@@ -27,8 +27,8 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// </summary>
     public virtual DotNodeFillStyle FillStyle
     {
-        get => GetPartialStyleModifier<DotNodeFillStyle>();
-        set => SetPartialStyleModifier(value);
+        get => GetPartialStyleOption<DotNodeFillStyle>();
+        set => SetPartialStyleOption(value);
     }
 
     /// <summary>
@@ -36,8 +36,8 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// </summary>
     public virtual DotBorderStyle BorderStyle
     {
-        get => GetPartialStyleModifier<DotBorderStyle>();
-        set => SetPartialStyleModifier(value);
+        get => GetPartialStyleOption<DotBorderStyle>();
+        set => SetPartialStyleOption(value);
     }
 
     /// <summary>
@@ -45,8 +45,8 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// </summary>
     public virtual DotBorderWeight BorderWeight
     {
-        get => GetPartialStyleModifier<DotBorderWeight>();
-        set => SetPartialStyleModifier(value);
+        get => GetPartialStyleOption<DotBorderWeight>();
+        set => SetPartialStyleOption(value);
     }
 
     /// <summary>
@@ -54,8 +54,8 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// </summary>
     public virtual DotCornerStyle CornerStyle
     {
-        get => GetPartialStyleModifier<DotCornerStyle>();
-        set => SetPartialStyleModifier(value);
+        get => GetPartialStyleOption<DotCornerStyle>();
+        set => SetPartialStyleOption(value);
     }
 
     /// <summary>
@@ -64,8 +64,8 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// </summary>
     public virtual bool Diagonals
     {
-        get => HasStyleModifier(DotStyles.Diagonals);
-        set => SetStyleModifier(DotStyles.Diagonals, value);
+        get => HasStyleOption(DotStyles.Diagonals);
+        set => SetStyleOption(DotStyles.Diagonals, value);
     }
 
     /// <summary>
@@ -73,8 +73,8 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// </summary>
     public virtual bool Invisible
     {
-        get => HasStyleModifier(DotStyles.Invisible);
-        set => SetStyleModifier(DotStyles.Invisible, value);
+        get => HasStyleOption(DotStyles.Invisible);
+        set => SetStyleOption(DotStyles.Invisible, value);
     }
 
     /// <inheritdoc cref="IDotNodeStyleAttributes.Color"/>

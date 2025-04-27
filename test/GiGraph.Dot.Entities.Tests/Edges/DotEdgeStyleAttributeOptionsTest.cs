@@ -25,9 +25,9 @@ public class DotEdgeStyleAttributeOptionsTest
 
         Snapshot.Match(graph.ToDot(), snapshotName);
 
-        Assert.False(edge.Style.HasDefaultStyleModifiers());
-        edge.Style.RestoreDefaultStyleModifiers();
-        Assert.True(edge.Style.HasDefaultStyleModifiers());
+        Assert.False(edge.Style.HasDefaultStyleOptions());
+        edge.Style.SetDefaultStyleOptions();
+        Assert.True(edge.Style.HasDefaultStyleOptions());
 
         // set the same another way
         edge.Style.SetStyleModifiers(

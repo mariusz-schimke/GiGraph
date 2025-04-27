@@ -32,8 +32,8 @@ public partial class DotGraphStyleAttributes : DotEntityStyleAttributesWithMetad
     /// </summary>
     public virtual DotClusterFillStyle FillStyle
     {
-        get => GetPartialStyleModifier<DotClusterFillStyle>();
-        set => SetPartialStyleModifier(value);
+        get => GetPartialStyleOption<DotClusterFillStyle>();
+        set => SetPartialStyleOption(value);
     }
 
     /// <inheritdoc cref="IDotGraphStyleAttributes.BackgroundColor"/>

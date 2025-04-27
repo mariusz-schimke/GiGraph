@@ -20,8 +20,8 @@ public class DotGraphStyleAttributeOptionsTest
             DotClusterFillStyle.Striped
         ));
 
-        Assert.False(graph.Style.HasDefaultStyleModifiers());
-        Assert.False(graph.Clusters.Style.HasDefaultStyleModifiers());
+        Assert.False(graph.Style.HasDefaultStyleOptions());
+        Assert.False(graph.Clusters.Style.HasDefaultStyleOptions());
 
         graph.Clusters.Style.SetStyleModifiers(new DotClusterStyleModifiers(
             DotClusterFillStyle.Striped,
@@ -33,9 +33,9 @@ public class DotGraphStyleAttributeOptionsTest
 
         Snapshot.Match(graph.ToDot(), snapshotName);
 
-        graph.Style.RestoreDefaultStyleModifiers();
-        Assert.True(graph.Style.HasDefaultStyleModifiers());
-        Assert.True(graph.Clusters.Style.HasDefaultStyleModifiers());
+        graph.Style.SetDefaultStyleOptions();
+        Assert.True(graph.Style.HasDefaultStyleOptions());
+        Assert.True(graph.Clusters.Style.HasDefaultStyleOptions());
 
         // set the same another way
         graph.Clusters.Style.SetStyleModifiers(
@@ -52,8 +52,8 @@ public class DotGraphStyleAttributeOptionsTest
 
         Snapshot.Match(graph.ToDot(), snapshotName);
 
-        graph.Clusters.Style.RestoreDefaultStyleModifiers();
-        Assert.True(graph.Style.HasDefaultStyleModifiers());
-        Assert.True(graph.Clusters.Style.HasDefaultStyleModifiers());
+        graph.Clusters.Style.SetDefaultStyleOptions();
+        Assert.True(graph.Style.HasDefaultStyleOptions());
+        Assert.True(graph.Clusters.Style.HasDefaultStyleOptions());
     }
 }
