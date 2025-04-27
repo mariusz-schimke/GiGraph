@@ -1,11 +1,24 @@
 ﻿using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Nodes;
 using GiGraph.Dot.Types.Nodes.Style;
+using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Nodes.Attributes;
 
 public interface IDotNodeStyleAttributes
 {
+    /// <summary>
+    ///     <para>
+    ///         Gets or sets the style of the cluster (default: unset). See the descriptions of individual <see cref="DotStyles"/> values
+    ///         to learn which styles are applicable to this type of element.
+    ///     </para>
+    ///     <para>
+    ///         Multiple styles can be used at once, for example: <see cref="Style"/> = <see cref="DotStyles.Rounded"/> |
+    ///         <see cref="DotStyles.Bold"/>;
+    ///     </para>
+    /// </summary>
+    DotStyles? Style { get; set; }
+
     /// <summary>
     ///     <para>
     ///         Gets or sets the color to use for the node (default: <see cref="System.Drawing.Color.Black"/>).
