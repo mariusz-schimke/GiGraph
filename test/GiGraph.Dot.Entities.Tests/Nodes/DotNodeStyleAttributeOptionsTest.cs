@@ -84,4 +84,31 @@ public class DotNodeStyleAttributeOptionsTest
         node.Style.Diagonals = null;
         Assert.False(node.Style.HasStyleOptions());
     }
+
+    [Fact]
+    public void when_style_is_default_all_options_are_default()
+    {
+        var graph = new DotGraph();
+        var node = graph.Nodes.Add("n1");
+
+        Assert.False(node.Style.HasStyleOptions());
+
+        node.Style.SetDefaultStyleOptions();
+
+        Assert.Equal(node.Style.FillStyle, DotNodeFillStyle.None);
+        Assert.Equal(node.Style.BorderStyle, DotBorderStyle.Default);
+        Assert.Equal(node.Style.BorderWeight, DotBorderWeight.Default);
+        Assert.Equal(node.Style.CornerStyle, DotCornerStyle.Default);
+        Assert.Equal(node.Style.Diagonals, false);
+        Assert.Equal(node.Style.Invisible, false);
+
+        node.Style.ClearStyleOptions();
+
+        Assert.Null(node.Style.FillStyle);
+        Assert.Null(node.Style.BorderStyle);
+        Assert.Null(node.Style.BorderWeight);
+        Assert.Null(node.Style.CornerStyle);
+        Assert.Null(node.Style.Diagonals);
+        Assert.Null(node.Style.Invisible);
+    }
 }

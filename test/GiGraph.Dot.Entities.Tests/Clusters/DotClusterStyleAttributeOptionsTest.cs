@@ -82,4 +82,27 @@ public class DotClusterStyleAttributeOptionsTest
         cluster.Style.CornerStyle = null;
         Assert.False(cluster.Style.HasStyleOptions());
     }
+
+    [Fact]
+    public void when_style_is_default_all_options_are_default()
+    {
+        var graph = new DotGraph();
+        var cluster = graph.Clusters.Add("c1");
+
+        Assert.False(cluster.Style.HasStyleOptions());
+
+        cluster.Style.SetDefaultStyleOptions();
+
+        Assert.Equal(cluster.Style.FillStyle, DotGraphFillStyle.None);
+        Assert.Equal(cluster.Style.BorderStyle, DotBorderStyle.Default);
+        Assert.Equal(cluster.Style.BorderWeight, DotBorderWeight.Default);
+        Assert.Equal(cluster.Style.Invisible, false);
+
+        cluster.Style.ClearStyleOptions();
+
+        Assert.Null(cluster.Style.FillStyle);
+        Assert.Null(cluster.Style.BorderStyle);
+        Assert.Null(cluster.Style.BorderWeight);
+        Assert.Null(cluster.Style.Invisible);
+    }
 }

@@ -72,4 +72,25 @@ public class DotEdgeStyleAttributeOptionsTest
         edge.Style.LineWeight = null;
         Assert.False(edge.Style.HasStyleOptions());
     }
+
+    [Fact]
+    public void when_style_is_default_all_options_are_default()
+    {
+        var graph = new DotGraph();
+        var edge = graph.Edges.Add("n1", "n2");
+
+        Assert.False(edge.Style.HasStyleOptions());
+
+        edge.Style.SetDefaultStyleOptions();
+
+        Assert.Equal(edge.Style.LineStyle, DotLineStyle.Default);
+        Assert.Equal(edge.Style.LineWeight, DotLineWeight.Default);
+        Assert.Equal(edge.Style.Invisible, false);
+
+        edge.Style.ClearStyleOptions();
+
+        Assert.Null(edge.Style.LineStyle);
+        Assert.Null(edge.Style.LineWeight);
+        Assert.Null(edge.Style.Invisible);
+    }
 }
