@@ -4,7 +4,7 @@ using GiGraph.Dot.Types.Styling;
 namespace GiGraph.Dot.Types.Nodes.Style;
 
 /// <summary>
-///     Fill style applicable to clusters.
+///     Fill style applicable to nodes.
 /// </summary>
 public enum DotNodeFillStyle
 {
@@ -17,7 +17,7 @@ public enum DotNodeFillStyle
     ///     Causes a plain color fill when <see cref="DotColor" /> is used, or a gradient fill when <see cref="DotGradientColor" /> is
     ///     used.
     /// </summary>
-    Normal = DotFillStyle.Normal,
+    Filled = DotFillStyle.Filled,
 
     /// <summary>
     ///     Applicable to rectangularly-shaped nodes. Causes the fill to be done as a set of vertical stripes. The colors are specified
