@@ -16,20 +16,24 @@ public class DotGraphStyleAttributeOptionsTest
         const string snapshotName = "styled_graph";
         var graph = new DotGraph();
 
-        graph.Style.SetStyleOptions(new DotGraphStyleOptions(
-            DotGraphFillStyle.Striped
-        ));
+        graph.Style.SetStyleOptions(
+            new DotGraphStyleOptions(
+                DotGraphFillStyle.Striped
+            )
+        );
 
         Assert.False(graph.Style.HasDefaultStyleOptions());
         Assert.False(graph.Clusters.Style.HasDefaultStyleOptions());
 
-        graph.Clusters.Style.SetStyleOptions(new DotClusterStyleOptions(
-            DotGraphFillStyle.Striped,
-            DotBorderStyle.Dotted,
-            DotBorderWeight.Bold,
-            DotCornerStyle.Rounded,
-            true
-        ));
+        graph.Clusters.Style.SetStyleOptions(
+            new DotClusterStyleOptions(
+                DotGraphFillStyle.Striped,
+                DotBorderStyle.Dotted,
+                DotBorderWeight.Bold,
+                DotCornerStyle.Rounded,
+                true
+            )
+        );
 
         Snapshot.Match(graph.ToDot(), snapshotName);
 
@@ -46,14 +50,79 @@ public class DotGraphStyleAttributeOptionsTest
             true
         );
 
-        graph.Style.SetStyleOptions(new DotGraphStyleOptions(
-            DotGraphFillStyle.Striped // overwrites the one set on the clusters above
-        ));
+        graph.Style.SetStyleOptions(
+            new DotGraphStyleOptions(
+                DotGraphFillStyle.Striped // overwrites the one set on the clusters above
+            )
+        );
 
         Snapshot.Match(graph.ToDot(), snapshotName);
 
         graph.Clusters.Style.SetDefaultStyleOptions();
         Assert.True(graph.Style.HasDefaultStyleOptions());
         Assert.True(graph.Clusters.Style.HasDefaultStyleOptions());
+    }
+
+    [Fact]
+    public void nullifying_last_style_option_nullifies_style()
+    {
+        var graph = new DotGraph();
+
+        Assert.False(graph.Style.HasStyleOptions());
+
+        graph.Style.FillStyle = DotGraphFillStyle.Radial;
+
+        Assert.True(graph.Style.HasStyleOptions());
+        Assert.False(graph.Style.HasDefaultStyleOptions());
+
+        graph.Style.FillStyle = DotGraphFillStyle.None;
+
+        Assert.True(graph.Style.HasStyleOptions());
+        Assert.True(graph.Style.HasDefaultStyleOptions());
+
+        graph.Style.FillStyle = null;
+        Assert.False(graph.Style.HasStyleOptions());
+    }
+
+    [Fact]
+    public void nullifying_clusters_style_options_does_not_nullify_graph_style()
+    {
+        var graph = new DotGraph
+        {
+            Style =
+            {
+                FillStyle = DotGraphFillStyle.Radial
+            }
+        };
+
+        graph.Clusters.Style.SetStyleOptions(
+            new DotClusterStyleOptions(
+                DotGraphFillStyle.Striped,
+                DotBorderStyle.Dotted,
+                DotBorderWeight.Bold,
+                DotCornerStyle.Rounded,
+                true
+            )
+        );
+
+        Assert.True(graph.Style.HasStyleOptions());
+        Assert.False(graph.Style.HasDefaultStyleOptions());
+
+        Assert.True(graph.Clusters.Style.HasStyleOptions());
+        Assert.False(graph.Clusters.Style.HasDefaultStyleOptions());
+
+        graph.Clusters.Style.BorderStyle = null;
+        graph.Clusters.Style.BorderWeight = null;
+        graph.Clusters.Style.CornerStyle = null;
+        graph.Clusters.Style.Invisible = null;
+
+        Assert.True(graph.Style.HasStyleOptions());
+        Assert.False(graph.Style.HasDefaultStyleOptions());
+
+        Assert.True(graph.Clusters.Style.HasStyleOptions());
+        Assert.False(graph.Clusters.Style.HasDefaultStyleOptions());
+
+        graph.Style.FillStyle = null;
+        Assert.False(graph.Style.HasStyleOptions());
     }
 }

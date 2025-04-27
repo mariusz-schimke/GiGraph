@@ -18,20 +18,22 @@ public class DotClusterStyleAttributeOptionsTest
         var cluster = graph.Clusters.Add("c1");
 
         // set by class
-        cluster.Style.SetStyleOptions(new DotClusterStyleOptions(
-            DotGraphFillStyle.Striped,
-            DotBorderStyle.Dotted,
-            DotBorderWeight.Bold,
-            DotCornerStyle.Rounded,
-            true
-        ));
+        cluster.Style.SetStyleOptions(
+            new DotClusterStyleOptions(
+                DotGraphFillStyle.Striped,
+                DotBorderStyle.Dotted,
+                DotBorderWeight.Bold,
+                DotCornerStyle.Rounded,
+                true
+            )
+        );
 
         Snapshot.Match(graph.ToDot(), snapshotName);
 
         Assert.False(cluster.Style.HasDefaultStyleOptions());
         cluster.Style.SetDefaultStyleOptions();
         Assert.True(cluster.Style.HasDefaultStyleOptions());
-        
+
         // set the same another way
         cluster.Style.SetStyleOptions(
             DotGraphFillStyle.Striped,
@@ -42,5 +44,42 @@ public class DotClusterStyleAttributeOptionsTest
         );
 
         Snapshot.Match(graph.ToDot(), snapshotName);
+    }
+
+    [Fact]
+    public void nullifying_last_style_option_nullifies_style()
+    {
+        var graph = new DotGraph();
+        var cluster = graph.Clusters.Add("c1");
+
+        Assert.False(cluster.Style.HasStyleOptions());
+
+        // set by class
+        cluster.Style.SetStyleOptions(
+            new DotClusterStyleOptions(
+                DotGraphFillStyle.Striped,
+                DotBorderStyle.Dotted,
+                DotBorderWeight.Bold,
+                DotCornerStyle.Rounded,
+                true
+            )
+        );
+
+        Assert.True(cluster.Style.HasStyleOptions());
+        Assert.False(cluster.Style.HasDefaultStyleOptions());
+
+        cluster.Style.FillStyle = null;
+        cluster.Style.BorderStyle = null;
+        cluster.Style.BorderWeight = null;
+        cluster.Style.Invisible = null;
+
+        Assert.True(cluster.Style.HasStyleOptions());
+        Assert.False(cluster.Style.HasDefaultStyleOptions());
+
+        cluster.Style.CornerStyle = DotCornerStyle.Normal;
+        Assert.True(cluster.Style.HasDefaultStyleOptions());
+
+        cluster.Style.CornerStyle = null;
+        Assert.False(cluster.Style.HasStyleOptions());
     }
 }
