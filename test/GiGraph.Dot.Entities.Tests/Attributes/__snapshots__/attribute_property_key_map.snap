@@ -239,7 +239,7 @@
     "Node": "LabelOptions.Margin: DotPoint"
   },
   "mclimit": {
-    "Graph": "Layout.EdgeCrossingMinimizationScaleFactor: Double?"
+    "Graph": "Layout.EdgeCrossingMinimizationScale: Double?"
   },
   "minlen": {
     "Edge": "Layout.MinLength: Int32?"

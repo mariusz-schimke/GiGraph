@@ -36,9 +36,9 @@ public partial class DotGraphLayoutAttributes : DotEntityAttributesWithMetadata<
     [DotAttributeKey(DotAttributeKeys.ReMinCross)]
     public virtual partial bool? RepeatEdgeCrossingMinimization { get; set; }
 
-    /// <inheritdoc cref="IDotGraphLayoutAttributes.EdgeCrossingMinimizationScaleFactor"/>
+    /// <inheritdoc cref="IDotGraphLayoutAttributes.EdgeCrossingMinimizationScale"/>
     [DotAttributeKey(DotAttributeKeys.McLimit)]
-    public virtual partial double? EdgeCrossingMinimizationScaleFactor { get; set; }
+    public virtual partial double? EdgeCrossingMinimizationScale { get; set; }
 
     /// <inheritdoc cref="IDotGraphLayoutAttributes.EnableGlobalRanking"/>
     [DotAttributeKey(DotAttributeKeys.NewRank)]
