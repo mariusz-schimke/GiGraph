@@ -1,6 +1,6 @@
 using GiGraph.Dot.Types.Geometry;
 
-namespace GiGraph.Dot.Types.Nodes;
+namespace GiGraph.Dot.Types.Nodes.Size;
 
 /// <summary>
 ///     Node size attributes.

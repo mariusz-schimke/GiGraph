@@ -1,5 +1,6 @@
 ﻿using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Nodes;
+using GiGraph.Dot.Types.Nodes.Style;
 
 namespace GiGraph.Dot.Entities.Nodes.Attributes;
 

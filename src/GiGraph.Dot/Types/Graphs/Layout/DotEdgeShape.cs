@@ -1,6 +1,6 @@
 ﻿using GiGraph.Dot.Output.Metadata;
 
-namespace GiGraph.Dot.Types.Edges;
+namespace GiGraph.Dot.Types.Graphs.Layout;
 
 /// <summary>
 ///     Controls how, and if, edges are represented.

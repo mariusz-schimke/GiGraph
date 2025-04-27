@@ -1,7 +1,7 @@
 ﻿using GiGraph.Dot.Entities.Edges.Attributes;
 using GiGraph.Dot.Entities.Nodes.Attributes;
 using GiGraph.Dot.Entities.Subgraphs.Attributes;
-using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.Edges.Layout;
 using GiGraph.Dot.Types.Graphs.Layout;
 using GiGraph.Dot.Types.Graphs.Layout.Packing;
 using GiGraph.Dot.Types.Graphs.Layout.Spacing;

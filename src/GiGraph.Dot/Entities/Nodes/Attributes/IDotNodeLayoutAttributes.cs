@@ -1,5 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Graphs.Attributes;
-using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.Edges.Layout;
 
 namespace GiGraph.Dot.Entities.Nodes.Attributes;
 

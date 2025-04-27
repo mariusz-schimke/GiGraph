@@ -2,7 +2,7 @@ using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
-using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.Edges.Layout;
 using GiGraph.Dot.Types.Graphs.Layout;
 using GiGraph.Dot.Types.Graphs.Layout.Packing;
 using GiGraph.Dot.Types.Graphs.Layout.Spacing;

@@ -1,6 +1,6 @@
 ﻿using GiGraph.Dot.Output.Metadata;
 
-namespace GiGraph.Dot.Types.Nodes;
+namespace GiGraph.Dot.Types.Nodes.Size;
 
 /// <summary>
 ///     The node sizing mode values.

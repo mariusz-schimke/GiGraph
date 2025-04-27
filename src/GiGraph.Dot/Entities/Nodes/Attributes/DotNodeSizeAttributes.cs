@@ -3,7 +3,7 @@ using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Geometry;
-using GiGraph.Dot.Types.Nodes;
+using GiGraph.Dot.Types.Nodes.Size;
 
 namespace GiGraph.Dot.Entities.Nodes.Attributes;
 

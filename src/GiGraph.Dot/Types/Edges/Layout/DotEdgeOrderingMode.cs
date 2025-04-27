@@ -1,6 +1,6 @@
 ﻿using GiGraph.Dot.Output.Metadata;
 
-namespace GiGraph.Dot.Types.Edges;
+namespace GiGraph.Dot.Types.Edges.Layout;
 
 /// <summary>
 ///     The edge ordering mode.
