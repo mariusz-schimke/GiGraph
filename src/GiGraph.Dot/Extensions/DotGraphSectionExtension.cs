@@ -1,6 +1,6 @@
 using GiGraph.Dot.Entities.Graphs;
-using GiGraph.Dot.Types.Clusters;
 using GiGraph.Dot.Types.Colors;
+using GiGraph.Dot.Types.Graphs.Style;
 
 namespace GiGraph.Dot.Extensions;
 
@@ -46,9 +46,9 @@ public static class DotGraphSectionExtension
     ///         previously specified on the clusters collection, it will be removed by this method.
     ///     </para>
     ///     <para>
-    ///         Also, if at least one weighted color is specified (see <see cref="DotWeightedColor" />), a degenerate linear gradient
-    ///         fill will be done. This essentially does a fill using two colors, with the <see cref="DotWeightedColor.Weight" />
-    ///         specifying how much of region is filled with each color.
+    ///         Also, if at least one weighted color is specified (see <see cref="DotWeightedColor"/>), a degenerate linear gradient fill
+    ///         will be done. This essentially does a fill using two colors, with the <see cref="DotWeightedColor.Weight"/> specifying
+    ///         how much of region is filled with each color.
     ///     </para>
     /// </summary>
     /// <param name="this">
@@ -114,11 +114,11 @@ public static class DotGraphSectionExtension
             // the style may also be set from the Clusters collection on graph, and radial is the only attribute
             // that applies to graph background and to cluster fill
             case true:
-                @this.Style.FillStyle = DotClusterFillStyle.Radial;
+                @this.Style.FillStyle = DotGraphFillStyle.Radial;
                 break;
 
-            case false when @this.Style.FillStyle == DotClusterFillStyle.Radial:
-                @this.Style.FillStyle = DotClusterFillStyle.None;
+            case false when @this.Style.FillStyle == DotGraphFillStyle.Radial:
+                @this.Style.FillStyle = DotGraphFillStyle.None;
                 break;
         }
 
