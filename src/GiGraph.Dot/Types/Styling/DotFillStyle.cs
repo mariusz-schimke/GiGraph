@@ -8,17 +8,17 @@ public enum DotFillStyle
     /// <summary>
     ///     No fill.
     /// </summary>
-    None = 0,
+    None = DotStyles.Default,
 
-    /// <inheritdoc cref="DotStyles.Filled" />
+    /// <inheritdoc cref="DotStyles.Filled"/>
     Filled = DotStyles.Filled,
 
-    /// <inheritdoc cref="DotStyles.Striped" />
+    /// <inheritdoc cref="DotStyles.Striped"/>
     Striped = DotStyles.Striped,
 
-    /// <inheritdoc cref="DotStyles.Wedged" />
+    /// <inheritdoc cref="DotStyles.Wedged"/>
     Wedged = DotStyles.Wedged,
 
-    /// <inheritdoc cref="DotStyles.Radial" />
+    /// <inheritdoc cref="DotStyles.Radial"/>
     Radial = DotStyles.Radial
 }

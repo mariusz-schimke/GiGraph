@@ -66,7 +66,7 @@ public class DotEdgeStyleAttributeOptionsTest
         Assert.True(edge.Style.HasStyleOptions());
         Assert.False(edge.Style.HasDefaultStyleOptions());
 
-        edge.Style.LineWeight = DotLineWeight.Normal;
+        edge.Style.LineWeight = DotLineWeight.Default;
         Assert.True(edge.Style.HasDefaultStyleOptions());
 
         edge.Style.LineWeight = null;

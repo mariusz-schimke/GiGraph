@@ -8,7 +8,7 @@ public enum DotLineStyle
     /// <summary>
     ///     The default style.
     /// </summary>
-    Normal = 0,
+    Default = DotStyles.Default,
 
     /// <summary>
     ///     A solid line style.

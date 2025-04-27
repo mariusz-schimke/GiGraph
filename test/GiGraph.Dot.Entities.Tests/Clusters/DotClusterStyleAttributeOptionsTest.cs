@@ -76,7 +76,7 @@ public class DotClusterStyleAttributeOptionsTest
         Assert.True(cluster.Style.HasStyleOptions());
         Assert.False(cluster.Style.HasDefaultStyleOptions());
 
-        cluster.Style.CornerStyle = DotCornerStyle.Normal;
+        cluster.Style.CornerStyle = DotCornerStyle.Default;
         Assert.True(cluster.Style.HasDefaultStyleOptions());
 
         cluster.Style.CornerStyle = null;

@@ -23,7 +23,7 @@ public partial class DotEdgeStyleAttributes : DotEntityStyleAttributesWithMetada
     }
 
     /// <summary>
-    ///     Gets or sets a line style for the edge (default: <see cref="DotLineStyle.Normal"/>).
+    ///     Gets or sets a line style for the edge.
     /// </summary>
     public virtual DotLineStyle? LineStyle
     {
@@ -32,7 +32,7 @@ public partial class DotEdgeStyleAttributes : DotEntityStyleAttributesWithMetada
     }
 
     /// <summary>
-    ///     Gets or sets a line weight for the edge (default: <see cref="DotLineWeight.Normal"/>).
+    ///     Gets or sets a line weight for the edge.
     /// </summary>
     public virtual DotLineWeight? LineWeight
     {

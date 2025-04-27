@@ -8,7 +8,7 @@ public enum DotBorderStyle
     /// <summary>
     ///     The default border style.
     /// </summary>
-    Normal = 0,
+    Default = DotStyles.Default,
 
     /// <summary>
     ///     A solid border style.
