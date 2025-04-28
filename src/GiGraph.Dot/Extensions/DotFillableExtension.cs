@@ -15,7 +15,7 @@ public static class DotFillableExtension
     /// <param name="color">
     ///     The color to use.
     /// </param>
-    public static void SetPlainColorFill<T>(this T @this, DotColor color)
+    public static void SetPlainFill<T>(this T @this, DotColor color)
         where T : IDotFillable
     {
         @this.SetFillStyle(DotFillStyle.Regular);
