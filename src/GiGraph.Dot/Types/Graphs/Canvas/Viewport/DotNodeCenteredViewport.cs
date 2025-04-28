@@ -15,8 +15,8 @@ namespace GiGraph.Dot.Types.Graphs.Canvas.Viewport;
 ///     The identifier of a node whose center should be used as the focus.
 /// </param>
 /// <param name="zoom">
-///     The zoom factor. The image in the original layout will be <see cref="DotViewport.Width" /> / <see cref="DotViewport.Zoom" />
-///     by <see cref="DotViewport.Height" /> / <see cref="DotViewport.Zoom" /> points in size. By default, the zoom factor is 1.
+///     The zoom factor. The image in the original layout will be <see cref="DotViewport.Width"/> / <see cref="DotViewport.Zoom"/> by
+///     <see cref="DotViewport.Height"/> / <see cref="DotViewport.Zoom"/> points in size. By default, the zoom factor is 1.
 /// </param>
 public class DotNodeCenteredViewport(double width, double height, string nodeId, double zoom = DotViewport.DefaultZoom)
     : DotViewport(width, height, zoom)
@@ -24,14 +24,13 @@ public class DotNodeCenteredViewport(double width, double height, string nodeId,
     /// <summary>
     ///     The identifier of a node whose center should be used as the focus.
     /// </summary>
-    public string NodeId { get; } = nodeId;
+    public string NodeId { get; } = nodeId ?? throw new ArgumentNullException(nameof(nodeId), "Node identifier must not be null.");
 
     protected override string GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
     {
         var whz = base.GetDotEncodedValue(options, syntaxRules);
 
-        // Based on the Graphviz code, escaping the apostrophe is not supported, but
-        // they implemented a fallback for a case when there is an apostrophe and no comma.
+        // Based on the Graphviz code, escaping the apostrophe is not supported, but they do handle a case when there is an apostrophe and no comma.
         // When there is both a comma and an apostrophe in the node identifier, the centering will not work.
         return NodeId.Contains('\'') && false == NodeId.Contains(',')
             ? $"{whz},{NodeId}"

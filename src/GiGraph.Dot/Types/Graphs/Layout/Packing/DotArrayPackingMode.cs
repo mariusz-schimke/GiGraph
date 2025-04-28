@@ -22,7 +22,7 @@ public class DotArrayPackingMode : DotPackingModeDefinition
     /// <param name="rankCount">
     ///     Specifies the number of columns for row-major component ordering or the number of rows for column-major component ordering.
     /// </param>
-    public DotArrayPackingMode(int rankCount)
+    public DotArrayPackingMode(int? rankCount)
     {
         RankCount = rankCount;
     }
