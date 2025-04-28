@@ -10,7 +10,7 @@ public interface IDotClusterStyleAttributes : IDotGraphClusterCommonStyleAttribu
     /// <summary>
     ///     <para>
     ///         Gets or sets the background color of the cluster (default: none). Used as the initial background for the cluster. If the
-    ///         <see cref="DotGraphFillStyle.Filled"/> fill style is used for the cluster, its
+    ///         <see cref="DotGraphFillStyle.Regular"/> fill style is used for the cluster, its
     ///         <see cref="IDotGraphClusterCommonStyleAttributes.FillColor"/> will overlay the background color.
     ///     </para>
     ///     <para>

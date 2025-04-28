@@ -17,7 +17,7 @@ public enum DotNodeFillStyle
     ///     Causes a plain color fill when <see cref="DotColor" /> is used, or a gradient fill when <see cref="DotGradientColor" /> is
     ///     used.
     /// </summary>
-    Filled = DotFillStyle.Filled,
+    Regular = DotFillStyle.Regular,
 
     /// <summary>
     ///     Applicable to rectangularly-shaped nodes. Causes the fill to be done as a set of vertical stripes. The colors are specified

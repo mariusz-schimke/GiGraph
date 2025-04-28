@@ -11,7 +11,7 @@ public enum DotFillStyle
     None = DotStyles.Default,
 
     /// <inheritdoc cref="DotStyles.Filled"/>
-    Filled = DotStyles.Filled,
+    Regular = DotStyles.Filled,
 
     /// <inheritdoc cref="DotStyles.Striped"/>
     Striped = DotStyles.Striped,

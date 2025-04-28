@@ -13,7 +13,7 @@ public interface IDotGraphClusterCommonStyleAttributes
     ///     </para>
     ///     <para>
     ///         If <see cref="DotGradientColor" /> is specified, with no weighted colors in its parameters (<see cref="DotColor" /> items
-    ///         only), and the <see cref="DotGraphFillStyle.Filled" /> fill style is used, a linear gradient fill is done.
+    ///         only), and the <see cref="DotGraphFillStyle.Regular" /> fill style is used, a linear gradient fill is done.
     ///     </para>
     ///     <para>
     ///         If <see cref="DotGradientColor" /> is used with weighted colors (see <see cref="DotWeightedColor" />), a degenerate
@@ -36,7 +36,7 @@ public interface IDotGraphClusterCommonStyleAttributes
     /// <summary>
     ///     <para>
     ///         Gets or sets the color used to fill the background of the cluster, assuming that the
-    ///         <see cref="DotGraphFillStyle.Filled" /> fill style is specified (default: <see cref="System.Drawing.Color.Black" />).
+    ///         <see cref="DotGraphFillStyle.Regular" /> fill style is specified (default: <see cref="System.Drawing.Color.Black" />).
     ///         If <see cref="FillColor" /> is not defined, <see cref="Color" /> is used. If <see cref="Color" /> is not defined,
     ///         <see cref="IDotClusterStyleAttributes.BackgroundColor" /> is used. If it is not defined too, the default is used, except when
     ///         the output format is MIF, which use black by default.

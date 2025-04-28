@@ -13,7 +13,7 @@ public interface IDotNodeStyleAttributes : IDotEntityStyleAttributes
     ///     </para>
     ///     <para>
     ///         If <see cref="DotGradientColor"/> is used, with no weighted colors in its parameters (<see cref="DotColor"/> items only),
-    ///         and a <see cref="DotNodeFillStyle.Filled"/> fill style is specified for the node, a linear gradient fill is done.
+    ///         and a <see cref="DotNodeFillStyle.Regular"/> fill style is specified for the node, a linear gradient fill is done.
     ///     </para>
     ///     <para>
     ///         If <see cref="DotGradientColor"/> is used with weighted colors (see <see cref="DotWeightedColor"/>), a degenerate linear
@@ -44,7 +44,7 @@ public interface IDotNodeStyleAttributes : IDotEntityStyleAttributes
     /// <summary>
     ///     <para>
     ///         Gets or sets the color used to fill the background of the node, assuming that the fill style of the node is
-    ///         <see cref="DotNodeFillStyle.Filled"/> (default: <see cref="System.Drawing.Color.LightGray"/>). If <see cref="FillColor"/>
+    ///         <see cref="DotNodeFillStyle.Regular"/> (default: <see cref="System.Drawing.Color.LightGray"/>). If <see cref="FillColor"/>
     ///         is not defined, <see cref="Color"/> is used. If it is not defined too, the default is used, except for
     ///         <see cref="IDotNodeAttributes.Shape"/> of <see cref="DotNodeShape.Point"/>, or when the output format is MIF, which use
     ///         black by default.

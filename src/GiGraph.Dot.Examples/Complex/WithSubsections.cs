@@ -18,7 +18,7 @@ public static class WithSubsections
 
         graph.Nodes.Attributes.Annotation = "set default node color and style";
         graph.Nodes.Style.Color = Color.Orange;
-        graph.Nodes.Style.FillStyle = DotNodeFillStyle.Filled;
+        graph.Nodes.Style.FillStyle = DotNodeFillStyle.Regular;
 
         graph.Edges.Add("foo", "bar");
 

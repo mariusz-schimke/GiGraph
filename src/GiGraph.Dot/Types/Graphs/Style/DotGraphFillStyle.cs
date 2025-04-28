@@ -17,7 +17,7 @@ public enum DotGraphFillStyle
     ///     Causes a plain color fill when <see cref="DotColor"/> is used, or a gradient fill when <see cref="DotGradientColor"/> is
     ///     used.
     /// </summary>
-    Filled = DotFillStyle.Filled,
+    Regular = DotFillStyle.Regular,
 
     /// <summary>
     ///     Causes the fill to be done as a set of vertical stripes. The colors are specified via a color list (see
