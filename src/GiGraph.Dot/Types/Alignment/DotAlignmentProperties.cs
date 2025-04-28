@@ -40,10 +40,10 @@ public record DotAlignmentProperties()
     /// <summary>
     ///     Horizontal alignment.
     /// </summary>
-    public DotHorizontalAlignment? Horizontal { get; }
+    public DotHorizontalAlignment? Horizontal { get; init; }
 
     /// <summary>
     ///     Vertical alignment.
     /// </summary>
-    public DotVerticalAlignment? Vertical { get; }
+    public DotVerticalAlignment? Vertical { get; init; }
 }

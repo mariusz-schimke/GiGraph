@@ -25,7 +25,7 @@ public record DotFont(string? Name = null, double? Size = null, DotColor? Color 
     /// <param name="color">
     ///     Font color.
     /// </param>
-    public DotFont(double size, DotColor? color = null)
+    public DotFont(double? size, DotColor? color = null)
         : this(Name: null, size, color)
     {
     }
