@@ -1,6 +1,6 @@
 ﻿using GiGraph.Dot.Entities.Clusters.Attributes;
 using GiGraph.Dot.Entities.Graphs.Attributes;
-using GiGraph.Dot.Types.Clusters;
+using GiGraph.Dot.Types.Clusters.Style;
 using GiGraph.Dot.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common.GraphCluster;
@@ -13,7 +13,7 @@ public interface IDotGraphClusterCommonStyleAttributes
     ///     </para>
     ///     <para>
     ///         If <see cref="DotGradientColor" /> is specified, with no weighted colors in its parameters (<see cref="DotColor" /> items
-    ///         only), and the <see cref="DotClusterFillStyle.Normal" /> fill style is used, a linear gradient fill is done.
+    ///         only), and the <see cref="DotClusterFillStyle.Regular" /> fill style is used, a linear gradient fill is done.
     ///     </para>
     ///     <para>
     ///         If <see cref="DotGradientColor" /> is used with weighted colors (see <see cref="DotWeightedColor" />), a degenerate
@@ -36,7 +36,7 @@ public interface IDotGraphClusterCommonStyleAttributes
     /// <summary>
     ///     <para>
     ///         Gets or sets the color used to fill the background of the cluster, assuming that the
-    ///         <see cref="DotClusterFillStyle.Normal" /> fill style is specified (default: <see cref="System.Drawing.Color.Black" />).
+    ///         <see cref="DotClusterFillStyle.Regular" /> fill style is specified (default: <see cref="System.Drawing.Color.Black" />).
     ///         If <see cref="FillColor" /> is not defined, <see cref="Color" /> is used. If <see cref="Color" /> is not defined,
     ///         <see cref="IDotClusterStyleAttributes.BackgroundColor" /> is used. If it is not defined too, the default is used, except when
     ///         the output format is MIF, which use black by default.

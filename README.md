@@ -1983,7 +1983,7 @@ The following example shows how the primary section (on the graph instance level
 graph.Annotation = "the example graph (the primary section)";
 
 graph.Nodes.Attributes.Annotation = "set node color and style globally";
-graph.Nodes.SetPlainColorFill(Color.Orange);
+graph.Nodes.SetPlainFill(Color.Orange);
 
 graph.Edges.Add("foo", "bar");
 

@@ -6,24 +6,11 @@ using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Html;
-using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Edges.Attributes;
 
 public interface IDotEdgeAttributes
 {
-    /// <summary>
-    ///     <para>
-    ///         Gets or sets the style of the edge (default: unset). See the descriptions of individual <see cref="DotStyles"/> values to
-    ///         learn which styles are applicable to this type of element.
-    ///     </para>
-    ///     <para>
-    ///         Multiple styles can be used at once, for example: <see cref="Style"/> = <see cref="DotStyles.Rounded"/> |
-    ///         <see cref="DotStyles.Bold"/>;
-    ///     </para>
-    /// </summary>
-    DotStyles? Style { get; set; }
-
     /// <summary>
     ///     <para>
     ///         Gets or sets the label to display next to the edge. It may be plain text (<see cref="string"/>) or HTML (

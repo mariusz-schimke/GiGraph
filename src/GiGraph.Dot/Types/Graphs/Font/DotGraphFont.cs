@@ -1,7 +1,7 @@
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Fonts;
 
-namespace GiGraph.Dot.Types.Graphs;
+namespace GiGraph.Dot.Types.Graphs.Font;
 
 /// <summary>
 ///     Font attributes (graph specific).

@@ -1,9 +1,10 @@
-﻿using GiGraph.Dot.Types.Clusters;
+﻿using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
+using GiGraph.Dot.Types.Clusters.Style;
 using GiGraph.Dot.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes;
 
-public interface IDotGraphStyleAttributes
+public interface IDotGraphStyleAttributes : IDotEntityStyleAttributes
 {
     /// <summary>
     ///     <para>

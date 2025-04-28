@@ -1,4 +1,4 @@
-﻿using GiGraph.Dot.Types.Nodes;
+﻿using GiGraph.Dot.Types.Nodes.Size;
 
 namespace GiGraph.Dot.Entities.Nodes.Attributes;
 

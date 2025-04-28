@@ -3,7 +3,7 @@ using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Colors;
-using GiGraph.Dot.Types.Nodes;
+using GiGraph.Dot.Types.Nodes.Style;
 using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Nodes.Attributes;
@@ -25,56 +25,56 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// <summary>
     ///     Gets or sets a fill style.
     /// </summary>
-    public virtual DotNodeFillStyle FillStyle
+    public virtual DotNodeFillStyle? FillStyle
     {
-        get => GetPartialStyleModifier<DotNodeFillStyle>();
-        set => SetPartialStyleModifier(value);
+        get => GetPartialStyleOption<DotNodeFillStyle>();
+        set => SetPartialStyleOption(value);
     }
 
     /// <summary>
     ///     Gets or sets a border style.
     /// </summary>
-    public virtual DotBorderStyle BorderStyle
+    public virtual DotBorderStyle? BorderStyle
     {
-        get => GetPartialStyleModifier<DotBorderStyle>();
-        set => SetPartialStyleModifier(value);
+        get => GetPartialStyleOption<DotBorderStyle>();
+        set => SetPartialStyleOption(value);
     }
 
     /// <summary>
     ///     Gets or sets a border weight.
     /// </summary>
-    public virtual DotBorderWeight BorderWeight
+    public virtual DotBorderWeight? BorderWeight
     {
-        get => GetPartialStyleModifier<DotBorderWeight>();
-        set => SetPartialStyleModifier(value);
+        get => GetPartialStyleOption<DotBorderWeight>();
+        set => SetPartialStyleOption(value);
     }
 
     /// <summary>
     ///     Gets or sets a corner style.
     /// </summary>
-    public virtual DotCornerStyle CornerStyle
+    public virtual DotCornerStyle? CornerStyle
     {
-        get => GetPartialStyleModifier<DotCornerStyle>();
-        set => SetPartialStyleModifier(value);
+        get => GetPartialStyleOption<DotCornerStyle>();
+        set => SetPartialStyleOption(value);
     }
 
     /// <summary>
     ///     When set, causes small chords to be drawn near the vertices of the node’s polygon or, in case of circles and ellipses, two
     ///     chords near the top and the bottom of the shape.
     /// </summary>
-    public virtual bool Diagonals
+    public virtual bool? Diagonals
     {
-        get => HasStyleModifier(DotStyles.Diagonals);
-        set => SetStyleModifier(DotStyles.Diagonals, value);
+        get => HasStyleOption(DotStyles.Diagonals);
+        set => SetStyleOption(DotStyles.Diagonals, value);
     }
 
     /// <summary>
     ///     When set, makes the element invisible.
     /// </summary>
-    public virtual bool Invisible
+    public virtual bool? Invisible
     {
-        get => HasStyleModifier(DotStyles.Invisible);
-        set => SetStyleModifier(DotStyles.Invisible, value);
+        get => HasStyleOption(DotStyles.Invisible);
+        set => SetStyleOption(DotStyles.Invisible, value);
     }
 
     /// <inheritdoc cref="IDotNodeStyleAttributes.Color"/>
@@ -102,18 +102,18 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     public virtual partial int? Peripheries { get; set; }
 
     /// <summary>
-    ///     Applies the specified style modifiers.
+    ///     Applies the specified style options.
     /// </summary>
-    /// <param name="modifiers">
+    /// <param name="options">
     ///     The options to apply.
     /// </param>
-    public virtual void SetStyleModifiers(DotNodeStyleModifiers modifiers)
+    public virtual void SetStyleOptions(DotNodeStyleOptions options)
     {
-        SetStyleModifiers(modifiers.FillStyle, modifiers.BorderStyle, modifiers.BorderWeight, modifiers.CornerStyle, modifiers.Diagonals, modifiers.Invisible);
+        SetStyleOptions(options.FillStyle, options.BorderStyle, options.BorderWeight, options.CornerStyle, options.Diagonals, options.Invisible);
     }
 
     /// <summary>
-    ///     Applies the specified style modifiers.
+    ///     Applies the specified style options.
     /// </summary>
     /// <param name="fillStyle">
     ///     The fill style to set.
@@ -134,13 +134,13 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// <param name="invisible">
     ///     Determines whether the node should be invisible.
     /// </param>
-    public virtual void SetStyleModifiers(
-        DotNodeFillStyle fillStyle = default,
-        DotBorderStyle borderStyle = default,
-        DotBorderWeight borderWeight = default,
-        DotCornerStyle cornerStyle = default,
-        bool diagonals = false,
-        bool invisible = false
+    public virtual void SetStyleOptions(
+        DotNodeFillStyle? fillStyle = null,
+        DotBorderStyle? borderStyle = null,
+        DotBorderWeight? borderWeight = null,
+        DotCornerStyle? cornerStyle = null,
+        bool? diagonals = null,
+        bool? invisible = null
     )
     {
         FillStyle = fillStyle;

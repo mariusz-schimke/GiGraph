@@ -9,7 +9,6 @@ using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Geometry;
-using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Clusters.Attributes;
 
@@ -77,15 +76,6 @@ public partial class DotClusterRootAttributes : DotEntityAttributesWithMetadata<
 
     /// <inheritdoc cref="IDotClusterRootAttributes.Layout"/>
     public DotClusterLayoutAttributes Layout { get; }
-
-    [DotAttributeKey(DotAttributeKeys.Style)]
-    DotStyles? IDotClusterAttributes.Style
-    {
-        [DotAttributeKey(DotAttributeKeys.Style)]
-        get => _attributes.GetValueAs(DotAttributeKeys.Style, out DotStyles? result) ? result : null;
-        [DotAttributeKey(DotAttributeKeys.Style)]
-        set => _attributes.SetValueOrRemove(DotAttributeKeys.Style, value);
-    }
 
     /// <inheritdoc cref="IDotClusterAttributes.Label"/>
     [DotAttributeKey(DotAttributeKeys.Label)]

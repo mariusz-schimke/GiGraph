@@ -6,7 +6,6 @@ using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.EscapeString;
-using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Edges;
 
@@ -43,12 +42,6 @@ public abstract partial class DotEdgeDefinition : IDotEdgeRootAttributes
 
     /// <inheritdoc cref="IDotEdgeRootAttributes.LabelOptions"/>
     public DotEdgeLabelOptionsAttributes LabelOptions => Attributes.Implementation.LabelOptions;
-
-    DotStyles? IDotEdgeAttributes.Style
-    {
-        get => ((IDotEdgeAttributes) Attributes.Implementation).Style;
-        set => ((IDotEdgeAttributes) Attributes.Implementation).Style = value;
-    }
 
     /// <inheritdoc cref="IDotEdgeAttributes.Label"/>
     public virtual DotLabel? Label

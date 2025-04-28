@@ -5,7 +5,6 @@ using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Entities.Nodes.Attributes;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Nodes;
-using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Nodes.Collections;
 
@@ -37,12 +36,6 @@ public partial class DotNodeCollection : IDotNodeRootAttributes
 
     /// <inheritdoc cref="IDotNodeRootAttributes.LabelOptions"/>
     public DotNodeLabelOptionsAttributes LabelOptions => Attributes.Implementation.LabelOptions;
-
-    DotStyles? IDotNodeAttributes.Style
-    {
-        get => ((IDotNodeAttributes) Attributes.Implementation).Style;
-        set => ((IDotNodeAttributes) Attributes.Implementation).Style = value;
-    }
 
     /// <inheritdoc cref="IDotNodeAttributes.Label"/>
     public virtual DotLabel? Label

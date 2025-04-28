@@ -6,7 +6,6 @@ using GiGraph.Dot.Entities.Clusters.Attributes;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Geometry;
-using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Clusters;
 
@@ -29,13 +28,6 @@ public partial class DotClusterSection : IDotClusterRootAttributes
 
     /// <inheritdoc cref="IDotClusterRootAttributes.Layout"/>
     public DotClusterLayoutAttributes Layout => Attributes.Implementation.Layout;
-
-    /// <inheritdoc cref="IDotClusterAttributes.Style"/>
-    DotStyles? IDotClusterAttributes.Style
-    {
-        get => ((IDotClusterAttributes) Attributes.Implementation).Style;
-        set => ((IDotClusterAttributes) Attributes.Implementation).Style = value;
-    }
 
     /// <inheritdoc cref="IDotClusterAttributes.Label"/>
     public virtual DotLabel? Label

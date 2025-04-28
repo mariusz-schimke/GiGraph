@@ -8,7 +8,6 @@ using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Nodes;
-using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Nodes.Attributes;
 
@@ -85,15 +84,6 @@ public partial class DotNodeRootAttributes : DotEntityAttributesWithMetadata<IDo
 
     /// <inheritdoc cref="IDotNodeRootAttributes.LabelOptions"/>
     public DotNodeLabelOptionsAttributes LabelOptions { get; }
-
-    [DotAttributeKey(DotAttributeKeys.Style)]
-    DotStyles? IDotNodeAttributes.Style
-    {
-        [DotAttributeKey(DotAttributeKeys.Style)]
-        get => _attributes.GetValueAs(DotAttributeKeys.Style, out DotStyles? result) ? result : null;
-        [DotAttributeKey(DotAttributeKeys.Style)]
-        set => _attributes.SetValueOrRemove(DotAttributeKeys.Style, value);
-    }
 
     /// <inheritdoc cref="IDotNodeAttributes.Label"/>
     [DotAttributeKey(DotAttributeKeys.Label)]

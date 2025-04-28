@@ -3,7 +3,6 @@ using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Graphs.Attributes;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Types.EscapeString;
-using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Graphs;
 
@@ -32,12 +31,6 @@ public partial class DotGraphSection : IDotGraphRootAttributes
 
     /// <inheritdoc cref="IDotGraphRootAttributes.Hyperlink"/>
     public DotHyperlinkAttributes Hyperlink => Attributes.Implementation.Hyperlink;
-
-    DotStyles? IDotGraphAttributes.Style
-    {
-        get => ((IDotGraphAttributes) Attributes.Implementation).Style;
-        set => ((IDotGraphAttributes) Attributes.Implementation).Style = value;
-    }
 
     /// <inheritdoc cref="IDotGraphAttributes.Label"/>
     public virtual DotLabel? Label

@@ -6,9 +6,9 @@ namespace GiGraph.Dot.Types.Styling;
 public enum DotCornerStyle
 {
     /// <summary>
-    ///     A normal corner style (orthogonal).
+    ///     A default corner style (orthogonal).
     /// </summary>
-    Normal = 0,
+    Default = DotStyles.Default,
 
     /// <summary>
     ///     A rounded corner style.

@@ -14,7 +14,7 @@ public interface IDotNodeRootAttributes : IDotNodeAttributes
     /// <summary>
     ///     Style attributes.
     /// </summary>
-    new DotNodeStyleAttributes Style { get; }
+    DotNodeStyleAttributes Style { get; }
 
     /// <summary>
     ///     Node size attributes.

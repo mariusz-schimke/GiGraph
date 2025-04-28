@@ -3,7 +3,7 @@ using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 using GiGraph.Dot.Output.Metadata;
-using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.Edges.Hyperlinks;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Hyperlinks;
 

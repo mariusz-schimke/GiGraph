@@ -1,8 +1,9 @@
-﻿using GiGraph.Dot.Types.Colors;
+﻿using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
+using GiGraph.Dot.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Edges.Attributes;
 
-public interface IDotEdgeStyleAttributes
+public interface IDotEdgeStyleAttributes : IDotEntityStyleAttributes
 {
     /// <summary>
     ///     <para>

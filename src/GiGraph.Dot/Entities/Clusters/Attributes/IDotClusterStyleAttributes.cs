@@ -1,15 +1,16 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Properties.Common.GraphCluster;
-using GiGraph.Dot.Types.Clusters;
+using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
+using GiGraph.Dot.Types.Clusters.Style;
 using GiGraph.Dot.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Clusters.Attributes;
 
-public interface IDotClusterStyleAttributes : IDotGraphClusterCommonStyleAttributes
+public interface IDotClusterStyleAttributes : IDotGraphClusterCommonStyleAttributes, IDotEntityStyleAttributes
 {
     /// <summary>
     ///     <para>
     ///         Gets or sets the background color of the cluster (default: none). Used as the initial background for the cluster. If the
-    ///         <see cref="DotClusterFillStyle.Normal"/> fill style is used for the cluster, its
+    ///         <see cref="DotClusterFillStyle.Regular"/> fill style is used for the cluster, its
     ///         <see cref="IDotGraphClusterCommonStyleAttributes.FillColor"/> will overlay the background color.
     ///     </para>
     ///     <para>

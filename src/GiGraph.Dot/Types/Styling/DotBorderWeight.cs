@@ -6,9 +6,9 @@ namespace GiGraph.Dot.Types.Styling;
 public enum DotBorderWeight
 {
     /// <summary>
-    ///     A normal border weight.
+    ///     A default border weight.
     /// </summary>
-    Normal = 0,
+    Default = DotStyles.Default,
 
     /// <summary>
     ///     A bold border style.

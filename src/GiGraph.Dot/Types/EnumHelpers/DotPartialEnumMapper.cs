@@ -3,65 +3,120 @@ namespace GiGraph.Dot.Types.EnumHelpers;
 public static class DotPartialEnumMapper
 {
     /// <summary>
-    ///     Gets a bitmask composed of only those bits from the complete bitmask that the partial bitmask enum is able to set.
+    ///     Returns a partial enum value by taking only the bits allowed by the partial enum type from a complete enum value. All other
+    ///     bits are cleared. It is assumed that <typeparamref name="TPartial"/> partially overlaps <typeparamref name="TComplete"/>.
     /// </summary>
     /// <param name="complete">
-    ///     The complete type to strip off with bits outside the range of the partial type.
+    ///     The full enum value that may have more bits than the partial enum supports.
     /// </param>
-    /// <typeparam name="TComplete">
-    ///     The complete bitmask enum type.
-    /// </typeparam>
     /// <typeparam name="TPartial">
-    ///     The partial bitmask enum type.
+    ///     The partial enum type that defines which bits are valid.
     /// </typeparam>
-    public static TPartial ToPartial<TComplete, TPartial>(TComplete complete)
-        where TComplete : struct, Enum
+    /// <typeparam name="TComplete">
+    ///     The full enum type.
+    /// </typeparam>
+    /// <returns>
+    ///     A value of the partial enum type, containing only the valid bits from the complete value.
+    /// </returns>
+    public static TPartial ExtractPartialFlags<TPartial, TComplete>(TComplete complete)
         where TPartial : struct, Enum
+        where TComplete : struct, Enum
     {
-        var partialMask = GetMask<TPartial>();
+        var partialBitMask = GetBitMaskOf<TPartial>();
         var completeInt = Convert.ToInt32(complete);
-
-        return (TPartial) Convert.ChangeType(
-            partialMask & completeInt,
-            Enum.GetUnderlyingType(typeof(TPartial))
-        );
+        return ConvertTo<TPartial>(partialBitMask & completeInt);
     }
 
     /// <summary>
-    ///     Merges the partial bitmask enum into the complete bitmask by overwriting the bits of the complete type, that exist as values
-    ///     of the partial bitmask enum. Returns the merged complete value.
+    ///     Updates a complete enum value with bits from a partial enum value. Bits defined by the partial enum type are replaced; all
+    ///     other bits in the complete value stay unchanged. It is assumed that <typeparamref name="TPartial"/> partially overlaps
+    ///     <typeparamref name="TComplete"/>.
     /// </summary>
     /// <param name="partial">
-    ///     The partial type to merge into the complete one.
+    ///     The partial enum value to apply.
     /// </param>
     /// <param name="complete">
-    ///     The complete value whose selection of bits to overwrite with those set in the partial type enum.
+    ///     The full enum value to update.
     /// </param>
     /// <typeparam name="TPartial">
-    ///     The partial bitmask enum type.
+    ///     The partial enum type, defining which bits should be updated.
     /// </typeparam>
     /// <typeparam name="TComplete">
-    ///     The complete bitmask enum type.
+    ///     The full enum type.
     /// </typeparam>
-    public static TComplete ToComplete<TPartial, TComplete>(TPartial partial, TComplete complete)
+    /// <returns>
+    ///     A new complete enum value with bits from the partial value merged into it.
+    /// </returns>
+    public static TComplete ReplacePartialFlags<TPartial, TComplete>(TPartial partial, TComplete complete)
         where TPartial : struct, Enum
         where TComplete : struct, Enum
     {
-        var partialMask = GetMask<TPartial>();
         var partialInt = Convert.ToInt32(partial);
-        var completeInt = Convert.ToInt32(complete);
-
-        return (TComplete) Convert.ChangeType(
-            partialInt | (~partialMask & completeInt),
-            Enum.GetUnderlyingType(typeof(TComplete))
-        );
+        return ReplacePartialFlags<TPartial, TComplete>(partialInt, complete);
     }
 
-    private static int GetMask<TEnum>()
+    /// <summary>
+    ///     Clears (sets to 0) only the bits in the complete enum value that are defined by the partial enum type. All other bits remain
+    ///     unchanged. It is assumed that <typeparamref name="TPartial"/> partially overlaps <typeparamref name="TComplete"/>.
+    /// </summary>
+    /// <param name="complete">
+    ///     The full enum value to clear bits from.
+    /// </param>
+    /// <typeparam name="TPartial">
+    ///     The partial enum type defining which bits should be cleared.
+    /// </typeparam>
+    /// <typeparam name="TComplete">
+    ///     The full enum type.
+    /// </typeparam>
+    /// <returns>
+    ///     A new complete enum value with the specified bits cleared.
+    /// </returns>
+    public static TComplete ClearPartialFlags<TPartial, TComplete>(TComplete complete)
+        where TPartial : struct, Enum
+        where TComplete : struct, Enum =>
+        ReplacePartialFlags<TPartial, TComplete>(partial: 0, complete);
+
+    /// <summary>
+    ///     Merges the specified partial enums into one, complete enum. It is assumed that all specified partial enums partially overlap
+    ///     <typeparamref name="TComplete"/>.
+    /// </summary>
+    /// <param name="partialEnums">
+    ///     The partial enums to merge.
+    /// </param>
+    /// <typeparam name="TComplete">
+    ///     The output value to convert the merged enums to.
+    /// </typeparam>
+    public static TComplete MergePartialFlags<TComplete>(params Enum[] partialEnums)
+        where TComplete : struct, Enum
+    {
+        var complete = partialEnums.Select(Convert.ToInt32)
+            .Aggregate(0, (accumulate, source) => accumulate | source);
+
+        return ConvertTo<TComplete>(complete);
+    }
+
+    private static TComplete ReplacePartialFlags<TPartial, TComplete>(int partial, TComplete complete)
+        where TPartial : struct, Enum
+        where TComplete : struct, Enum
+    {
+        var partialMask = GetBitMaskOf<TPartial>();
+        var completeInt = Convert.ToInt32(complete);
+
+        return ConvertTo<TComplete>(partial | (~partialMask & completeInt));
+    }
+
+    private static int GetBitMaskOf<TEnum>()
         where TEnum : struct, Enum
     {
         return Enum.GetValues(typeof(TEnum))
             .Cast<int>()
-            .Aggregate(0, (current, value) => current | value);
+            .Aggregate(0, (accumulate, source) => accumulate | source);
     }
+
+    private static TResult ConvertTo<TResult>(object source)
+        where TResult : struct, Enum =>
+        (TResult) Convert.ChangeType(
+            source,
+            Enum.GetUnderlyingType(typeof(TResult))
+        );
 }

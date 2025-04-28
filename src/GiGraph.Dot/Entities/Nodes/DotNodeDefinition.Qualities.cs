@@ -2,6 +2,7 @@
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Geometry;
 using GiGraph.Dot.Types.Nodes;
+using GiGraph.Dot.Types.Nodes.Style;
 using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Nodes;

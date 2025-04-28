@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.Contracts;
 using System.Drawing;
 using GiGraph.Dot.Entities.Graphs;
-using GiGraph.Dot.Types.Nodes;
+using GiGraph.Dot.Types.Nodes.Style;
 using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Examples.Complex;
@@ -18,7 +18,7 @@ public static class WithSubsections
 
         graph.Nodes.Attributes.Annotation = "set default node color and style";
         graph.Nodes.Style.Color = Color.Orange;
-        graph.Nodes.Style.FillStyle = DotNodeFillStyle.Normal;
+        graph.Nodes.Style.FillStyle = DotNodeFillStyle.Regular;
 
         graph.Edges.Add("foo", "bar");
 

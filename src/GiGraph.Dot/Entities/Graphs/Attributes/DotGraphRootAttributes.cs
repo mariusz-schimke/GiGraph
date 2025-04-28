@@ -6,7 +6,6 @@ using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.EscapeString;
-using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes;
 
@@ -77,15 +76,6 @@ public partial class DotGraphRootAttributes : DotEntityAttributesWithMetadata<ID
 
     /// <inheritdoc cref="IDotGraphRootAttributes.Hyperlink"/>
     public DotHyperlinkAttributes Hyperlink { get; }
-
-    [DotAttributeKey(DotAttributeKeys.Style)]
-    DotStyles? IDotGraphAttributes.Style
-    {
-        [DotAttributeKey(DotAttributeKeys.Style)]
-        get => _attributes.GetValueAs(DotAttributeKeys.Style, out DotStyles? result) ? result : null;
-        [DotAttributeKey(DotAttributeKeys.Style)]
-        set => _attributes.SetValueOrRemove(DotAttributeKeys.Style, value);
-    }
 
     /// <inheritdoc cref="IDotGraphAttributes.Label"/>
     [DotAttributeKey(DotAttributeKeys.Label)]
