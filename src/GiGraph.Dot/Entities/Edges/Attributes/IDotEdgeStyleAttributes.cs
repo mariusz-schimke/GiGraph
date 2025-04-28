@@ -1,22 +1,10 @@
-﻿using GiGraph.Dot.Types.Colors;
-using GiGraph.Dot.Types.Styling;
+﻿using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
+using GiGraph.Dot.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Edges.Attributes;
 
-public interface IDotEdgeStyleAttributes
+public interface IDotEdgeStyleAttributes : IDotEntityStyleAttributes
 {
-    /// <summary>
-    ///     <para>
-    ///         Gets or sets the style of the edge (default: unset). See the descriptions of individual <see cref="DotStyles"/> values to
-    ///         learn which styles are applicable to this type of element.
-    ///     </para>
-    ///     <para>
-    ///         Multiple styles can be used at once, for example: <see cref="Style"/> = <see cref="DotStyles.Rounded"/> |
-    ///         <see cref="DotStyles.Bold"/>;
-    ///     </para>
-    /// </summary>
-    DotStyles? Style { get; set; }
-
     /// <summary>
     ///     <para>
     ///         Gets or sets the color to use for the edge (default: <see cref="System.Drawing.Color.Black"/>).

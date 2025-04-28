@@ -7,15 +7,27 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
 
-public abstract partial class DotEntityStyleAttributesWithMetadata<TIEntityAttributeProperties, TEntityAttributeProperties>(
+public abstract class DotEntityStyleAttributesWithMetadata<TIEntityAttributeProperties, TEntityAttributeProperties>(
     DotAttributeCollection attributes,
     Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup
 )
-    : DotEntityAttributesWithMetadata<TIEntityAttributeProperties, TEntityAttributeProperties>(attributes, attributeKeyLookup)
+    : DotEntityAttributesWithMetadata<TIEntityAttributeProperties, TEntityAttributeProperties>(attributes, attributeKeyLookup), IDotEntityStyleAttributes
     where TEntityAttributeProperties : DotEntityStyleAttributesWithMetadata<TIEntityAttributeProperties, TEntityAttributeProperties>, TIEntityAttributeProperties
 {
+    private DotStyles? Style
+    {
+        get => ((IDotEntityStyleAttributes) this).Style;
+        set => ((IDotEntityStyleAttributes) this).Style = value;
+    }
+
     [DotAttributeKey(DotAttributeKeys.Style)]
-    protected virtual partial DotStyles? Style { get; set; }
+    DotStyles? IDotEntityStyleAttributes.Style
+    {
+        [DotAttributeKey(DotAttributeKeys.Style)]
+        get => _attributes.GetValueAs(DotAttributeKeys.Style, out DotStyles? result) ? result : null;
+        [DotAttributeKey(DotAttributeKeys.Style)]
+        set => _attributes.SetValueOrRemove(DotAttributeKeys.Style, value);
+    }
 
     /// <summary>
     ///     Determines if any style is assigned to the element, that is, if the Graphviz 'style' attribute has any value specified (is

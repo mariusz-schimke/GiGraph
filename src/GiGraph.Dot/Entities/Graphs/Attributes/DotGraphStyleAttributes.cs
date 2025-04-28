@@ -4,7 +4,6 @@ using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Graphs.Style;
-using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes;
 
@@ -34,15 +33,6 @@ public partial class DotGraphStyleAttributes : DotEntityStyleAttributesWithMetad
     {
         get => GetPartialStyleOption<DotGraphFillStyle>();
         set => SetPartialStyleOption(value);
-    }
-
-    [DotAttributeKey(DotAttributeKeys.Style)]
-    DotStyles? IDotGraphStyleAttributes.Style
-    {
-        [DotAttributeKey(DotAttributeKeys.Style)]
-        get => _attributes.GetValueAs(DotAttributeKeys.Style, out DotStyles? result) ? result : null;
-        [DotAttributeKey(DotAttributeKeys.Style)]
-        set => _attributes.SetValueOrRemove(DotAttributeKeys.Style, value);
     }
 
     /// <inheritdoc cref="IDotGraphStyleAttributes.BackgroundColor"/>

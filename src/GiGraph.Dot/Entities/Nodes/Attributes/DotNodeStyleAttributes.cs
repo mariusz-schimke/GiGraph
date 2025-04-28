@@ -77,15 +77,6 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
         set => SetStyleOption(DotStyles.Invisible, value);
     }
 
-    [DotAttributeKey(DotAttributeKeys.Style)]
-    DotStyles? IDotNodeStyleAttributes.Style
-    {
-        [DotAttributeKey(DotAttributeKeys.Style)]
-        get => _attributes.GetValueAs(DotAttributeKeys.Style, out DotStyles? result) ? result : null;
-        [DotAttributeKey(DotAttributeKeys.Style)]
-        set => _attributes.SetValueOrRemove(DotAttributeKeys.Style, value);
-    }
-
     /// <inheritdoc cref="IDotNodeStyleAttributes.Color"/>
     [DotAttributeKey(DotAttributeKeys.Color)]
     public virtual partial DotColorDefinition? Color { get; set; }

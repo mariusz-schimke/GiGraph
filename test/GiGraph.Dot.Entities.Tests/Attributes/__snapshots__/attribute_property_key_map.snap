@@ -353,10 +353,10 @@
     "Graph": "Layout.EdgeShape: DotEdgeShape?"
   },
   "style": {
-    "Graph": "Style: DotStyles?",
-    "Cluster": "Style: DotStyles?",
-    "Node": "Style: DotStyles?",
-    "Edge": "Style: DotStyles?"
+    "Graph": "Style.Style: DotStyles?",
+    "Cluster": "Style.Style: DotStyles?",
+    "Node": "Style.Style: DotStyles?",
+    "Edge": "Style.Style: DotStyles?"
   },
   "stylesheet": {
     "Graph": "SvgStyleSheet.Url: String"
