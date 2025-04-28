@@ -18,7 +18,7 @@ public class DotGraphStyleAttributeOptionsTest
 
         graph.Style.SetStyleOptions(
             new DotGraphStyleOptions(
-                DotGraphFillStyle.Striped
+                DotClusterFillStyle.Striped
             )
         );
 
@@ -27,7 +27,7 @@ public class DotGraphStyleAttributeOptionsTest
 
         graph.Clusters.Style.SetStyleOptions(
             new DotClusterStyleOptions(
-                DotGraphFillStyle.Striped,
+                DotClusterFillStyle.Striped,
                 DotBorderStyle.Dotted,
                 DotBorderWeight.Bold,
                 DotCornerStyle.Rounded,
@@ -43,7 +43,7 @@ public class DotGraphStyleAttributeOptionsTest
 
         // set the same another way
         graph.Clusters.Style.SetStyleOptions(
-            DotGraphFillStyle.Radial, // this one is shared with one directly on the graph (see below)
+            DotClusterFillStyle.Radial, // this one is shared with one directly on the graph (see below)
             DotBorderStyle.Dotted,
             DotBorderWeight.Bold,
             DotCornerStyle.Rounded,
@@ -52,7 +52,7 @@ public class DotGraphStyleAttributeOptionsTest
 
         graph.Style.SetStyleOptions(
             new DotGraphStyleOptions(
-                DotGraphFillStyle.Striped // overwrites the one set on the clusters above
+                DotClusterFillStyle.Striped // overwrites the one set on the clusters above
             )
         );
 
@@ -70,12 +70,12 @@ public class DotGraphStyleAttributeOptionsTest
 
         Assert.False(graph.Style.HasStyleOptions());
 
-        graph.Style.FillStyle = DotGraphFillStyle.Radial;
+        graph.Style.FillStyle = DotClusterFillStyle.Radial;
 
         Assert.True(graph.Style.HasStyleOptions());
         Assert.False(graph.Style.HasDefaultStyleOptions());
 
-        graph.Style.FillStyle = DotGraphFillStyle.None;
+        graph.Style.FillStyle = DotClusterFillStyle.None;
 
         Assert.True(graph.Style.HasStyleOptions());
         Assert.True(graph.Style.HasDefaultStyleOptions());
@@ -91,13 +91,13 @@ public class DotGraphStyleAttributeOptionsTest
         {
             Style =
             {
-                FillStyle = DotGraphFillStyle.Radial
+                FillStyle = DotClusterFillStyle.Radial
             }
         };
 
         graph.Clusters.Style.SetStyleOptions(
             new DotClusterStyleOptions(
-                DotGraphFillStyle.Striped,
+                DotClusterFillStyle.Striped,
                 DotBorderStyle.Dotted,
                 DotBorderWeight.Bold,
                 DotCornerStyle.Rounded,
@@ -134,9 +134,9 @@ public class DotGraphStyleAttributeOptionsTest
         Assert.False(graph.Style.HasStyleOptions());
 
         graph.Style.SetDefaultStyleOptions();
-        Assert.Equal(graph.Style.FillStyle, DotGraphFillStyle.None);
+        Assert.Equal(graph.Style.FillStyle, DotClusterFillStyle.None);
 
-        Assert.Equal(graph.Clusters.Style.FillStyle, DotGraphFillStyle.None);
+        Assert.Equal(graph.Clusters.Style.FillStyle, DotClusterFillStyle.None);
         Assert.Equal(graph.Clusters.Style.BorderStyle, DotBorderStyle.Default);
         Assert.Equal(graph.Clusters.Style.BorderWeight, DotBorderWeight.Default);
         Assert.Equal(graph.Clusters.Style.Invisible, false);
@@ -151,7 +151,7 @@ public class DotGraphStyleAttributeOptionsTest
 
 
         graph.Style.SetDefaultStyleOptions();
-        Assert.Equal(graph.Style.FillStyle, DotGraphFillStyle.None);
+        Assert.Equal(graph.Style.FillStyle, DotClusterFillStyle.None);
 
         graph.Clusters.Style.ClearStyleOptions();
         Assert.Null(graph.Style.FillStyle);

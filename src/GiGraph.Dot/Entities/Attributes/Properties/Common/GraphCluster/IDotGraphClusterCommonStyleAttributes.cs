@@ -1,7 +1,7 @@
 ﻿using GiGraph.Dot.Entities.Clusters.Attributes;
 using GiGraph.Dot.Entities.Graphs.Attributes;
+using GiGraph.Dot.Types.Clusters.Style;
 using GiGraph.Dot.Types.Colors;
-using GiGraph.Dot.Types.Graphs.Style;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common.GraphCluster;
 
@@ -13,7 +13,7 @@ public interface IDotGraphClusterCommonStyleAttributes
     ///     </para>
     ///     <para>
     ///         If <see cref="DotGradientColor" /> is specified, with no weighted colors in its parameters (<see cref="DotColor" /> items
-    ///         only), and the <see cref="DotGraphFillStyle.Regular" /> fill style is used, a linear gradient fill is done.
+    ///         only), and the <see cref="DotClusterFillStyle.Regular" /> fill style is used, a linear gradient fill is done.
     ///     </para>
     ///     <para>
     ///         If <see cref="DotGradientColor" /> is used with weighted colors (see <see cref="DotWeightedColor" />), a degenerate
@@ -21,14 +21,14 @@ public interface IDotGraphClusterCommonStyleAttributes
     ///         <see cref="DotWeightedColor.Weight" /> specifying how much of region is filled with each color.
     ///     </para>
     ///     <para>
-    ///         If the fill style used is <see cref="DotGraphFillStyle.Radial" />, then a radial gradient fill is done. See also the
+    ///         If the fill style used is <see cref="DotClusterFillStyle.Radial" />, then a radial gradient fill is done. See also the
     ///         <see cref="DotGraphStyleAttributes.GradientFillAngle" /> attribute of graph
     ///         <see cref="IDotGraphRootAttributes.Canvas" /> for setting a gradient angle globally, or its
     ///         <see cref="IDotClusterStyleAttributes.GradientFillAngle" /> counterpart on individual clusters.
     ///     </para>
     ///     <para>
     ///         The fill style can also be set to do fills using more than 2 colors (set fill style to
-    ///         <see cref="DotGraphFillStyle.Striped" />, and use <see cref="DotMulticolor" /> as a color list definition).
+    ///         <see cref="DotClusterFillStyle.Striped" />, and use <see cref="DotMulticolor" /> as a color list definition).
     ///     </para>
     /// </summary>
     DotColorDefinition? Color { get; set; }
@@ -36,14 +36,14 @@ public interface IDotGraphClusterCommonStyleAttributes
     /// <summary>
     ///     <para>
     ///         Gets or sets the color used to fill the background of the cluster, assuming that the
-    ///         <see cref="DotGraphFillStyle.Regular" /> fill style is specified (default: <see cref="System.Drawing.Color.Black" />).
+    ///         <see cref="DotClusterFillStyle.Regular" /> fill style is specified (default: <see cref="System.Drawing.Color.Black" />).
     ///         If <see cref="FillColor" /> is not defined, <see cref="Color" /> is used. If <see cref="Color" /> is not defined,
     ///         <see cref="IDotClusterStyleAttributes.BackgroundColor" /> is used. If it is not defined too, the default is used, except when
     ///         the output format is MIF, which use black by default.
     ///     </para>
     ///     <para>
     ///         When <see cref="DotGradientColor" /> is used, a gradient fill is generated. By default, this is a linear fill; setting
-    ///         fill style to <see cref="DotGraphFillStyle.Radial" /> will cause a radial fill. If the second color is
+    ///         fill style to <see cref="DotClusterFillStyle.Radial" /> will cause a radial fill. If the second color is
     ///         <see cref="System.Drawing.Color.Empty" />, the default color is used for it. See also the
     ///         <see cref="DotGraphStyleAttributes.GradientFillAngle" /> attribute on graph
     ///         <see cref="IDotGraphRootAttributes.Canvas" /> for setting a gradient angle globally, or its

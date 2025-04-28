@@ -1,12 +1,12 @@
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Styling;
 
-namespace GiGraph.Dot.Types.Graphs.Style;
+namespace GiGraph.Dot.Types.Clusters.Style;
 
 /// <summary>
 ///     Fill style applicable to graph and clusters.
 /// </summary>
-public enum DotGraphFillStyle
+public enum DotClusterFillStyle
 {
     /// <summary>
     ///     No fill.

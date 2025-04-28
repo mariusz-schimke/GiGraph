@@ -2,6 +2,7 @@ using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
+using GiGraph.Dot.Types.Clusters.Style;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Graphs.Style;
 
@@ -23,15 +24,15 @@ public partial class DotGraphStyleAttributes : DotEntityStyleAttributesWithMetad
 
     /// <summary>
     ///     <para>
-    ///         Gets or sets the fill style of the graph. The only option applicable is <see cref="DotGraphFillStyle.Radial"/>.
+    ///         Gets or sets the fill style of the graph. The only option applicable is <see cref="DotClusterFillStyle.Radial"/>.
     ///     </para>
     ///     <para>
     ///         Note that this setting is shared with clusters and they can't be applied independently.
     ///     </para>
     /// </summary>
-    public virtual DotGraphFillStyle? FillStyle
+    public virtual DotClusterFillStyle? FillStyle
     {
-        get => GetPartialStyleOption<DotGraphFillStyle>();
+        get => GetPartialStyleOption<DotClusterFillStyle>();
         set => SetPartialStyleOption(value);
     }
 

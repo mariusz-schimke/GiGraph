@@ -1,7 +1,6 @@
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Types.Clusters.Style;
-using GiGraph.Dot.Types.Graphs.Style;
 using GiGraph.Dot.Types.Styling;
 using Snapshooter.Xunit;
 using Xunit;
@@ -20,7 +19,7 @@ public class DotClusterStyleAttributeOptionsTest
         // set by class
         cluster.Style.SetStyleOptions(
             new DotClusterStyleOptions(
-                DotGraphFillStyle.Striped,
+                DotClusterFillStyle.Striped,
                 DotBorderStyle.Dotted,
                 DotBorderWeight.Bold,
                 DotCornerStyle.Rounded,
@@ -36,7 +35,7 @@ public class DotClusterStyleAttributeOptionsTest
 
         // set the same another way
         cluster.Style.SetStyleOptions(
-            DotGraphFillStyle.Striped,
+            DotClusterFillStyle.Striped,
             DotBorderStyle.Dotted,
             DotBorderWeight.Bold,
             DotCornerStyle.Rounded,
@@ -57,7 +56,7 @@ public class DotClusterStyleAttributeOptionsTest
         // set by class
         cluster.Style.SetStyleOptions(
             new DotClusterStyleOptions(
-                DotGraphFillStyle.Striped,
+                DotClusterFillStyle.Striped,
                 DotBorderStyle.Dotted,
                 DotBorderWeight.Bold,
                 DotCornerStyle.Rounded,
@@ -93,7 +92,7 @@ public class DotClusterStyleAttributeOptionsTest
 
         cluster.Style.SetDefaultStyleOptions();
 
-        Assert.Equal(cluster.Style.FillStyle, DotGraphFillStyle.None);
+        Assert.Equal(cluster.Style.FillStyle, DotClusterFillStyle.None);
         Assert.Equal(cluster.Style.BorderStyle, DotBorderStyle.Default);
         Assert.Equal(cluster.Style.BorderWeight, DotBorderWeight.Default);
         Assert.Equal(cluster.Style.Invisible, false);

@@ -1,4 +1,3 @@
-using GiGraph.Dot.Types.Graphs.Style;
 using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Types.Clusters.Style;
@@ -34,7 +33,7 @@ public record DotClusterStyleOptions
     ///     Determines whether the element is invisible.
     /// </param>
     public DotClusterStyleOptions(
-        DotGraphFillStyle? fillStyle = null,
+        DotClusterFillStyle? fillStyle = null,
         DotBorderStyle? borderStyle = null,
         DotBorderWeight? borderWeight = null,
         DotCornerStyle? cornerStyle = null,
@@ -51,7 +50,7 @@ public record DotClusterStyleOptions
     /// <summary>
     ///     The fill style.
     /// </summary>
-    public DotGraphFillStyle? FillStyle { get; init; }
+    public DotClusterFillStyle? FillStyle { get; init; }
 
     /// <summary>
     ///     The border style.

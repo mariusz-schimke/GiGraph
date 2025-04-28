@@ -1,6 +1,6 @@
 using GiGraph.Dot.Entities.Graphs;
+using GiGraph.Dot.Types.Clusters.Style;
 using GiGraph.Dot.Types.Colors;
-using GiGraph.Dot.Types.Graphs.Style;
 
 namespace GiGraph.Dot.Extensions;
 
@@ -114,11 +114,11 @@ public static class DotGraphSectionExtension
             // the style may also be set from the Clusters collection on graph, and radial is the only attribute
             // that applies to graph background and to cluster fill
             case true:
-                @this.Style.FillStyle = DotGraphFillStyle.Radial;
+                @this.Style.FillStyle = DotClusterFillStyle.Radial;
                 break;
 
-            case false when @this.Style.FillStyle == DotGraphFillStyle.Radial:
-                @this.Style.FillStyle = DotGraphFillStyle.None;
+            case false when @this.Style.FillStyle == DotClusterFillStyle.Radial:
+                @this.Style.FillStyle = DotClusterFillStyle.None;
                 break;
         }
 

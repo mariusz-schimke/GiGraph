@@ -4,7 +4,6 @@ using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Clusters.Style;
 using GiGraph.Dot.Types.Colors;
-using GiGraph.Dot.Types.Graphs.Style;
 using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common.GraphCluster;
@@ -19,9 +18,9 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
     /// <summary>
     ///     Gets or sets a fill style.
     /// </summary>
-    public virtual DotGraphFillStyle? FillStyle
+    public virtual DotClusterFillStyle? FillStyle
     {
-        get => GetPartialStyleOption<DotGraphFillStyle>();
+        get => GetPartialStyleOption<DotClusterFillStyle>();
         set => SetPartialStyleOption(value);
     }
 
@@ -103,7 +102,7 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
     ///     Determines whether the node should be invisible.
     /// </param>
     public virtual void SetStyleOptions(
-        DotGraphFillStyle? fillStyle = null,
+        DotClusterFillStyle? fillStyle = null,
         DotBorderStyle? borderStyle = null,
         DotBorderWeight? borderWeight = null,
         DotCornerStyle? cornerStyle = null,

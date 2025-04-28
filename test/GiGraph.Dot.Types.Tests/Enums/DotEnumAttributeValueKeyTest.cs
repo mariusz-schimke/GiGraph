@@ -2,8 +2,8 @@ using System.Reflection;
 using GiGraph.Dot.Output.EnumHelpers;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Output.Metadata.Html;
+using GiGraph.Dot.Types.Clusters.Style;
 using GiGraph.Dot.Types.Fonts;
-using GiGraph.Dot.Types.Graphs.Style;
 using GiGraph.Dot.Types.Nodes.Style;
 using GiGraph.Dot.Types.Styling;
 using Xunit;
@@ -16,7 +16,7 @@ public class DotEnumAttributeValueKeyTest
     [
         typeof(DotFillStyle),
         typeof(DotNodeFillStyle),
-        typeof(DotGraphFillStyle),
+        typeof(DotClusterFillStyle),
         typeof(DotBorderStyle),
         typeof(DotBorderWeight),
         typeof(DotCornerStyle),

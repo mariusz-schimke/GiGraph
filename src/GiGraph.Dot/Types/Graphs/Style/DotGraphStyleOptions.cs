@@ -1,3 +1,5 @@
+using GiGraph.Dot.Types.Clusters.Style;
+
 namespace GiGraph.Dot.Types.Graphs.Style;
 
 /// <summary>
@@ -17,12 +19,12 @@ public record DotGraphStyleOptions
     /// </summary>
     /// <param name="fillStyle">
     ///     The fill style for graph and clusters. The only option applicable to the root graph is
-    ///     <see cref="DotGraphFillStyle.Radial"/> .
+    ///     <see cref="DotClusterFillStyle.Radial"/> .
     /// </param>
-    public DotGraphStyleOptions(DotGraphFillStyle? fillStyle)
+    public DotGraphStyleOptions(DotClusterFillStyle? fillStyle)
     {
         FillStyle = fillStyle;
     }
 
-    public DotGraphFillStyle? FillStyle { get; init; }
+    public DotClusterFillStyle? FillStyle { get; init; }
 }
