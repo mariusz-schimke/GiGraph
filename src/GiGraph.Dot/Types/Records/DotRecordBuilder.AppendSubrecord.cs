@@ -23,7 +23,7 @@ public partial class DotRecordBuilder
     /// <param name="fields">
     ///     The textual fields to append.
     /// </param>
-    public virtual DotRecordBuilder AppendSubrecord(params DotEscapeString[] fields)
+    public virtual DotRecordBuilder AppendSubrecord(params DotEscapeString?[] fields)
     {
         _fields.Add(new DotRecord(fields, flip: false));
         return this;
@@ -36,7 +36,7 @@ public partial class DotRecordBuilder
     /// <param name="fields">
     ///     The textual fields to append.
     /// </param>
-    public virtual DotRecordBuilder AppendSubrecord(IEnumerable<DotEscapeString> fields)
+    public virtual DotRecordBuilder AppendSubrecord(IEnumerable<DotEscapeString?> fields)
     {
         _fields.Add(new DotRecord(fields, flip: false));
         return this;
@@ -49,7 +49,7 @@ public partial class DotRecordBuilder
     /// <param name="fields">
     ///     The textual fields to append.
     /// </param>
-    public virtual DotRecordBuilder AppendSubrecord(IEnumerable<string> fields)
+    public virtual DotRecordBuilder AppendSubrecord(IEnumerable<string?> fields)
     {
         _fields.Add(new DotRecord(fields, flip: false));
         return this;
@@ -60,7 +60,7 @@ public partial class DotRecordBuilder
     ///     be opposite to the layout of its parent record.
     /// </summary>
     /// <param name="fields">
-    ///     The fields of the record to append (<see cref="DotRecordTextField" />, <see cref="DotRecord" />).
+    ///     The fields of the record to append (<see cref="DotRecordTextField"/>, <see cref="DotRecord"/>).
     /// </param>
     public virtual DotRecordBuilder AppendSubrecord(params DotRecordField[] fields)
     {
@@ -73,7 +73,7 @@ public partial class DotRecordBuilder
     ///     be opposite to the layout of its parent record.
     /// </summary>
     /// <param name="fields">
-    ///     The fields of the record to append (<see cref="DotRecordTextField" />, <see cref="DotRecord" />).
+    ///     The fields of the record to append (<see cref="DotRecordTextField"/>, <see cref="DotRecord"/>).
     /// </param>
     public virtual DotRecordBuilder AppendSubrecord(IEnumerable<DotRecordField> fields)
     {

@@ -21,16 +21,16 @@ public class DotEndpoint : DotEndpointDefinition
     /// </param>
     /// <param name="portName">
     ///     Determines the edge placement to aim for the specified port. If specified, the corresponding node, referred to by the
-    ///     <paramref name="id" /> parameter, must either have a record shape (<see cref="DotNodeShape.Record" />,
-    ///     <see cref="DotNodeShape.RoundedRecord" />) with one of its fields having the given port name, or have an HTML-like label, one
+    ///     <paramref name="id"/> parameter, must either have a record shape (<see cref="DotNodeShape.Record"/>,
+    ///     <see cref="DotNodeShape.RoundedRecord"/>) with one of its fields having the given port name, or have an HTML-like label, one
     ///     of whose components has a PORT attribute set to the specified port name.
     /// </param>
     /// <param name="compassPoint">
-    ///     Determines the edge placement to aim for the specified compass point on the <paramref name="portName" /> if specified, or on
+    ///     Determines the edge placement to aim for the specified compass point on the <paramref name="portName"/> if specified, or on
     ///     the node itself otherwise. If no compass point is specified explicitly, the default value is
-    ///     <see cref="DotCompassPoint.Center" />.
+    ///     <see cref="DotCompassPoint.Center"/>.
     /// </param>
-    public DotEndpoint(string id, string portName, DotCompassPoint? compassPoint = null)
+    public DotEndpoint(string id, string? portName, DotCompassPoint? compassPoint = null)
         : this(id, new DotEndpointPort(portName, compassPoint))
     {
     }
@@ -43,7 +43,7 @@ public class DotEndpoint : DotEndpointDefinition
     /// </param>
     /// <param name="compassPoint">
     ///     Determines the edge placement to aim for the specified compass point on the node. If no compass point is specified
-    ///     explicitly, the default value is <see cref="DotCompassPoint.Center" />.
+    ///     explicitly, the default value is <see cref="DotCompassPoint.Center"/>.
     /// </param>
     public DotEndpoint(string id, DotCompassPoint? compassPoint = null)
         : this(id, new DotEndpointPort(compassPoint))

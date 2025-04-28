@@ -1,3 +1,5 @@
+using System.Diagnostics.Contracts;
+
 namespace GiGraph.Dot.Types.EnumHelpers;
 
 public static class DotPartialEnumMapper
@@ -18,6 +20,7 @@ public static class DotPartialEnumMapper
     /// <returns>
     ///     A value of the partial enum type, containing only the valid bits from the complete value.
     /// </returns>
+    [Pure]
     public static TPartial ExtractPartialFlags<TPartial, TComplete>(TComplete complete)
         where TPartial : struct, Enum
         where TComplete : struct, Enum
@@ -47,6 +50,7 @@ public static class DotPartialEnumMapper
     /// <returns>
     ///     A new complete enum value with bits from the partial value merged into it.
     /// </returns>
+    [Pure]
     public static TComplete ReplacePartialFlags<TPartial, TComplete>(TPartial partial, TComplete complete)
         where TPartial : struct, Enum
         where TComplete : struct, Enum
@@ -71,6 +75,7 @@ public static class DotPartialEnumMapper
     /// <returns>
     ///     A new complete enum value with the specified bits cleared.
     /// </returns>
+    [Pure]
     public static TComplete ClearPartialFlags<TPartial, TComplete>(TComplete complete)
         where TPartial : struct, Enum
         where TComplete : struct, Enum =>
@@ -86,6 +91,7 @@ public static class DotPartialEnumMapper
     /// <typeparam name="TComplete">
     ///     The output value to convert the merged enums to.
     /// </typeparam>
+    [Pure]
     public static TComplete MergePartialFlags<TComplete>(params Enum[] partialEnums)
         where TComplete : struct, Enum
     {

@@ -25,7 +25,7 @@ public record DotFont(string? Name = null, double? Size = null, DotColor? Color 
     /// <param name="color">
     ///     Font color.
     /// </param>
-    public DotFont(double size, DotColor? color = null)
+    public DotFont(double? size, DotColor? color = null)
         : this(Name: null, size, color)
     {
     }
@@ -43,19 +43,4 @@ public record DotFont(string? Name = null, double? Size = null, DotColor? Color 
         : this(name, Size: null, color)
     {
     }
-
-    /// <summary>
-    ///     The font name.
-    /// </summary>
-    public string? Name { get; init; } = Name;
-
-    /// <summary>
-    ///     The font size.
-    /// </summary>
-    public double? Size { get; init; } = Size;
-
-    /// <summary>
-    ///     The font color.
-    /// </summary>
-    public DotColor? Color { get; init; } = Color;
 }

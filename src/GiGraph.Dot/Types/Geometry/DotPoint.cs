@@ -22,7 +22,6 @@ public class DotPoint : IDotEncodable
     public DotPoint(bool? isFixed, params double[] coordinates)
     {
         IsFixed = isFixed;
-
         Coordinates = coordinates ?? throw new ArgumentNullException(nameof(coordinates), "Point coordinate collection must not be null.");
 
         if (coordinates.Length == 0)
@@ -92,7 +91,7 @@ public class DotPoint : IDotEncodable
     ///     Creates and initializes a new point in a two-dimensional plain.
     /// </summary>
     /// <param name="point">
-    ///     The <see cref="System.Drawing.Point" /> to initialize the instance with.
+    ///     The <see cref="System.Drawing.Point"/> to initialize the instance with.
     /// </param>
     /// <param name="isFixed">
     ///     Determines whether the node position (if applied to nodes) should not change (input-only).
@@ -106,7 +105,7 @@ public class DotPoint : IDotEncodable
     ///     Creates and initializes a new point in a two-dimensional plain.
     /// </summary>
     /// <param name="point">
-    ///     The <see cref="System.Drawing.PointF" /> to initialize the instance with.
+    ///     The <see cref="System.Drawing.PointF"/> to initialize the instance with.
     /// </param>
     /// <param name="isFixed">
     ///     Determines whether the node position (if applied to nodes) should not change (input-only).
