@@ -57,7 +57,7 @@
 
 - The `SaveToFile` method has been renamed to `Save` for consistency with the new naming convention.
 
-- Several convenience methods have been added to graph layout for setting packing parameters, as well as methods for configuring simple and composite arrowheads at the head and tail of an edge. 
+- Several convenience methods have been added to graph layout for setting packing and rank separation parameters, as well as methods for configuring simple and composite arrowheads at the head and tail of an edge. 
 
 - Minor refactoring and optimizations.
 
