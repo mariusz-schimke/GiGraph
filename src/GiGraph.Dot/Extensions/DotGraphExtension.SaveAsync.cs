@@ -28,7 +28,7 @@ public static partial class DotGraphExtension
     ///     The syntax rules to use.
     /// </param>
     /// <param name="encoding">
-    ///     The encoding to use for the output text.
+    ///     The encoding to use for the output text. If not specified, UTF-8 without BOM is used.
     /// </param>
     /// <param name="cancellationToken">
     ///     A cancellation token.
@@ -68,7 +68,7 @@ public static partial class DotGraphExtension
     ///     The syntax rules to use.
     /// </param>
     /// <param name="encoding">
-    ///     The encoding to use for the output text.
+    ///     The encoding to use for the output text. If not specified, UTF-8 without BOM is used.
     /// </param>
     /// <param name="cancellationToken">
     ///     A cancellation token.

@@ -114,7 +114,7 @@ public static partial class DotGraphExtension
     ///     The syntax rules to use.
     /// </param>
     /// <param name="encoding">
-    ///     The encoding to use for the output text.
+    ///     The encoding to use for the output text. If not specified, UTF-8 without BOM is used.
     /// </param>
     public static void Save(
         this DotGraph graph,
@@ -149,7 +149,7 @@ public static partial class DotGraphExtension
     ///     The syntax rules to use.
     /// </param>
     /// <param name="encoding">
-    ///     The encoding to use for the output text.
+    ///     The encoding to use for the output text. If not specified, UTF-8 without BOM is used.
     /// </param>
     public static void Save(
         this DotGraph graph,
