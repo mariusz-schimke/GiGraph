@@ -9,9 +9,6 @@ using GiGraph.Dot.Output.Writers.TokenWriter;
 
 namespace GiGraph.Dot.Extensions;
 
-/// <summary>
-///     Provides extension methods for <see cref="DotGraph"/>.
-/// </summary>
 public static partial class DotGraphExtension
 {
     /// <summary>

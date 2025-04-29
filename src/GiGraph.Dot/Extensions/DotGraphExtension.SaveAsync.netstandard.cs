@@ -1,4 +1,4 @@
-﻿#if !NETSTANDARD2_0
+﻿#if NETSTANDARD2_0
 
 using System.Text;
 using GiGraph.Dot.Entities.Graphs;
@@ -43,8 +43,8 @@ public static partial class DotGraphExtension
         CancellationToken cancellationToken = default
     )
     {
-        await using var fileStream = File.Create(filePath);
-        await graph.SaveAsync(fileStream, formattingOptions, syntaxOptions, syntaxRules, encoding, cancellationToken);
+        using var fileStream = File.Create(filePath);
+        await graph.SaveAsync(fileStream, formattingOptions, syntaxOptions, syntaxRules, encoding);
         await fileStream.FlushAsync(cancellationToken);
     }
 
@@ -70,25 +70,21 @@ public static partial class DotGraphExtension
     /// <param name="encoding">
     ///     The encoding to use for the output text.
     /// </param>
-    /// <param name="cancellationToken">
-    ///     A cancellation token.
-    /// </param>
     public static async Task SaveAsync(
         this DotGraph graph,
         Stream stream,
         DotFormattingOptions? formattingOptions = null,
         DotSyntaxOptions? syntaxOptions = null,
         DotSyntaxRules? syntaxRules = null,
-        Encoding? encoding = null,
-        CancellationToken cancellationToken = default
+        Encoding? encoding = null
     )
     {
-        await using var streamWriter = CreateStreamWriter(stream, encoding);
+        using var streamWriter = CreateStreamWriter(stream, encoding);
 
         // it would be better to build the graph directly to stream, but the solution does not support async building
         var output = graph.ToDot(formattingOptions, syntaxOptions, syntaxRules);
         await streamWriter.WriteAsync(output);
-        await streamWriter.FlushAsync(cancellationToken);
+        await streamWriter.FlushAsync();
     }
 }
 
