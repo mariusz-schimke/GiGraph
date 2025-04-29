@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.Contracts;
-using System.Text;
+﻿using System.Text;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Output.Generators.Graphs;
 using GiGraph.Dot.Output.Generators.Providers;
@@ -15,36 +14,6 @@ namespace GiGraph.Dot.Extensions;
 /// </summary>
 public static partial class DotGraphExtension
 {
-    /// <summary>
-    ///     Converts the graph to its DOT format representation.
-    /// </summary>
-    /// <param name="graph">
-    ///     The graph to convert to the DOT format.
-    /// </param>
-    /// <param name="formattingOptions">
-    ///     The formatting options to use.
-    /// </param>
-    /// <param name="syntaxOptions">
-    ///     The generation options to use.
-    /// </param>
-    /// <param name="syntaxRules">
-    ///     The syntax rules to use.
-    /// </param>
-    [Pure]
-    public static string ToDot(
-        this DotGraph graph,
-        DotFormattingOptions? formattingOptions = null,
-        DotSyntaxOptions? syntaxOptions = null,
-        DotSyntaxRules? syntaxRules = null
-    )
-    {
-        using var stringWriter = new StringWriter();
-        graph.Save(stringWriter, formattingOptions, syntaxOptions, syntaxRules);
-
-        stringWriter.Flush();
-        return stringWriter.ToString();
-    }
-
     /// <summary>
     ///     Writes the DOT format representation of the graph to the provided text writer.
     /// </summary>
