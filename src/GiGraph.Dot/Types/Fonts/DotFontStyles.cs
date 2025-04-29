@@ -7,9 +7,9 @@ namespace GiGraph.Dot.Types.Fonts;
 public enum DotFontStyles
 {
     /// <summary>
-    ///     Normal style.
+    ///     Regular (default) font style.
     /// </summary>
-    Normal = 0,
+    Regular = 0,
 
     /// <summary>
     ///     Bold style.
@@ -44,5 +44,25 @@ public enum DotFontStyles
     /// <summary>
     ///     Strikethrough style.
     /// </summary>
-    Strikethrough = 1 << 6
+    Strikethrough = 1 << 6,
+
+    /// <summary>
+    ///     Bold italic style.
+    /// </summary>
+    BoldItalic = Bold | Italic,
+
+    /// <summary>
+    ///     Bold underlined style.
+    /// </summary>
+    BoldUnderline = Bold | Underline,
+
+    /// <summary>
+    ///     Italic underlined style.
+    /// </summary>
+    ItalicUnderline = Italic | Underline,
+
+    /// <summary>
+    ///     Bold italic underlined style.
+    /// </summary>
+    BoldItalicUnderline = Bold | Italic | Underline
 }

@@ -48,7 +48,7 @@ public class DotHtmlBuilderTest
             .AppendStyledFont(new DotStyledFont(), f => f.AppendText("styled text"))
             .AppendStyledFont(new DotStyledFont(DotFontStyles.Bold, "arial", 10, Color.Red), f => f.AppendText("styled text"))
             .AppendStyled(DotFontStyles.Bold, f => f.AppendText("bold text"))
-            .AppendStyled(DotFontStyles.Normal, f => f.AppendText("normal text"))
+            .AppendStyled(DotFontStyles.Regular, f => f.AppendText("normal text"))
             .AppendStyledText("styled text\n", new DotStyledFont(DotFontStyles.Bold, "arial", 10, Color.Red), DotHorizontalAlignment.Left)
             .AppendText("font\n", new DotFont("arial", 10, Color.Red), DotHorizontalAlignment.Left)
             .AppendStyledText("bold text 1\n", DotFontStyles.Bold, DotHorizontalAlignment.Right)

@@ -28,13 +28,13 @@ public abstract partial class DotHtmlFontStyle : DotHtmlElement
 
     /// <summary>
     ///     Creates an appropriate nested structure of HTML tags based on the specified font style. Returns null for the
-    ///     <see cref="DotFontStyles.Normal" /> font style.
+    ///     <see cref="DotFontStyles.Regular" /> font style.
     /// </summary>
     /// <param name="style">
     ///     The style to apply to the entities.
     /// </param>
     /// <param name="contentElement">
-    ///     The bottom-level element to embed content in. Returns null for the <see cref="DotFontStyles.Normal" /> font style.
+    ///     The bottom-level element to embed content in. Returns null for the <see cref="DotFontStyles.Regular" /> font style.
     /// </param>
     public static DotHtmlFontStyle? FromStyle(DotFontStyles style, out DotHtmlFontStyle? contentElement)
     {

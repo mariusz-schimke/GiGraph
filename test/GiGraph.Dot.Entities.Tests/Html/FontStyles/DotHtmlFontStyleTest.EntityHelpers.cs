@@ -26,7 +26,7 @@ public partial class DotHtmlFontStyleTest
     public void entity_factory_method_returns_source_entity_for_normal_font_style()
     {
         var entityCollection = new DotHtmlEntityCollection(new DotHtmlText("text"));
-        var entity = DotHtmlFontStyle.WithEntity(entityCollection, DotFontStyles.Normal);
+        var entity = DotHtmlFontStyle.WithEntity(entityCollection, DotFontStyles.Regular);
 
         Snapshot.Match(
             ((IDotHtmlEncodable) entity).ToHtml(_syntaxOptions, _syntaxRules),

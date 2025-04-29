@@ -12,7 +12,7 @@ public partial class DotHtmlFontStyleTest
     [Fact]
     public void text_is_not_embedded_in_any_tag_for_normal_style()
     {
-        var entity = DotHtmlFontStyle.WithText("text", DotFontStyles.Normal);
+        var entity = DotHtmlFontStyle.WithText("text", DotFontStyles.Regular);
 
         Snapshot.Match(
             ((IDotHtmlEncodable) entity).ToHtml(_syntaxOptions, _syntaxRules),

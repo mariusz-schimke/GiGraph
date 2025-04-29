@@ -20,7 +20,7 @@ public static class HtmlStyledEdgeLabel
                 .AppendFont(
                     new DotFont("Arial", 8, Color.Gray),
                     f => f
-                        .AppendStyledText("Lorem ipsum dolor sit amet,\n", DotFontStyles.Normal)
+                        .AppendStyledText("Lorem ipsum dolor sit amet,\n", DotFontStyles.Regular)
                         .AppendStyledText("consectetur adipiscing elit", DotFontStyles.Italic | DotFontStyles.Underline)
                 )
                 .Build();
