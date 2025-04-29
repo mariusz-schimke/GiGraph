@@ -1,10 +1,8 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
-using GiGraph.Dot.Entities.Clusters.Attributes;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Clusters;
-using GiGraph.Dot.Types.Colors;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes;
 
@@ -13,35 +11,28 @@ public partial class DotGraphClustersAttributes : DotEntityAttributesWithMetadat
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphClustersAttributes, IDotGraphClustersAttributes>().BuildLazy();
 
     public DotGraphClustersAttributes(DotAttributeCollection attributes)
-        : this(attributes, AttributeKeyLookup, new DotClusterStyleAttributeOptions(attributes))
+        : this(attributes, AttributeKeyLookup, new DotGraphClustersStyleAttributes(attributes))
     {
     }
 
-    protected DotGraphClustersAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
-        DotClusterStyleAttributeOptions styleAttributeOptions
+    protected DotGraphClustersAttributes(
+        DotAttributeCollection attributes,
+        Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
+        DotGraphClustersStyleAttributes styleAttributes
     )
         : base(attributes, attributeKeyLookup)
     {
-        Style = styleAttributeOptions;
+        Style = styleAttributes;
     }
 
-    public DotClusterStyleAttributeOptions Style { get; }
+    /// <inheritdoc cref="IDotGraphClustersRootAttributes.Style"/>
+    public DotGraphClustersStyleAttributes Style { get; }
 
-    [DotAttributeKey(DotAttributeKeys.Color)]
-    public virtual partial DotColorDefinition? Color { get; set; }
-
-    [DotAttributeKey(DotAttributeKeys.PenWidth)]
-    public virtual partial double? BorderWidth { get; set; }
-
-    [DotAttributeKey(DotAttributeKeys.PenColor)]
-    public virtual partial DotColor? BorderColor { get; set; }
-
-    [DotAttributeKey(DotAttributeKeys.FillColor)]
-    public virtual partial DotColorDefinition? FillColor { get; set; }
-
+    /// <inheritdoc cref="IDotGraphClustersAttributes.EnableEdgeClipping"/>
     [DotAttributeKey(DotAttributeKeys.Compound)]
     public virtual partial bool? EnableEdgeClipping { get; set; }
 
+    /// <inheritdoc cref="IDotGraphClustersAttributes.VisualizationMode"/>
     [DotAttributeKey(DotAttributeKeys.ClusterRank)]
     public virtual partial DotClusterVisualizationMode? VisualizationMode { get; set; }
 }

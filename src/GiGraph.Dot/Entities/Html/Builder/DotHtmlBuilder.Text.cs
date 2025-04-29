@@ -16,7 +16,7 @@ public partial class DotHtmlBuilder
     /// <param name="lineAlignment">
     ///     Specifies horizontal placement of lines if multiline text is specified.
     /// </param>
-    public virtual DotHtmlBuilder AppendText(string text, DotHorizontalAlignment? lineAlignment = null) => AppendEntity(new DotHtmlText(text, lineAlignment));
+    public virtual DotHtmlBuilder AppendText(string? text, DotHorizontalAlignment? lineAlignment = null) => AppendEntity(new DotHtmlText(text, lineAlignment));
 
     /// <summary>
     ///     Appends text with the specified font to this instance.
@@ -30,7 +30,7 @@ public partial class DotHtmlBuilder
     /// <param name="lineAlignment">
     ///     Specifies horizontal placement of lines if multiline text is specified.
     /// </param>
-    public virtual DotHtmlBuilder AppendText(string text, DotFont font, DotHorizontalAlignment? lineAlignment = null)
+    public virtual DotHtmlBuilder AppendText(string? text, DotFont font, DotHorizontalAlignment? lineAlignment = null)
     {
         return AppendFont(font, e => e.AppendText(text, lineAlignment));
     }

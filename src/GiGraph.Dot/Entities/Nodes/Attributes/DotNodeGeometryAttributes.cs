@@ -20,27 +20,23 @@ public partial class DotNodeGeometryAttributes : DotEntityAttributesWithMetadata
     {
     }
 
-    /// <inheritdoc cref="IDotNodeGeometryAttributes.Sides" />
+    /// <inheritdoc cref="IDotNodeGeometryAttributes.Sides"/>
     [DotAttributeKey(DotAttributeKeys.Sides)]
     public virtual partial int? Sides { get; set; }
 
-    /// <inheritdoc cref="IDotNodeGeometryAttributes.Regular" />
+    /// <inheritdoc cref="IDotNodeGeometryAttributes.Regular"/>
     [DotAttributeKey(DotAttributeKeys.Regular)]
     public virtual partial bool? Regular { get; set; }
 
-    /// <inheritdoc cref="IDotNodeGeometryAttributes.Peripheries" />
-    [DotAttributeKey(DotAttributeKeys.Peripheries)]
-    public virtual partial int? Peripheries { get; set; }
-
-    /// <inheritdoc cref="IDotNodeGeometryAttributes.Rotation" />
+    /// <inheritdoc cref="IDotNodeGeometryAttributes.Rotation"/>
     [DotAttributeKey(DotAttributeKeys.Orientation)]
     public virtual partial double? Rotation { get; set; }
 
-    /// <inheritdoc cref="IDotNodeGeometryAttributes.Skew" />
+    /// <inheritdoc cref="IDotNodeGeometryAttributes.Skew"/>
     [DotAttributeKey(DotAttributeKeys.Skew)]
     public virtual partial double? Skew { get; set; }
 
-    /// <inheritdoc cref="IDotNodeGeometryAttributes.Distortion" />
+    /// <inheritdoc cref="IDotNodeGeometryAttributes.Distortion"/>
     [DotAttributeKey(DotAttributeKeys.Distortion)]
     public virtual partial double? Distortion { get; set; }
 
@@ -53,9 +49,6 @@ public partial class DotNodeGeometryAttributes : DotEntityAttributesWithMetadata
     /// <param name="regular">
     ///     Determines whether the shape should be regular.
     /// </param>
-    /// <param name="peripheries">
-    ///     The number of peripheries.
-    /// </param>
     /// <param name="rotation">
     ///     The rotation angle.
     /// </param>
@@ -65,11 +58,10 @@ public partial class DotNodeGeometryAttributes : DotEntityAttributesWithMetadata
     /// <param name="distortion">
     ///     The distortion factor.
     /// </param>
-    public virtual void Set(int? sides = null, bool? regular = null, int? peripheries = null, double? rotation = null, double? skew = null, double? distortion = null)
+    public virtual void Set(int? sides = null, bool? regular = null, double? rotation = null, double? skew = null, double? distortion = null)
     {
         Sides = sides;
         Regular = regular;
-        Peripheries = peripheries;
         Rotation = rotation;
         Skew = skew;
         Distortion = distortion;
@@ -83,17 +75,6 @@ public partial class DotNodeGeometryAttributes : DotEntityAttributesWithMetadata
     /// </param>
     public virtual void Set(DotPolygon attributes)
     {
-        Set(attributes.Sides, attributes.Regular, attributes.Peripheries, attributes.Rotation, attributes.Skew, attributes.Distortion);
-    }
-
-    /// <summary>
-    ///     Copies geometry attributes from the specified instance.
-    /// </summary>
-    /// <param name="attributes">
-    ///     The instance to copy the attributes from.
-    /// </param>
-    public virtual void Set(IDotNodeGeometryAttributes attributes)
-    {
-        Set(attributes.Sides, attributes.Regular, attributes.Peripheries, attributes.Rotation, attributes.Skew, attributes.Distortion);
+        Set(attributes.Sides, attributes.Regular, attributes.Rotation, attributes.Skew, attributes.Distortion);
     }
 }

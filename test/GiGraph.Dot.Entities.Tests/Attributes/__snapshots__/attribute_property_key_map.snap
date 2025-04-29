@@ -3,14 +3,14 @@
     "Edge": "Head.Arrowhead: DotArrowheadDefinition"
   },
   "arrowsize": {
-    "Edge": "ArrowheadScaleFactor: Double?"
+    "Edge": "Style.ArrowheadScale: Double?"
   },
   "arrowtail": {
     "Edge": "Tail.Arrowhead: DotArrowheadDefinition"
   },
   "bgcolor": {
-    "Graph": "Canvas.BackgroundColor: DotColorDefinition",
-    "Cluster": "BackgroundColor: DotColorDefinition"
+    "Graph": "Style.BackgroundColor: DotColorDefinition",
+    "Cluster": "Style.BackgroundColor: DotColorDefinition"
   },
   "center": {
     "Graph": "Canvas.CenterDrawing: Boolean?"
@@ -32,16 +32,16 @@
     "Graph": "Clusters.VisualizationMode: DotClusterVisualizationMode?"
   },
   "color": {
-    "Graph": "Clusters.Color: DotColorDefinition",
-    "Cluster": "Color: DotColorDefinition",
-    "Node": "Color: DotColorDefinition",
-    "Edge": "Color: DotColorDefinition"
+    "Graph": "Clusters.Style.Color: DotColorDefinition",
+    "Cluster": "Style.Color: DotColorDefinition",
+    "Node": "Style.Color: DotColorDefinition",
+    "Edge": "Style.Color: DotColorDefinition"
   },
   "colorscheme": {
-    "Graph": "ColorScheme: String",
-    "Cluster": "ColorScheme: String",
-    "Node": "ColorScheme: String",
-    "Edge": "ColorScheme: String"
+    "Graph": "Style.ColorScheme: String",
+    "Cluster": "Style.ColorScheme: String",
+    "Node": "Style.ColorScheme: String",
+    "Edge": "Style.ColorScheme: String"
   },
   "comment": {
     "Graph": "Comment: String",
@@ -55,10 +55,10 @@
     "Graph": "Layout.ConcentrateEdges: Boolean?"
   },
   "constraint": {
-    "Edge": "Constrain: Boolean?"
+    "Edge": "Layout.IncludeInNodeRanking: Boolean?"
   },
   "decorate": {
-    "Edge": "AttachLabel: Boolean?"
+    "Edge": "Style.DrawLabelConnector: Boolean?"
   },
   "dir": {
     "Edge": "Directions: DotEdgeDirections?"
@@ -82,10 +82,10 @@
     "Edge": "EdgeHyperlink.Url: DotEscapeString"
   },
   "fillcolor": {
-    "Graph": "Clusters.FillColor: DotColorDefinition",
-    "Cluster": "FillColor: DotColorDefinition",
-    "Node": "FillColor: DotColorDefinition",
-    "Edge": "FillColor: DotColorDefinition"
+    "Graph": "Clusters.Style.FillColor: DotColorDefinition",
+    "Cluster": "Style.FillColor: DotColorDefinition",
+    "Node": "Style.FillColor: DotColorDefinition",
+    "Edge": "Style.FillColor: DotColorDefinition"
   },
   "fixedsize": {
     "Node": "Size.Mode: DotNodeSizing?"
@@ -118,12 +118,12 @@
     "Graph": "Layout.ForceExternalLabels: Boolean?"
   },
   "gradientangle": {
-    "Graph": "Canvas.GradientFillAngle: Int32?",
-    "Cluster": "GradientFillAngle: Int32?",
-    "Node": "GradientFillAngle: Int32?"
+    "Graph": "Style.GradientFillAngle: Int32?",
+    "Cluster": "Style.GradientFillAngle: Int32?",
+    "Node": "Style.GradientFillAngle: Int32?"
   },
   "group": {
-    "Node": "GroupName: String"
+    "Node": "Layout.GroupName: String"
   },
   "headclip": {
     "Edge": "Head.ClipToNodeBoundary: Boolean?"
@@ -186,7 +186,7 @@
     "Edge": "EndpointLabels.Distance: Double?"
   },
   "labelfloat": {
-    "Edge": "EnableLabelFloating: Boolean?"
+    "Edge": "Layout.EnableLabelFloating: Boolean?"
   },
   "labelfontcolor": {
     "Edge": "EndpointLabels.Font.Color: DotColor"
@@ -201,13 +201,13 @@
     "Edge": "LabelHyperlink.Href: DotEscapeString"
   },
   "labeljust": {
-    "Graph": "LabelAlignment.Horizontal: DotHorizontalAlignment?",
-    "Cluster": "LabelAlignment.Horizontal: DotHorizontalAlignment?"
+    "Graph": "LabelOptions.HorizontalAlignment: DotHorizontalAlignment?",
+    "Cluster": "LabelOptions.HorizontalAlignment: DotHorizontalAlignment?"
   },
   "labelloc": {
-    "Graph": "LabelAlignment.Vertical: DotVerticalAlignment?",
-    "Cluster": "LabelAlignment.Vertical: DotVerticalAlignment?",
-    "Node": "LabelAlignment: DotVerticalAlignment?"
+    "Graph": "LabelOptions.VerticalAlignment: DotVerticalAlignment?",
+    "Cluster": "LabelOptions.VerticalAlignment: DotVerticalAlignment?",
+    "Node": "LabelOptions.VerticalAlignment: DotVerticalAlignment?"
   },
   "labeltarget": {
     "Edge": "LabelHyperlink.Target: DotEscapeString"
@@ -225,7 +225,7 @@
     "Graph": "Layout.Engine: String"
   },
   "len": {
-    "Edge": "Length: Double?"
+    "Edge": "Layout.Length: Double?"
   },
   "lhead": {
     "Edge": "Head.ClusterId: DotClusterId"
@@ -236,13 +236,13 @@
   "margin": {
     "Graph": "Canvas.Margin: DotPoint",
     "Cluster": "Padding: DotPoint",
-    "Node": "Padding: DotPoint"
+    "Node": "LabelOptions.Margin: DotPoint"
   },
   "mclimit": {
-    "Graph": "Layout.EdgeCrossingMinimizationScaleFactor: Double?"
+    "Graph": "Layout.EdgeCrossingMinimizationScale: Double?"
   },
   "minlen": {
-    "Edge": "MinLength: Int32?"
+    "Edge": "Layout.MinLength: Int32?"
   },
   "newrank": {
     "Graph": "Layout.EnableGlobalRanking: Boolean?"
@@ -251,17 +251,17 @@
     "Graph": "Layout.NodeSeparation: Double?"
   },
   "nojustify": {
-    "Graph": "DisableLabelJustification: Boolean?",
-    "Cluster": "DisableLabelJustification: Boolean?",
-    "Node": "DisableLabelJustification: Boolean?",
-    "Edge": "DisableLabelJustification: Boolean?"
+    "Graph": "LabelOptions.DisableJustification: Boolean?",
+    "Cluster": "LabelOptions.DisableJustification: Boolean?",
+    "Node": "LabelOptions.DisableJustification: Boolean?",
+    "Edge": "LabelOptions.DisableJustification: Boolean?"
   },
   "oneblock": {
-    "Graph": "Layout.ForceCircularLayout: Boolean?"
+    "Graph": "Layout.UseCircularLayout: Boolean?"
   },
   "ordering": {
     "Graph": "Layout.EdgeOrderingMode: DotEdgeOrderingMode?",
-    "Node": "EdgeOrderingMode: DotEdgeOrderingMode?"
+    "Node": "Layout.EdgeOrderingMode: DotEdgeOrderingMode?"
   },
   "orientation": {
     "Graph": "Canvas.Orientation: DotOrientation?",
@@ -280,23 +280,23 @@
     "Graph": "Canvas.Padding: DotPoint"
   },
   "pencolor": {
-    "Graph": "Clusters.BorderColor: DotColor",
-    "Cluster": "BorderColor: DotColor"
+    "Graph": "Clusters.Style.BorderColor: DotColor",
+    "Cluster": "Style.BorderColor: DotColor"
   },
   "penwidth": {
-    "Graph": "Clusters.BorderWidth: Double?",
-    "Cluster": "BorderWidth: Double?",
-    "Node": "BorderWidth: Double?",
-    "Edge": "Width: Double?"
+    "Graph": "Clusters.Style.BorderWidth: Double?",
+    "Cluster": "Style.BorderWidth: Double?",
+    "Node": "Style.BorderWidth: Double?",
+    "Edge": "Style.LineWidth: Double?"
   },
   "peripheries": {
-    "Cluster": "Peripheries: Int32?",
-    "Node": "Geometry.Peripheries: Int32?"
+    "Cluster": "Style.Peripheries: Int32?",
+    "Node": "Style.Peripheries: Int32?"
   },
   "rank": {
     "Graph": "Layout.NodeRank: DotRank?",
     "Subgraph": "NodeRank: DotRank?",
-    "Cluster": "NodeRank: DotRank?"
+    "Cluster": "Layout.NodeRank: DotRank?"
   },
   "rankdir": {
     "Graph": "Layout.Direction: DotLayoutDirection?"
@@ -317,8 +317,8 @@
     "Graph": "Canvas.Resolution: Double?"
   },
   "root": {
-    "Graph": "RootNodeId: DotId",
-    "Node": "IsRoot: Boolean?"
+    "Graph": "Layout.RootNodeId: DotId",
+    "Node": "Layout.IsLayoutRoot: Boolean?"
   },
   "rotate": {
     "Graph": "Canvas.OrientationAngle: Int32?"
@@ -346,17 +346,17 @@
   },
   "sortv": {
     "Graph": "Layout.SortIndex: Int32?",
-    "Cluster": "SortIndex: Int32?",
-    "Node": "SortIndex: Int32?"
+    "Cluster": "Layout.SortIndex: Int32?",
+    "Node": "Layout.SortIndex: Int32?"
   },
   "splines": {
-    "Graph": "EdgeShape: DotEdgeShape?"
+    "Graph": "Layout.EdgeShape: DotEdgeShape?"
   },
   "style": {
-    "Graph": "Style: DotStyles?",
-    "Cluster": "Style: DotStyles?",
-    "Node": "Style: DotStyles?",
-    "Edge": "Style: DotStyles?"
+    "Graph": "Style.Style: DotStyles?",
+    "Cluster": "Style.Style: DotStyles?",
+    "Node": "Style.Style: DotStyles?",
+    "Edge": "Style.Style: DotStyles?"
   },
   "stylesheet": {
     "Graph": "SvgStyleSheet.Url: String"
@@ -407,7 +407,7 @@
     "Graph": "Canvas.Viewport: DotViewport"
   },
   "weight": {
-    "Edge": "Weight: Double?"
+    "Edge": "Layout.Weight: Double?"
   },
   "width": {
     "Node": "Size.Width: Double?"

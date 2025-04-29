@@ -1,7 +1,7 @@
 using System.Drawing;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
-using GiGraph.Dot.Types.Clusters;
+using GiGraph.Dot.Types.Clusters.Style;
 using GiGraph.Dot.Types.Colors;
 using Snapshooter.Xunit;
 using Xunit;
@@ -18,7 +18,7 @@ public class DotGraphSectionExtensionTest
         graph.SetBackground(Color.Gold);
         graph.Subsections.Add().SetBackground(Color.Gold);
 
-        Snapshot.Match(graph.Build(), "plain_graph_background");
+        Snapshot.Match(graph.ToDot(), "plain_graph_background");
     }
 
     [Fact]
@@ -35,14 +35,16 @@ public class DotGraphSectionExtensionTest
         graph.Subsections.Add().SetGradientBackground(Color.Gold, Color.DarkMagenta);
         graph.Subsections.Add().SetGradientBackground(Color.Gold, Color.DarkMagenta, 10);
 
-        graph.Subsections.Add(s =>
-            {
-                // this setting should not be removed by the extension method called below (this is a non-radial style)
-                s.Clusters.Style.FillStyle = DotClusterFillStyle.Striped;
-            })
+        graph.Subsections
+            .Add(s =>
+                {
+                    // this setting should not be removed by the extension method called below (this is a non-radial style)
+                    s.Clusters.Style.FillStyle = DotClusterFillStyle.Striped;
+                }
+            )
             .SetGradientBackground(new DotGradientColor(Color.Gold, Color.DarkMagenta), 20);
 
-        Snapshot.Match(graph.Build(), "gradient_graph_background");
+        Snapshot.Match(graph.ToDot(), "gradient_graph_background");
     }
 
     [Fact]
@@ -58,9 +60,10 @@ public class DotGraphSectionExtensionTest
         graph.Subsections.Add().SetRadialGradientBackground(Color.Gold, Color.DarkMagenta);
         graph.Subsections.Add().SetRadialGradientBackground(Color.Gold, Color.DarkMagenta, 10);
 
-        graph.Subsections.Add()
+        graph.Subsections
+            .Add()
             .SetRadialGradientBackground(new DotGradientColor(Color.Gold, Color.DarkMagenta), 20);
 
-        Snapshot.Match(graph.Build(), "radial_gradient_graph_background");
+        Snapshot.Match(graph.ToDot(), "radial_gradient_graph_background");
     }
 }

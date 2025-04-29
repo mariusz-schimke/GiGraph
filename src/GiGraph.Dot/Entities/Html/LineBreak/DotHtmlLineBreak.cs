@@ -62,9 +62,9 @@ public partial class DotHtmlLineBreak : DotHtmlVoidElement
     /// <param name="lineAlignment">
     ///     Specifies horizontal placement of the line.
     /// </param>
-    public static DotHtmlString Html(DotHorizontalAlignment? lineAlignment = null) => Html(lineAlignment, DotSyntaxOptions.Default, DotSyntaxRules.Default);
+    public static DotHtmlString? Html(DotHorizontalAlignment? lineAlignment = null) => Html(lineAlignment, DotSyntaxOptions.Default, DotSyntaxRules.Default);
 
-    internal static string Html(DotHorizontalAlignment? lineAlignment, DotSyntaxOptions options, DotSyntaxRules syntaxRules) => Instance(lineAlignment).ToHtml(options, syntaxRules);
+    internal static string? Html(DotHorizontalAlignment? lineAlignment, DotSyntaxOptions options, DotSyntaxRules syntaxRules) => Instance(lineAlignment).ToHtml(options, syntaxRules);
 
     /// <summary>
     ///     Gets a static instance of a line break with the specified alignment. Use for memory optimization.

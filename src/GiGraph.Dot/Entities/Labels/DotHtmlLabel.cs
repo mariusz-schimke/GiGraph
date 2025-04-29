@@ -41,7 +41,7 @@ public class DotHtmlLabel : DotLabel
         _value = (DotHtmlString) html ?? throw new ArgumentNullException(nameof(html), "HTML string must not be null.");
     }
 
-    protected override string GetDotEncodedString(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => _value.ToHtml(options, syntaxRules);
+    protected override string? GetDotEncodedString(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => _value.ToHtml(options, syntaxRules);
 
     public override string? ToString() => _value.ToString();
 }

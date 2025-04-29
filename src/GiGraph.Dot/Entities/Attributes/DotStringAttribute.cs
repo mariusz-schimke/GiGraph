@@ -3,7 +3,7 @@
 namespace GiGraph.Dot.Entities.Attributes;
 
 /// <summary>
-///     A string attribute. The value is rendered as is in the output DOT script, so the attribute can be used for any type of value,
+///     A string attribute. The value is rendered as is in the DOT output, so the attribute can be used for any type of value,
 ///     not only for strings.
 /// </summary>
 public class DotStringAttribute : DotAttribute<string>

@@ -27,7 +27,7 @@ public interface IDotHtmlContentEntity : IDotHtmlEntity
     /// <param name="lineAlignment">
     ///     Specifies horizontal placement of lines if multiline text is specified.
     /// </param>
-    void SetContent(string text, DotHorizontalAlignment? lineAlignment = null);
+    void SetContent(string? text, DotHorizontalAlignment? lineAlignment = null);
 
     /// <summary>
     ///     Uses the builder to build a HTML entity to use as the content of the current element.
@@ -43,5 +43,5 @@ public interface IDotHtmlContentEntity : IDotHtmlEntity
     /// <param name="html">
     ///     The HTML to use as the content.
     /// </param>
-    void SetHtmlContent(string html);
+    void SetHtmlContent(string? html);
 }

@@ -1,12 +1,14 @@
-﻿using System.Drawing;
+﻿using System.Diagnostics.Contracts;
+using System.Drawing;
 using GiGraph.Dot.Entities.Graphs;
-using GiGraph.Dot.Types.Arrowheads;
+using GiGraph.Dot.Types.Edges.Arrowheads;
 using GiGraph.Dot.Types.Nodes;
 
 namespace GiGraph.Dot.Examples.Basic;
 
 public static class Annotation
 {
+    [Pure]
     public static DotGraph Generate()
     {
         var graph = new DotGraph();
@@ -40,7 +42,7 @@ public static class Annotation
             edge.Tail.Endpoint.Annotation = "tail";
 
             edge.Attributes.Annotation = "edge attributes";
-            edge.Attributes.SetValue(a => a.Color, Color.Red).Annotation = "color";
+            edge.Style.Attributes.SetValue(a => a.Color, Color.Red).Annotation = "color";
         }).Annotation = "edge comment";
 
         // subsections

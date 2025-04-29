@@ -19,14 +19,6 @@ public static class DotShapableNodeExtension
     ///     If true, forces polygon to be regular, i.e., the vertices of the polygon will lie on a circle whose center is the center of
     ///     the node (default: false).
     /// </param>
-    /// <param name="peripheries">
-    ///     Sets the number of peripheries. The default value is shape dependent, the minimum value is 0. Note that
-    ///     <see href="https://www.graphviz.org/doc/info/shapes.html#epsf">
-    ///         user-defined shapes
-    ///     </see>
-    ///     are treated as a form of box shape, so the default peripheries value is 1, and the user-defined shape will be drawn in a
-    ///     bounding rectangle. Setting peripheries to 0 will turn this off.
-    /// </param>
     /// <param name="rotation">
     ///     Angle, in degrees, used to rotate the polygon. For any number of polygon sides, 0 degrees rotation results in a flat base.
     ///     Default: 0, maximum: 360.
@@ -42,14 +34,13 @@ public static class DotShapableNodeExtension
         this T @this,
         int? sides = null,
         bool? regular = null,
-        int? peripheries = null,
         double? rotation = null,
         double? skew = null,
         double? distortion = null
     )
         where T : IDotShapableNode
     {
-        @this.SetPolygonalShape(new DotPolygon(sides, regular, peripheries, rotation, skew, distortion));
+        @this.SetPolygonalShape(new DotPolygon(sides, regular, rotation, skew, distortion));
     }
 
     /// <summary>

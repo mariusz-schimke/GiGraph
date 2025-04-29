@@ -15,10 +15,10 @@ public static class DotFillableExtension
     /// <param name="color">
     ///     The color to use.
     /// </param>
-    public static void SetPlainColorFill<T>(this T @this, DotColor color)
+    public static void SetPlainFill<T>(this T @this, DotColor color)
         where T : IDotFillable
     {
-        @this.SetFillStyle(DotFillStyle.Normal);
+        @this.SetFillStyle(DotFillStyle.Regular);
         @this.SetFillColor(color);
     }
 
@@ -110,7 +110,7 @@ public static class DotFillableExtension
     private static void SetGradientFill<T>(this T @this, DotGradientColor color, int? angle, bool radial)
         where T : IDotFillable
     {
-        @this.SetFillStyle(radial ? DotFillStyle.Radial : DotFillStyle.Normal);
+        @this.SetFillStyle(radial ? DotFillStyle.Radial : DotFillStyle.Regular);
         @this.SetFillColor(color);
         @this.SetGradientFillAngle(angle);
     }

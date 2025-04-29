@@ -1,7 +1,7 @@
 using System.Text;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.EscapeString;
-using GiGraph.Dot.Types.Layout;
+using GiGraph.Dot.Types.Graphs.Layout;
 
 namespace GiGraph.Dot.Types.Records;
 
@@ -80,7 +80,7 @@ public class DotRecord : DotRecordField
     /// <param name="fields">
     ///     The fields to initialize the record with.
     /// </param>
-    public DotRecord(bool flip, params DotEscapeString[] fields)
+    public DotRecord(bool flip, params DotEscapeString?[] fields)
         : this(fields, flip)
     {
     }
@@ -91,7 +91,7 @@ public class DotRecord : DotRecordField
     /// <param name="fields">
     ///     The fields to initialize the record with.
     /// </param>
-    public DotRecord(params DotEscapeString[] fields)
+    public DotRecord(params DotEscapeString?[] fields)
         : this(fields, FlipDefault)
     {
     }
@@ -110,7 +110,7 @@ public class DotRecord : DotRecordField
     ///     <see cref="DotLayoutDirection.LeftToRight" /> or <see cref="DotLayoutDirection.RightToLeft" />, corresponding to horizontal
     ///     layouts, the top-level fields are displayed vertically.
     /// </param>
-    public DotRecord(IEnumerable<DotEscapeString> fields, bool flip = FlipDefault)
+    public DotRecord(IEnumerable<DotEscapeString?> fields, bool flip = FlipDefault)
         : this(fields.Select(field => new DotRecordTextField(field)), flip)
     {
     }
@@ -129,7 +129,7 @@ public class DotRecord : DotRecordField
     ///     <see cref="DotLayoutDirection.LeftToRight" /> or <see cref="DotLayoutDirection.RightToLeft" />, corresponding to horizontal
     ///     layouts, the top-level fields are displayed vertically.
     /// </param>
-    public DotRecord(IEnumerable<string> fields, bool flip = FlipDefault)
+    public DotRecord(IEnumerable<string?> fields, bool flip = FlipDefault)
         : this(fields.Select(field => new DotRecordTextField(field)), flip)
     {
     }

@@ -21,15 +21,15 @@ public partial class DotNodeImageAttributes : DotEntityAttributesWithMetadata<ID
     {
     }
 
-    /// <inheritdoc cref="IDotNodeImageAttributes.Path" />
+    /// <inheritdoc cref="IDotNodeImageAttributes.Path"/>
     [DotAttributeKey(DotAttributeKeys.Image)]
     public virtual partial string? Path { get; set; }
 
-    /// <inheritdoc cref="IDotNodeImageAttributes.Alignment" />
+    /// <inheritdoc cref="IDotNodeImageAttributes.Alignment"/>
     [DotAttributeKey(DotAttributeKeys.ImagePos)]
     public virtual partial DotAlignment? Alignment { get; set; }
 
-    /// <inheritdoc cref="IDotNodeImageAttributes.Scaling" />
+    /// <inheritdoc cref="IDotNodeImageAttributes.Scaling"/>
     [DotAttributeKey(DotAttributeKeys.ImageScale)]
     public virtual partial DotImageScaling? Scaling { get; set; }
 
@@ -59,17 +59,6 @@ public partial class DotNodeImageAttributes : DotEntityAttributesWithMetadata<ID
     ///     The image attributes to set.
     /// </param>
     public virtual void Set(DotImage attributes)
-    {
-        Set(attributes.Path, attributes.Alignment, attributes.Scaling);
-    }
-
-    /// <summary>
-    ///     Copies image attributes from the specified instance.
-    /// </summary>
-    /// <param name="attributes">
-    ///     The instance to copy the attributes from.
-    /// </param>
-    public virtual void Set(IDotNodeImageAttributes attributes)
     {
         Set(attributes.Path, attributes.Alignment, attributes.Scaling);
     }

@@ -16,15 +16,15 @@ public abstract partial class DotHyperlinkAttributes<TIEntityHyperlinkAttributes
     {
     }
 
-    /// <inheritdoc cref="IDotHyperlinkAttributes.Url" />
+    /// <inheritdoc cref="IDotHyperlinkAttributes.Url"/>
     [DotAttributeKey(DotAttributeKeys.Url)]
     public virtual partial DotEscapeString? Url { get; set; }
 
-    /// <inheritdoc cref="IDotHyperlinkAttributes.Href" />
+    /// <inheritdoc cref="IDotHyperlinkAttributes.Href"/>
     [DotAttributeKey(DotAttributeKeys.Href)]
     public virtual partial DotEscapeString? Href { get; set; }
 
-    /// <inheritdoc cref="IDotHyperlinkAttributes.Target" />
+    /// <inheritdoc cref="IDotHyperlinkAttributes.Target"/>
     [DotAttributeKey(DotAttributeKeys.Target)]
     public virtual partial DotEscapeString? Target { get; set; }
 
@@ -35,7 +35,7 @@ public abstract partial class DotHyperlinkAttributes<TIEntityHyperlinkAttributes
     ///     The URL of the hyperlink.
     /// </param>
     /// <param name="target">
-    ///     The target of the hyperlink. See <see cref="DotHyperlinkTargets" /> for accepted values.
+    ///     The target of the hyperlink. See <see cref="DotHyperlinkTargets"/> for accepted values.
     /// </param>
     public virtual void Set(DotEscapeString? url, DotEscapeString? target = null)
     {
@@ -56,17 +56,6 @@ public abstract partial class DotHyperlinkAttributes<TIEntityHyperlinkAttributes
     ///     The attributes to set.
     /// </param>
     public virtual void Set(DotHyperlink attributes)
-    {
-        SetAll(attributes.Url, attributes.Target, attributes.Href);
-    }
-
-    /// <summary>
-    ///     Copies hyperlink attributes from the specified instance.
-    /// </summary>
-    /// <param name="attributes">
-    ///     The instance to copy the attributes from.
-    /// </param>
-    public virtual void Set(IDotHyperlinkAttributes attributes)
     {
         SetAll(attributes.Url, attributes.Target, attributes.Href);
     }

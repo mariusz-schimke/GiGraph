@@ -1,11 +1,13 @@
-﻿using GiGraph.Dot.Entities.Graphs;
-using GiGraph.Dot.Types.Arrowheads;
+﻿using System.Diagnostics.Contracts;
+using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.Edges.Arrowheads;
 
 namespace GiGraph.Dot.Examples.Basic;
 
 public static class Arrowheads
 {
+    [Pure]
     public static DotGraph Generate()
     {
         var graph = new DotGraph();

@@ -16,5 +16,5 @@ public interface IDotHtmlEncodable
     /// <param name="syntaxRules">
     ///     The syntax rules to apply.
     /// </param>
-    string ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
+    string? ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules);
 }

@@ -5,7 +5,7 @@ using GiGraph.Dot.Types.EscapeString;
 namespace GiGraph.Dot.Entities.Attributes;
 
 /// <summary>
-///     A string attribute whose value is escaped on DOT script rendering when <see cref="DotUnescapedString" /> is used, or is
+///     A string attribute whose value is escaped on DOT output rendering when <see cref="DotUnescapedString" /> is used, or is
 ///     assumed to already be escaped when <see cref="DotEscapedString" /> is used.
 /// </summary>
 public class DotEscapeStringAttribute : DotAttribute<DotEscapeString>

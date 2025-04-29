@@ -30,7 +30,7 @@ public abstract class DotGraphSectionGenerator<TSection> : DotEntityGenerator<TS
 
     protected override void WriteEntity(TSection graphSection, IDotGraphBodyWriter writer)
     {
-        // global node and edge attributes have to appear first, so that they are applied to all elements that come later in the output script
+        // global node and edge attributes have to appear first, so that they are applied to all elements that come later in the DOT output
         WriteGlobalAttributes(
             graphSection.GetAttributes(_options),
             graphSection.Nodes.Attributes.Collection,

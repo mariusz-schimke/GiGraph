@@ -3,7 +3,7 @@ using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.Edges;
-using GiGraph.Dot.Types.Ranks;
+using GiGraph.Dot.Types.Graphs.Layout.Spacing;
 using Snapshooter.Xunit;
 using Xunit;
 
@@ -21,7 +21,7 @@ public class DotGraphFormattingOptionsTest
             SingleLine = true
         };
 
-        var dot = graph.Build(options);
+        var dot = graph.ToDot(options);
         Snapshot.Match(dot, "directed_empty_graph_single_line.gv");
     }
 
@@ -35,7 +35,7 @@ public class DotGraphFormattingOptionsTest
             SingleLine = true
         };
 
-        var dot = graph.Build(options);
+        var dot = graph.ToDot(options);
         Snapshot.Match(dot, "annotated_graph_default_options_single_line.gv");
     }
 
@@ -53,7 +53,7 @@ public class DotGraphFormattingOptionsTest
             LineBreak = "\n"
         };
 
-        var dot = graph.Build(options);
+        var dot = graph.ToDot(options);
         Snapshot.Match(dot, "graph_with_custom_indentation_and_line_break.gv");
     }
 
@@ -77,7 +77,7 @@ public class DotGraphFormattingOptionsTest
             }
         };
 
-        var dot = graph.Build(options);
+        var dot = graph.ToDot(options);
         Snapshot.Match(dot, "graph_with_single_line_clusters.gv");
     }
 
@@ -100,7 +100,7 @@ public class DotGraphFormattingOptionsTest
             }
         };
 
-        var dot = graph.Build(options);
+        var dot = graph.ToDot(options);
         Snapshot.Match(dot, "graph_with_single_line_subgraphs.gv");
     }
 
@@ -117,7 +117,7 @@ public class DotGraphFormattingOptionsTest
             }
         };
 
-        var dot = graph.Build(options);
+        var dot = graph.ToDot(options);
         Snapshot.Match(dot, "graph_with_multiline_edge_subgraphs.gv");
     }
 
@@ -128,7 +128,7 @@ public class DotGraphFormattingOptionsTest
 
         foreach (var edge in graph.Edges)
         {
-            edge.Color = Color.Wheat;
+            edge.Style.Color = Color.Wheat;
         }
 
         var options = new DotFormattingOptions
@@ -139,7 +139,7 @@ public class DotGraphFormattingOptionsTest
             }
         };
 
-        var dot = graph.Build(options);
+        var dot = graph.ToDot(options);
         Snapshot.Match(dot, "graph_with_multiline_edge_subgraphs_and_attributes.gv");
     }
 
@@ -150,7 +150,7 @@ public class DotGraphFormattingOptionsTest
 
         foreach (var edge in graph.Edges)
         {
-            edge.Color = Color.Wheat;
+            edge.Style.Color = Color.Wheat;
         }
 
         var options = new DotFormattingOptions
@@ -162,7 +162,7 @@ public class DotGraphFormattingOptionsTest
             }
         };
 
-        var dot = graph.Build(options);
+        var dot = graph.ToDot(options);
         Snapshot.Match(dot, "graph_with_multiline_edge_subgraphs_and_multiline_attributes.gv");
     }
 
@@ -177,11 +177,11 @@ public class DotGraphFormattingOptionsTest
             TextEncoder = (value, _) => value?.ToUpper()
         };
 
-        var dot = graph.Build(options);
+        var dot = graph.ToDot(options);
         Snapshot.Match(dot, "graph_with_custom_text_encoder.gv");
 
         options.TextEncoder = (_, type) => $"{type}\n";
-        dot = graph.Build(options);
+        dot = graph.ToDot(options);
         Snapshot.Match(dot, "graph_with_custom_text_encoder_tokens.gv");
     }
 

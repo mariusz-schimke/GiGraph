@@ -6,9 +6,9 @@ namespace GiGraph.Dot.Types.Styling;
 public enum DotLineWeight
 {
     /// <summary>
-    ///     A normal line weight.
+    ///     A default line weight.
     /// </summary>
-    Normal = 0,
+    Default = DotStyles.Default,
 
     /// <summary>
     ///     A bold line style.

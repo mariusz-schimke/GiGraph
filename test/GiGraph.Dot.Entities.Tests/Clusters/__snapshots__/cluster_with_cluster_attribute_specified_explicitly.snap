@@ -1,7 +1,0 @@
-﻿digraph
-{
-    subgraph "cluster c1"
-    {
-        cluster = false
-    }
-}

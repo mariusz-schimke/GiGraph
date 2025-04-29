@@ -27,7 +27,7 @@ public class DotHtmlOverline : DotHtmlFontStyle
     /// <param name="lineAlignment">
     ///     Specifies horizontal placement of lines if multiline text is specified.
     /// </param>
-    public DotHtmlOverline(string text, DotHorizontalAlignment? lineAlignment = null)
+    public DotHtmlOverline(string? text, DotHorizontalAlignment? lineAlignment = null)
         : base(TagName, text, lineAlignment)
     {
     }

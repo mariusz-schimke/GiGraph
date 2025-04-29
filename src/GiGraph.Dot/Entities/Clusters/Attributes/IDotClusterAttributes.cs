@@ -1,33 +1,16 @@
-﻿using GiGraph.Dot.Entities.Attributes.Properties.Common.GraphCluster;
-using GiGraph.Dot.Entities.Graphs.Attributes;
-using GiGraph.Dot.Entities.Html.Builder;
+﻿using GiGraph.Dot.Entities.Html.Builder;
 using GiGraph.Dot.Entities.Html.Font.Styles;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Entities.Subgraphs;
-using GiGraph.Dot.Types.Clusters;
-using GiGraph.Dot.Types.Colors;
+using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Geometry;
 using GiGraph.Dot.Types.Html;
-using GiGraph.Dot.Types.Ranks;
-using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Clusters.Attributes;
 
-public interface IDotClusterAttributes : IDotGraphClusterCommonAttributes
+public interface IDotClusterAttributes
 {
-    /// <summary>
-    ///     <para>
-    ///         Gets or sets the style of the cluster (default: unset). See the descriptions of individual <see cref="DotStyles"/> values
-    ///         to learn which styles are applicable to this type of element.
-    ///     </para>
-    ///     <para>
-    ///         Multiple styles can be used at once, for example: <see cref="Style"/> = <see cref="DotStyles.Rounded"/> |
-    ///         <see cref="DotStyles.Bold"/>;
-    ///     </para>
-    /// </summary>
-    DotStyles? Style { get; set; }
-
     /// <summary>
     ///     <para>
     ///         Gets or sets the label to display on the cluster. It may be plain text (<see cref="string"/>) or HTML (
@@ -59,76 +42,15 @@ public interface IDotClusterAttributes : IDotGraphClusterCommonAttributes
     DotLabel? Label { get; set; }
 
     /// <summary>
-    ///     <para>
-    ///         Determines whether to justify multiline text vs the previous text line rather than the side of the container (default:
-    ///         false).
-    ///     </para>
-    ///     <para>
-    ///         By default, the justification of multi-line labels is done within the largest context that makes sense. Thus, in the
-    ///         label of a polygonal node, a left-justified line will align with the left side of the node (shifted by the prescribed
-    ///         margin). In record nodes, left-justified line will line up with the left side of the enclosing column of fields. If
-    ///         <see cref="DisableLabelJustification"/> is true, multi-line labels will be justified in the context of itself. For
-    ///         example, if <see cref="DisableLabelJustification"/> is set, the first label line is long, and the second is shorter and
-    ///         left-justified, the second will align with the left-most character in the first line, regardless of how large the node
-    ///         might be.
-    ///     </para>
-    /// </summary>
-    bool? DisableLabelJustification { get; set; }
-
-    /// <summary>
     ///     Tooltip annotation attached to the cluster (svg, cmap only). If unset, Graphviz will use the <see cref="Label"/> attribute if
     ///     defined.
     /// </summary>
     DotEscapeString? Tooltip { get; set; }
 
     /// <summary>
-    ///     <para>
-    ///         Gets or sets the background color of the cluster (default: none). Used as the initial background for the cluster. If the
-    ///         <see cref="DotClusterFillStyle.Normal"/> fill style is used for the cluster, its
-    ///         <see cref="IDotGraphClusterCommonAttributes.FillColor"/> will overlay the background color.
-    ///     </para>
-    ///     <para>
-    ///         When <see cref="DotGradientColor"/> is used, a gradient fill is generated. By default, this is a linear fill; applying
-    ///         the <see cref="DotClusterFillStyle.Radial"/> fill style to the cluster will cause a radial fill. If the second color is
-    ///         <see cref="System.Drawing.Color.Empty"/>, the default color is used for it. See also the <see cref="GradientFillAngle"/>
-    ///         attribute for setting a gradient angle.
-    ///     </para>
-    /// </summary>
-    DotColorDefinition? BackgroundColor { get; set; }
-
-    /// <summary>
-    ///     Specifies a color scheme namespace to use. If defined, specifies the context for interpreting color names. If no color scheme
-    ///     is set, the standard <see cref="DotColorSchemes.X11"/> naming is used. For example, if
-    ///     <see cref="DotColorSchemes.DotBrewerColorSchemes.BuGn9"/> Brewer color scheme is used, then a color named "7", e.g.
-    ///     Color.FromName("7"), will be evaluated in the context of that specific color scheme. See <see cref="DotColorSchemes"/> for
-    ///     supported scheme names.
-    /// </summary>
-    string? ColorScheme { get; set; }
-
-    /// <summary>
-    ///     If a gradient fill is being used, this determines the angle of the fill. For linear fills, the colors transform along a line
-    ///     specified by the angle and the center of the object. For radial fills, a value of zero causes the colors to transform
-    ///     radially from the center; for non-zero values, the colors transform from a point near the object's periphery as specified by
-    ///     the value. If unset, the default angle is 0.
-    /// </summary>
-    int? GradientFillAngle { get; set; }
-
-    /// <summary>
-    ///     Sets the number of peripheries used in cluster boundaries (default: 1, minimum: 0, maximum: 1). Setting peripheries to 0 will
-    ///     remove the boundaries.
-    /// </summary>
-    int? Peripheries { get; set; }
-
-    /// <summary>
     ///     Specifies the space between the nodes in the cluster and bounding box of the cluster. By default, this is 8 points.
     /// </summary>
     DotPoint? Padding { get; set; }
-
-    /// <summary>
-    ///     Gets or sets the sorting index of the cluster (default: 0). If <see cref="DotGraphLayoutAttributes.PackingMode"/> indicates
-    ///     an array packing, this attribute specifies an insertion order among the components, with smaller values inserted first.
-    /// </summary>
-    int? SortIndex { get; set; }
 
     /// <summary>
     ///     <para>
@@ -153,19 +75,22 @@ public interface IDotClusterAttributes : IDotGraphClusterCommonAttributes
     DotEscapeString? ObjectId { get; set; }
 
     /// <summary>
-    ///     Gets or sets the rank constraints on the nodes in the cluster (dot only).
-    /// </summary>
-    DotRank? NodeRank { get; set; }
-
-    /// <summary>
     ///     <para>
     ///         Determines whether the subgraph is a cluster (default false). Subgraph clusters are rendered differently, e.g. dot
     ///         renders a box around subgraph clusters, but doesn't draw a box around non-subgraph clusters.
     ///     </para>
     ///     <para>
-    ///         Since this library makes a strong distinction between subgraphs and clusters (in terms of what purpose they are used for
-    ///         and what attributes are settable on each of them), you should use a <see cref="DotSubgraph"/> rather than a cluster with
-    ///         <see cref="IsCluster"/> set to <see langword="false"/>.
+    ///         Note: This library treats subgraphs and clusters as conceptually different types, with different intended uses and
+    ///         different sets of attributes. So if you're setting <see cref="IsCluster"/> to <see langword="false"/>, it's usually
+    ///         better to use a <see cref="DotSubgraph"/> instead of a <see cref="DotCluster"/>.
+    ///     </para>
+    ///     <para>
+    ///         To make sure this attribute is respected by Graphviz as the only cluster discriminator, set the
+    ///         <see cref="DotSyntaxOptions.ClusterOptions.Discriminator"/> property of cluster syntax options to
+    ///         <see cref="DotClusterDiscriminators.Attribute"/> when generating the DOT output. This setting causes the attribute to be
+    ///         automatically included with a value of <see langword="true"/> in the DOT output in all clusters, except those where you
+    ///         explicitly set the <see cref="IsCluster"/> property to <see langword="false"/>. Also, such setting will disable using the
+    ///         "cluster" prefix in the IDs of clusters so that the attribute is the only way to identify clusters in the DOT output.
     ///     </para>
     /// </summary>
     bool? IsCluster { get; set; }

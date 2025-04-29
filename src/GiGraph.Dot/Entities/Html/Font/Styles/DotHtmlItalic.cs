@@ -27,7 +27,7 @@ public class DotHtmlItalic : DotHtmlFontStyle
     /// <param name="lineAlignment">
     ///     Specifies horizontal placement of lines if multiline text is specified.
     /// </param>
-    public DotHtmlItalic(string text, DotHorizontalAlignment? lineAlignment = null)
+    public DotHtmlItalic(string? text, DotHorizontalAlignment? lineAlignment = null)
         : base(TagName, text, lineAlignment)
     {
     }

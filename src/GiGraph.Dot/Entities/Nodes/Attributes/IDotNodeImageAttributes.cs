@@ -1,7 +1,7 @@
 using GiGraph.Dot.Entities.Graphs.Attributes;
 using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.Images;
-using GiGraph.Dot.Types.Nodes;
+using GiGraph.Dot.Types.Nodes.Size;
 
 namespace GiGraph.Dot.Entities.Nodes.Attributes;
 

@@ -3,7 +3,7 @@ using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 using GiGraph.Dot.Output.Metadata;
-using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.Edges.Hyperlinks;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Hyperlinks;
 
@@ -25,32 +25,32 @@ public partial class DotEdgeHyperlinkAttributes : DotHyperlinkAttributes<IDotEdg
 
     /// <summary>
     ///     If defined, this is the link used for the non-label parts of the edge (svg, map only). Used near the head or the tail node,
-    ///     unless overridden by the <see cref="IDotHyperlinkAttributes.Url" /> on the head's or tail's
-    ///     <see cref="IDotEdgeEndpointRootAttributes.Hyperlink" /> attributes of the edge. This value overrides any
-    ///     <see cref="IDotHyperlinkAttributes.Url" /> specified for the edge's <see cref="IDotEdgeRootAttributes.Hyperlink" />.
+    ///     unless overridden by the <see cref="IDotHyperlinkAttributes.Url"/> on the head's or tail's
+    ///     <see cref="IDotEdgeEndpointRootAttributes.Hyperlink"/> attributes of the edge. This value overrides any
+    ///     <see cref="IDotHyperlinkAttributes.Url"/> specified for the edge's <see cref="IDotEdgeRootAttributes.Hyperlink"/>.
     /// </summary>
     [DotAttributeKey(DotAttributeKeys.EdgeUrl)]
     public override partial DotEscapeString? Url { get; set; }
 
     /// <summary>
-    ///     Synonym for <see cref="Url" /> (svg, map only).
+    ///     Synonym for <see cref="Url"/> (svg, map only).
     /// </summary>
     [DotAttributeKey(DotAttributeKeys.EdgeHref)]
     public override partial DotEscapeString? Href { get; set; }
 
     /// <summary>
-    ///     If <see cref="Url" /> is specified, or if the edge has a <see cref="IDotEdgeRootAttributes.Hyperlink" />
-    ///     <see cref="IDotHyperlinkAttributes.Url" /> attribute specified, determines which window of the browser is used for the URL
-    ///     attached to the non-label part of the edge (svg, map only). Setting it to <see cref="DotHyperlinkTargets.NewWindow" /> will
+    ///     If <see cref="Url"/> is specified, or if the edge has a <see cref="IDotEdgeRootAttributes.Hyperlink"/>
+    ///     <see cref="IDotHyperlinkAttributes.Url"/> attribute specified, determines which window of the browser is used for the URL
+    ///     attached to the non-label part of the edge (svg, map only). Setting it to <see cref="DotHyperlinkTargets.NewWindow"/> will
     ///     open a new window if it doesn't already exist, or reuse it if it does. If undefined, the value of the edge's
-    ///     <see cref="IDotEdgeRootAttributes.Hyperlink" /> <see cref="IDotHyperlinkAttributes.Target" /> is used.
+    ///     <see cref="IDotEdgeRootAttributes.Hyperlink"/> <see cref="IDotHyperlinkAttributes.Target"/> is used.
     /// </summary>
     [DotAttributeKey(DotAttributeKeys.EdgeTarget)]
     public override partial DotEscapeString? Target { get; set; }
 
     /// <summary>
-    ///     Tooltip annotation attached to the non-label part of the edge (svg, cmap only). This is used only if <see cref="Url" /> is
-    ///     specified, or if the edge has a <see cref="IDotEdgeRootAttributes.Hyperlink" /> <see cref="IDotHyperlinkAttributes.Url" />
+    ///     Tooltip annotation attached to the non-label part of the edge (svg, cmap only). This is used only if <see cref="Url"/> is
+    ///     specified, or if the edge has a <see cref="IDotEdgeRootAttributes.Hyperlink"/> <see cref="IDotHyperlinkAttributes.Url"/>
     ///     specified.
     /// </summary>
     [DotAttributeKey(DotAttributeKeys.EdgeTooltip)]
@@ -63,7 +63,7 @@ public partial class DotEdgeHyperlinkAttributes : DotHyperlinkAttributes<IDotEdg
     ///     The URL of the hyperlink.
     /// </param>
     /// <param name="target">
-    ///     The target of the hyperlink. See <see cref="DotHyperlinkTargets" /> for accepted values.
+    ///     The target of the hyperlink. See <see cref="DotHyperlinkTargets"/> for accepted values.
     /// </param>
     /// <param name="tooltip">
     ///     The tooltip of the hyperlink.
@@ -90,16 +90,5 @@ public partial class DotEdgeHyperlinkAttributes : DotHyperlinkAttributes<IDotEdg
     {
         Tooltip = attributes.Tooltip;
         base.Set(attributes);
-    }
-
-    /// <summary>
-    ///     Copies hyperlink attributes from the specified instance.
-    /// </summary>
-    /// <param name="attributes">
-    ///     The instance to copy the attributes from.
-    /// </param>
-    public virtual void Set(IDotEdgeHyperlinkAttributes attributes)
-    {
-        SetAll(attributes.Url, attributes.Target, attributes.Href, attributes.Tooltip);
     }
 }

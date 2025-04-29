@@ -1,5 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Nodes;
-using GiGraph.Dot.Types.Layout;
+using GiGraph.Dot.Types.Graphs.Layout;
 using GiGraph.Dot.Types.Nodes;
 using GiGraph.Dot.Types.Records;
 
@@ -22,7 +22,7 @@ public static class DotNodeRecordExtension
     /// <param name="record">
     ///     The record to use as the label of the node.
     /// </param>
-    public static void SetAsRecord(this DotNodeDefinition node, DotRecord record)
+    public static void SetRecordAsLabel(this DotNodeDefinition node, DotRecord? record)
     {
         node.Shape = DotNodeShape.Record;
         node.Label = record;
@@ -45,11 +45,11 @@ public static class DotNodeRecordExtension
     ///     <see cref="DotLayoutDirection.LeftToRight"/> or <see cref="DotLayoutDirection.RightToLeft"/>, corresponding to horizontal
     ///     layouts, the top-level fields are displayed vertically.
     /// </param>
-    public static void SetAsRecord(this DotNodeDefinition node, Action<DotRecordBuilder> buildRecord, bool flip = false)
+    public static void SetRecordAsLabel(this DotNodeDefinition node, Action<DotRecordBuilder> buildRecord, bool flip = false)
     {
         var builder = new DotRecordBuilder();
         buildRecord(builder);
 
-        SetAsRecord(node, builder.Build(flip));
+        SetRecordAsLabel(node, builder.Build(flip));
     }
 }

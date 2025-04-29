@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Entities.Graphs;
+﻿using System.Diagnostics.Contracts;
+using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Nodes;
 
@@ -6,6 +7,7 @@ namespace GiGraph.Dot.Examples.Basic;
 
 public static class LabelJustification
 {
+    [Pure]
     public static DotGraph Generate()
     {
         var graph = new DotGraph();

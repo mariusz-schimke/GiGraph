@@ -6,28 +6,29 @@ using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Entities.Tests.Attributes.Helpers;
 using GiGraph.Dot.Extensions;
-using GiGraph.Dot.Helpers;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Output.Options;
+using GiGraph.Dot.Types;
 using GiGraph.Dot.Types.Alignment;
-using GiGraph.Dot.Types.Arrowheads;
 using GiGraph.Dot.Types.Clusters;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Edges;
+using GiGraph.Dot.Types.Edges.Arrowheads;
+using GiGraph.Dot.Types.Edges.Layout;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Fonts;
 using GiGraph.Dot.Types.Geometry;
-using GiGraph.Dot.Types.Graphs;
+using GiGraph.Dot.Types.Graphs.Canvas;
+using GiGraph.Dot.Types.Graphs.Canvas.Scaling;
+using GiGraph.Dot.Types.Graphs.Canvas.Viewport;
+using GiGraph.Dot.Types.Graphs.Layout;
+using GiGraph.Dot.Types.Graphs.Layout.Packing;
+using GiGraph.Dot.Types.Graphs.Layout.Spacing;
 using GiGraph.Dot.Types.Identifiers;
 using GiGraph.Dot.Types.Images;
-using GiGraph.Dot.Types.Layout;
 using GiGraph.Dot.Types.Nodes;
-using GiGraph.Dot.Types.Orientation;
-using GiGraph.Dot.Types.Output;
-using GiGraph.Dot.Types.Packing;
-using GiGraph.Dot.Types.Ranks;
+using GiGraph.Dot.Types.Nodes.Size;
 using GiGraph.Dot.Types.Styling;
-using GiGraph.Dot.Types.Viewport;
 using Snapshooter.Xunit;
 using Xunit;
 
@@ -61,13 +62,13 @@ public class DotAttributeKeyAssociationTest
         { typeof(DotRank), DotRank.Same },
         { typeof(DotStyles), (DotStyles) 0xff },
         { typeof(DotVerticalAlignment), DotVerticalAlignment.Bottom },
-        { typeof(DotArrowheadDefinition), new DotArrowhead(DotArrowheadShape.Dot, DotArrowheadParts.Both) },
+        { typeof(DotArrowheadDefinition), new DotArrowhead(DotArrowheadShape.Dot) },
         { typeof(DotClusterId), new DotClusterId("cluster_id") },
         { typeof(DotColor), new DotColor(Color.Red) },
         { typeof(DotColorDefinition), new DotWeightedColor(Color.Red, 1, DotColorSchemes.Default) },
         { typeof(DotEndpointPort), new DotEndpointPort("port1", DotCompassPoint.East) },
         { typeof(DotEscapeString), (DotEscapeString) "escape" },
-        { typeof(DotGraphScalingDefinition), new DotGraphScalingOption(DotGraphScaling.Auto) },
+        { typeof(DotGraphScalingDefinition), new DotGraphScalingMode(DotGraphScaling.Auto) },
         { typeof(DotId), new DotId("id") },
         { typeof(DotLabel), new DotTextLabel("text") },
         { typeof(DotPackingDefinition), new DotPackingMargin(12) },
@@ -105,7 +106,7 @@ public class DotAttributeKeyAssociationTest
             SortElements = true
         };
 
-        Snapshot.Match(graph.Build(formatOptions, syntaxOptions), "graph_with_all_attributes_on_all_elements");
+        Snapshot.Match(graph.ToDot(formatOptions, syntaxOptions), "graph_with_all_attributes_on_all_elements");
     }
 
     private static void SetAllElementAttributesWithChecks(IDotEntityAttributesAccessor targetRootObject, DotAttributePropertyMetadata[] attributes)

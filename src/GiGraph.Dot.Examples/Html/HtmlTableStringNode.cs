@@ -1,4 +1,5 @@
-﻿using GiGraph.Dot.Entities.Graphs;
+﻿using System.Diagnostics.Contracts;
+using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Types.Edges;
 
@@ -6,11 +7,12 @@ namespace GiGraph.Dot.Examples.Html;
 
 public static class HtmlTableStringNode
 {
+    [Pure]
     public static DotGraph Generate()
     {
         var graph = new DotGraph();
 
-        graph.Nodes.Add("Bar").SetAsHtml
+        graph.Nodes.Add("Bar").SetHtmlAsLabel
         (
             """
             <table border="0" cellborder="1" cellspacing="0" cellpadding="4">

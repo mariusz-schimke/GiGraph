@@ -62,7 +62,7 @@ public partial class DotHtmlBuilder
     /// <param name="html">
     ///     The HTML to append.
     /// </param>
-    public virtual DotHtmlBuilder AppendHtml(string html)
+    public virtual DotHtmlBuilder AppendHtml(string? html)
     {
         _entities.Add(new DotHtml(html));
         return this;

@@ -2,7 +2,7 @@ using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
-using GiGraph.Dot.Types.Ranks;
+using GiGraph.Dot.Types.Graphs.Layout.Spacing;
 
 namespace GiGraph.Dot.Entities.Subgraphs.Attributes;
 
@@ -20,6 +20,7 @@ public partial class DotSubgraphRootAttributes : DotEntityAttributesWithMetadata
     {
     }
 
+    /// <inheritdoc cref="IDotSubgraphAttributes.NodeRank"/>
     [DotAttributeKey(DotAttributeKeys.Rank)]
     public virtual partial DotRank? NodeRank { get; set; }
 

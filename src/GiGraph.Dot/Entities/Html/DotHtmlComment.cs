@@ -7,7 +7,7 @@ namespace GiGraph.Dot.Entities.Html;
 /// </summary>
 public class DotHtmlComment : DotHtmlEntity
 {
-    protected readonly string _text;
+    protected readonly string? _text;
 
     /// <summary>
     ///     Creates a new HTML comment tag instance.
@@ -15,12 +15,12 @@ public class DotHtmlComment : DotHtmlEntity
     /// <param name="text">
     ///     The comment text.
     /// </param>
-    public DotHtmlComment(string text)
+    public DotHtmlComment(string? text)
     {
         _text = text;
     }
 
-    public override string ToString() => _text;
+    public override string? ToString() => _text;
 
     protected internal override string ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
     {

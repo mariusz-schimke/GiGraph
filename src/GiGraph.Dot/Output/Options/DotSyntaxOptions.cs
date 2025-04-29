@@ -1,7 +1,7 @@
 ﻿namespace GiGraph.Dot.Output.Options;
 
 /// <summary>
-///     Specifies syntax-related options for generating the output DOT script.
+///     Specifies syntax-related options for generating the DOT output.
 /// </summary>
 public partial class DotSyntaxOptions
 {
@@ -56,13 +56,13 @@ public partial class DotSyntaxOptions
     public bool PreferStatementDelimiter { get; set; }
 
     /// <summary>
-    ///     Gets or sets a value indicating if graph elements should be sorted in the output DOT script. This setting affects attributes,
+    ///     Gets or sets a value indicating if graph elements should be sorted in the DOT output. This setting affects attributes,
     ///     nodes, edges, subgraphs, and clusters. If false, all elements will be rendered in the order they were added to individual
     ///     graph element collections.
     ///     <para>
-    ///         Useful when the output DOT script is going to be compared to its other versions, so that there are as few differences
+    ///         Useful when the DOT output is going to be compared to its other versions, so that there are as few differences
     ///         between the scripts as possible. However, this option should be used with care because the order of elements in the
-    ///         script may affect the order they are visualized, if that matters.
+    ///         DOT output may affect the order they are visualized, if that matters.
     ///     </para>
     /// </summary>
     public bool SortElements { get; set; }

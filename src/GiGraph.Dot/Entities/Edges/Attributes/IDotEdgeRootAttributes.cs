@@ -38,9 +38,9 @@ public interface IDotEdgeRootAttributes : IDotEdgeAttributes
     DotEdgeLabelHyperlinkAttributes LabelHyperlink { get; }
 
     /// <summary>
-    ///     Style options.
+    ///     Style attributes.
     /// </summary>
-    new DotEdgeStyleAttributeOptions Style { get; }
+    DotEdgeStyleAttributes Style { get; }
 
     /// <summary>
     ///     Style sheet attributes used for SVG output.
@@ -51,4 +51,14 @@ public interface IDotEdgeRootAttributes : IDotEdgeAttributes
     ///     Hyperlink attributes.
     /// </summary>
     DotHyperlinkAttributes Hyperlink { get; }
+
+    /// <summary>
+    ///     Layout attributes.
+    /// </summary>
+    DotEdgeLayoutAttributes Layout { get; }
+
+    /// <summary>
+    ///     Label options attributes.
+    /// </summary>
+    DotEdgeLabelOptionsAttributes LabelOptions { get; }
 }

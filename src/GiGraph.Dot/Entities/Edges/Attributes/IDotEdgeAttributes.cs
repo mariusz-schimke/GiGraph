@@ -3,28 +3,14 @@ using GiGraph.Dot.Entities.Graphs.Attributes;
 using GiGraph.Dot.Entities.Html.Builder;
 using GiGraph.Dot.Entities.Html.Font.Styles;
 using GiGraph.Dot.Entities.Labels;
-using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Html;
-using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Edges.Attributes;
 
 public interface IDotEdgeAttributes
 {
-    /// <summary>
-    ///     <para>
-    ///         Gets or sets the style of the edge (default: unset). See the descriptions of individual <see cref="DotStyles"/> values to
-    ///         learn which styles are applicable to this type of element.
-    ///     </para>
-    ///     <para>
-    ///         Multiple styles can be used at once, for example: <see cref="Style"/> = <see cref="DotStyles.Rounded"/> |
-    ///         <see cref="DotStyles.Bold"/>;
-    ///     </para>
-    /// </summary>
-    DotStyles? Style { get; set; }
-
     /// <summary>
     ///     <para>
     ///         Gets or sets the label to display next to the edge. It may be plain text (<see cref="string"/>) or HTML (
@@ -67,99 +53,13 @@ public interface IDotEdgeAttributes
     ///         <see cref="DotGraphLayoutAttributes.ForceExternalLabels"/> attribute on the graph.
     ///     </para>
     /// </summary>
-    DotLabel? ExternalLabel { set; get; }
-
-    /// <summary>
-    ///     If true, allows edge labels to be less constrained in position. In particular, it may appear on top of other edges. Default:
-    ///     false.
-    /// </summary>
-    bool? EnableLabelFloating { get; set; }
-
-    /// <summary>
-    ///     <para>
-    ///         Determines whether to justify multiline text vs the previous text line rather than the side of the container (default:
-    ///         false).
-    ///     </para>
-    ///     <para>
-    ///         By default, the justification of multi-line labels is done within the largest context that makes sense. Thus, in the
-    ///         label of a polygonal node, a left-justified line will align with the left side of the node (shifted by the prescribed
-    ///         margin). In record nodes, left-justified line will line up with the left side of the enclosing column of fields. If
-    ///         <see cref="DisableLabelJustification"/> is true, multi-line labels will be justified in the context of itself. For
-    ///         example, if <see cref="DisableLabelJustification"/> is set, the first label line is long, and the second is shorter and
-    ///         left-justified, the second will align with the left-most character in the first line, regardless of how large the node
-    ///         might be.
-    ///     </para>
-    /// </summary>
-    bool? DisableLabelJustification { get; set; }
-
-    /// <summary>
-    ///     Minimum edge length (rank difference between head and tail). Dot only, default: 1, minimum: 0.
-    /// </summary>
-    int? MinLength { get; set; }
-
-    /// <summary>
-    ///     Preferred edge length, in inches (fdp, neato only). Default: 1.0 (neato), 0.3 (fdp).
-    /// </summary>
-    double? Length { get; set; }
-
-    /// <summary>
-    ///     Weight of the edge. In dot, the heavier the weight, the shorter, straighter and more vertical the edge is. Note that weights
-    ///     in dot must be integers. For twopi, a weight of 0 indicates the edge should not be used in constructing a spanning tree from
-    ///     the root. For other layouts, a larger weight encourages the layout to make the edge length closer to that specified by the
-    ///     <see cref="Length"/> attribute. Default: 1. Minimum: 0 [int] (dot, twopi), 1 [double] (neato, fdp).
-    /// </summary>
-    double? Weight { get; set; }
+    DotLabel? ExternalLabel { get; set; }
 
     /// <summary>
     ///     Tooltip annotation attached to the edge (svg, cmap only). If unset, Graphviz will use the <see cref="Label"/> attribute if
     ///     defined.
     /// </summary>
     DotEscapeString? Tooltip { get; set; }
-
-    /// <summary>
-    ///     <para>
-    ///         Gets or sets the color to use for the edge (default: <see cref="System.Drawing.Color.Black"/>).
-    ///     </para>
-    ///     <para>
-    ///         If <see cref="DotMulticolor"/> is used, with no weighted colors in its color collection (<see cref="DotColor"/> items
-    ///         only), the edge is drawn using parallel splines or lines, one for each color in the list, in the order given. The head
-    ///         arrow, if any, is drawn using the first color in the list, and the tail arrow, if any, the second color. This supports
-    ///         the common case of drawing opposing edges, but using parallel splines instead of separately routed multiedges.
-    ///     </para>
-    ///     <para>
-    ///         If <see cref="DotMulticolor"/> is used with at least one weighted color (<see cref="DotWeightedColor"/>), the colors are
-    ///         drawn in series, with each color being given roughly its specified fraction of the edge, expressed by the
-    ///         <see cref="DotWeightedColor.Weight"/> property.
-    ///     </para>
-    /// </summary>
-    DotColorDefinition? Color { get; set; }
-
-    /// <summary>
-    ///     Gets or sets the color used to fill the arrowhead, assuming it has a filled style. If <see cref="FillColor"/> is not defined,
-    ///     <see cref="Color"/> is used. If it is not defined too, the default is used, except when the output format is MIF, which use
-    ///     black by default.
-    /// </summary>
-    DotColorDefinition? FillColor { get; set; }
-
-    /// <summary>
-    ///     Specifies a color scheme namespace to use. If defined, specifies the context for interpreting color names. If no color scheme
-    ///     is set, the standard <see cref="DotColorSchemes.X11"/> naming is used. For example, if
-    ///     <see cref="DotColorSchemes.DotBrewerColorSchemes.BuGn9"/> Brewer color scheme is used, then a color named "7", e.g.
-    ///     Color.FromName("7"), will be evaluated in the context of that specific color scheme. See <see cref="DotColorSchemes"/> for
-    ///     supported scheme names.
-    /// </summary>
-    string? ColorScheme { get; set; }
-
-    /// <summary>
-    ///     Specifies the width of the pen, in points, used to draw lines and curves, including the boundaries of edges. The value has no
-    ///     effect on text. Default: 1.0, minimum: 0.0.
-    /// </summary>
-    double? Width { get; set; }
-
-    /// <summary>
-    ///     Gets or sets the multiplicative scale factor for arrowheads (default: 1.0, minimum: 0.0).
-    /// </summary>
-    double? ArrowheadScaleFactor { get; set; }
 
     /// <summary>
     ///     <para>
@@ -184,21 +84,6 @@ public interface IDotEdgeAttributes
     ///     </para>
     /// </summary>
     DotEdgeDirections? Directions { get; set; }
-
-    /// <summary>
-    ///     If true, attaches label to the edge by a 2-segment polyline, underlining the label, then going to the closest point of
-    ///     spline. Default: false.
-    /// </summary>
-    bool? AttachLabel { get; set; }
-
-    /// <summary>
-    ///     If false, the edge is not used in ranking the nodes (dot only, default: true). See
-    ///     <see href="https://www.graphviz.org/docs/attrs/constraint">
-    ///         documentation
-    ///     </see>
-    ///     for more details.
-    /// </summary>
-    bool? Constrain { get; set; }
 
     /// <summary>
     ///     Comments are inserted into output. Device-dependent.

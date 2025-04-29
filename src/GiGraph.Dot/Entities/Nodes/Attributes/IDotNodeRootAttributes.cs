@@ -12,9 +12,9 @@ public interface IDotNodeRootAttributes : IDotNodeAttributes
     DotFontAttributes Font { get; }
 
     /// <summary>
-    ///     Style options.
+    ///     Style attributes.
     /// </summary>
-    new DotNodeStyleAttributeOptions Style { get; }
+    DotNodeStyleAttributes Style { get; }
 
     /// <summary>
     ///     Node size attributes.
@@ -22,7 +22,7 @@ public interface IDotNodeRootAttributes : IDotNodeAttributes
     DotNodeSizeAttributes Size { get; }
 
     /// <summary>
-    ///     Node geometry attributes applicable if the <see cref="IDotNodeAttributes.Shape" /> is polygonal.
+    ///     Node geometry attributes applicable if the <see cref="IDotNodeAttributes.Shape"/> is polygonal.
     /// </summary>
     DotNodeGeometryAttributes Geometry { get; }
 
@@ -40,4 +40,14 @@ public interface IDotNodeRootAttributes : IDotNodeAttributes
     ///     Hyperlink attributes.
     /// </summary>
     DotHyperlinkAttributes Hyperlink { get; }
+
+    /// <summary>
+    ///     Layout attributes.
+    /// </summary>
+    DotNodeLayoutAttributes Layout { get; }
+
+    /// <summary>
+    ///     Label options attributes.
+    /// </summary>
+    DotNodeLabelOptionsAttributes LabelOptions { get; }
 }

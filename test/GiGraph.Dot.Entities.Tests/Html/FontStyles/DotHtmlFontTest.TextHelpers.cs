@@ -18,7 +18,7 @@ public partial class DotHtmlFontTest
         var entity1 = DotHtmlFont.WithText("text", font);
         var entity2 = DotHtmlFont.WithText("text", styledFont);
 
-        Assert.Equal((string) entity1.ToHtml(), entity2.ToHtml());
+        Assert.Equal((string?) entity1.ToHtml(), entity2.ToHtml());
 
         Snapshot.Match(
             ((IDotHtmlEncodable) entity1).ToHtml(_syntaxOptions, _syntaxRules),
@@ -35,7 +35,7 @@ public partial class DotHtmlFontTest
         var entity1 = DotHtmlFont.WithText("text", font);
         var entity2 = DotHtmlFont.WithText("text", styledFont);
 
-        Assert.Equal((string) entity1.ToHtml(), entity2.ToHtml());
+        Assert.Equal((string?) entity1.ToHtml(), entity2.ToHtml());
 
         Snapshot.Match(
             ((IDotHtmlEncodable) entity1).ToHtml(_syntaxOptions, _syntaxRules),

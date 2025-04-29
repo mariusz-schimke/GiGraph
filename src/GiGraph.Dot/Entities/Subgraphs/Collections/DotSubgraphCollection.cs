@@ -1,5 +1,5 @@
 ﻿using GiGraph.Dot.Entities.Graphs.Collections;
-using GiGraph.Dot.Types.Ranks;
+using GiGraph.Dot.Types.Graphs.Layout.Spacing;
 
 namespace GiGraph.Dot.Entities.Subgraphs.Collections;
 

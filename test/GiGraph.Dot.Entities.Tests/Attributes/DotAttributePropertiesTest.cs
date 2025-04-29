@@ -57,6 +57,8 @@ public class DotAttributePropertiesTest
                 // is used as the implementation parameter, it may be a mistake.
                 Assert.True(sourceType.IsAssignableTo(entityAttributeInterfaceType));
 
+                AssertNoPublicAttributePropertiesWithoutInterface(entityAttributeInterfaceType, sourceType);
+
                 break;
             } while (type is not null);
 
@@ -65,6 +67,31 @@ public class DotAttributePropertiesTest
                 throw new Exception($"The type {sourceType.Name} is not a descendant of {nameof(DotEntityAttributes)}");
             }
         }
+    }
+
+    /// <summary>
+    ///     Makes sure there are no public properties in the source type that are not defined in the interface type, and that expose
+    ///     access to Graphviz attributes.
+    /// </summary>
+    private static void AssertNoPublicAttributePropertiesWithoutInterface(Type entityAttributeInterfaceType, Type sourceType)
+    {
+        var interfaceProps = entityAttributeInterfaceType
+            .GetInterfaces()
+            .Concat([entityAttributeInterfaceType])
+            .SelectMany(i => i.GetProperties(BindingFlags.Instance | BindingFlags.Public))
+            .Select(p => (p.Name, p.PropertyType))
+            .ToHashSet();
+
+        var classProps = sourceType
+            .GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly)
+            .Where(prop => prop.GetCustomAttribute<DotAttributeKeyAttribute>() is not null)
+            .Select(p => (p.Name, p.PropertyType))
+            .ToList();
+
+        var extraProps = classProps
+            .Where(p => !interfaceProps.Contains(p))
+            .ToList();
+        Assert.True(extraProps.Count == 0, $"Type {sourceType.Name} defines extra public properties not in {entityAttributeInterfaceType.Name}: {string.Join(", ", extraProps.Select(p => p.Name))}");
     }
 
     [Fact]

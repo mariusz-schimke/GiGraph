@@ -1,11 +1,11 @@
 ﻿using GiGraph.Dot.Entities.Edges.Attributes;
 using GiGraph.Dot.Entities.Nodes.Attributes;
 using GiGraph.Dot.Entities.Subgraphs.Attributes;
-using GiGraph.Dot.Types.Edges;
-using GiGraph.Dot.Types.Layout;
-using GiGraph.Dot.Types.Output;
-using GiGraph.Dot.Types.Packing;
-using GiGraph.Dot.Types.Ranks;
+using GiGraph.Dot.Types.Edges.Layout;
+using GiGraph.Dot.Types.Graphs.Layout;
+using GiGraph.Dot.Types.Graphs.Layout.Packing;
+using GiGraph.Dot.Types.Graphs.Layout.Spacing;
+using GiGraph.Dot.Types.Identifiers;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes;
 
@@ -38,6 +38,19 @@ public interface IDotGraphLayoutAttributes
     DotEdgeOrderingMode? EdgeOrderingMode { get; set; }
 
     /// <summary>
+    ///     Controls how, and if, edges are represented. By default, the attribute is unset. How this is interpreted depends on the
+    ///     layout. For dot, the default is to draw edges as splines (<see cref="DotEdgeShape.Spline"/>). For all other layouts, the
+    ///     default is to draw edges as line segments (<see cref="DotEdgeShape.Line"/>). Note that for these latter layouts, if
+    ///     <see cref="DotEdgeShape.Spline"/> is used, this requires non-overlapping nodes (cf.
+    ///     <see href="https://www.graphviz.org/docs/attrs/overlap">
+    ///         overlap
+    ///     </see>
+    ///     ). If fdp is used for layout and <see cref="DotEdgeShape.Compound"/> is used, then the edges are drawn to avoid clusters as
+    ///     well as nodes.
+    /// </summary>
+    DotEdgeShape? EdgeShape { get; set; }
+
+    /// <summary>
     ///     If true, all node <see cref="IDotNodeAttributes.ExternalLabel"/> and edge <see cref="IDotEdgeAttributes.ExternalLabel"/>
     ///     attributes are placed, even if there is some overlap with nodes or other labels (default: true).
     /// </summary>
@@ -46,7 +59,27 @@ public interface IDotGraphLayoutAttributes
     /// <summary>
     ///     Determines whether to draw circo graphs around one circle (circo only; default: false).
     /// </summary>
-    bool? ForceCircularLayout { get; set; }
+    bool? UseCircularLayout { get; set; }
+
+    /// <summary>
+    ///     <para>
+    ///         The identifier of a node that should be used as the center of the layout and the root of the generated spanning tree
+    ///         (circo, twopi only).
+    ///     </para>
+    ///     <para>
+    ///         In twopi, root will actually be the central node. In circo, the block containing the node will be central in the drawing
+    ///         of its connected component. If not defined, twopi will pick a most central node, and circo will pick a random node.
+    ///     </para>
+    ///     <para>
+    ///         If the attribute is defined as the empty string, twopi will reset it to name of the node picked as the root node.
+    ///     </para>
+    ///     <para>
+    ///         For twopi, it is possible to have multiple roots, presumably one for each component. If more than one node in a component
+    ///         is marked as the root, twopi will pick one (see the <see cref="IDotNodeLayoutAttributes.IsLayoutRoot"/> node layout
+    ///         attribute).
+    ///     </para>
+    /// </summary>
+    DotId? RootNodeId { get; set; }
 
     /// <summary>
     ///     Rotates the final layout counter-clockwise by the specified number of degrees (sfdp only; default: 0).
@@ -83,7 +116,7 @@ public interface IDotGraphLayoutAttributes
 
     /// <summary>
     ///     <para>
-    ///         In dot, this gives the desired rank separation, in inches (<see cref="DotRankSeparation"/>; default: 0.5, minimum: 0.02.
+    ///         In dot, this gives the desired rank separation, in inches (<see cref="DotRankSeparation"/>; default: 0.5, minimum: 0.02).
     ///         This is the minimum vertical distance between the bottom of the nodes in one rank and the tops of nodes in the next.
     ///     </para>
     ///     <para>
@@ -100,7 +133,7 @@ public interface IDotGraphLayoutAttributes
 
     /// <summary>
     ///     <para>
-    ///         If enabled (see <see cref="DotPackingToggle"/>), each connected component of the graph is laid out separately, and then
+    ///         If enabled (see <see cref="DotPackingEnabled"/>), each connected component of the graph is laid out separately, and then
     ///         the graphs are packed together.
     ///     </para>
     ///     <para>
@@ -108,11 +141,11 @@ public interface IDotGraphLayoutAttributes
     ///         around each part; otherwise, a default margin of 8 is used.
     ///     </para>
     ///     <para>
-    ///         If disabled (see <see cref="DotPackingToggle"/>), the entire graph is laid out together. The granularity and method of
+    ///         If disabled (see <see cref="DotPackingEnabled"/>), the entire graph is laid out together. The granularity and method of
     ///         packing is influenced by the <see cref="PackingMode"/> attribute.
     ///     </para>
     ///     <para>
-    ///         Default: disabled (see <see cref="DotPackingToggle"/>).
+    ///         Default: disabled (see <see cref="DotPackingEnabled"/>).
     ///     </para>
     /// </summary>
     DotPackingDefinition? Packing { get; set; }
@@ -138,7 +171,7 @@ public interface IDotGraphLayoutAttributes
     ///         of iterations in each pass.
     ///     </para>
     /// </summary>
-    double? EdgeCrossingMinimizationScaleFactor { get; set; }
+    double? EdgeCrossingMinimizationScale { get; set; }
 
     /// <summary>
     ///     <para>

@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Diagnostics.Contracts;
+using System.Drawing;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Entities.Html.Table;
 using GiGraph.Dot.Extensions;
@@ -10,6 +11,7 @@ namespace GiGraph.Dot.Examples.Html;
 
 public static class HtmlTableNode
 {
+    [Pure]
     public static DotGraph Generate()
     {
         var graph = new DotGraph();
@@ -62,7 +64,7 @@ public static class HtmlTableNode
         );
 
         // sets a borderless (plain) shape of the node so that the HTML table fully determines the shape
-        graph.Nodes.Add("Bar").SetAsHtmlTable(table);
+        graph.Nodes.Add("Bar").SetHtmlTableAsLabel(table);
 
         // sets an attribute of the edge (can be set globally)
         graph.Edges.Add("Foo", "Bar").Head.Port = new DotEndpointPort("port1", DotCompassPoint.NorthEast);

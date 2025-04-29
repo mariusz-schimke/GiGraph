@@ -2,7 +2,7 @@ using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
-using GiGraph.Dot.Types.Arrowheads;
+using GiGraph.Dot.Types.Edges.Arrowheads;
 using Snapshooter.Xunit;
 using Xunit;
 
@@ -74,6 +74,6 @@ public class DotEdgeTest
             },
             "a", "b", "c");
 
-        Snapshot.Match(graph.Build(), "edge_head_and_tail_attributes");
+        Snapshot.Match(graph.ToDot(), "edge_head_and_tail_attributes");
     }
 }

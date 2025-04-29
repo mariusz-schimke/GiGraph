@@ -1,5 +1,5 @@
 ﻿digraph
 {
-    node1 [ distortion = 5, orientation = 30, peripheries = 2, regular = true, shape = polygon, sides = 6, skew = 10 ]
-    node2 [ distortion = 5, orientation = 30, peripheries = 2, regular = true, shape = polygon, sides = 6, skew = 10 ]
+    node1 [ distortion = 5, orientation = 30, regular = true, shape = polygon, sides = 6, skew = 10 ]
+    node2 [ distortion = 5, orientation = 30, regular = true, shape = polygon, sides = 6, skew = 10 ]
 }

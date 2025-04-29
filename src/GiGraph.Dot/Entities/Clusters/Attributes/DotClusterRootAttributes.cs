@@ -1,23 +1,32 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
-using GiGraph.Dot.Entities.Attributes.Properties.Common.ClusterNode;
+using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Font;
+using GiGraph.Dot.Entities.Attributes.Properties.Common.GraphCluster;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
-using GiGraph.Dot.Entities.Attributes.Properties.Common.LabelAlignment;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
+using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Output.Metadata;
-using GiGraph.Dot.Types.Colors;
-using GiGraph.Dot.Types.Ranks;
-using GiGraph.Dot.Types.Styling;
+using GiGraph.Dot.Types.EscapeString;
+using GiGraph.Dot.Types.Geometry;
 
 namespace GiGraph.Dot.Entities.Clusters.Attributes;
 
-public partial class DotClusterRootAttributes : DotClusterNodeRootCommonAttributes<IDotClusterAttributes, DotClusterRootAttributes>, IDotClusterRootAttributes
+public partial class DotClusterRootAttributes : DotEntityAttributesWithMetadata<IDotClusterAttributes, DotClusterRootAttributes>, IDotClusterRootAttributes
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotClusterRootAttributes, IDotClusterAttributes>().BuildLazy();
 
     public DotClusterRootAttributes(DotAttributeCollection attributes)
-        : this(attributes, AttributeKeyLookup, new DotHyperlinkAttributes(attributes), new DotFontAttributes(attributes), new DotClusterStyleAttributeOptions(attributes), new DotSvgStyleSheetAttributes(attributes), new DotLabelAlignmentAttributes(attributes))
+        : this(
+            attributes,
+            AttributeKeyLookup,
+            new DotHyperlinkAttributes(attributes),
+            new DotFontAttributes(attributes),
+            new DotClusterStyleAttributes(attributes),
+            new DotSvgStyleSheetAttributes(attributes),
+            new DotLabelOptionsAttributes(attributes),
+            new DotClusterLayoutAttributes(attributes)
+        )
     {
     }
 
@@ -26,15 +35,19 @@ public partial class DotClusterRootAttributes : DotClusterNodeRootCommonAttribut
         Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
         DotHyperlinkAttributes hyperlinkAttributes,
         DotFontAttributes fontAttributes,
-        DotClusterStyleAttributeOptions styleAttributeOptions,
+        DotClusterStyleAttributes styleAttributes,
         DotSvgStyleSheetAttributes svgStyleSheetAttributes,
-        DotLabelAlignmentAttributes labelAlignmentAttributes
+        DotLabelOptionsAttributes labelOptionsAttributes,
+        DotClusterLayoutAttributes layoutAttributes
     )
-        : base(attributes, attributeKeyLookup, hyperlinkAttributes, svgStyleSheetAttributes)
+        : base(attributes, attributeKeyLookup)
     {
         Font = fontAttributes;
-        Style = styleAttributeOptions;
-        LabelAlignment = labelAlignmentAttributes;
+        Style = styleAttributes;
+        LabelOptions = labelOptionsAttributes;
+        SvgStyleSheet = svgStyleSheetAttributes;
+        Hyperlink = hyperlinkAttributes;
+        Layout = layoutAttributes;
     }
 
     [DotAttributeKey(DotAttributeKeys.Cluster)]
@@ -46,31 +59,37 @@ public partial class DotClusterRootAttributes : DotClusterNodeRootCommonAttribut
         set => _attributes.SetValueOrRemove(DotAttributeKeys.Cluster, value);
     }
 
+    /// <inheritdoc cref="IDotClusterRootAttributes.Font"/>
     public DotFontAttributes Font { get; }
-    public DotClusterStyleAttributeOptions Style { get; }
-    public DotLabelAlignmentAttributes LabelAlignment { get; }
 
-    [DotAttributeKey(DotAttributeKeys.Style)]
-    DotStyles? IDotClusterAttributes.Style
-    {
-        [DotAttributeKey(DotAttributeKeys.Style)]
-        get => _attributes.GetValueAs(DotAttributeKeys.Style, out DotStyles? result) ? result : null;
-        [DotAttributeKey(DotAttributeKeys.Style)]
-        set => _attributes.SetValueOrRemove(DotAttributeKeys.Style, value);
-    }
+    /// <inheritdoc cref="IDotClusterRootAttributes.Style"/>
+    public DotClusterStyleAttributes Style { get; }
 
-    [DotAttributeKey(DotAttributeKeys.NoJustify)]
-    public virtual partial bool? DisableLabelJustification { get; set; }
+    /// <inheritdoc cref="IDotClusterRootAttributes.LabelOptions"/>
+    public DotLabelOptionsAttributes LabelOptions { get; }
 
-    [DotAttributeKey(DotAttributeKeys.Rank)]
-    public virtual partial DotRank? NodeRank { get; set; }
+    /// <inheritdoc cref="IDotClusterRootAttributes.SvgStyleSheet"/>
+    public DotSvgStyleSheetAttributes SvgStyleSheet { get; }
 
-    [DotAttributeKey(DotAttributeKeys.PenColor)]
-    public virtual partial DotColor? BorderColor { get; set; }
+    /// <inheritdoc cref="IDotClusterRootAttributes.Hyperlink"/>
+    public DotHyperlinkAttributes Hyperlink { get; }
 
-    [DotAttributeKey(DotAttributeKeys.BgColor)]
-    public virtual partial DotColorDefinition? BackgroundColor { get; set; }
+    /// <inheritdoc cref="IDotClusterRootAttributes.Layout"/>
+    public DotClusterLayoutAttributes Layout { get; }
 
-    [DotAttributeKey(DotAttributeKeys.Peripheries)]
-    public virtual partial int? Peripheries { get; set; }
+    /// <inheritdoc cref="IDotClusterAttributes.Label"/>
+    [DotAttributeKey(DotAttributeKeys.Label)]
+    public virtual partial DotLabel? Label { get; set; }
+
+    /// <inheritdoc cref="IDotClusterAttributes.Tooltip"/>
+    [DotAttributeKey(DotAttributeKeys.Tooltip)]
+    public virtual partial DotEscapeString? Tooltip { get; set; }
+
+    /// <inheritdoc cref="IDotClusterAttributes.Padding"/>
+    [DotAttributeKey(DotAttributeKeys.Margin)]
+    public virtual partial DotPoint? Padding { get; set; }
+
+    /// <inheritdoc cref="IDotClusterAttributes.ObjectId"/>
+    [DotAttributeKey(DotAttributeKeys.Id)]
+    public virtual partial DotEscapeString? ObjectId { get; set; }
 }

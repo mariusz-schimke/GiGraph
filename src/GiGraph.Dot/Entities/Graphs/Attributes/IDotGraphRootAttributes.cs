@@ -1,5 +1,5 @@
-﻿using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
-using GiGraph.Dot.Entities.Attributes.Properties.Common.LabelAlignment;
+﻿using GiGraph.Dot.Entities.Attributes.Properties.Common.GraphCluster;
+using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes;
 
@@ -11,14 +11,14 @@ public interface IDotGraphRootAttributes : IDotGraphAttributes
     DotGraphClustersAttributes Clusters { get; }
 
     /// <summary>
+    ///     Style attributes.
+    /// </summary>
+    DotGraphStyleAttributes Style { get; }
+
+    /// <summary>
     ///     Font attributes.
     /// </summary>
     DotGraphFontAttributes Font { get; }
-
-    /// <summary>
-    ///     Style options. Note that the options are shared with those specified for <see cref="Clusters" />.
-    /// </summary>
-    new DotGraphStyleAttributeOptions Style { get; }
 
     /// <summary>
     ///     Style sheet attributes used for SVG output.
@@ -36,9 +36,9 @@ public interface IDotGraphRootAttributes : IDotGraphAttributes
     DotGraphCanvasAttributes Canvas { get; }
 
     /// <summary>
-    ///     Horizontal and vertical label alignment options.
+    ///     Label options attributes.
     /// </summary>
-    DotLabelAlignmentAttributes LabelAlignment { get; }
+    DotLabelOptionsAttributes LabelOptions { get; }
 
     /// <summary>
     ///     Hyperlink attributes.

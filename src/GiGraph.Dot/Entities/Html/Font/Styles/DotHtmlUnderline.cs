@@ -27,7 +27,7 @@ public class DotHtmlUnderline : DotHtmlFontStyle
     /// <param name="lineAlignment">
     ///     Specifies horizontal placement of lines if multiline text is specified.
     /// </param>
-    public DotHtmlUnderline(string text, DotHorizontalAlignment? lineAlignment = null)
+    public DotHtmlUnderline(string? text, DotHorizontalAlignment? lineAlignment = null)
         : base(TagName, text, lineAlignment)
     {
     }

@@ -67,9 +67,4 @@ public record DotStyledFont(DotFontStyles? Style = null, string? Name = null, do
         : this(style, font.Name, font.Size, font.Color)
     {
     }
-
-    /// <summary>
-    ///     The font style.
-    /// </summary>
-    public DotFontStyles? Style { get; init; } = Style;
 }

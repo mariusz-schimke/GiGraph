@@ -11,7 +11,7 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 ///     The entity attributes type.
 /// </typeparam>
 /// <typeparam name="TIEntityAttributeProperties">
-///     The interface that exposes entity-specific attributes of the <typeparamref name="TEntityAttributes" /> type.
+///     The interface that exposes entity-specific attributes of the <typeparamref name="TEntityAttributes"/> type.
 /// </typeparam>
 public class DotMemberAttributeKeyLookupBuilder<TEntityAttributes, TIEntityAttributeProperties>
     where TEntityAttributes : DotEntityAttributes, TIEntityAttributeProperties
@@ -36,12 +36,13 @@ public class DotMemberAttributeKeyLookupBuilder<TEntityAttributes, TIEntityAttri
     {
         var result = new DotMemberAttributeKeyLookup();
 
-        var entityAttributePropertiesInterfaceTypes = typeof(TIEntityAttributeProperties).GetInterfaces()
-            .Concat([typeof(TIEntityAttributeProperties)]);
+        var interfaceType = typeof(TIEntityAttributeProperties);
+        var entityAttributePropertiesInterfaceTypes = interfaceType.GetInterfaces()
+            .Concat([interfaceType]);
 
-        foreach (var interfaceType in entityAttributePropertiesInterfaceTypes)
+        foreach (var entityAttributePropertiesInterfaceType in entityAttributePropertiesInterfaceTypes)
         {
-            AddPropertyAccessors(result, interfaceType);
+            AddPropertyAccessors(result, entityAttributePropertiesInterfaceType);
         }
 
         return seal ? result.Seal() : result;

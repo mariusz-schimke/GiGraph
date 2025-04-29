@@ -12,10 +12,10 @@ public class DotNodeHtmlExtensionTest
     public void converts_node_to_plain_html_node_from_html_text()
     {
         var graph = new DotGraph();
-        graph.Nodes.Add("node1").SetAsHtml("<b>label</b>");
+        graph.Nodes.Add("node1").SetHtmlAsLabel("<b>label</b>");
 
         Snapshot.Match(
-            graph.Build(),
+            graph.ToDot(),
             "graph_with_plain_html_node_from_html_string"
         );
     }
@@ -24,10 +24,10 @@ public class DotNodeHtmlExtensionTest
     public void converts_node_to_plain_html_node_from_html_entity()
     {
         var graph = new DotGraph();
-        graph.Nodes.Add("node1").SetAsHtml(new DotHtmlTable());
+        graph.Nodes.Add("node1").SetHtmlAsLabel(new DotHtmlTable());
 
         Snapshot.Match(
-            graph.Build(),
+            graph.ToDot(),
             "graph_with_plain_html_node_from_html_entity"
         );
     }
