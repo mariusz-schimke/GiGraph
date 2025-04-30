@@ -32,6 +32,29 @@ public static class IDotEdgeEndpointAttributesExtensions
 
     /// <summary>
     ///     <para>
+    ///         Sets an empty arrowhead shape to be used at the current end of the edge.
+    ///     </para>
+    ///     <para>
+    ///         It is equivalent to setting the <see cref="IDotEdgeEndpointAttributes.Arrowhead"/> property directly, using
+    ///         <see cref="DotArrowhead"/>.
+    ///     </para>
+    /// </summary>
+    /// <param name="attributes">
+    ///     The current edge endpoint attributes instance.
+    /// </param>
+    /// <param name="shape">
+    ///     Determines the shape of the arrowhead to use.
+    /// </param>
+    /// <param name="visibleParts">
+    ///     Determines whether and how to clip the shape, leaving visible only the part to the left or to the right of the edge.
+    /// </param>
+    public static void SetEmptyArrowhead(this IDotEdgeEndpointAttributes attributes, DotArrowheadShape shape, DotArrowheadParts visibleParts = DotArrowheadParts.Both)
+    {
+        attributes.SetArrowhead(shape, filled: false, visibleParts);
+    }
+
+    /// <summary>
+    ///     <para>
     ///         Sets a composite arrowhead shape to be used at the current end of the edge.
     ///     </para>
     ///     <para>
