@@ -63,10 +63,10 @@ public partial class DotHtmlTableRow : DotHtmlElement
     /// <param name="buildTable">
     ///     A table initializer delegate.
     /// </param>
-    public virtual DotHtmlTableCell AddTableCell(Action<DotHtmlTable> buildTable)
+    public virtual DotHtmlTableCell AddTableCell(Action<DotHtmlTable>? buildTable)
     {
         var table = new DotHtmlTable();
-        buildTable(table);
+        buildTable?.Invoke(table);
         return Content.Add<DotHtmlTableCell>([table], init: null);
     }
 
@@ -76,11 +76,11 @@ public partial class DotHtmlTableRow : DotHtmlElement
     /// <param name="init">
     ///     A cell and table initializer delegate.
     /// </param>
-    public virtual DotHtmlTableCell AddTableCell(Action<DotHtmlTableCell, DotHtmlTable> init)
+    public virtual DotHtmlTableCell AddTableCell(Action<DotHtmlTableCell, DotHtmlTable>? init)
     {
         var table = new DotHtmlTable();
         var cell = Content.Add<DotHtmlTableCell>([table], init: null);
-        init(cell, table);
+        init?.Invoke(cell, table);
         return cell;
     }
 
