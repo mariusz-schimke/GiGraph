@@ -87,7 +87,7 @@ public class DotHtmlEntityCollection : List<IDotHtmlEntity>, IDotHtmlContentEnti
     /// <param name="init">
     ///     An optional entity initializer.
     /// </param>
-    public virtual TEntity Add<TEntity>(TEntity entity, Action<TEntity>? init = null)
+    protected internal virtual TEntity Add<TEntity>(TEntity entity, Action<TEntity>? init = null)
         where TEntity : IDotHtmlEntity
     {
         init?.Invoke(entity);

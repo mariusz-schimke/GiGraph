@@ -34,7 +34,7 @@ public partial class DotNodeCollection : List<DotNodeDefinition>, IDotEntity, ID
     /// <summary>
     ///     Adds a node to the collection and initializes its attributes.
     /// </summary>
-    /// <typeparam name="T">
+    /// <typeparam name="TNode">
     ///     The type of node to add.
     /// </typeparam>
     /// <param name="node">
@@ -43,8 +43,8 @@ public partial class DotNodeCollection : List<DotNodeDefinition>, IDotEntity, ID
     /// <param name="init">
     ///     An optional node initializer delegate.
     /// </param>
-    public virtual T Add<T>(T node, Action<T>? init)
-        where T : DotNodeDefinition
+    protected virtual TNode Add<TNode>(TNode node, Action<TNode>? init)
+        where TNode : DotNodeDefinition
     {
         Add(node);
         init?.Invoke(node);
