@@ -14,7 +14,7 @@ public class DotClusterCollection : DotCommonGraphCollection<DotCluster>
     /// <param name="init">
     ///     An optional cluster initializer delegate.
     /// </param>
-    public virtual DotCluster Add(string id, Action<DotCluster>? init = null) => AddCluster(id, nodeIds: [], init);
+    public virtual DotCluster Add(string id, Action<DotCluster>? init = null) => AddWithNodes(id, nodeIds: [], init);
 
     /// <summary>
     ///     Adds a new cluster subgraph with the specified identifier to the collection, and populates it with the specified nodes.
@@ -26,7 +26,7 @@ public class DotClusterCollection : DotCommonGraphCollection<DotCluster>
     /// <param name="nodeIds">
     ///     Optional node identifiers to populate the cluster with.
     /// </param>
-    public virtual DotCluster AddWithNodes(string id, params string[] nodeIds) => AddCluster(id, nodeIds);
+    public virtual DotCluster AddWithNodes(string id, params string[] nodeIds) => AddWithNodes(id, nodeIds, init: null);
 
     /// <summary>
     ///     Adds a new cluster subgraph with the specified identifier to the collection, and populates it with the specified nodes.
@@ -38,8 +38,9 @@ public class DotClusterCollection : DotCommonGraphCollection<DotCluster>
     /// <param name="nodeIds">
     ///     A node identifier collection to populate the cluster with.
     /// </param>
-    public virtual DotCluster AddWithNodes(string id, IEnumerable<string> nodeIds) => AddCluster(id, nodeIds);
-
-    protected virtual DotCluster AddCluster(string id, IEnumerable<string> nodeIds, Action<DotCluster>? init = null) =>
+    /// <param name="init">
+    ///     An optional cluster initializer delegate.
+    /// </param>
+    public virtual DotCluster AddWithNodes(string id, IEnumerable<string> nodeIds, Action<DotCluster>? init = null) =>
         Add(DotCluster.FromNodes(id, nodeIds), init);
 }
