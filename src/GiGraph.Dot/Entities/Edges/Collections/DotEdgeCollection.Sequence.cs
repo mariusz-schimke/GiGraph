@@ -14,7 +14,7 @@ public partial class DotEdgeCollection
     ///     An optional initializer delegate to call for the created sequence.
     /// </param>
     public virtual DotEdgeSequence AddSequence(IEnumerable<string> nodeIds, Action<DotEdgeSequence>? init = null) =>
-        Add(DotEdgeSequence.FromNodes(nodeIds), init);
+        Add(new DotEdgeSequence(nodeIds), init);
 
     /// <summary>
     ///     Adds a sequence of edges that connect the specified endpoints consecutively. At least a pair of endpoints has to be provided.
