@@ -15,14 +15,7 @@ public class DotHtmlEntityCollection : List<IDotHtmlEntity>, IDotHtmlContentEnti
     /// <summary>
     ///     Creates a new entity collection.
     /// </summary>
-    /// <param name="entities">
-    ///     The entities to initialize the collection with.
-    /// </param>
-    /// <exception cref="ArgumentNullException">
-    ///     Thrown when a null collection is passed.
-    /// </exception>
-    public DotHtmlEntityCollection(params IDotHtmlEntity[] entities)
-        : base(entities)
+    public DotHtmlEntityCollection()
     {
     }
 
@@ -40,7 +33,7 @@ public class DotHtmlEntityCollection : List<IDotHtmlEntity>, IDotHtmlContentEnti
     {
     }
 
-    /// <inheritdoc cref="IDotHtmlEntity.ToHtml()" />
+    /// <inheritdoc cref="IDotHtmlEntity.ToHtml()"/>
     public virtual DotHtmlString ToHtml() => ToHtml(DotSyntaxOptions.Default, DotSyntaxRules.Default);
 
     string IDotHtmlEncodable.ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => ToHtml(options, syntaxRules);

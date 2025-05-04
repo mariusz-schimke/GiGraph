@@ -16,7 +16,10 @@ public partial class DotHtmlFontTest
         var font = new DotFont("Arial", 20, Color.Blue);
         var styledFont = new DotStyledFont(font);
 
-        var entityCollection = new DotHtmlEntityCollection(new DotHtmlText("text"));
+        var entityCollection = new DotHtmlEntityCollection
+        {
+            new DotHtmlText("text")
+        };
 
         var entity1 = DotHtmlFont.WithEntity(entityCollection, font);
         var entity2 = DotHtmlFont.WithEntity(entityCollection, styledFont);
@@ -35,7 +38,10 @@ public partial class DotHtmlFontTest
         var font = new DotFont();
         var styledFont = new DotStyledFont(font);
 
-        var entityCollection = new DotHtmlEntityCollection(new DotHtmlText("text"));
+        var entityCollection = new DotHtmlEntityCollection
+        {
+            new DotHtmlText("text")
+        };
 
         var entity1 = DotHtmlFont.WithEntity(entityCollection, font);
         var entity2 = DotHtmlFont.WithEntity(entityCollection, styledFont);
@@ -53,7 +59,10 @@ public partial class DotHtmlFontTest
     {
         var font = new DotStyledFont(DotFontStyles.Bold | DotFontStyles.Italic, "Arial", 20, Color.Blue);
 
-        var entityCollection = new DotHtmlEntityCollection(new DotHtmlText("text"));
+        var entityCollection = new DotHtmlEntityCollection
+        {
+            new DotHtmlText("text")
+        };
 
         var entity = DotHtmlFont.WithEntity(entityCollection, font);
 
@@ -68,7 +77,10 @@ public partial class DotHtmlFontTest
     {
         var font = new DotStyledFont(Style: DotFontStyles.Bold | DotFontStyles.Italic);
 
-        var entityCollection = new DotHtmlEntityCollection(new DotHtmlText("text"));
+        var entityCollection = new DotHtmlEntityCollection
+        {
+            new DotHtmlText("text")
+        };
 
         var entity = DotHtmlFont.WithEntity(entityCollection, font);
 
