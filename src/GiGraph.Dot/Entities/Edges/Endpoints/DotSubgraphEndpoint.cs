@@ -26,18 +26,7 @@ public class DotSubgraphEndpoint : DotEndpointDefinition
     /// <param name="nodeIds">
     ///     The identifiers of nodes to use as the endpoints of multiple edges.
     /// </param>
-    public DotSubgraphEndpoint(params string[] nodeIds)
-        : this(DotSubgraph.FromNodes(nodeIds))
-    {
-    }
-
-    /// <summary>
-    ///     Creates a new endpoint group initialized with the specified node identifiers.
-    /// </summary>
-    /// <param name="nodeIds">
-    ///     The identifiers of nodes to use as the endpoints of multiple edges.
-    /// </param>
-    public DotSubgraphEndpoint(IEnumerable<string> nodeIds)
+    public DotSubgraphEndpoint(params IEnumerable<string> nodeIds)
         : this(DotSubgraph.FromNodes(nodeIds))
     {
     }
@@ -55,11 +44,13 @@ public class DotSubgraphEndpoint : DotEndpointDefinition
 
     protected override string GetOrderingKey()
     {
-        return string.Join(" ",
+        return string.Join(
+            " ",
             Subgraph.Nodes
                 .Cast<IDotOrderable>()
                 .Select(node => node.OrderingKey)
-                .OrderBy(key => key, StringComparer.InvariantCulture));
+                .OrderBy(key => key, StringComparer.InvariantCulture)
+        );
     }
 
     // the type of endpoint may be specified explicitly as a generic param, in which case this implicit conversion may be useful
