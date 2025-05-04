@@ -60,13 +60,18 @@ public partial class DotHtmlTableRow : DotHtmlElement
     /// <summary>
     ///     Adds a cell with a nested table to the current row and returns the table.
     /// </summary>
-    /// <param name="init">
+    /// <param name="initCell">
     ///     A cell initializer delegate.
     /// </param>
-    public virtual DotHtmlTable AddTableCell(Action<DotHtmlTableCell>? init = null)
+    /// <param name="initTable">
+    ///     A table initializer delegate.
+    /// </param>
+    public virtual DotHtmlTable AddTableCell(Action<DotHtmlTableCell>? initCell = null, Action<DotHtmlTable>? initTable = null)
     {
         var table = new DotHtmlTable();
-        Content.Add([table], init);
+        initTable?.Invoke(table);
+
+        Content.Add([table], initCell);
         return table;
     }
 
