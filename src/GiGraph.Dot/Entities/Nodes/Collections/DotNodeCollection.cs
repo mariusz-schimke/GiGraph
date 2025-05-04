@@ -28,7 +28,7 @@ public partial class DotNodeCollection : List<DotNodeDefinition>, IDotEntity, ID
     /// </summary>
     public DotEntityRootAttributesAccessor<IDotNodeAttributes, DotNodeRootAttributes> Attributes { get; }
 
-    /// <inheritdoc cref="IDotAnnotatable.Annotation" />
+    /// <inheritdoc cref="IDotAnnotatable.Annotation"/>
     public virtual string? Annotation { get; set; }
 
     /// <summary>
@@ -68,48 +68,10 @@ public partial class DotNodeCollection : List<DotNodeDefinition>, IDotEntity, ID
     /// <param name="ids">
     ///     The identifiers of the nodes to add.
     /// </param>
-    public virtual DotNodeGroup AddGroup(params string[] ids) => AddGroup(ids, init: null);
-
-    /// <summary>
-    ///     Adds a group of nodes with the specified identifiers to the collection.
-    /// </summary>
-    /// <param name="init">
-    ///     An optional initializer delegate to call for the created group.
-    /// </param>
-    /// <param name="ids">
-    ///     The identifiers of the nodes to add.
-    /// </param>
-    public virtual DotNodeGroup AddGroup(Action<DotNodeGroup>? init, params string[] ids) => AddGroup(ids, init);
-
-    /// <summary>
-    ///     Adds a group of nodes with the specified identifiers to the collection.
-    /// </summary>
-    /// <param name="ids">
-    ///     The identifiers of the nodes to add.
-    /// </param>
     /// <param name="init">
     ///     An optional initializer delegate to call for the created group.
     /// </param>
     public virtual DotNodeGroup AddGroup(IEnumerable<string> ids, Action<DotNodeGroup>? init = null) => Add(new DotNodeGroup(ids), init);
-
-    /// <summary>
-    ///     Adds nodes with the specified identifiers to the collection, and returns them.
-    /// </summary>
-    /// <param name="ids">
-    ///     The identifiers of the nodes to add.
-    /// </param>
-    public virtual DotNode[] AddRange(params string[] ids) => AddRange(ids, init: null);
-
-    /// <summary>
-    ///     Adds nodes with the specified identifiers to the collection, and returns them.
-    /// </summary>
-    /// <param name="ids">
-    ///     The identifiers of the nodes to add.
-    /// </param>
-    /// <param name="init">
-    ///     An optional initializer delegate to call for each created node.
-    /// </param>
-    public virtual DotNode[] AddRange(Action<DotNode>? init, params string[] ids) => AddRange(ids, init);
 
     /// <summary>
     ///     Adds nodes with the specified identifiers to the collection, and returns them.
@@ -123,8 +85,7 @@ public partial class DotNodeCollection : List<DotNodeDefinition>, IDotEntity, ID
     public virtual DotNode[] AddRange(IEnumerable<string> ids, Action<DotNode>? init = null)
     {
         return ids.Select
-            (
-                id =>
+            (id =>
                 {
                     var node = Add(id);
                     init?.Invoke(node);

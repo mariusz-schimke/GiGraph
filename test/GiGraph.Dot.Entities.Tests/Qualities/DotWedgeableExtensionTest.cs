@@ -29,11 +29,11 @@ public class DotWedgeableExtensionTest
     {
         var graph = new DotGraph();
 
-        graph.Nodes.AddGroup("node1", "node2").SetWedgedFill(Color.Red, Color.Blue);
-        graph.Nodes.AddGroup("node3", "node4").SetWedgedFill(new DotMulticolor(Color.Red, Color.Blue));
+        graph.Nodes.AddGroup(["node1", "node2"]).SetWedgedFill(Color.Red, Color.Blue);
+        graph.Nodes.AddGroup(["node3", "node4"]).SetWedgedFill(new DotMulticolor(Color.Red, Color.Blue));
 
-        graph.Nodes.AddGroup("node5", "node6").SetWedgedFill(DotNodeShape.Rect, Color.Red, Color.Blue);
-        graph.Nodes.AddGroup("node7", "node8").SetWedgedFill(DotNodeShape.Rectangle, new DotMulticolor(Color.Red, Color.Blue));
+        graph.Nodes.AddGroup(["node5", "node6"]).SetWedgedFill(DotNodeShape.Rect, Color.Red, Color.Blue);
+        graph.Nodes.AddGroup(["node7", "node8"]).SetWedgedFill(DotNodeShape.Rectangle, new DotMulticolor(Color.Red, Color.Blue));
 
         Snapshot.Match(graph.ToDot(), "wedged_fill_on_individual_node_groups");
     }

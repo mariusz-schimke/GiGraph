@@ -33,8 +33,8 @@ public partial class DotFillableExtensionTest
     {
         var graph = new DotGraph();
 
-        graph.Nodes.AddGroup("node1", "node2").SetGradientFill(new DotGradientColor(Color.Red, Color.Brown));
-        graph.Nodes.AddGroup("node3", "node4").SetGradientFill(new DotGradientColor(Color.Red, Color.Brown), 45);
+        graph.Nodes.AddGroup(["node1", "node2"]).SetGradientFill(new DotGradientColor(Color.Red, Color.Brown));
+        graph.Nodes.AddGroup(["node3", "node4"]).SetGradientFill(new DotGradientColor(Color.Red, Color.Brown), 45);
 
         Snapshot.Match(graph.ToDot(), "gradient_fill_on_node_groups");
     }

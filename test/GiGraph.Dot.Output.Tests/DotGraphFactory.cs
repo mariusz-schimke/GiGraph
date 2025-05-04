@@ -80,14 +80,13 @@ public class DotGraphFactory
         );
 
         graph.Nodes.AddGroup(
+            ["node1", "node2"],
             nodeGroup =>
             {
                 nodeGroup.Shape = DotNodeShape.Box;
                 nodeGroup.Style.BorderWeight = DotBorderWeight.Bold;
                 nodeGroup.Style.BorderStyle = DotBorderStyle.Dashed;
-            },
-            "node1",
-            "node2"
+            }
         );
 
         graph.Edges.AddLoop("no_attributes");
