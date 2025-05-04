@@ -37,12 +37,12 @@ public static class WithCustomNodeLayout
 
         // add subgraphs to control the layout of individual node groups
         // (check how the visualization changes when you remove these lines)
-        graph.Subgraphs.AddWithNodes(DotRank.Same, "b", "c", "d");
-        graph.Subgraphs.AddWithNodes(DotRank.Same, "e", "f", "g");
-        graph.Subgraphs.AddWithNodes(DotRank.Same, "h", "i", "j", "k");
-        graph.Subgraphs.AddWithNodes(DotRank.Same, "l", "m", "n");
-        graph.Subgraphs.AddWithNodes(DotRank.Same, "q", "r");
-        graph.Subgraphs.AddWithNodes(DotRank.Max, "o", "s", "p");
+        graph.Subgraphs.AddWithNodes(DotRank.Same, ["b", "c", "d"]);
+        graph.Subgraphs.AddWithNodes(DotRank.Same, ["e", "f", "g"]);
+        graph.Subgraphs.AddWithNodes(DotRank.Same, ["h", "i", "j", "k"]);
+        graph.Subgraphs.AddWithNodes(DotRank.Same, ["l", "m", "n"]);
+        graph.Subgraphs.AddWithNodes(DotRank.Same, ["q", "r"]);
+        graph.Subgraphs.AddWithNodes(DotRank.Max, ["o", "s", "p"]);
 
         return graph;
     }
