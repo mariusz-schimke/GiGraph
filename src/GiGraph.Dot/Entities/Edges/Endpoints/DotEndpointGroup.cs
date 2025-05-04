@@ -62,4 +62,26 @@ public class DotEndpointGroup : DotEndpointDefinition
                 .OrderBy(key => key, StringComparer.InvariantCulture)
         );
     }
+
+    /// <summary>
+    ///     Creates a new endpoint group initialized with the specified node identifiers. At least one identifier has to be provided.
+    /// </summary>
+    /// <param name="nodeIds">
+    ///     The node identifiers to initialize the instance with.
+    /// </param>
+    /// <param name="initEndpoint">
+    ///     An optional endpoint initializer to call for each created endpoint.
+    /// </param>
+    public static DotEndpointGroup FromNodes(IEnumerable<string> nodeIds, Action<DotEndpoint>? initEndpoint = null)
+    {
+        return new DotEndpointGroup(
+            nodeIds.Select(nodeId =>
+                {
+                    var endpoint = new DotEndpoint(nodeId);
+                    initEndpoint?.Invoke(endpoint);
+                    return endpoint;
+                }
+            )
+        );
+    }
 }
