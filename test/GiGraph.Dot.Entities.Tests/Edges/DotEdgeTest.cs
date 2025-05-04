@@ -54,25 +54,30 @@ public class DotEdgeTest
         graph.Edges.Tail.Hyperlink.Href = "https://www.google.com/search?q=tail";
 
         // ordinary edges
-        graph.Edges.AddLoop("edge1", edge =>
-        {
-            edge.Head.Arrowhead = DotArrowheadShape.Box;
-            edge.Tail.Arrowhead = DotArrowheadShape.Crow;
-            edge.Head.Hyperlink.Href = "https://www.google.com/search?q=head";
-            edge.Tail.Hyperlink.Href = "https://www.google.com/search?q=tail";
-        });
+        graph.Edges.AddLoop(
+            "edge1",
+            edge =>
+            {
+                edge.Head.Arrowhead = DotArrowheadShape.Box;
+                edge.Tail.Arrowhead = DotArrowheadShape.Crow;
+                edge.Head.Hyperlink.Href = "https://www.google.com/search?q=head";
+                edge.Tail.Hyperlink.Href = "https://www.google.com/search?q=tail";
+            }
+        );
 
         // edge sequence
         // this test just makes sure that the head and tail attributes are exposed by the descendant class
         // (not to lose them as a result of some future refactoring)
-        graph.Edges.AddSequence(edge =>
+        graph.Edges.AddSequence(
+            ["a", "b", "c"],
+            edge =>
             {
                 edge.Heads.Port = "head_port";
                 edge.Tails.Port = "tail_port";
                 edge.Heads.Hyperlink.Href = "https://www.google.com/search?q=head";
                 edge.Tails.Hyperlink.Href = "https://www.google.com/search?q=tail";
-            },
-            "a", "b", "c");
+            }
+        );
 
         Snapshot.Match(graph.ToDot(), "edge_head_and_tail_attributes");
     }
