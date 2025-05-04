@@ -15,12 +15,13 @@ public class DotEdgeTest
     {
         var edge = new DotEdge("a");
         Assert.True(edge.IsLoop);
-        Assert.True(edge.Loops("a"));
+        Assert.True(edge.IsLoopOn("a"));
 
         edge = new DotEdge(new DotClusterEndpoint("a"));
         Assert.True(edge.IsLoop);
-        Assert.True(edge.Loops(new DotClusterEndpoint("a")));
-        Assert.True(edge.Loops("a"));
+        Assert.True(edge.IsLoopOn(new DotClusterEndpoint("a")));
+        Assert.True(edge.IsLoopOn("a"));
+        Assert.False(edge.IsLoopOn("b"));
     }
 
     [Fact]
@@ -28,14 +29,14 @@ public class DotEdgeTest
     {
         var edge = new DotEdge("a", "b");
         Assert.False(edge.IsLoop);
-        Assert.False(edge.Loops("a"));
+        Assert.False(edge.IsLoopOn("a"));
 
         edge = new DotEdge("a", new DotClusterEndpoint("a"));
         Assert.False(edge.IsLoop);
-        Assert.False(edge.Loops("a"));
+        Assert.False(edge.IsLoopOn("a"));
 
         edge = new DotEdge(new DotClusterEndpoint("a"));
-        Assert.False(edge.Loops(new DotEndpoint("a")));
+        Assert.False(edge.IsLoopOn(new DotEndpoint("a")));
     }
 
     [Fact]
