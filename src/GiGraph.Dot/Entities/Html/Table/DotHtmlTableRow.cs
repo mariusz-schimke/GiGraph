@@ -58,30 +58,21 @@ public partial class DotHtmlTableRow : DotHtmlElement
         Content.Add([new DotHtmlImage(source, scaling)], init);
 
     /// <summary>
-    ///     Adds a cell with a nested table to the current row.
+    ///     Adds a cell with a nested table to the current row and returns the table.
     /// </summary>
-    /// <param name="buildTable">
+    /// <param name="initCell">
+    ///     A cell initializer delegate.
+    /// </param>
+    /// <param name="initTable">
     ///     A table initializer delegate.
     /// </param>
-    public virtual DotHtmlTableCell AddTableCell(Action<DotHtmlTable> buildTable)
+    public virtual DotHtmlTable AddTableCell(Action<DotHtmlTableCell>? initCell = null, Action<DotHtmlTable>? initTable = null)
     {
         var table = new DotHtmlTable();
-        buildTable(table);
-        return Content.Add<DotHtmlTableCell>([table], init: null);
-    }
+        initTable?.Invoke(table);
 
-    /// <summary>
-    ///     Adds a cell with a nested table to the current row.
-    /// </summary>
-    /// <param name="init">
-    ///     A cell and table initializer delegate.
-    /// </param>
-    public virtual DotHtmlTableCell AddTableCell(Action<DotHtmlTableCell, DotHtmlTable> init)
-    {
-        var table = new DotHtmlTable();
-        var cell = Content.Add<DotHtmlTableCell>([table], init: null);
-        init(cell, table);
-        return cell;
+        Content.Add([table], initCell);
+        return table;
     }
 
     /// <summary>

@@ -8,28 +8,6 @@ namespace GiGraph.Dot.Entities.Edges.Endpoints;
 public class DotEndpointGroup : DotEndpointDefinition
 {
     /// <summary>
-    ///     Creates a new endpoint group initialized with the specified node identifiers.
-    /// </summary>
-    /// <param name="nodeIds">
-    ///     The identifiers of nodes to use as endpoints.
-    /// </param>
-    public DotEndpointGroup(params string[] nodeIds)
-        : this(nodeIds.Select(nodeId => new DotEndpoint(nodeId)))
-    {
-    }
-
-    /// <summary>
-    ///     Creates a new endpoint group initialized with the specified node identifiers.
-    /// </summary>
-    /// <param name="nodeIds">
-    ///     The identifiers of nodes to use as endpoints.
-    /// </param>
-    public DotEndpointGroup(IEnumerable<string> nodeIds)
-        : this(nodeIds.Select(nodeId => new DotEndpoint(nodeId)))
-    {
-    }
-
-    /// <summary>
     ///     Creates a new endpoint group initialized with the specified endpoints.
     /// </summary>
     /// <param name="endpoints">
@@ -59,16 +37,51 @@ public class DotEndpointGroup : DotEndpointDefinition
     }
 
     /// <summary>
+    ///     Creates a new endpoint group initialized with the specified node identifiers.
+    /// </summary>
+    /// <param name="nodeIds">
+    ///     The identifiers of nodes to use as endpoints.
+    /// </param>
+    public DotEndpointGroup(params IEnumerable<string> nodeIds)
+        : this(nodeIds.Select(nodeId => new DotEndpoint(nodeId)))
+    {
+    }
+
+    /// <summary>
     ///     Gets the endpoints.
     /// </summary>
     public DotEndpoint[] Endpoints { get; }
 
     protected override string GetOrderingKey()
     {
-        return string.Join(" ",
+        return string.Join(
+            " ",
             Endpoints
                 .Cast<IDotOrderable>()
                 .Select(endpoint => endpoint.OrderingKey)
-                .OrderBy(key => key, StringComparer.InvariantCulture));
+                .OrderBy(key => key, StringComparer.InvariantCulture)
+        );
+    }
+
+    /// <summary>
+    ///     Creates a new endpoint group initialized with the specified node identifiers. At least one identifier has to be provided.
+    /// </summary>
+    /// <param name="nodeIds">
+    ///     The node identifiers to initialize the instance with.
+    /// </param>
+    /// <param name="initEndpoint">
+    ///     An optional endpoint initializer to call for each created endpoint.
+    /// </param>
+    public static DotEndpointGroup FromNodes(IEnumerable<string> nodeIds, Action<DotEndpoint>? initEndpoint = null)
+    {
+        return new DotEndpointGroup(
+            nodeIds.Select(nodeId =>
+                {
+                    var endpoint = new DotEndpoint(nodeId);
+                    initEndpoint?.Invoke(endpoint);
+                    return endpoint;
+                }
+            )
+        );
     }
 }

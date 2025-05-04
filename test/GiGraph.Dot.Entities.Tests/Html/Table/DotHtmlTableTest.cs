@@ -95,13 +95,7 @@ public class DotHtmlTableTest
 
                 row.AddImageCell("image.png", DotImageScaling.None, cell => cell.Id = "img-cell");
 
-                row.AddTableCell(t => t.Id = "table-in-cell6").Id = "cell6";
-                row.AddTableCell((c, t) =>
-                    {
-                        c.Id = "cell7";
-                        t.Id = "table-in-cell7";
-                    }
-                );
+                row.AddTableCell(c => c.Id = "cell6", t => t.Id = "table-in-cell6");
             }
         );
 

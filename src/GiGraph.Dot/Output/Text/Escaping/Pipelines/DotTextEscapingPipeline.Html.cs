@@ -9,7 +9,7 @@ public partial class DotTextEscapingPipeline
     ///     Creates a new pipeline that escapes text for use as the content of an HTML element.
     /// </summary>
     [Pure]
-    public static DotTextEscapingPipeline ForHtmlElementTextContent() => new(new DotHtmlEncodeEscaper());
+    public static DotTextEscapingPipeline ForHtmlElementTextContent() => new([new DotHtmlEncodeEscaper()]);
 
     /// <summary>
     ///     Creates a new pipeline that escapes HTML comment tag text.
@@ -31,11 +31,11 @@ public partial class DotTextEscapingPipeline
     ///     Creates a new pipeline that escapes HTML attribute values in general.
     /// </summary>
     [Pure]
-    public static DotTextEscapingPipeline ForHtmlAttributeValue() => new(new DotHtmlEncodeEscaper());
+    public static DotTextEscapingPipeline ForHtmlAttributeValue() => new([new DotHtmlEncodeEscaper()]);
 
     /// <summary>
     ///     Creates a new pipeline that escapes HTML attribute value of the escape string type.
     /// </summary>
     [Pure]
-    public static DotTextEscapingPipeline ForHtmlAttributeEscapeStringValue() => new(CommonForEscapeString(), new DotHtmlEncodeEscaper());
+    public static DotTextEscapingPipeline ForHtmlAttributeEscapeStringValue() => new([CommonForEscapeString(), new DotHtmlEncodeEscaper()]);
 }

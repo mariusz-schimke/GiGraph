@@ -29,11 +29,11 @@ public partial class DotStripeFillableExtensionTest
     {
         var graph = new DotGraph();
 
-        graph.Nodes.AddGroup("node1", "node2").SetStripedFill(Color.Red, Color.Blue);
-        graph.Nodes.AddGroup("node3", "node4").SetStripedFill(new DotMulticolor(Color.Red, Color.Blue));
+        graph.Nodes.AddGroup(["node1", "node2"]).SetStripedFill(Color.Red, Color.Blue);
+        graph.Nodes.AddGroup(["node3", "node4"]).SetStripedFill(new DotMulticolor(Color.Red, Color.Blue));
 
-        graph.Nodes.AddGroup("node5", "node6").SetStripedFill(DotNodeShape.Rect, Color.Red, Color.Blue);
-        graph.Nodes.AddGroup("node7", "node8").SetStripedFill(DotNodeShape.Rectangle, new DotMulticolor(Color.Red, Color.Blue));
+        graph.Nodes.AddGroup(["node5", "node6"]).SetStripedFill(DotNodeShape.Rect, Color.Red, Color.Blue);
+        graph.Nodes.AddGroup(["node7", "node8"]).SetStripedFill(DotNodeShape.Rectangle, new DotMulticolor(Color.Red, Color.Blue));
 
         Snapshot.Match(graph.ToDot(), "striped_fill_on_individual_node_groups");
     }

@@ -47,7 +47,7 @@ public partial class DotEdgeCollection : List<DotEdgeDefinition>, IDotEntity, ID
     /// <param name="init">
     ///     An optional edge initializer delegate.
     /// </param>
-    public virtual TEdge Add<TEdge>(TEdge edge, Action<TEdge>? init)
+    protected virtual TEdge Add<TEdge>(TEdge edge, Action<TEdge>? init)
         where TEdge : DotEdgeDefinition
     {
         init?.Invoke(edge);

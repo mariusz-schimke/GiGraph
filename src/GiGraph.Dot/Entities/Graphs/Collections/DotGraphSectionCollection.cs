@@ -12,7 +12,7 @@ public class DotGraphSectionCollection<TSection> : List<TSection>
     /// <param name="init">
     ///     An optional section initializer delegate.
     /// </param>
-    public virtual TSection Add(TSection section, Action<TSection>? init)
+    protected virtual TSection Add(TSection section, Action<TSection>? init)
     {
         init?.Invoke(section);
         Add(section);

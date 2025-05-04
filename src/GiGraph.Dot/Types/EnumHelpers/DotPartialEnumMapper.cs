@@ -92,7 +92,7 @@ public static class DotPartialEnumMapper
     ///     The output value to convert the merged enums to.
     /// </typeparam>
     [Pure]
-    public static TComplete MergePartialFlags<TComplete>(params Enum[] partialEnums)
+    public static TComplete MergePartialFlags<TComplete>(params IEnumerable<Enum> partialEnums)
         where TComplete : struct, Enum
     {
         var complete = partialEnums.Select(Convert.ToInt32)
@@ -112,12 +112,10 @@ public static class DotPartialEnumMapper
     }
 
     private static int GetBitMaskOf<TEnum>()
-        where TEnum : struct, Enum
-    {
-        return Enum.GetValues(typeof(TEnum))
+        where TEnum : struct, Enum =>
+        Enum.GetValues(typeof(TEnum))
             .Cast<int>()
             .Aggregate(0, (accumulate, source) => accumulate | source);
-    }
 
     private static TResult ConvertTo<TResult>(object source)
         where TResult : struct, Enum =>

@@ -6,6 +6,8 @@ using GiGraph.Dot.Types.Html.Table;
 
 namespace GiGraph.Dot.Entities.Html.Table;
 
+// todo: consider nesting properties to group them logically like in DOT entities
+
 public partial class DotHtmlTable : IDotHtmlTableAttributes
 {
     /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Id" />

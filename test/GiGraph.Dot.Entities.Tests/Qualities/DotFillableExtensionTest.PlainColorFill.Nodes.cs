@@ -38,7 +38,7 @@ public partial class DotFillableExtensionTest
     public void sets_plain_color_fill_on_node_group()
     {
         var graph = new DotGraph();
-        graph.Nodes.AddGroup("node1", "node2").SetPlainFill(Color.Red);
+        graph.Nodes.AddGroup(["node1", "node2"]).SetPlainFill(Color.Red);
         Snapshot.Match(graph.ToDot(), "plain_color_fill_on_node_group");
     }
 

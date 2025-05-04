@@ -16,17 +16,6 @@ public partial class DotTextEscapingPipeline : List<IDotTextEscaper>, IDotTextEs
     }
 
     /// <summary>
-    ///     Creates a new pipeline initialized with the specified text escapers.
-    /// </summary>
-    /// <param name="escapers">
-    ///     The text escapers to use.
-    /// </param>
-    public DotTextEscapingPipeline(params IDotTextEscaper[] escapers)
-        : base(escapers)
-    {
-    }
-
-    /// <summary>
     ///     Creates a text escaping pipeline initialized with the specified collection of text escapers.
     /// </summary>
     /// <param name="escapers">
@@ -50,7 +39,7 @@ public partial class DotTextEscapingPipeline : List<IDotTextEscaper>, IDotTextEs
     /// </summary>
     [Pure]
     public static DotTextEscapingPipeline ForString() =>
-        new(
+        new([
             // When a string ends with a backslash ("...\"), the closing quotation mark is interpreted as a content character,
             // so the backslash has to be escaped.
 
@@ -59,19 +48,19 @@ public partial class DotTextEscapingPipeline : List<IDotTextEscaper>, IDotTextEs
             // https://www.graphviz.org/doc/info/lang.html
             new DotTrailingBackslashHtmlEscaper(),
             new DotQuotationMarkEscaper()
-        );
+        ]);
 
     /// <summary>
     ///     Creates a new pipeline that escapes backslashes, quotation marks, and line breaks.
     /// </summary>
     [Pure]
-    public static DotTextEscapingPipeline ForEscapeString() => new(CommonForEscapeString(), new DotQuotationMarkEscaper());
+    public static DotTextEscapingPipeline ForEscapeString() => new([CommonForEscapeString(), new DotQuotationMarkEscaper()]);
 
     protected static DotTextEscapingPipeline CommonForEscapeString() =>
-        new(
+        new([
             new DotBackslashEscaper(),
             new DotWindowsNewLineEscaper(),
             new DotCarriageReturnEscaper(),
             new DotUnixNewLineEscaper()
-        );
+        ]);
 }

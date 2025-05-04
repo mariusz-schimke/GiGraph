@@ -68,7 +68,7 @@ public class DotEdge : DotEdge<DotEndpoint, DotEndpoint>
     /// <param name="endpointId">
     ///     The identifier of the endpoint to check.
     /// </param>
-    public virtual bool Loops(string endpointId) =>
+    public virtual bool IsLoopOn(string endpointId) =>
         // IsLoop is checked here to make sure that both the endpoints are of the same type
         // (they may represent a node ID or a cluster ID)
         Equals(endpointId, endpointId) && IsLoop;
@@ -79,7 +79,7 @@ public class DotEdge : DotEdge<DotEndpoint, DotEndpoint>
     /// <param name="endpoint">
     ///     The endpoint to check (note that if you want to check a cluster as an endpoint, use <see cref="DotClusterEndpoint" />).
     /// </param>
-    public virtual bool Loops(DotEndpoint endpoint) =>
+    public virtual bool IsLoopOn(DotEndpoint endpoint) =>
         Tail.Endpoint.IsSameEndpoint(endpoint) &&
         Head.Endpoint.IsSameEndpoint(endpoint);
 

@@ -14,7 +14,7 @@ public class DotEdgeWithSubgraphEndpointsTest
     {
         var graph = new DotGraph();
 
-        graph.Edges.AddSequence(
+        graph.Edges.AddSequence([
             new DotEndpointGroup(
                 new DotEndpoint("node1"),
                 new DotClusterEndpoint("cluster1"),
@@ -26,7 +26,7 @@ public class DotEdgeWithSubgraphEndpointsTest
                 new DotClusterEndpoint("")
             ),
             new DotEndpoint("node3", "port1")
-        );
+        ]);
 
         var formatting = new DotFormattingOptions { Edges = { SingleLineSubgraphs = false } };
         Snapshot.Match(graph.ToDot(formatting), "single_edge_without_padding.gv");
@@ -40,7 +40,7 @@ public class DotEdgeWithSubgraphEndpointsTest
     {
         var graph = new DotGraph();
 
-        graph.Edges.AddSequence(
+        graph.Edges.AddSequence([
             new DotEndpointGroup(
                 new DotEndpoint("node1"),
                 new DotClusterEndpoint("cluster1"),
@@ -52,7 +52,7 @@ public class DotEdgeWithSubgraphEndpointsTest
                 new DotClusterEndpoint("")
             ),
             new DotEndpoint("node3", "port1")
-        );
+        ]);
 
         graph.Edges.AddLoop("node4");
         graph.Edges.AddLoop("node5");
@@ -71,14 +71,14 @@ public class DotEdgeWithSubgraphEndpointsTest
 
         for (var i = 0; i < 3; i++)
         {
-            graph.Edges.AddSequence(
+            graph.Edges.AddSequence([
                 new DotEndpointGroup(
                     new DotEndpoint("node1"),
                     new DotClusterEndpoint("cluster1"),
                     new DotClusterEndpoint("")
                 ),
                 new DotSubgraphEndpoint("node2", "node3")
-            );
+            ]);
         }
 
         graph.Edges.AddLoop("node4");
@@ -96,14 +96,14 @@ public class DotEdgeWithSubgraphEndpointsTest
     {
         var graph = new DotGraph();
 
-        graph.Edges.AddSequence(
+        graph.Edges.AddSequence([
             new DotEndpointGroup(
                 new DotEndpoint("node1"),
                 new DotClusterEndpoint("cluster1"),
                 new DotClusterEndpoint("")
             ),
             new DotSubgraphEndpoint("node2", "node3")
-        );
+        ]);
 
         graph.Edges.AddLoop("node4");
         graph.Edges.AddLoop("node5");
@@ -123,14 +123,14 @@ public class DotEdgeWithSubgraphEndpointsTest
         graph.Edges.AddLoop("node1");
         graph.Edges.AddLoop("node2");
 
-        graph.Edges.AddSequence(
+        graph.Edges.AddSequence([
             new DotEndpointGroup(
                 new DotEndpoint("node3"),
                 new DotClusterEndpoint("cluster1"),
                 new DotClusterEndpoint("")
             ),
             new DotSubgraphEndpoint("node4", "node5")
-        );
+        ]);
 
 
         var formatting = new DotFormattingOptions { Edges = { SingleLineSubgraphs = false } };

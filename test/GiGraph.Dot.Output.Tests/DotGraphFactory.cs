@@ -80,14 +80,13 @@ public class DotGraphFactory
         );
 
         graph.Nodes.AddGroup(
+            ["node1", "node2"],
             nodeGroup =>
             {
                 nodeGroup.Shape = DotNodeShape.Box;
                 nodeGroup.Style.BorderWeight = DotBorderWeight.Bold;
                 nodeGroup.Style.BorderStyle = DotBorderStyle.Dashed;
-            },
-            "node1",
-            "node2"
+            }
         );
 
         graph.Edges.AddLoop("no_attributes");
@@ -103,25 +102,21 @@ public class DotGraphFactory
         );
 
         graph.Edges.AddSequence(
+            ["node4", DotSubgraph.FromNodes("snode1", "snode2"), "node5"],
             edge =>
             {
                 edge.Layout.IncludeInNodeRanking = true;
                 edge.Style.LineStyle = DotLineStyle.Solid;
-            },
-            "node4",
-            DotSubgraph.FromNodes("snode1", "snode2"),
-            "node5"
+            }
         );
 
         graph.Edges.AddSequence(
+            ["node1", "node2", "node3"],
             edge =>
             {
                 edge.Style.Color = Color.Beige;
                 edge.Style.Invisible = true;
-            },
-            "node1",
-            "node2",
-            "node3"
+            }
         );
 
         graph.Edges.Add(
