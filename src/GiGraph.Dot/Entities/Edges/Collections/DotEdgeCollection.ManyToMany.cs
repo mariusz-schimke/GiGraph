@@ -6,8 +6,8 @@ namespace GiGraph.Dot.Entities.Edges.Collections;
 public partial class DotEdgeCollection
 {
     /// <summary>
-    ///     Adds a group of edges where all <paramref name="tailNodeIds" /> as tail nodes are joined to all
-    ///     <paramref name="headNodeIds" /> as head nodes.
+    ///     Adds a group of edges where all <paramref name="tailNodeIds"/> as tail nodes are joined to all <paramref name="headNodeIds"/>
+    ///     as head nodes.
     /// </summary>
     /// <param name="tailNodeIds">
     ///     The identifiers of the tail nodes.
@@ -19,39 +19,10 @@ public partial class DotEdgeCollection
     ///     An optional initializer delegate to call for the created edge group.
     /// </param>
     public virtual DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint> AddManyToMany(
-        IEnumerable<string> tailNodeIds, IEnumerable<string> headNodeIds,
-        Action<DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint>>? init = null) =>
-        AddManyToMany(DotSubgraph.FromNodes(tailNodeIds), DotSubgraph.FromNodes(headNodeIds), init);
-
-    /// <summary>
-    ///     Adds a group of edges where all <paramref name="tailNodeIds" /> as tail nodes are joined to all
-    ///     <paramref name="headNodeIds" /> as head nodes.
-    /// </summary>
-    /// <param name="tailNodeIds">
-    ///     The identifiers of the tail nodes.
-    /// </param>
-    /// <param name="headNodeIds">
-    ///     The identifiers of the head nodes.
-    /// </param>
-    public virtual DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint> AddManyToMany(IEnumerable<string> tailNodeIds, params string[] headNodeIds) =>
-        AddManyToMany(DotSubgraph.FromNodes(tailNodeIds), DotSubgraph.FromNodes(headNodeIds), init: null);
-
-    /// <summary>
-    ///     Adds a group of edges where all <paramref name="tailNodeIds" /> as tail nodes are joined to all
-    ///     <paramref name="headNodeIds" /> as head nodes.
-    /// </summary>
-    /// <param name="init">
-    ///     An optional initializer delegate to call for the created edge group.
-    /// </param>
-    /// <param name="tailNodeIds">
-    ///     The identifiers of the tail nodes.
-    /// </param>
-    /// <param name="headNodeIds">
-    ///     The identifiers of the head nodes.
-    /// </param>
-    public virtual DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint> AddManyToMany(
-        Action<DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint>> init,
-        IEnumerable<string> tailNodeIds, params string[] headNodeIds) =>
+        IEnumerable<string> tailNodeIds,
+        IEnumerable<string> headNodeIds,
+        Action<DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint>>? init = null
+    ) =>
         AddManyToMany(DotSubgraph.FromNodes(tailNodeIds), DotSubgraph.FromNodes(headNodeIds), init);
 
     /// <summary>
@@ -68,8 +39,10 @@ public partial class DotEdgeCollection
     ///     An optional initializer delegate to call for the created edge group.
     /// </param>
     public virtual DotEdge<DotEndpointGroup, DotEndpointGroup> AddManyToMany(
-        DotEndpointGroup tails, DotEndpointGroup heads,
-        Action<DotEdge<DotEndpointGroup, DotEndpointGroup>>? init = null) =>
+        DotEndpointGroup tails,
+        DotEndpointGroup heads,
+        Action<DotEdge<DotEndpointGroup, DotEndpointGroup>>? init = null
+    ) =>
         Add(tails, heads, init);
 
     /// <summary>
@@ -85,8 +58,10 @@ public partial class DotEdgeCollection
     ///     An optional initializer delegate to call for the created edge group.
     /// </param>
     public virtual DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint> AddManyToMany(
-        DotSubgraphEndpoint tails, DotSubgraphEndpoint heads,
-        Action<DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint>>? init = null) =>
+        DotSubgraphEndpoint tails,
+        DotSubgraphEndpoint heads,
+        Action<DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint>>? init = null
+    ) =>
         Add(tails, heads, init);
 
     /// <summary>
@@ -102,7 +77,9 @@ public partial class DotEdgeCollection
     ///     An optional initializer delegate to call for the created edge group.
     /// </param>
     public virtual DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint> AddManyToMany(
-        DotSubgraph tails, DotSubgraph heads,
-        Action<DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint>>? init = null) =>
+        DotSubgraph tails,
+        DotSubgraph heads,
+        Action<DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint>>? init = null
+    ) =>
         Add(new DotSubgraphEndpoint(tails), new DotSubgraphEndpoint(heads), init);
 }

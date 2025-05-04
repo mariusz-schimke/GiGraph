@@ -207,7 +207,7 @@ public class DotGraphFormattingOptionsTest
             e.Tail.Endpoint.Subgraph.Id = "tail";
         });
 
-        graph.Edges.AddManyToMany(["o", "p"], "q", "r");
+        graph.Edges.AddManyToMany(["o", "p"], ["q", "r"]);
 
         return graph;
     }
