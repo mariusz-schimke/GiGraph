@@ -89,18 +89,6 @@ public class DotHtmlEntityCollection : List<IDotHtmlEntity>, IDotHtmlContentEnti
     }
 
     /// <summary>
-    ///     Adds new HTML entities to the collection.
-    /// </summary>
-    /// <param name="entities">
-    ///     The entities to add.
-    /// </param>
-    public virtual IDotHtmlEntity[] AddRange(params IDotHtmlEntity[] entities)
-    {
-        base.AddRange(entities);
-        return entities;
-    }
-
-    /// <summary>
     ///     Appends the specified HTML to the content of the element.
     /// </summary>
     /// <param name="html">
