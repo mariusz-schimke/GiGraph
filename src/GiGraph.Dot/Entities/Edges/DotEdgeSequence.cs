@@ -85,18 +85,6 @@ public class DotEdgeSequence : DotEdgeDefinition
     /// <param name="initEndpoint">
     ///     An optional endpoint initializer to call for each created endpoint.
     /// </param>
-    public static DotEdgeSequence FromNodes(Action<DotEndpoint>? initEndpoint, params string[] nodeIds) => FromNodes(nodeIds, initEndpoint);
-
-    /// <summary>
-    ///     Creates a new edge sequence initialized with the specified node identifiers. At least a pair of identifiers has to be
-    ///     provided.
-    /// </summary>
-    /// <param name="nodeIds">
-    ///     The node identifiers to initialize the instance with.
-    /// </param>
-    /// <param name="initEndpoint">
-    ///     An optional endpoint initializer to call for each created endpoint.
-    /// </param>
     public static DotEdgeSequence FromNodes(IEnumerable<string> nodeIds, Action<DotEndpoint>? initEndpoint = null)
     {
         return new DotEdgeSequence(
