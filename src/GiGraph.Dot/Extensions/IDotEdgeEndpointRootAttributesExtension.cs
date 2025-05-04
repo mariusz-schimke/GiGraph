@@ -80,7 +80,7 @@ public static class IDotEdgeEndpointRootAttributesExtension
     /// <example>
     ///     SetCompositeArrowhead(DotArrowheadShape.Dot, new DotArrowhead(DotArrowheadShape.Vee, filled: false))
     /// </example>
-    public static void SetCompositeArrowhead(this IDotEdgeEndpointRootAttributes attributes, params IEnumerable<DotArrowhead> arrowheads)
+    public static void SetCompositeArrowhead(this IDotEdgeEndpointRootAttributes attributes, params DotArrowhead[] arrowheads)
     {
         attributes.Arrowhead = new DotCompositeArrowhead(arrowheads);
     }
@@ -102,7 +102,7 @@ public static class IDotEdgeEndpointRootAttributesExtension
     ///     specified, occur further from the node. Also, a shape of <see cref="DotArrowheadShape.None"/> uses space, so it can be used
     ///     as a separator between two consecutive shapes.
     /// </param>
-    public static void SetCompositeArrowhead(this IDotEdgeEndpointRootAttributes attributes, params IEnumerable<DotArrowheadShape> arrowheads)
+    public static void SetCompositeArrowhead(this IDotEdgeEndpointRootAttributes attributes, params DotArrowheadShape[] arrowheads)
     {
         attributes.Arrowhead = new DotCompositeArrowhead(arrowheads);
     }
