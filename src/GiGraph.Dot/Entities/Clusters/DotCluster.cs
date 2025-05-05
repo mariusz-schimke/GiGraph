@@ -22,14 +22,14 @@ public class DotCluster : DotClusterSection, IDotGraph, IDotOrderable
     ///     The unique identifier of the cluster.
     /// </param>
     public DotCluster(string id)
-        : this(new DotClusterSection(), new DotGraphSectionCollection<DotClusterSection>())
+        : this(id, new DotClusterSection(), new DotGraphSectionCollection<DotClusterSection>())
     {
-        Id = id ?? throw new ArgumentNullException(nameof(id), "Cluster identifier must not be null.");
     }
 
-    protected DotCluster(DotClusterSection rootSection, DotGraphSectionCollection<DotClusterSection> subsections)
+    protected DotCluster(string id, DotClusterSection rootSection, DotGraphSectionCollection<DotClusterSection> subsections)
         : base(rootSection)
     {
+        Id = id ?? throw new ArgumentNullException(nameof(id), "Cluster identifier must not be null.");
         Subsections = subsections;
     }
 
