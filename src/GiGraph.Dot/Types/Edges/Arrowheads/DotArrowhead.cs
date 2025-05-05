@@ -41,12 +41,12 @@ public class DotArrowhead : DotArrowheadDefinition
     /// <summary>
     ///     Determines whether to use a filled version of the shape.
     /// </summary>
-    public bool IsFilled { get; init; }
+    public bool IsFilled { get; }
 
     /// <summary>
     ///     Determines whether and how to clip the shape, leaving visible only the part to the left or to the right of the edge.
     /// </summary>
-    public DotArrowheadParts VisibleParts { get; init; }
+    public DotArrowheadParts VisibleParts { get; }
 
     protected internal override string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules)
     {
