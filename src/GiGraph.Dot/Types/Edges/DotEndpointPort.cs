@@ -1,5 +1,4 @@
 using System.Diagnostics.CodeAnalysis;
-using System.Diagnostics.Contracts;
 using System.Text;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Output.Options;
@@ -13,13 +12,6 @@ namespace GiGraph.Dot.Types.Edges;
 /// </summary>
 public class DotEndpointPort : IDotEncodable
 {
-    /// <summary>
-    ///     Represents the endpoint port, that is a point on a node an edge is attached to.
-    /// </summary>
-    public DotEndpointPort()
-    {
-    }
-
     /// <summary>
     ///     Creates a new instance initialized with a compass point.
     /// </summary>
@@ -53,7 +45,7 @@ public class DotEndpointPort : IDotEncodable
     ///     shape (<see cref="DotNodeShape.Record"/> or <see cref="DotNodeShape.RoundedRecord"/>) with one of its fields having the given
     ///     port name, or have an HTML-like label, one of whose components has a PORT attribute set to the specified port name.
     /// </summary>
-    public string? Name { get; init; }
+    public string? Name { get; }
 
     /// <summary>
     ///     <para>
@@ -64,15 +56,9 @@ public class DotEndpointPort : IDotEncodable
     ///         If no compass point is specified explicitly, the default value is <see cref="DotCompassPoint.Center"/>.
     ///     </para>
     /// </summary>
-    public DotCompassPoint? CompassPoint { get; init; }
+    public DotCompassPoint? CompassPoint { get; }
 
     string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => GetDotEncoded(options, syntaxRules);
-
-    /// <summary>
-    ///     Creates a new endpoint port with no properties specified.
-    /// </summary>
-    [Pure]
-    public static DotEndpointPort Default() => new();
 
     [return: NotNullIfNotNull(nameof(portName))]
     public static implicit operator DotEndpointPort?(string? portName) => portName is not null ? new DotEndpointPort(portName) : null;

@@ -2,6 +2,7 @@ using GiGraph.Dot.Entities.Edges;
 using GiGraph.Dot.Entities.Edges.Endpoints;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
+using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.Edges.Arrowheads;
 using Snapshooter.Xunit;
 using Xunit;
@@ -81,5 +82,19 @@ public class DotEdgeTest
         );
 
         Snapshot.Match(graph.ToDot(), "edge_head_and_tail_attributes");
+    }
+
+    [Fact]
+    public void port_is_rendered_correctly()
+    {
+        var graph = new DotGraph();
+
+        graph.Edges.Add("a", "b", e => e.Head.Endpoint.Port = null);
+        graph.Edges.Add("a", "b", e => e.Head.Endpoint.Port = DotCompassPoint.Center);
+        graph.Edges.Add("a", "b", e => e.Head.Endpoint.Port = "portName");
+        graph.Edges.Add("a", "b", e => e.Head.Endpoint.Port = new DotEndpointPort("portName", DotCompassPoint.Center));
+        graph.Edges.Add("a", "b", e => e.Head.Endpoint.Port = new DotEndpointPort(null, null));
+
+        Snapshot.Match(graph.ToDot(), "edge_head_port_variants");
     }
 }
