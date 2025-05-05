@@ -53,9 +53,9 @@ public class DotCluster : DotClusterSection, IDotGraph, IDotOrderable
     public DotGraphSectionCollection<DotClusterSection> Subsections { get; }
 
     /// <summary>
-    ///     Gets or sets the identifier of the cluster.
+    ///     Gets the identifier of the cluster.
     /// </summary>
-    public virtual string Id { get; set; } = null!;
+    public virtual string Id { get; }
 
     IEnumerable<IDotGraphSection> IDotGraph.Subsections => Subsections;
 
