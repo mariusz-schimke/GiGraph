@@ -123,7 +123,7 @@ public class DotPoint : IDotEncodable
     /// <summary>
     ///     Determines whether the node position (if applied to nodes) should not change (input-only).
     /// </summary>
-    public bool? IsFixed { get; init; }
+    public bool? IsFixed { get; }
 
     string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => GetDotEncodedValue(options, syntaxRules);
 

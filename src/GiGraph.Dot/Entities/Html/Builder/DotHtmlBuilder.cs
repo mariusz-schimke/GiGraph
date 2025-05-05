@@ -74,6 +74,6 @@ public partial class DotHtmlBuilder
     [Pure]
     public virtual DotHtmlEntity Build() =>
         new DotHtmlEntity<DotHtmlEntityCollection>(
-            new DotHtmlEntityCollection((IEnumerable<IDotHtmlEntity>) _entities)
+            new DotHtmlEntityCollection(_entities)
         );
 }
