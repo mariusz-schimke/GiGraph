@@ -27,15 +27,13 @@ public class DotNode : DotNodeDefinition
     protected DotNode(string id, DotNodeRootAttributes attributes)
         : base(attributes)
     {
-        // todo: why isn't it thrown in the Id setter too?
         Id = id ?? throw new ArgumentNullException(nameof(id), "Node identifier must not be null.");
     }
 
     /// <summary>
     ///     Gets or sets the unique identifier of the node.
     /// </summary>
-    // todo: should the ID be settable?
-    public virtual string Id { get; set; }
+    public virtual string Id { get; }
 
     protected override string GetOrderingKey() => Id;
 }
