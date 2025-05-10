@@ -26,7 +26,7 @@ internal static class DotStyleOptionsExtension
     /// <summary>
     ///     Includes the specified option in the style.
     /// </summary>
-    public static void SetStyleOption<TStyles>(this IDotHasStyleOptions<TStyles> @this, TStyles option)
+    private static void SetStyleOption<TStyles>(this IDotHasStyleOptions<TStyles> @this, TStyles option)
         where TStyles : struct, Enum
     {
         @this.Style = EnumHelper.SetFlag(@this.Style, option);
@@ -35,7 +35,7 @@ internal static class DotStyleOptionsExtension
     /// <summary>
     ///     Resets the specified style option in the style. If the style isn't set yet (is null), it will be set to the default value.
     /// </summary>
-    public static void ResetStyleOption<TStyles>(this IDotHasStyleOptions<TStyles> @this, TStyles option)
+    private static void ResetStyleOption<TStyles>(this IDotHasStyleOptions<TStyles> @this, TStyles option)
         where TStyles : struct, Enum
     {
         @this.Style = EnumHelper.ResetFlag(@this.Style, option);
@@ -45,7 +45,7 @@ internal static class DotStyleOptionsExtension
     ///     Removes the specified style option from the style. If the style isn't set yet, it will remain unset (null). If the result of
     ///     the removal is the default style, the style will be nullified.
     /// </summary>
-    public static void RemoveStyleOption<TStyles>(this IDotHasStyleOptions<TStyles> @this, TStyles option)
+    private static void RemoveStyleOption<TStyles>(this IDotHasStyleOptions<TStyles> @this, TStyles option)
         where TStyles : struct, Enum
     {
         var result = EnumHelper.ResetFlag(@this.Style, option);
@@ -82,7 +82,7 @@ internal static class DotStyleOptionsExtension
                 ? DotPartialEnumMapper.ExtractPartialFlags<TPartialStyle, TCompleteStyle>(@this.Style.Value)
                 : null;
 
-    public static void SetStyleOrNullIfDefault<TStyles>(this IDotHasStyleOptions<TStyles> @this, TStyles style)
+    private static void SetStyleOrNullIfDefault<TStyles>(this IDotHasStyleOptions<TStyles> @this, TStyles style)
         where TStyles : struct, Enum
     {
         @this.Style = EnumHelper.IsDefault(style) ? null : style;
