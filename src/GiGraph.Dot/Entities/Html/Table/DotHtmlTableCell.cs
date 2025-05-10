@@ -18,14 +18,15 @@ public partial class DotHtmlTableCell : DotHtmlElement
     }
 
     protected DotHtmlTableCell(DotHtmlAttributeCollection attributes)
-        : this(new DotHtmlTableCellAttributes(attributes))
+        : this(new DotHtmlTableCellAttributes(attributes), new DotHtmlTableCellStyleAttributes(attributes))
     {
     }
 
-    protected DotHtmlTableCell(DotHtmlTableCellAttributes attributes)
+    protected DotHtmlTableCell(DotHtmlTableCellAttributes attributes, DotHtmlTableCellStyleAttributes styleAttributes)
         : base("td", attributes.Collection)
     {
         Attributes = new DotHtmlElementRootAttributesAccessor<IDotHtmlTableCellAttributes, DotHtmlTableCellAttributes>(attributes);
+        Style = styleAttributes;
     }
 
     /// <summary>

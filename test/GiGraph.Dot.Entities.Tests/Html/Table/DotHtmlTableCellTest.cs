@@ -29,17 +29,10 @@ public class DotHtmlTableCellTest
             FixedSize = true,
 
             Borders = DotHtmlTableBorders.Vertical,
-            BorderWidth = 23,
-            BorderColor = Color.Blue,
 
             HorizontalAlignment = DotHtmlTableCellHorizontalAlignment.Justify,
             HorizontalLineAlignment = DotHorizontalAlignment.Center,
             VerticalAlignment = DotVerticalAlignment.Bottom,
-
-            Style = DotHtmlTableStyles.Radial,
-
-            BackgroundColor = Color.Red,
-            GradientFillAngle = 15,
 
             Title = "Title",
             Tooltip = "Tooltip",
@@ -49,7 +42,17 @@ public class DotHtmlTableCellTest
             ColumnSpan = 2,
             RowSpan = 3,
 
-            PortName = "port name"
+            PortName = "port name",
+
+            Style =
+            {
+                BorderWidth = 23,
+                BorderColor = Color.Blue,
+
+                BackgroundColor = Color.Red,
+                GradientFillAngle = 15,
+                RadialFill = true
+            }
         };
 
         Snapshot.Match(

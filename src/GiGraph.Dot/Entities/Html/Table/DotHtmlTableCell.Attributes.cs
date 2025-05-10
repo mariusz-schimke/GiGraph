@@ -7,6 +7,11 @@ namespace GiGraph.Dot.Entities.Html.Table;
 
 public partial class DotHtmlTableCell : IDotHtmlTableCellAttributes
 {
+    /// <summary>
+    ///     Gets the style attributes.
+    /// </summary>
+    public DotHtmlTableCellStyleAttributes Style { get; }
+
     /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Id"/>
     public virtual DotEscapeString? Id
     {
