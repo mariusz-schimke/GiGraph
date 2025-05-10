@@ -3,11 +3,10 @@ using GiGraph.Dot.Entities.Qualities;
 
 namespace GiGraph.Dot.Extensions;
 
-public static partial class IDotHasStyleOptionsExtension
+public static class IDotHasStyleOptionsExtension
 {
     /// <summary>
-    ///     Determines if any style is assigned to the element, that is, if the Graphviz 'style' attribute has any value specified (is
-    ///     not null).
+    ///     Determines if any style is assigned to the element, that is, if the 'style' attribute has any value specified (is not null).
     /// </summary>
     /// <param name="this">
     ///     The current object.
@@ -21,8 +20,8 @@ public static partial class IDotHasStyleOptionsExtension
         @this.Style.HasValue;
 
     /// <summary>
-    ///     Clears the style option flags of the element so that no style is set. This implies that the Graphviz 'style' attribute won't
-    ///     be rendered for the current element at all.
+    ///     Clears the style option flags of the element so that no style is set. This implies that the 'style' attribute won't be
+    ///     rendered for the current element.
     /// </summary>
     /// <param name="this">
     ///     The current object.
