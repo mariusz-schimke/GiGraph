@@ -16,6 +16,7 @@ public static class DotStylableEdgeExtension
     /// <param name="startWidth">
     ///     The width to start with.
     /// </param>
+    // todo: should these and similar extension methods be generic? Maybe it would work similarly if T was simply replaced with the interface?
     public static void SetTaperedStyle<T>(this T @this, double startWidth)
         where T : IDotStylableEdge
     {
