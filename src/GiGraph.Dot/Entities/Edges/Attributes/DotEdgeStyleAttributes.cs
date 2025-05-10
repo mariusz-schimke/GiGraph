@@ -1,6 +1,7 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
+using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Edges.Style;
@@ -27,8 +28,8 @@ public partial class DotEdgeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// </summary>
     public virtual DotLineStyle? LineStyle
     {
-        get => GetPartialStyleOption<DotLineStyle>();
-        set => SetPartialStyleOption(value);
+        get => this.GetPartialStyleOption<DotLineStyle, DotStyles>();
+        set => this.SetPartialStyleOption(value);
     }
 
     /// <summary>
@@ -36,8 +37,8 @@ public partial class DotEdgeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// </summary>
     public virtual DotLineWeight? LineWeight
     {
-        get => GetPartialStyleOption<DotLineWeight>();
-        set => SetPartialStyleOption(value);
+        get => this.GetPartialStyleOption<DotLineWeight, DotStyles>();
+        set => this.SetPartialStyleOption(value);
     }
 
     /// <summary>
@@ -45,8 +46,8 @@ public partial class DotEdgeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// </summary>
     public virtual bool? Invisible
     {
-        get => HasStyleOption(DotStyles.Invisible);
-        set => SetStyleOption(DotStyles.Invisible, value);
+        get => this.HasStyleOption(DotStyles.Invisible);
+        set => this.SetStyleOption(DotStyles.Invisible, value);
     }
 
     /// <inheritdoc cref="IDotEdgeStyleAttributes.Color"/>

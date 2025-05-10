@@ -1,10 +1,12 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
+using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Clusters.Style;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Graphs.Style;
+using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes;
 
@@ -32,8 +34,8 @@ public partial class DotGraphStyleAttributes : DotEntityStyleAttributesWithMetad
     /// </summary>
     public virtual DotClusterFillStyle? FillStyle
     {
-        get => GetPartialStyleOption<DotClusterFillStyle>();
-        set => SetPartialStyleOption(value);
+        get => this.GetPartialStyleOption<DotClusterFillStyle, DotStyles>();
+        set => this.SetPartialStyleOption(value);
     }
 
     /// <inheritdoc cref="IDotGraphStyleAttributes.BackgroundColor"/>
