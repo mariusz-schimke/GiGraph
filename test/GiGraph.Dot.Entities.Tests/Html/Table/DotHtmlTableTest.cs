@@ -30,20 +30,23 @@ public class DotHtmlTableTest
 
             CellPadding = 20,
             CellSpacing = 21,
-            CellBorderWidth = 22,
             FixedSize = false,
 
             Borders = DotHtmlTableBorders.Vertical,
-            BorderWidth = 23,
-            BorderColor = Color.Blue,
 
             HorizontalAlignment = DotHorizontalAlignment.Right,
             VerticalAlignment = DotVerticalAlignment.Top,
 
-            Style = DotHtmlTableStyles.Radial | DotHtmlTableStyles.Rounded,
-
-            BackgroundColor = new DotGradientColor(Color.Red, Color.Blue),
-            GradientFillAngle = 15,
+            Style =
+            {
+                BorderWidth = 23,
+                CellBorderWidth = 22,
+                BorderColor = Color.Blue,
+                BackgroundColor = new DotGradientColor(Color.Red, Color.Blue),
+                GradientFillAngle = 15,
+                RadialFill = true,
+                RoundedCorners = true
+            },
 
             Title = "Title",
             Tooltip = "Tooltip",

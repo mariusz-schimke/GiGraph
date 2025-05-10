@@ -3,7 +3,6 @@ using GiGraph.Dot.Entities.Html.Attributes.Collections;
 using GiGraph.Dot.Entities.Html.Attributes.Properties;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Alignment;
-using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Html.Table;
 
@@ -31,18 +30,6 @@ public abstract partial class DotHtmlTableTableCellCommonAttributes<TIHtmlTableT
     [DotAttributeKey("valign")]
     public virtual partial DotVerticalAlignment? VerticalAlignment { get; set; }
 
-    /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.BackgroundColor"/>
-    [DotAttributeKey("bgcolor")]
-    public virtual partial DotColorDefinition? BackgroundColor { get; set; }
-
-    /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.BorderColor"/>
-    [DotAttributeKey("color")]
-    public virtual partial DotColor? BorderColor { get; set; }
-
-    /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.BorderWidth"/>
-    [DotAttributeKey("border")]
-    public virtual partial int? BorderWidth { get; set; }
-
     /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.CellPadding"/>
     [DotAttributeKey("cellpadding")]
     public virtual partial int? CellPadding { get; set; }
@@ -58,10 +45,6 @@ public abstract partial class DotHtmlTableTableCellCommonAttributes<TIHtmlTableT
     /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.FixedSize"/>
     [DotAttributeKey("fixedsize")]
     public virtual partial bool? FixedSize { get; set; }
-
-    /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.GradientFillAngle"/>
-    [DotAttributeKey("gradientangle")]
-    public virtual partial int? GradientFillAngle { get; set; }
 
     /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Width"/>
     [DotAttributeKey("width")]
@@ -86,8 +69,4 @@ public abstract partial class DotHtmlTableTableCellCommonAttributes<TIHtmlTableT
     /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Tooltip"/>
     [DotAttributeKey("tooltip")]
     public virtual partial DotEscapeString? Tooltip { get; set; }
-
-    /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Style"/>
-    [DotAttributeKey("style")]
-    public virtual partial DotHtmlTableStyles? Style { get; set; }
 }

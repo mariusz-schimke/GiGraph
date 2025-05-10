@@ -18,8 +18,11 @@ public static class HtmlTableNode
 
         var table = new DotHtmlTable
         {
-            BorderWidth = 0,
-            CellBorderWidth = 1,
+            Style =
+            {
+                BorderWidth = 0,
+                CellBorderWidth = 1,
+            },
             CellSpacing = 0,
             CellPadding = 4
         };
