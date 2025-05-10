@@ -7,12 +7,12 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
 
-public abstract class DotEntityStyleAttributesWithMetadata<TIEntityAttributeProperties, TEntityAttributeProperties>(
+public abstract class DotEntityStyleAttributesWithMetadata<TIEntityStyleAttributeProperties, TEntityStyleAttributeProperties>(
     DotAttributeCollection attributes,
     Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup
 )
-    : DotEntityAttributesWithMetadata<TIEntityAttributeProperties, TEntityAttributeProperties>(attributes, attributeKeyLookup), IDotEntityStyleAttributes, IDotHasStyleOptions<DotStyles>
-    where TEntityAttributeProperties : DotEntityStyleAttributesWithMetadata<TIEntityAttributeProperties, TEntityAttributeProperties>, TIEntityAttributeProperties
+    : DotEntityAttributesWithMetadata<TIEntityStyleAttributeProperties, TEntityStyleAttributeProperties>(attributes, attributeKeyLookup), IDotEntityStyleAttributes, IDotHasStyleOptions<DotStyles>
+    where TEntityStyleAttributeProperties : DotEntityStyleAttributesWithMetadata<TIEntityStyleAttributeProperties, TEntityStyleAttributeProperties>, TIEntityStyleAttributeProperties
 {
     private DotStyles? Style
     {
