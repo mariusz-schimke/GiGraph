@@ -14,7 +14,7 @@ public abstract class DotEntityStyleAttributesWithMetadata<TIEntityStyleAttribut
     : DotEntityAttributesWithMetadata<TIEntityStyleAttributeProperties, TEntityStyleAttributeProperties>(attributes, attributeKeyLookup), IDotEntityStyleAttributes, IDotHasStyleOptions<DotStyles>
     where TEntityStyleAttributeProperties : DotEntityStyleAttributesWithMetadata<TIEntityStyleAttributeProperties, TEntityStyleAttributeProperties>, TIEntityStyleAttributeProperties
 {
-    private DotStyles? Style
+    protected DotStyles? Style
     {
         get => ((IDotEntityStyleAttributes) this).Style;
         set => ((IDotEntityStyleAttributes) this).Style = value;
