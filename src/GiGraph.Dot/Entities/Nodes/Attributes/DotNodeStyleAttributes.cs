@@ -143,11 +143,15 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
         bool? invisible = null
     )
     {
-        FillStyle = fillStyle;
-        BorderStyle = borderStyle;
-        BorderWeight = borderWeight;
-        CornerStyle = cornerStyle;
-        Diagonals = diagonals;
-        Invisible = invisible;
+        var options = DotStyleOptionsHelper.CompactOptions(
+            fillStyle,
+            borderStyle,
+            borderWeight,
+            cornerStyle,
+            DotStyleOptionsHelper.BoolToOption(DotStyles.Diagonals, diagonals),
+            DotStyleOptionsHelper.BoolToOption(DotStyles.Invisible, invisible)
+        );
+
+        this.SetStyleOptions(options);
     }
 }

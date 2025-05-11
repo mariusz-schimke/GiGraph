@@ -98,8 +98,12 @@ public partial class DotEdgeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// </param>
     public virtual void SetStyleOptions(DotLineStyle? lineStyle = null, DotLineWeight? lineWeight = null, bool? invisible = null)
     {
-        LineStyle = lineStyle;
-        LineWeight = lineWeight;
-        Invisible = invisible;
+        var options = DotStyleOptionsHelper.CompactOptions(
+            lineStyle,
+            lineWeight,
+            DotStyleOptionsHelper.BoolToOption(DotStyles.Invisible, invisible)
+        );
+
+        this.SetStyleOptions(options);
     }
 }

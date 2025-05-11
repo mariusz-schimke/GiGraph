@@ -57,6 +57,18 @@ public partial class DotGraphStyleAttributes : DotEntityStyleAttributesWithMetad
     /// </param>
     public virtual void SetStyleOptions(DotGraphStyleOptions options)
     {
-        FillStyle = options.FillStyle;
+        SetStyleOptions(options.FillStyle);
+    }
+
+    /// <summary>
+    ///     Applies the specified style options to the graph.
+    /// </summary>
+    /// <param name="fillStyle">
+    ///     The fill style to set.
+    /// </param>
+    public virtual void SetStyleOptions(DotClusterFillStyle? fillStyle)
+    {
+        var options = DotStyleOptionsHelper.CompactOptions(fillStyle);
+        this.SetStyleOptions(options);
     }
 }

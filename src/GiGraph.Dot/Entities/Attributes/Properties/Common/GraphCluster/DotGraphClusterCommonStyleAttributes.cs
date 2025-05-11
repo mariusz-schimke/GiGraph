@@ -109,10 +109,14 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
         bool? invisible = null
     )
     {
-        FillStyle = fillStyle;
-        BorderStyle = borderStyle;
-        BorderWeight = borderWeight;
-        CornerStyle = cornerStyle;
-        Invisible = invisible;
+        var options = DotStyleOptionsHelper.CompactOptions(
+            fillStyle,
+            borderStyle,
+            borderWeight,
+            cornerStyle,
+            DotStyleOptionsHelper.BoolToOption(DotStyles.Invisible, invisible)
+        );
+
+        this.SetStyleOptions(options);
     }
 }
