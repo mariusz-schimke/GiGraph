@@ -61,4 +61,12 @@ internal class DotEnumHelper
             source,
             Enum.GetUnderlyingType(typeof(TResult))
         );
+
+    /// <summary>
+    ///     Returns <paramref name="flag"/> when <paramref name="state"/> is true or default otherwise.
+    /// </summary>
+    [Pure]
+    public static TEnum FlagOrDefault<TEnum>(TEnum flag, bool state)
+        where TEnum : struct, Enum =>
+        state ? flag : default(TEnum);
 }

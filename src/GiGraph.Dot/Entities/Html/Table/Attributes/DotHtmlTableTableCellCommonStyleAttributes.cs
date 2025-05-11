@@ -44,10 +44,16 @@ public abstract partial class DotHtmlTableTableCellCommonStyleAttributes<TIHtmlT
         set => this.SetStyleOption(DotHtmlTableStyles.Radial, value);
     }
 
-    DotHtmlTableStyles? IDotHasStyleOptions<DotHtmlTableStyles>.Style
+    protected DotHtmlTableStyles? Style
     {
         get => ((IDotHtmlTableTableCellCommonStyleAttributes) this).Style;
         set => ((IDotHtmlTableTableCellCommonStyleAttributes) this).Style = value;
+    }
+
+    DotHtmlTableStyles? IDotHasStyleOptions<DotHtmlTableStyles>.Style
+    {
+        get => Style;
+        set => Style = value;
     }
 
     [DotAttributeKey(StyleAttributeKey)]
@@ -101,7 +107,11 @@ public abstract partial class DotHtmlTableTableCellCommonStyleAttributes<TIHtmlT
     /// </param>
     public virtual void SetStyleOptions(bool? roundedCorners = null, bool? radialFill = null)
     {
-        RoundedCorners = roundedCorners;
-        RadialFill = radialFill;
+        var options = DotStyleOptionsHelper.CompactOptions(
+            DotStyleOptionsHelper.BoolToOption(DotHtmlTableStyles.Rounded, roundedCorners),
+            DotStyleOptionsHelper.BoolToOption(DotHtmlTableStyles.Radial, radialFill)
+        );
+
+        this.SetStyleOptions(options);
     }
 }

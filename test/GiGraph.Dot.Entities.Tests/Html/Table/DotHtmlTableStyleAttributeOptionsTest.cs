@@ -79,12 +79,17 @@ public class DotHtmlTableStyleAttributeOptionsTest
         Assert.True(table.Style.HasStyleOptions());
 
         table.Style.SetStyleOptions();
-        Assert.Null(table.Style.RadialFill);
         Assert.Null(table.Style.RoundedCorners);
+        Assert.Null(table.Style.RadialFill);
         Assert.False(table.Style.HasStyleOptions());
 
-        table.Style.SetStyleOptions(roundedCorners: false, radialFill: true);
-        Assert.True(table.Style.RadialFill);
+        table.Style.SetStyleOptions(roundedCorners: false, radialFill: null);
+        Assert.False(table.Style.RoundedCorners);
+        Assert.False(table.Style.RadialFill);
+        Assert.True(table.Style.HasStyleOptions());
+
+        table.Style.SetStyleOptions(roundedCorners: null, radialFill: false);
+        Assert.False(table.Style.RadialFill);
         Assert.False(table.Style.RoundedCorners);
         Assert.True(table.Style.HasStyleOptions());
     }
