@@ -49,6 +49,19 @@ public class DotHtmlTableStyleAttributeOptionsTest
     }
 
     [Fact]
+    public void clear_style_options_removes_the_style()
+    {
+        var table = new DotHtmlTable();
+        Assert.False(table.Style.HasStyleOptions());
+
+        table.Style.SetStyleOptions(roundedCorners: false);
+        Assert.True(table.Style.HasStyleOptions());
+
+        table.Style.ClearStyleOptions();
+        Assert.False(table.Style.HasStyleOptions());
+    }
+
+    [Fact]
     public void helper_methods_set_all_style_options()
     {
         var table = new DotHtmlTable();
