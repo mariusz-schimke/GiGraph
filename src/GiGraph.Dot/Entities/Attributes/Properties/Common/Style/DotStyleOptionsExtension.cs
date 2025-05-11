@@ -9,47 +9,10 @@ internal static class DotStyleOptionsExtension
     public static void SetStyleOption<TStyles>(this IDotHasStyleOptions<TStyles> @this, TStyles option, bool? value)
         where TStyles : struct, Enum
     {
-        switch (value)
-        {
-            case true:
-                @this.SetStyleOption(option);
-                break;
-            case false:
-                @this.ResetStyleOption(option);
-                break;
-            default:
-                @this.RemoveStyleOption(option);
-                break;
-        }
-    }
+        var style = EnumHelper.SetFlag(@this.Style.GetValueOrDefault(), option, value.GetValueOrDefault(false));
 
-    /// <summary>
-    ///     Includes the specified option in the style.
-    /// </summary>
-    private static void SetStyleOption<TStyles>(this IDotHasStyleOptions<TStyles> @this, TStyles option)
-        where TStyles : struct, Enum
-    {
-        @this.Style = EnumHelper.SetFlag(@this.Style, option);
-    }
-
-    /// <summary>
-    ///     Resets the specified style option in the style. If the style isn't set yet (is null), it will be set to the default value.
-    /// </summary>
-    private static void ResetStyleOption<TStyles>(this IDotHasStyleOptions<TStyles> @this, TStyles option)
-        where TStyles : struct, Enum
-    {
-        @this.Style = EnumHelper.ResetFlag(@this.Style, option);
-    }
-
-    /// <summary>
-    ///     Removes the specified style option from the style. If the style isn't set yet, it will remain unset (null). If the result of
-    ///     the removal is the default style, the style will be nullified.
-    /// </summary>
-    private static void RemoveStyleOption<TStyles>(this IDotHasStyleOptions<TStyles> @this, TStyles option)
-        where TStyles : struct, Enum
-    {
-        var result = EnumHelper.ResetFlag(@this.Style, option);
-        @this.SetStyleOrNullIfDefault(result);
+        // if the value is null, the intention is to remove the style when the result is a default value
+        @this.Style = value.HasValue ? style : EnumHelper.NullIfDefault(style);
     }
 
     [Pure]
@@ -60,16 +23,16 @@ internal static class DotStyleOptionsExtension
         where TPartialStyle : struct, Enum
         where TCompleteStyle : struct, Enum
     {
-        var currentStyle = @this.Style.GetValueOrDefault(default(TCompleteStyle));
+        var style = @this.Style.GetValueOrDefault();
 
         if (option.HasValue)
         {
-            @this.Style = DotPartialEnumMapper.ReplacePartialFlags(option.Value, currentStyle);
+            @this.Style = DotPartialEnumMapper.ReplacePartialFlags(option.Value, style);
         }
         else
         {
-            var result = DotPartialEnumMapper.ClearPartialFlags<TPartialStyle, TCompleteStyle>(currentStyle);
-            @this.SetStyleOrNullIfDefault(result);
+            style = DotPartialEnumMapper.ClearPartialFlags<TPartialStyle, TCompleteStyle>(style);
+            @this.Style = EnumHelper.NullIfDefault(style);
         }
     }
 
@@ -81,10 +44,4 @@ internal static class DotStyleOptionsExtension
             @this.Style.HasValue
                 ? DotPartialEnumMapper.ExtractPartialFlags<TPartialStyle, TCompleteStyle>(@this.Style.Value)
                 : null;
-
-    private static void SetStyleOrNullIfDefault<TStyles>(this IDotHasStyleOptions<TStyles> @this, TStyles style)
-        where TStyles : struct, Enum
-    {
-        @this.Style = EnumHelper.IsDefault(style) ? null : style;
-    }
 }
