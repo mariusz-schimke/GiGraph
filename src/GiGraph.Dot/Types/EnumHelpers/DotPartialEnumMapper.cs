@@ -27,7 +27,7 @@ public static class DotPartialEnumMapper
     {
         var partialBitMask = GetBitMaskOf<TPartial>();
         var completeInt = Convert.ToInt32(complete);
-        return EnumHelper.ConvertTo<TPartial>(partialBitMask & completeInt);
+        return DotEnumHelper.ConvertTo<TPartial>(partialBitMask & completeInt);
     }
 
     /// <summary>
@@ -98,7 +98,7 @@ public static class DotPartialEnumMapper
         var complete = partialEnums.Select(Convert.ToInt32)
             .Aggregate(0, (accumulate, source) => accumulate | source);
 
-        return EnumHelper.ConvertTo<TComplete>(complete);
+        return DotEnumHelper.ConvertTo<TComplete>(complete);
     }
 
     private static TComplete ReplacePartialFlags<TPartial, TComplete>(int partial, TComplete complete)
@@ -108,7 +108,7 @@ public static class DotPartialEnumMapper
         var partialMask = GetBitMaskOf<TPartial>();
         var completeInt = Convert.ToInt32(complete);
 
-        return EnumHelper.ConvertTo<TComplete>(partial | (~partialMask & completeInt));
+        return DotEnumHelper.ConvertTo<TComplete>(partial | (~partialMask & completeInt));
     }
 
     private static int GetBitMaskOf<TEnum>()

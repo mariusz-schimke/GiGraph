@@ -9,10 +9,10 @@ internal static class DotStyleOptionsExtension
     public static void SetStyleOption<TStyles>(this IDotHasStyleOptions<TStyles> @this, TStyles option, bool? value)
         where TStyles : struct, Enum
     {
-        var style = EnumHelper.SetFlag(@this.Style.GetValueOrDefault(), option, value.GetValueOrDefault(false));
+        var style = DotEnumHelper.SetFlag(@this.Style.GetValueOrDefault(), option, value.GetValueOrDefault(false));
 
         // if the value is null, the intention is to remove the style when the result is a default value
-        @this.Style = value.HasValue ? style : EnumHelper.NullIfDefault(style);
+        @this.Style = value.HasValue ? style : DotEnumHelper.NullIfDefault(style);
     }
 
     [Pure]
@@ -32,7 +32,7 @@ internal static class DotStyleOptionsExtension
         else
         {
             style = DotPartialEnumMapper.ClearPartialFlags<TPartialStyle, TCompleteStyle>(style);
-            @this.Style = EnumHelper.NullIfDefault(style);
+            @this.Style = DotEnumHelper.NullIfDefault(style);
         }
     }
 
