@@ -1,11 +1,11 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Properties;
-using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Html.Attributes.Collections;
 using GiGraph.Dot.Entities.Html.Rule;
 using GiGraph.Dot.Entities.Qualities;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Colors;
+using GiGraph.Dot.Types.EnumHelpers;
 using GiGraph.Dot.Types.Html.Table;
 
 namespace GiGraph.Dot.Entities.Html.Table.Attributes;
@@ -28,20 +28,20 @@ public abstract partial class DotHtmlTableTableCellCommonStyleAttributes<TIHtmlT
     ///     <see cref="DotHtmlHorizontalRule"/>) and VR (<see cref="DotHtmlVerticalRule"/>) elements, or the column and row formatting
     ///     attributes of the table.
     /// </summary>
-    public virtual bool? RoundedCorners
+    public virtual bool RoundedCorners
     {
-        get => this.HasStyleOption(DotHtmlTableStyles.Rounded);
-        set => this.SetStyleOption(DotHtmlTableStyles.Rounded, value);
+        get => HasStyleOption(DotHtmlTableStyles.Rounded);
+        set => SetStyleOption(DotHtmlTableStyles.Rounded, value);
     }
 
     /// <summary>
     ///     True indicates that the element will have a radial gradient fill if a <see cref="DotGradientColor"/> is specified for
     ///     <see cref="BackgroundColor"/>.
     /// </summary>
-    public virtual bool? RadialFill
+    public virtual bool RadialFill
     {
-        get => this.HasStyleOption(DotHtmlTableStyles.Radial);
-        set => this.SetStyleOption(DotHtmlTableStyles.Radial, value);
+        get => HasStyleOption(DotHtmlTableStyles.Radial);
+        set => SetStyleOption(DotHtmlTableStyles.Radial, value);
     }
 
     protected DotHtmlTableStyles? Style
@@ -105,13 +105,19 @@ public abstract partial class DotHtmlTableTableCellCommonStyleAttributes<TIHtmlT
     ///     True indicates that the element will have a radial gradient fill if a <see cref="DotGradientColor"/> is specified for
     ///     <see cref="BackgroundColor"/>.
     /// </param>
-    public virtual void SetStyleOptions(bool? roundedCorners = null, bool? radialFill = null)
+    public virtual void SetStyleOptions(bool roundedCorners = false, bool radialFill = false)
     {
-        var options = DotStyleOptionsHelper.CompactOptions(
-            DotStyleOptionsHelper.BoolToOption(DotHtmlTableStyles.Rounded, roundedCorners),
-            DotStyleOptionsHelper.BoolToOption(DotHtmlTableStyles.Radial, radialFill)
-        );
-
-        this.SetStyleOptions(options);
+        RoundedCorners = roundedCorners;
+        RadialFill = radialFill;
     }
+
+    protected virtual void SetStyleOption(DotHtmlTableStyles option, bool value)
+    {
+        var style = DotEnumHelper.SetFlag(Style.GetValueOrDefault(), option, value);
+
+        // remove the attribute if the resulting style is the default value that would render an empty attribute
+        Style = DotEnumHelper.IsDefault(style) ? null : style;
+    }
+
+    protected bool HasStyleOption(DotHtmlTableStyles option) => Style?.HasFlag(option) ?? false;
 }

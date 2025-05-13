@@ -16,4 +16,4 @@ namespace GiGraph.Dot.Types.Html.Table;
 ///     True indicates that the element will have a radial gradient fill if a <see cref="DotGradientColor"/> is specified for the
 ///     background.
 /// </param>
-public record DotHtmlTableStyleOptions(bool? RoundedCorners = null, bool? RadialFill = null);
+public record DotHtmlTableStyleOptions(bool RoundedCorners = false, bool RadialFill = false);
