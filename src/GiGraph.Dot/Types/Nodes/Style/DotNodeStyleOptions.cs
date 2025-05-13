@@ -25,10 +25,10 @@ namespace GiGraph.Dot.Types.Nodes.Style;
 ///     Determines whether the element is invisible.
 /// </param>
 public record DotNodeStyleOptions(
-    DotNodeFillStyle? FillStyle = null,
-    DotBorderStyle? BorderStyle = null,
-    DotBorderWeight? BorderWeight = null,
-    DotCornerStyle? CornerStyle = null,
-    bool? Diagonals = null,
-    bool? Invisible = null
+    DotNodeFillStyle FillStyle = default,
+    DotBorderStyle BorderStyle = default,
+    DotBorderWeight BorderWeight = default,
+    DotCornerStyle CornerStyle = default,
+    bool Diagonals = false,
+    bool Invisible = false
 );

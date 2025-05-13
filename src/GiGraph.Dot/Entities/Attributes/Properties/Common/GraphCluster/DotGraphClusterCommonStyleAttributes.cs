@@ -18,7 +18,7 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
     /// <summary>
     ///     Gets or sets a fill style.
     /// </summary>
-    public virtual DotClusterFillStyle? FillStyle
+    public virtual DotClusterFillStyle FillStyle
     {
         get => this.GetPartialStyleOption<DotClusterFillStyle, DotStyles>();
         set => this.SetPartialStyleOption(value);
@@ -27,7 +27,7 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
     /// <summary>
     ///     Gets or sets a border style.
     /// </summary>
-    public virtual DotBorderStyle? BorderStyle
+    public virtual DotBorderStyle BorderStyle
     {
         get => this.GetPartialStyleOption<DotBorderStyle, DotStyles>();
         set => this.SetPartialStyleOption(value);
@@ -36,7 +36,7 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
     /// <summary>
     ///     Gets or sets a border weight.
     /// </summary>
-    public virtual DotBorderWeight? BorderWeight
+    public virtual DotBorderWeight BorderWeight
     {
         get => this.GetPartialStyleOption<DotBorderWeight, DotStyles>();
         set => this.SetPartialStyleOption(value);
@@ -45,7 +45,7 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
     /// <summary>
     ///     Gets or sets a corner style.
     /// </summary>
-    public virtual DotCornerStyle? CornerStyle
+    public virtual DotCornerStyle CornerStyle
     {
         get => this.GetPartialStyleOption<DotCornerStyle, DotStyles>();
         set => this.SetPartialStyleOption(value);
@@ -54,7 +54,7 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
     /// <summary>
     ///     When set, makes the element invisible.
     /// </summary>
-    public virtual bool? Invisible
+    public virtual bool Invisible
     {
         get => this.HasStyleOption(DotStyles.Invisible);
         set => this.SetStyleOption(DotStyles.Invisible, value);
@@ -102,21 +102,17 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
     ///     Determines whether the node should be invisible.
     /// </param>
     public virtual void SetStyleOptions(
-        DotClusterFillStyle? fillStyle = null,
-        DotBorderStyle? borderStyle = null,
-        DotBorderWeight? borderWeight = null,
-        DotCornerStyle? cornerStyle = null,
-        bool? invisible = null
+        DotClusterFillStyle fillStyle = default,
+        DotBorderStyle borderStyle = default,
+        DotBorderWeight borderWeight = default,
+        DotCornerStyle cornerStyle = default,
+        bool invisible = false
     )
     {
-        var options = DotStyleOptionsHelper.CompactOptions(
-            fillStyle,
-            borderStyle,
-            borderWeight,
-            cornerStyle,
-            DotStyleOptionsHelper.BoolToOption(DotStyles.Invisible, invisible)
-        );
-
-        this.SetStyleOptions(options);
+        FillStyle = fillStyle;
+        BorderStyle = borderStyle;
+        BorderWeight = borderWeight;
+        CornerStyle = cornerStyle;
+        Invisible = invisible;
     }
 }

@@ -42,35 +42,20 @@ public class DotEdgeStyleAttributeOptionsTest
     }
 
     [Fact]
-    public void nullifying_last_style_option_nullifies_style()
+    public void setting_any_single_option_default_sets_default_style()
     {
         var graph = new DotGraph();
         var edge = graph.Edges.Add("n1", "n2");
 
         Assert.False(edge.Style.HasStyleOptions());
 
-        edge.Style.SetStyleOptions(
-            new DotEdgeStyleOptions(
-                DotLineStyle.Dashed,
-                DotLineWeight.Bold,
-                true
-            )
-        );
+        edge.Style.LineStyle = DotLineStyle.Default;
 
         Assert.True(edge.Style.HasStyleOptions());
-        Assert.False(edge.Style.HasDefaultStyleOptions());
-
-        edge.Style.LineStyle = null;
-        edge.Style.Invisible = null;
-
-        Assert.True(edge.Style.HasStyleOptions());
-        Assert.False(edge.Style.HasDefaultStyleOptions());
-
-        edge.Style.LineWeight = DotLineWeight.Default;
         Assert.True(edge.Style.HasDefaultStyleOptions());
 
-        edge.Style.LineWeight = null;
-        Assert.False(edge.Style.HasStyleOptions());
+        edge.Style.Invisible = false;
+        Assert.True(edge.Style.HasDefaultStyleOptions());
     }
 
     [Fact]
@@ -83,14 +68,14 @@ public class DotEdgeStyleAttributeOptionsTest
 
         edge.Style.SetDefaultStyleOptions();
 
-        Assert.Equal(edge.Style.LineStyle, DotLineStyle.Default);
-        Assert.Equal(edge.Style.LineWeight, DotLineWeight.Default);
-        Assert.Equal(edge.Style.Invisible, false);
+        Assert.Equal(DotLineStyle.Default, edge.Style.LineStyle);
+        Assert.Equal(DotLineWeight.Default, edge.Style.LineWeight);
+        Assert.False(edge.Style.Invisible);
 
         edge.Style.ClearStyleOptions();
 
-        Assert.Null(edge.Style.LineStyle);
-        Assert.Null(edge.Style.LineWeight);
-        Assert.Null(edge.Style.Invisible);
+        Assert.Equal(DotLineStyle.Default, edge.Style.LineStyle);
+        Assert.Equal(DotLineWeight.Default, edge.Style.LineWeight);
+        Assert.False(edge.Style.Invisible);
     }
 }

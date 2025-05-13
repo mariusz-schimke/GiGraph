@@ -8,7 +8,7 @@ namespace GiGraph.Dot.Entities.Tests.Html.Table;
 public class DotHtmlTableStyleAttributeOptionsTest
 {
     [Fact]
-    public void nullifying_last_style_option_nullifies_style()
+    public void setting_last_style_option_default_preserves_default_style()
     {
         var table = new DotHtmlTable();
         Assert.False(table.Style.HasStyleOptions());
@@ -34,7 +34,7 @@ public class DotHtmlTableStyleAttributeOptionsTest
         table.Style.RadialFill = false;
         Assert.False(table.Style.RoundedCorners);
         Assert.False(table.Style.RadialFill);
-        Assert.False(table.Style.HasStyleOptions());
+        Assert.True(table.Style.HasStyleOptions());
     }
 
     [Fact]
@@ -70,7 +70,7 @@ public class DotHtmlTableStyleAttributeOptionsTest
         table.Style.SetStyleOptions();
         Assert.False(table.Style.RoundedCorners);
         Assert.False(table.Style.RadialFill);
-        Assert.False(table.Style.HasStyleOptions());
+        Assert.True(table.Style.HasStyleOptions());
 
         table.Style.SetStyleOptions(roundedCorners: true);
         Assert.True(table.Style.RoundedCorners);

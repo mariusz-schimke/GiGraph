@@ -25,7 +25,7 @@ public partial class DotEdgeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// <summary>
     ///     Gets or sets a line style for the edge.
     /// </summary>
-    public virtual DotLineStyle? LineStyle
+    public virtual DotLineStyle LineStyle
     {
         get => this.GetPartialStyleOption<DotLineStyle, DotStyles>();
         set => this.SetPartialStyleOption(value);
@@ -34,7 +34,7 @@ public partial class DotEdgeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// <summary>
     ///     Gets or sets a line weight for the edge.
     /// </summary>
-    public virtual DotLineWeight? LineWeight
+    public virtual DotLineWeight LineWeight
     {
         get => this.GetPartialStyleOption<DotLineWeight, DotStyles>();
         set => this.SetPartialStyleOption(value);
@@ -43,7 +43,7 @@ public partial class DotEdgeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// <summary>
     ///     Gets or sets a value indicating if the edge is invisible.
     /// </summary>
-    public virtual bool? Invisible
+    public virtual bool Invisible
     {
         get => this.HasStyleOption(DotStyles.Invisible);
         set => this.SetStyleOption(DotStyles.Invisible, value);
@@ -96,14 +96,10 @@ public partial class DotEdgeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// <param name="invisible">
     ///     Determines whether the edge should be invisible.
     /// </param>
-    public virtual void SetStyleOptions(DotLineStyle? lineStyle = null, DotLineWeight? lineWeight = null, bool? invisible = null)
+    public virtual void SetStyleOptions(DotLineStyle lineStyle = default, DotLineWeight lineWeight = default, bool invisible = false)
     {
-        var options = DotStyleOptionsHelper.CompactOptions(
-            lineStyle,
-            lineWeight,
-            DotStyleOptionsHelper.BoolToOption(DotStyles.Invisible, invisible)
-        );
-
-        this.SetStyleOptions(options);
+        LineStyle = lineStyle;
+        LineWeight = lineWeight;
+        Invisible = invisible;
     }
 }

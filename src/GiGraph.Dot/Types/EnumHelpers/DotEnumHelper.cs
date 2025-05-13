@@ -44,14 +44,6 @@ internal class DotEnumHelper
         Convert.ToInt32(input) == Convert.ToInt32(default(TEnum));
 
     /// <summary>
-    ///     If the <paramref name="input"/> has a default value (0), returns null. Otherwise, <paramref name="input"/> is returned.
-    /// </summary>
-    [Pure]
-    public static TEnum? NullIfDefault<TEnum>(TEnum input)
-        where TEnum : struct, Enum =>
-        IsDefault(input) ? null : input;
-
-    /// <summary>
     ///     Converts the specified <paramref name="source"/> object to the <typeparamref name="TResult"/> enumeration.
     /// </summary>
     [Pure]
@@ -61,12 +53,4 @@ internal class DotEnumHelper
             source,
             Enum.GetUnderlyingType(typeof(TResult))
         );
-
-    /// <summary>
-    ///     Returns <paramref name="flag"/> when <paramref name="state"/> is true or default otherwise.
-    /// </summary>
-    [Pure]
-    public static TEnum FlagOrDefault<TEnum>(TEnum flag, bool state)
-        where TEnum : struct, Enum =>
-        state ? flag : default(TEnum);
 }

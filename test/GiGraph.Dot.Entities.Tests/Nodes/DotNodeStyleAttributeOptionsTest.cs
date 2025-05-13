@@ -48,41 +48,20 @@ public class DotNodeStyleAttributeOptionsTest
     }
 
     [Fact]
-    public void nullifying_last_style_option_nullifies_style()
+    public void setting_any_single_option_default_sets_default_style()
     {
         var graph = new DotGraph();
         var node = graph.Nodes.Add("n1");
 
         Assert.False(node.Style.HasStyleOptions());
 
-        node.Style.SetStyleOptions(
-            new DotNodeStyleOptions(
-                DotNodeFillStyle.Radial,
-                DotBorderStyle.Dashed,
-                DotBorderWeight.Bold,
-                DotCornerStyle.Rounded,
-                true,
-                true
-            )
-        );
+        node.Style.FillStyle = DotNodeFillStyle.None;
 
         Assert.True(node.Style.HasStyleOptions());
-        Assert.False(node.Style.HasDefaultStyleOptions());
-
-        node.Style.FillStyle = null;
-        node.Style.BorderStyle = null;
-        node.Style.BorderWeight = null;
-        node.Style.CornerStyle = null;
-        node.Style.Invisible = null;
-
-        Assert.True(node.Style.HasStyleOptions());
-        Assert.False(node.Style.HasDefaultStyleOptions());
+        Assert.True(node.Style.HasDefaultStyleOptions());
 
         node.Style.Diagonals = false;
         Assert.True(node.Style.HasDefaultStyleOptions());
-
-        node.Style.Diagonals = null;
-        Assert.False(node.Style.HasStyleOptions());
     }
 
     [Fact]
@@ -95,20 +74,20 @@ public class DotNodeStyleAttributeOptionsTest
 
         node.Style.SetDefaultStyleOptions();
 
-        Assert.Equal(node.Style.FillStyle, DotNodeFillStyle.None);
-        Assert.Equal(node.Style.BorderStyle, DotBorderStyle.Default);
-        Assert.Equal(node.Style.BorderWeight, DotBorderWeight.Default);
-        Assert.Equal(node.Style.CornerStyle, DotCornerStyle.Default);
-        Assert.Equal(node.Style.Diagonals, false);
-        Assert.Equal(node.Style.Invisible, false);
+        Assert.Equal(DotNodeFillStyle.None, node.Style.FillStyle);
+        Assert.Equal(DotBorderStyle.Default, node.Style.BorderStyle);
+        Assert.Equal(DotBorderWeight.Default, node.Style.BorderWeight);
+        Assert.Equal(DotCornerStyle.Default, node.Style.CornerStyle);
+        Assert.False(node.Style.Diagonals);
+        Assert.False(node.Style.Invisible);
 
         node.Style.ClearStyleOptions();
 
-        Assert.Null(node.Style.FillStyle);
-        Assert.Null(node.Style.BorderStyle);
-        Assert.Null(node.Style.BorderWeight);
-        Assert.Null(node.Style.CornerStyle);
-        Assert.Null(node.Style.Diagonals);
-        Assert.Null(node.Style.Invisible);
+        Assert.Equal(default(DotNodeFillStyle), node.Style.FillStyle);
+        Assert.Equal(default(DotBorderStyle), node.Style.BorderStyle);
+        Assert.Equal(default(DotBorderWeight), node.Style.BorderWeight);
+        Assert.Equal(default(DotCornerStyle), node.Style.CornerStyle);
+        Assert.False(node.Style.Diagonals);
+        Assert.False(node.Style.Invisible);
     }
 }

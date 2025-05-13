@@ -46,40 +46,20 @@ public class DotClusterStyleAttributeOptionsTest
     }
 
     [Fact]
-    public void nullifying_last_style_option_nullifies_style()
+    public void setting_any_single_option_default_sets_default_style()
     {
         var graph = new DotGraph();
         var cluster = graph.Clusters.Add("c1");
 
         Assert.False(cluster.Style.HasStyleOptions());
 
-        // set by class
-        cluster.Style.SetStyleOptions(
-            new DotClusterStyleOptions(
-                DotClusterFillStyle.Striped,
-                DotBorderStyle.Dotted,
-                DotBorderWeight.Bold,
-                DotCornerStyle.Rounded,
-                true
-            )
-        );
+        cluster.Style.FillStyle = DotClusterFillStyle.None;
 
         Assert.True(cluster.Style.HasStyleOptions());
-        Assert.False(cluster.Style.HasDefaultStyleOptions());
-
-        cluster.Style.FillStyle = null;
-        cluster.Style.BorderStyle = null;
-        cluster.Style.BorderWeight = null;
-        cluster.Style.Invisible = null;
-
-        Assert.True(cluster.Style.HasStyleOptions());
-        Assert.False(cluster.Style.HasDefaultStyleOptions());
-
-        cluster.Style.CornerStyle = DotCornerStyle.Default;
         Assert.True(cluster.Style.HasDefaultStyleOptions());
 
-        cluster.Style.CornerStyle = null;
-        Assert.False(cluster.Style.HasStyleOptions());
+        cluster.Style.Invisible = false;
+        Assert.True(cluster.Style.HasDefaultStyleOptions());
     }
 
     [Fact]
@@ -92,16 +72,16 @@ public class DotClusterStyleAttributeOptionsTest
 
         cluster.Style.SetDefaultStyleOptions();
 
-        Assert.Equal(cluster.Style.FillStyle, DotClusterFillStyle.None);
-        Assert.Equal(cluster.Style.BorderStyle, DotBorderStyle.Default);
-        Assert.Equal(cluster.Style.BorderWeight, DotBorderWeight.Default);
-        Assert.Equal(cluster.Style.Invisible, false);
+        Assert.Equal(DotClusterFillStyle.None, cluster.Style.FillStyle);
+        Assert.Equal(DotBorderStyle.Default, cluster.Style.BorderStyle);
+        Assert.Equal(DotBorderWeight.Default, cluster.Style.BorderWeight);
+        Assert.False(cluster.Style.Invisible);
 
         cluster.Style.ClearStyleOptions();
 
-        Assert.Null(cluster.Style.FillStyle);
-        Assert.Null(cluster.Style.BorderStyle);
-        Assert.Null(cluster.Style.BorderWeight);
-        Assert.Null(cluster.Style.Invisible);
+        Assert.Equal(DotClusterFillStyle.None, cluster.Style.FillStyle);
+        Assert.Equal(DotBorderStyle.Default, cluster.Style.BorderStyle);
+        Assert.Equal(DotBorderWeight.Default, cluster.Style.BorderWeight);
+        Assert.False(cluster.Style.Invisible);
     }
 }

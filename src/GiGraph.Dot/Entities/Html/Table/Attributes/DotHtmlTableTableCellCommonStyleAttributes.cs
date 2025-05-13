@@ -1,11 +1,11 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Properties;
+using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Html.Attributes.Collections;
 using GiGraph.Dot.Entities.Html.Rule;
 using GiGraph.Dot.Entities.Qualities;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Colors;
-using GiGraph.Dot.Types.EnumHelpers;
 using GiGraph.Dot.Types.Html.Table;
 
 namespace GiGraph.Dot.Entities.Html.Table.Attributes;
@@ -30,8 +30,8 @@ public abstract partial class DotHtmlTableTableCellCommonStyleAttributes<TIHtmlT
     /// </summary>
     public virtual bool RoundedCorners
     {
-        get => HasStyleOption(DotHtmlTableStyles.Rounded);
-        set => SetStyleOption(DotHtmlTableStyles.Rounded, value);
+        get => this.HasStyleOption(DotHtmlTableStyles.Rounded);
+        set => this.SetStyleOption(DotHtmlTableStyles.Rounded, value);
     }
 
     /// <summary>
@@ -40,8 +40,8 @@ public abstract partial class DotHtmlTableTableCellCommonStyleAttributes<TIHtmlT
     /// </summary>
     public virtual bool RadialFill
     {
-        get => HasStyleOption(DotHtmlTableStyles.Radial);
-        set => SetStyleOption(DotHtmlTableStyles.Radial, value);
+        get => this.HasStyleOption(DotHtmlTableStyles.Radial);
+        set => this.SetStyleOption(DotHtmlTableStyles.Radial, value);
     }
 
     protected DotHtmlTableStyles? Style
@@ -110,14 +110,4 @@ public abstract partial class DotHtmlTableTableCellCommonStyleAttributes<TIHtmlT
         RoundedCorners = roundedCorners;
         RadialFill = radialFill;
     }
-
-    protected virtual void SetStyleOption(DotHtmlTableStyles option, bool value)
-    {
-        var style = DotEnumHelper.SetFlag(Style.GetValueOrDefault(), option, value);
-
-        // remove the attribute if the resulting style is the default value that would render an empty attribute
-        Style = DotEnumHelper.IsDefault(style) ? null : style;
-    }
-
-    protected bool HasStyleOption(DotHtmlTableStyles option) => Style?.HasFlag(option) ?? false;
 }

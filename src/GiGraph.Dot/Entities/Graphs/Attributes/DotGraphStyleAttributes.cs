@@ -31,7 +31,7 @@ public partial class DotGraphStyleAttributes : DotEntityStyleAttributesWithMetad
     ///         Note that this setting is shared with clusters and they can't be applied independently.
     ///     </para>
     /// </summary>
-    public virtual DotClusterFillStyle? FillStyle
+    public virtual DotClusterFillStyle FillStyle
     {
         get => this.GetPartialStyleOption<DotClusterFillStyle, DotStyles>();
         set => this.SetPartialStyleOption(value);
@@ -66,9 +66,8 @@ public partial class DotGraphStyleAttributes : DotEntityStyleAttributesWithMetad
     /// <param name="fillStyle">
     ///     The fill style to set.
     /// </param>
-    public virtual void SetStyleOptions(DotClusterFillStyle? fillStyle)
+    public virtual void SetStyleOptions(DotClusterFillStyle fillStyle)
     {
-        var options = DotStyleOptionsHelper.CompactOptions(fillStyle);
-        this.SetStyleOptions(options);
+        FillStyle = fillStyle;
     }
 }
