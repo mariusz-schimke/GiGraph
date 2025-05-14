@@ -28,8 +28,8 @@ internal static class DotStyleOptionsExtension
     public static TPartialStyle GetPartialStyleOption<TPartialStyle, TCompleteStyle>(this IDotHasStyleOptions<TCompleteStyle> @this)
         where TPartialStyle : struct, Enum
         where TCompleteStyle : struct, Enum
-        =>
-            @this.Style.HasValue
-                ? DotPartialEnumMapper.ExtractPartialFlags<TPartialStyle, TCompleteStyle>(@this.Style.Value)
-                : default(TPartialStyle);
+    {
+        var style = @this.Style.GetValueOrDefault();
+        return DotPartialEnumMapper.ExtractPartialFlags<TPartialStyle, TCompleteStyle>(style);
+    }
 }
