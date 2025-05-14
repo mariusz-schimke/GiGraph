@@ -4,6 +4,7 @@ using GiGraph.Dot.Types.Colors;
 
 namespace GiGraph.Dot.Extensions;
 
+// todo: to chyba powinno ulec przeniesieniu na inny poziom (Style albo Canvas?)
 public static class DotGraphSectionExtension
 {
     /// <summary>

@@ -21,6 +21,7 @@ public partial class DotFillableExtensionTest
                 c =>
                     c.Style.SetStyleOptions(DotClusterFillStyle.None, DotBorderStyle.Solid, DotBorderWeight.Bold, DotCornerStyle.Rounded, true)
             )
+            .Style
             .SetPlainFill(Color.Red);
 
         graph.Clusters.Style.SetStyleOptions(DotClusterFillStyle.None, DotBorderStyle.Solid, DotBorderWeight.Bold, DotCornerStyle.Rounded, true);
@@ -33,7 +34,7 @@ public partial class DotFillableExtensionTest
     public void sets_plain_color_fill_on_cluster()
     {
         var graph = new DotGraph();
-        graph.Clusters.Add("").SetPlainFill(Color.Red);
+        graph.Clusters.Add("").Style.SetPlainFill(Color.Red);
         Snapshot.Match(graph.ToDot(), "plain_color_fill_on_cluster");
     }
 

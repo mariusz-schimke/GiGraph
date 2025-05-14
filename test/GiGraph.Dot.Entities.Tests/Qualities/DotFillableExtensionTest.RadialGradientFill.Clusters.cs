@@ -14,16 +14,16 @@ public partial class DotFillableExtensionTest
     {
         var graph = new DotGraph();
 
-        graph.Clusters.Add("").SetRadialGradientFill(new DotGradientColor(Color.Red, Color.Brown));
-        graph.Clusters.Add("").SetRadialGradientFill(new DotGradientColor(Color.Red, Color.Brown), 45);
+        graph.Clusters.Add("").Style.SetRadialGradientFill(new DotGradientColor(Color.Red, Color.Brown));
+        graph.Clusters.Add("").Style.SetRadialGradientFill(new DotGradientColor(Color.Red, Color.Brown), 45);
 
         Snapshot.Match(graph.ToDot(), "radial_gradient_fill_on_clusters");
 
         graph.Clusters.Clear();
 
         // an overload (with the same result)
-        graph.Clusters.Add("").SetRadialGradientFill(Color.Red, Color.Brown);
-        graph.Clusters.Add("").SetRadialGradientFill(Color.Red, Color.Brown, 45);
+        graph.Clusters.Add("").Style.SetRadialGradientFill(Color.Red, Color.Brown);
+        graph.Clusters.Add("").Style.SetRadialGradientFill(Color.Red, Color.Brown, 45);
 
         Snapshot.Match(graph.ToDot(), "radial_gradient_fill_on_clusters");
     }
