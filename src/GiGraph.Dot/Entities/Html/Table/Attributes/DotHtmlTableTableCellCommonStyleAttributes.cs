@@ -44,7 +44,7 @@ public abstract partial class DotHtmlTableTableCellCommonStyleAttributes<TIHtmlT
         set => this.SetStyleOption(DotHtmlTableStyles.Radial, value);
     }
 
-    protected DotHtmlTableStyles? Style
+    protected virtual DotHtmlTableStyles? Style
     {
         get => ((IDotHtmlTableTableCellCommonStyleAttributes) this).Style;
         set => ((IDotHtmlTableTableCellCommonStyleAttributes) this).Style = value;
