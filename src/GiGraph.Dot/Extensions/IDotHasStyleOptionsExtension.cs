@@ -7,8 +7,8 @@ public static class IDotHasStyleOptionsExtension
 {
     /// <summary>
     ///     Indicates whether the element has a style attribute assigned. Returns true if the style attribute has any value, including
-    ///     default values that render an empty 'style' attribute. The style attribute is settable through the element's style options
-    ///     exposed through individual properties.
+    ///     its default value that renders an empty 'style' attribute. The attribute is a composite of multiple options, each of which is
+    ///     exposed and configurable via a dedicated property.
     /// </summary>
     /// <param name="this">
     ///     The current object.
