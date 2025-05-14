@@ -12,7 +12,7 @@ public partial class DotStylableEdgeExtensionTest
     {
         var graph = new DotGraph();
 
-        graph.Edges.SetTaperedStyle(4);
+        graph.Edges.Style.SetTaperedStyle(4);
         graph.Edges.Add("a", "b").SetTaperedStyle(4);
 
         Snapshot.Match(graph.ToDot(), "tapered_edge_and_edge_collection");

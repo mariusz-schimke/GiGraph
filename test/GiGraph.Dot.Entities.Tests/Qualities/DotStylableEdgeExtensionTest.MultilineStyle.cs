@@ -40,10 +40,10 @@ public partial class DotStylableEdgeExtensionTest
     {
         var graph = new DotGraph();
 
-        graph.Edges.SetMultilineStyle(4);
-        graph.Subsections.Add().Edges.SetMultilineStyle(4, Color.Red);
-        graph.Subsections.Add().Edges.SetMultilineStyle(Color.Red, Color.Black, Color.Green);
-        graph.Subsections.Add().Edges.SetMultilineStyle(new DotMulticolor(Color.Red, Color.Black, Color.Green));
+        graph.Edges.Style.SetMultilineStyle(4);
+        graph.Subsections.Add().Edges.Style.SetMultilineStyle(4, Color.Red);
+        graph.Subsections.Add().Edges.Style.SetMultilineStyle(Color.Red, Color.Black, Color.Green);
+        graph.Subsections.Add().Edges.Style.SetMultilineStyle(new DotMulticolor(Color.Red, Color.Black, Color.Green));
 
         Snapshot.Match(graph.ToDot(), "multiline_edge_collections");
     }

@@ -24,10 +24,12 @@ public partial class DotStylableEdgeExtensionTest
     {
         var graph = new DotGraph();
 
-        graph.Edges.Add("a", "b")
+        graph.Edges
+            .Add("a", "b")
             .SetSegmentedStyle(Color.Red, Color.Black, new DotWeightedColor(Color.Green, 0.5));
 
-        graph.Edges.Add("c", "d")
+        graph.Edges
+            .Add("c", "d")
             .SetSegmentedStyle(new DotMulticolor(Color.Red, Color.Black, new DotWeightedColor(Color.Green, 0.5)));
 
         Snapshot.Match(graph.ToDot(), "segmented_edges");
@@ -38,11 +40,17 @@ public partial class DotStylableEdgeExtensionTest
     {
         var graph = new DotGraph();
 
-        graph.Subsections.Add().Edges
+        graph.Subsections
+            .Add()
+            .Edges
+            .Style
             .SetSegmentedStyle(Color.Red, Color.Black, new DotWeightedColor(Color.Green, 0.5));
 
-        graph.Subsections.Add()
-            .Edges.SetSegmentedStyle(new DotMulticolor(Color.Red, Color.Black, new DotWeightedColor(Color.Green, 0.5)));
+        graph.Subsections
+            .Add()
+            .Edges
+            .Style
+            .SetSegmentedStyle(new DotMulticolor(Color.Red, Color.Black, new DotWeightedColor(Color.Green, 0.5)));
 
         Snapshot.Match(graph.ToDot(), "segmented_edge_collections");
     }
