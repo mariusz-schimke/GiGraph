@@ -11,15 +11,8 @@ namespace GiGraph.Dot.Entities.Tests.Attributes.GraphvizDocumentation;
 ///     The assumption of this test is that the HTML documentation of Graphviz attributes is up-to-date and complete. The test does
 ///     not report any errors, but it prints the differences between the documentation and the metadata implementation.
 /// </summary>
-public class GraphvizAttributeListDiffTest
+public class GraphvizAttributeListDiffTest(ITestOutputHelper testOutputHelper)
 {
-    private readonly ITestOutputHelper _testOutputHelper;
-
-    public GraphvizAttributeListDiffTest(ITestOutputHelper testOutputHelper)
-    {
-        _testOutputHelper = testOutputHelper;
-    }
-
     [Fact]
     public void print_attribute_diff_based_on_html_documentation()
     {
@@ -66,7 +59,7 @@ public class GraphvizAttributeListDiffTest
 
         foreach (var removedAttribute in removedAttributes)
         {
-            _testOutputHelper.WriteLine($"The attribute '{removedAttribute}' was removed from the documentation.");
+            testOutputHelper.WriteLine($"The attribute '{removedAttribute}' was removed from the documentation.");
         }
     }
 
@@ -79,7 +72,7 @@ public class GraphvizAttributeListDiffTest
 
         foreach (var newAttribute in newAttributes)
         {
-            _testOutputHelper.WriteLine($"A new attribute '{newAttribute}' was added to the documentation.");
+            testOutputHelper.WriteLine($"A new attribute '{newAttribute}' was added to the documentation.");
         }
     }
 
@@ -97,7 +90,7 @@ public class GraphvizAttributeListDiffTest
 
         foreach (var compatibilityListDiffItem in compatibilityListDiff)
         {
-            _testOutputHelper.WriteLine($"The attribute '{compatibilityListDiffItem.HtmlTableRecord.Key}' " +
+            testOutputHelper.WriteLine($"The attribute '{compatibilityListDiffItem.HtmlTableRecord.Key}' " +
                 $"defines a different compatibility list ({compatibilityListDiffItem.HtmlTableRecord.CompatibleElements}) than the metadata implementation " +
                 $"({compatibilityListDiffItem.MetadataRecord!.CompatibleElements}).");
         }

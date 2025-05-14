@@ -5,16 +5,11 @@ using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties;
 
-public abstract class DotEntityAttributes : IDotEntityAttributes
+public abstract class DotEntityAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+    : IDotEntityAttributes
 {
-    protected readonly Lazy<DotMemberAttributeKeyLookup> _attributeKeyLookup;
-    protected readonly DotAttributeCollection _attributes;
-
-    protected DotEntityAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
-    {
-        _attributes = attributes;
-        _attributeKeyLookup = attributeKeyLookup;
-    }
+    protected readonly Lazy<DotMemberAttributeKeyLookup> _attributeKeyLookup = attributeKeyLookup;
+    protected readonly DotAttributeCollection _attributes = attributes;
 
     internal DotAttributeCollection Collection => _attributes;
 
