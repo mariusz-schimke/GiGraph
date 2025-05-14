@@ -25,7 +25,7 @@ public static class WithCustomStyles
         // set global node attributes (for all nodes of the graph)
         graph.Nodes.Shape = DotNodeShape.Rectangle;
         graph.Nodes.Font.Name = graph.Font.Name;
-        graph.Nodes.SetGradientFill(Color.Turquoise, Color.RoyalBlue);
+        graph.Nodes.Style.SetGradientFill(Color.Turquoise, Color.RoyalBlue);
 
         // set global edge attributes (for all edges of the graph)
         graph.Edges.Head.Arrowhead = graph.Edges.Tail.Arrowhead = DotArrowheadShape.Vee;
@@ -60,8 +60,8 @@ public static class WithCustomStyles
         graph.Subgraphs.Add(sg =>
         {
             // nodes with a dual-color fill; fill proportions specified by the weight properties (this is actually a degenerate linear gradient fill)
-            sg.Nodes.Add("C").SetGradientFill(Color.RoyalBlue, new DotWeightedColor(Color.Turquoise, 0.25));
-            sg.Nodes.Add("D").SetGradientFill(new DotWeightedColor(Color.Navy, 0.25), Color.RoyalBlue);
+            sg.Nodes.Add("C").Style.SetGradientFill(Color.RoyalBlue, new DotWeightedColor(Color.Turquoise, 0.25));
+            sg.Nodes.Add("D").Style.SetGradientFill(new DotWeightedColor(Color.Navy, 0.25), Color.RoyalBlue);
 
             sg.Edges.Add("C", "D", edge =>
             {
@@ -83,7 +83,7 @@ public static class WithCustomStyles
             {
                 node.Style.Color = Color.Transparent;
 
-                node.SetStripedFill(
+                node.Style.SetStripedFill(
                     new DotWeightedColor(Color.Navy, 0.1),
                     Color.RoyalBlue,
                     Color.Turquoise,
@@ -96,7 +96,7 @@ public static class WithCustomStyles
                 node.Shape = DotNodeShape.Circle;
                 node.Style.Color = Color.Transparent;
 
-                node.SetWedgedFill(
+                node.Style.SetWedgedFill(
                     Color.Orange,
                     Color.RoyalBlue,
                     new DotWeightedColor(Color.Navy, 0.1),

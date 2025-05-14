@@ -14,16 +14,16 @@ public partial class DotFillableExtensionTest
     {
         var graph = new DotGraph();
 
-        graph.Nodes.Add("node1").SetGradientFill(new DotGradientColor(Color.Red, Color.Brown));
-        graph.Nodes.Add("node2").SetGradientFill(new DotGradientColor(Color.Red, Color.Brown), 45);
+        graph.Nodes.Add("node1").Style.SetGradientFill(new DotGradientColor(Color.Red, Color.Brown));
+        graph.Nodes.Add("node2").Style.SetGradientFill(new DotGradientColor(Color.Red, Color.Brown), 45);
 
         Snapshot.Match(graph.ToDot(), "gradient_fill_on_nodes");
 
         graph.Nodes.Clear();
 
         // an overload (with the same result)
-        graph.Nodes.Add("node1").SetGradientFill(Color.Red, Color.Brown);
-        graph.Nodes.Add("node2").SetGradientFill(Color.Red, Color.Brown, 45);
+        graph.Nodes.Add("node1").Style.SetGradientFill(Color.Red, Color.Brown);
+        graph.Nodes.Add("node2").Style.SetGradientFill(Color.Red, Color.Brown, 45);
 
         Snapshot.Match(graph.ToDot(), "gradient_fill_on_nodes");
     }
@@ -33,8 +33,8 @@ public partial class DotFillableExtensionTest
     {
         var graph = new DotGraph();
 
-        graph.Nodes.AddGroup(["node1", "node2"]).SetGradientFill(new DotGradientColor(Color.Red, Color.Brown));
-        graph.Nodes.AddGroup(["node3", "node4"]).SetGradientFill(new DotGradientColor(Color.Red, Color.Brown), 45);
+        graph.Nodes.AddGroup(["node1", "node2"]).Style.SetGradientFill(new DotGradientColor(Color.Red, Color.Brown));
+        graph.Nodes.AddGroup(["node3", "node4"]).Style.SetGradientFill(new DotGradientColor(Color.Red, Color.Brown), 45);
 
         Snapshot.Match(graph.ToDot(), "gradient_fill_on_node_groups");
     }
@@ -43,7 +43,7 @@ public partial class DotFillableExtensionTest
     public void sets_gradient_fill_on_node_collection()
     {
         var graph = new DotGraph();
-        graph.Nodes.SetGradientFill(new DotGradientColor(Color.Red, Color.Brown));
+        graph.Nodes.Style.SetGradientFill(new DotGradientColor(Color.Red, Color.Brown));
         Snapshot.Match(graph.ToDot(), "gradient_fill_on_node_collection");
     }
 
@@ -51,7 +51,7 @@ public partial class DotFillableExtensionTest
     public void sets_gradient_fill_with_angle_on_node_collection()
     {
         var graph = new DotGraph();
-        graph.Nodes.SetGradientFill(new DotGradientColor(Color.Red, Color.Brown), 45);
+        graph.Nodes.Style.SetGradientFill(new DotGradientColor(Color.Red, Color.Brown), 45);
         Snapshot.Match(graph.ToDot(), "gradient_fill_on_node_collection_with_angle");
     }
 }

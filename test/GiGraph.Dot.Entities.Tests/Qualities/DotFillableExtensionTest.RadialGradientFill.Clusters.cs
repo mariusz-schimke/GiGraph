@@ -32,7 +32,7 @@ public partial class DotFillableExtensionTest
     public void sets_radial_gradient_fill_on_cluster_collection()
     {
         var graph = new DotGraph();
-        graph.Clusters.SetRadialGradientFill(new DotGradientColor(Color.Red, Color.Brown));
+        graph.Clusters.Style.SetRadialGradientFill(new DotGradientColor(Color.Red, Color.Brown));
         Snapshot.Match(graph.ToDot(), "radial_gradient_fill_on_cluster_collection");
     }
 
@@ -40,7 +40,7 @@ public partial class DotFillableExtensionTest
     public void sets_radial_gradient_fill_with_angle_on_cluster_collection()
     {
         var graph = new DotGraph();
-        graph.Clusters.SetRadialGradientFill(new DotGradientColor(Color.Red, Color.Brown), 45);
+        graph.Clusters.Style.SetRadialGradientFill(new DotGradientColor(Color.Red, Color.Brown), 45);
         Snapshot.Match(graph.ToDot(), "radial_gradient_fill_on_cluster_collection_with_angle");
     }
 }

@@ -1,17 +1,11 @@
 ﻿using GiGraph.Dot.Entities.Qualities;
-using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Geometry;
 using GiGraph.Dot.Types.Nodes;
-using GiGraph.Dot.Types.Nodes.Style;
-using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Nodes;
 
-public abstract partial class DotNodeDefinition : IDotShapableNode, IDotStripeFillable, IDotWedgeFillable
+public abstract partial class DotNodeDefinition : IDotShapableNode
 {
     void IDotShapableNode.SetShape(DotNodeShape shape) => Shape = shape;
     void IDotShapableNode.SetGeometry(DotPolygon geometry) => Geometry.Set(geometry);
-    void IDotFillable.SetFillStyle(DotFillStyle style) => Style.FillStyle = (DotNodeFillStyle) style;
-    void IDotFillable.SetFillColor(DotColorDefinition color) => Style.FillColor = color;
-    void IDotFillable.SetGradientFillAngle(int? angle) => Style.GradientFillAngle = angle;
 }
