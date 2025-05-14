@@ -6,7 +6,9 @@ namespace GiGraph.Dot.Extensions;
 public static class IDotHasStyleOptionsExtension
 {
     /// <summary>
-    ///     Determines if any style is assigned to the element, that is, if the 'style' attribute has any value specified (is not null).
+    ///     Indicates whether the element has a style attribute assigned. Returns true if the style attribute has any value, including
+    ///     default values that render an empty 'style' attribute. The style attribute is settable through the element's style options
+    ///     exposed through individual properties.
     /// </summary>
     /// <param name="this">
     ///     The current object.
@@ -20,8 +22,7 @@ public static class IDotHasStyleOptionsExtension
         @this.Style.HasValue;
 
     /// <summary>
-    ///     Clears the style option flags of the element so that no style is set. This implies that the 'style' attribute won't be
-    ///     rendered for the current element.
+    ///     Removes the style options of the element if set. The 'style' attribute will not be rendered.
     /// </summary>
     /// <param name="this">
     ///     The current object.
@@ -29,7 +30,7 @@ public static class IDotHasStyleOptionsExtension
     /// <typeparam name="TStyles">
     ///     The type of the style options the object implements.
     /// </typeparam>
-    public static void ClearStyleOptions<TStyles>(this IDotHasStyleOptions<TStyles> @this)
+    public static void RemoveStyleOptions<TStyles>(this IDotHasStyleOptions<TStyles> @this)
         where TStyles : struct, Enum
     {
         @this.Style = null;

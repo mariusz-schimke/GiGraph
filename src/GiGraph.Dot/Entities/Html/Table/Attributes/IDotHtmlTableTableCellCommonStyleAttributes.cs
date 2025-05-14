@@ -14,7 +14,7 @@ public interface IDotHtmlTableTableCellCommonStyleAttributes
     DotHtmlTableStyles? Style { get; set; }
 
     /// <summary>
-    ///     Sets the color of the background. This color can be overridden by a the same attribute in descendents. The value can be a
+    ///     Sets the color of the background. This color can be overridden by the same attribute in descendents. The value can be a
     ///     single color (<see cref="System.Drawing.Color"/>) or a gradient color (<see cref="DotGradientColor"/>).
     /// </summary>
     DotColorDefinition? BackgroundColor { get; set; }
@@ -35,9 +35,10 @@ public interface IDotHtmlTableTableCellCommonStyleAttributes
     /// <summary>
     ///     Gives the angle used in a gradient fill if the <see cref="BackgroundColor"/> is a gradient color. For the default linear
     ///     gradient, this specifies the angle of a line through the center along which the colors transform. Thus, an angle of 0 will
-    ///     cause a left-to-right progression. For radial gradients (see <see cref="Style"/>), the angle specifies the position of the
-    ///     center of the coloring. An angle of 0 places the center at the center of the table or cell; an non-zero angle places the fill
-    ///     center along that angle near the boundary.
+    ///     cause a left-to-right progression. For radial gradients (see
+    ///     <see cref="DotHtmlTableTableCellCommonStyleAttributes{TIHtmlTableTableCellStyleAttributeProperties,THtmlTableTableCellStyleAttributeProperties}.RadialFill"/>
+    ///     ), the angle specifies the position of the center of the coloring. An angle of 0 places the center at the center of the table
+    ///     or cell; a non-zero angle places the fill center along that angle near the boundary.
     /// </summary>
     int? GradientFillAngle { get; set; }
 }

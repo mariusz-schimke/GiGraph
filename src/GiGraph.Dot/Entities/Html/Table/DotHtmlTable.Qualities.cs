@@ -4,6 +4,7 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Html.Table;
 
+// todo: To be moved to the nested Style properties (of all elements that implement IDotFillable).
 public partial class DotHtmlTable : IDotFillable
 {
     void IDotFillable.SetFillStyle(DotFillStyle style) => Style.RadialFill = style == DotFillStyle.Radial;

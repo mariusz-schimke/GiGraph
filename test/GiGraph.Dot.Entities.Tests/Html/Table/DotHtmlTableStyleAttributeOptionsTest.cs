@@ -46,7 +46,7 @@ public class DotHtmlTableStyleAttributeOptionsTest
         table.Style.SetStyleOptions(roundedCorners: true);
         Assert.True(table.Style.HasStyleOptions());
 
-        table.Style.ClearStyleOptions();
+        table.Style.RemoveStyleOptions();
         Assert.False(table.Style.HasStyleOptions());
     }
 

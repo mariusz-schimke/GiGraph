@@ -77,7 +77,7 @@ public class DotClusterStyleAttributeOptionsTest
         Assert.Equal(DotBorderWeight.Default, cluster.Style.BorderWeight);
         Assert.False(cluster.Style.Invisible);
 
-        cluster.Style.ClearStyleOptions();
+        cluster.Style.RemoveStyleOptions();
 
         Assert.Equal(DotClusterFillStyle.None, cluster.Style.FillStyle);
         Assert.Equal(DotBorderStyle.Default, cluster.Style.BorderStyle);

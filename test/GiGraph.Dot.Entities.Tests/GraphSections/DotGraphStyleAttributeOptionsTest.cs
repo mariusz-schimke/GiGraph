@@ -91,7 +91,7 @@ public class DotGraphStyleAttributeOptionsTest
         Assert.Equal(DotBorderWeight.Default, graph.Clusters.Style.BorderWeight);
         Assert.False(graph.Clusters.Style.Invisible);
 
-        graph.Style.ClearStyleOptions();
+        graph.Style.RemoveStyleOptions();
         Assert.Equal(DotClusterFillStyle.None, graph.Style.FillStyle);
 
         Assert.Equal(DotClusterFillStyle.None, graph.Clusters.Style.FillStyle);
@@ -103,7 +103,7 @@ public class DotGraphStyleAttributeOptionsTest
         graph.Style.SetDefaultStyleOptions();
         Assert.Equal(DotClusterFillStyle.None, graph.Style.FillStyle);
 
-        graph.Clusters.Style.ClearStyleOptions();
+        graph.Clusters.Style.RemoveStyleOptions();
         Assert.Equal(DotClusterFillStyle.None, graph.Style.FillStyle);
     }
 }

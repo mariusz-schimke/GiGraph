@@ -81,7 +81,7 @@ public class DotNodeStyleAttributeOptionsTest
         Assert.False(node.Style.Diagonals);
         Assert.False(node.Style.Invisible);
 
-        node.Style.ClearStyleOptions();
+        node.Style.RemoveStyleOptions();
 
         Assert.Equal(default(DotNodeFillStyle), node.Style.FillStyle);
         Assert.Equal(default(DotBorderStyle), node.Style.BorderStyle);
