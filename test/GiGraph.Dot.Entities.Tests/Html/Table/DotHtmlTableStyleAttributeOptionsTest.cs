@@ -38,7 +38,7 @@ public class DotHtmlTableStyleAttributeOptionsTest
     }
 
     [Fact]
-    public void clear_style_options_removes_the_style()
+    public void remove_style_options_removes_the_style()
     {
         var table = new DotHtmlTable();
         Assert.False(table.Style.HasStyleOptions());
