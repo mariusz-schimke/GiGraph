@@ -25,28 +25,28 @@ public partial class DotEdgeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// <summary>
     ///     Gets or sets a line style for the edge.
     /// </summary>
-    public virtual DotLineStyle? LineStyle
+    public virtual DotLineStyle LineStyle
     {
-        get => GetPartialStyleOption<DotLineStyle>();
-        set => SetPartialStyleOption(value);
+        get => this.GetPartialStyleOption<DotLineStyle, DotStyles>();
+        set => this.SetPartialStyleOption(value);
     }
 
     /// <summary>
     ///     Gets or sets a line weight for the edge.
     /// </summary>
-    public virtual DotLineWeight? LineWeight
+    public virtual DotLineWeight LineWeight
     {
-        get => GetPartialStyleOption<DotLineWeight>();
-        set => SetPartialStyleOption(value);
+        get => this.GetPartialStyleOption<DotLineWeight, DotStyles>();
+        set => this.SetPartialStyleOption(value);
     }
 
     /// <summary>
     ///     Gets or sets a value indicating if the edge is invisible.
     /// </summary>
-    public virtual bool? Invisible
+    public virtual bool Invisible
     {
-        get => HasStyleOption(DotStyles.Invisible);
-        set => SetStyleOption(DotStyles.Invisible, value);
+        get => this.HasStyleOption(DotStyles.Invisible);
+        set => this.SetStyleOption(DotStyles.Invisible, value);
     }
 
     /// <inheritdoc cref="IDotEdgeStyleAttributes.Color"/>
@@ -96,7 +96,7 @@ public partial class DotEdgeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// <param name="invisible">
     ///     Determines whether the edge should be invisible.
     /// </param>
-    public virtual void SetStyleOptions(DotLineStyle? lineStyle = null, DotLineWeight? lineWeight = null, bool? invisible = null)
+    public virtual void SetStyleOptions(DotLineStyle lineStyle = default, DotLineWeight lineWeight = default, bool invisible = false)
     {
         LineStyle = lineStyle;
         LineWeight = lineWeight;

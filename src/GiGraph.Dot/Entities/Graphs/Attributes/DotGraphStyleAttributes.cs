@@ -5,6 +5,7 @@ using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Clusters.Style;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Graphs.Style;
+using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes;
 
@@ -30,10 +31,10 @@ public partial class DotGraphStyleAttributes : DotEntityStyleAttributesWithMetad
     ///         Note that this setting is shared with clusters and they can't be applied independently.
     ///     </para>
     /// </summary>
-    public virtual DotClusterFillStyle? FillStyle
+    public virtual DotClusterFillStyle FillStyle
     {
-        get => GetPartialStyleOption<DotClusterFillStyle>();
-        set => SetPartialStyleOption(value);
+        get => this.GetPartialStyleOption<DotClusterFillStyle, DotStyles>();
+        set => this.SetPartialStyleOption(value);
     }
 
     /// <inheritdoc cref="IDotGraphStyleAttributes.BackgroundColor"/>
@@ -56,6 +57,17 @@ public partial class DotGraphStyleAttributes : DotEntityStyleAttributesWithMetad
     /// </param>
     public virtual void SetStyleOptions(DotGraphStyleOptions options)
     {
-        FillStyle = options.FillStyle;
+        SetStyleOptions(options.FillStyle);
+    }
+
+    /// <summary>
+    ///     Applies the specified style options to the graph.
+    /// </summary>
+    /// <param name="fillStyle">
+    ///     The fill style to set.
+    /// </param>
+    public virtual void SetStyleOptions(DotClusterFillStyle fillStyle)
+    {
+        FillStyle = fillStyle;
     }
 }

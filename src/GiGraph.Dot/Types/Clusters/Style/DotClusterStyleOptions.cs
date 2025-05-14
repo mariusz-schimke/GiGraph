@@ -21,9 +21,9 @@ namespace GiGraph.Dot.Types.Clusters.Style;
 ///     Determines whether the element is invisible.
 /// </param>
 public record DotClusterStyleOptions(
-    DotClusterFillStyle? FillStyle = null,
-    DotBorderStyle? BorderStyle = null,
-    DotBorderWeight? BorderWeight = null,
-    DotCornerStyle? CornerStyle = null,
-    bool? Invisible = null
+    DotClusterFillStyle FillStyle = default,
+    DotBorderStyle BorderStyle = default,
+    DotBorderWeight BorderWeight = default,
+    DotCornerStyle CornerStyle = default,
+    bool Invisible = false
 );

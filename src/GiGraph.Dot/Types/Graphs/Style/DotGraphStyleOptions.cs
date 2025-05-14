@@ -9,4 +9,4 @@ namespace GiGraph.Dot.Types.Graphs.Style;
 ///     The fill style for graph and clusters. The only option applicable to the root graph is
 ///     <see cref="DotClusterFillStyle.Radial"/> .
 /// </param>
-public record DotGraphStyleOptions(DotClusterFillStyle? FillStyle = null);
+public record DotGraphStyleOptions(DotClusterFillStyle FillStyle = default);

@@ -23,10 +23,6 @@ public partial class DotHtmlTableAttributes : DotHtmlTableTableCellCommonAttribu
     [DotAttributeKey("align")]
     public virtual partial DotHorizontalAlignment? HorizontalAlignment { get; set; }
 
-    /// <inheritdoc cref="IDotHtmlTableAttributes.CellBorderWidth"/>
-    [DotAttributeKey("cellborder")]
-    public virtual partial int? CellBorderWidth { get; set; }
-
     /// <inheritdoc cref="IDotHtmlTableAttributes.RowFormat"/>
     [DotAttributeKey("rows")]
     public virtual partial string? RowFormat { get; set; }
