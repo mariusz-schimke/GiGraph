@@ -3,12 +3,10 @@ using GiGraph.Dot.Entities.Graphs.Attributes;
 
 namespace GiGraph.Dot.Entities.Clusters.Collections;
 
-public partial class DotGraphClusterCollection(DotGraphRootAttributes graphAttributes) : DotClusterCollection
+public partial class DotGraphClusterCollection(DotGraphClustersAttributes graphClustersAttributes) : DotClusterCollection
 {
-    protected readonly DotGraphRootAttributes _graphAttributes = graphAttributes;
-
     /// <summary>
     ///     Provides access to the global graph attributes applied to clusters.
     /// </summary>
-    public DotEntityAttributesAccessor<IDotGraphClustersAttributes, DotGraphClustersAttributes> Attributes { get; } = new(graphAttributes.Clusters);
+    public DotEntityAttributesAccessor<IDotGraphClustersAttributes, DotGraphClustersAttributes> Attributes { get; } = new(graphClustersAttributes);
 }

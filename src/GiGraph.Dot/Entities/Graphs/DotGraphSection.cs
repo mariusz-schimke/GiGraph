@@ -24,7 +24,7 @@ public partial class DotGraphSection : DotCommonGraphSection
     }
 
     protected DotGraphSection(DotGraphRootAttributes graphAttributes)
-        : base(graphAttributes, new DotGraphClusterCollection(graphAttributes))
+        : base(graphAttributes, new DotGraphClusterCollection(graphAttributes.Clusters))
     {
         Attributes = new DotEntityRootAttributesAccessor<IDotGraphAttributes, DotGraphRootAttributes>(graphAttributes);
     }
@@ -34,6 +34,6 @@ public partial class DotGraphSection : DotCommonGraphSection
     /// </summary>
     public DotEntityRootAttributesAccessor<IDotGraphAttributes, DotGraphRootAttributes> Attributes { get; }
 
-    /// <inheritdoc cref="DotCommonGraphSection.Clusters" />
+    /// <inheritdoc cref="DotCommonGraphSection.Clusters"/>
     public new DotGraphClusterCollection Clusters => (DotGraphClusterCollection) base.Clusters;
 }
