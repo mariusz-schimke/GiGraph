@@ -42,27 +42,13 @@ public partial class DotNodeSizeAttributes : DotEntityAttributesWithMetadata<IDo
     /// <param name="height">
     ///     The width to set.
     /// </param>
-    public virtual void Set(double? width, double? height)
-    {
-        Width = width;
-        Height = height;
-    }
-
-    /// <summary>
-    ///     Sets size attributes.
-    /// </summary>
-    /// <param name="width">
-    ///     The width to set.
-    /// </param>
-    /// <param name="height">
-    ///     The width to set.
-    /// </param>
     /// <param name="mode">
     ///     The sizing mode to set.
     /// </param>
-    public virtual void Set(double? width, double? height, DotNodeSizing? mode)
+    public virtual void Set(double? width = null, double? height = null, DotNodeSizing? mode = null)
     {
-        Set(width, height);
+        Width = width;
+        Height = height;
         Mode = mode;
     }
 

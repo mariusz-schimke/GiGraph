@@ -70,7 +70,7 @@ public partial class DotEdgeHyperlinkAttributes : DotHyperlinkAttributes<IDotEdg
     /// <param name="tooltip">
     ///     The tooltip of the hyperlink.
     /// </param>
-    public virtual void Set(DotEscapeString? href, DotEscapeString? target = null, DotEscapeString? url = null, DotEscapeString? tooltip = null)
+    public virtual void Set(DotEscapeString? href = null, DotEscapeString? target = null, DotEscapeString? url = null, DotEscapeString? tooltip = null)
     {
         Tooltip = tooltip;
 

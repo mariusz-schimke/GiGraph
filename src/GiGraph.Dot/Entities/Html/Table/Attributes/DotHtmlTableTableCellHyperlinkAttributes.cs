@@ -52,7 +52,7 @@ public partial class DotHtmlTableTableCellHyperlinkAttributes : DotEntityAttribu
     /// <param name="title">
     ///     The tooltip of the hyperlink. Equivalent to <paramref name="tooltip"/>.
     /// </param>
-    public virtual void Set(DotEscapeString? href, DotEscapeString? target = null, DotEscapeString? tooltip = null, DotEscapeString? title = null)
+    public virtual void Set(DotEscapeString? href = null, DotEscapeString? target = null, DotEscapeString? tooltip = null, DotEscapeString? title = null)
     {
         Href = href;
         Target = target;
