@@ -19,16 +19,27 @@ public partial class DotHtmlTable : DotHtmlElement
     }
 
     protected DotHtmlTable(DotHtmlAttributeCollection attributes)
-        : this(new DotHtmlTableAttributes(attributes), new DotHtmlTableStyleAttributes(attributes), new DotHtmlTableTableCellHyperlinkAttributes(attributes))
+        : this(
+            new DotHtmlTableAttributes(attributes),
+            new DotHtmlTableStyleAttributes(attributes),
+            new DotHtmlTableTableCellHyperlinkAttributes(attributes),
+            new DotHtmlTableTableCellSizeAttributes(attributes)
+        )
     {
     }
 
-    protected DotHtmlTable(DotHtmlTableAttributes attributes, DotHtmlTableStyleAttributes styleAttributes, DotHtmlTableTableCellHyperlinkAttributes hyperlinkAttributes)
+    protected DotHtmlTable(
+        DotHtmlTableAttributes attributes,
+        DotHtmlTableStyleAttributes styleAttributes,
+        DotHtmlTableTableCellHyperlinkAttributes hyperlinkAttributes,
+        DotHtmlTableTableCellSizeAttributes sizeAttributes
+    )
         : base("table", attributes.Collection)
     {
         Attributes = new DotHtmlElementRootAttributesAccessor<IDotHtmlTableAttributes, DotHtmlTableAttributes>(attributes);
         Style = styleAttributes;
         Hyperlink = hyperlinkAttributes;
+        Size = sizeAttributes;
     }
 
     /// <summary>
