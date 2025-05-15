@@ -34,11 +34,6 @@ public class DotHtmlTableCellTest
             HorizontalLineAlignment = DotHorizontalAlignment.Center,
             VerticalAlignment = DotVerticalAlignment.Bottom,
 
-            Title = "Title",
-            Tooltip = "Tooltip",
-            Href = "https://www.google.pl",
-            Target = "_blank",
-
             ColumnSpan = 2,
             RowSpan = 3,
 
@@ -52,6 +47,14 @@ public class DotHtmlTableCellTest
                 BackgroundColor = Color.Red,
                 GradientFillAngle = 15,
                 RadialFill = true
+            },
+
+            Hyperlink =
+            {
+                Title = "Title",
+                Tooltip = "Tooltip",
+                Href = "https://www.google.pl",
+                Target = "_blank"
             }
         };
 

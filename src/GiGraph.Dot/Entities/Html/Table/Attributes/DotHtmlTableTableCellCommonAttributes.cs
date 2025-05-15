@@ -48,20 +48,4 @@ public abstract partial class DotHtmlTableTableCellCommonAttributes<TIHtmlTableT
     /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Height"/>
     [DotAttributeKey("height")]
     public virtual partial int? Height { get; set; }
-
-    /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Href"/>
-    [DotAttributeKey("href")]
-    public virtual partial DotEscapeString? Href { get; set; }
-
-    /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Target"/>
-    [DotAttributeKey("target")]
-    public virtual partial DotEscapeString? Target { get; set; }
-
-    /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Title"/>
-    [DotAttributeKey("title")]
-    public virtual partial DotEscapeString? Title { get; set; }
-
-    /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Tooltip"/>
-    [DotAttributeKey("tooltip")]
-    public virtual partial DotEscapeString? Tooltip { get; set; }
 }
