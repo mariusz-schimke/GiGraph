@@ -87,6 +87,6 @@ public partial class DotEdgeHyperlinkAttributes : DotHyperlinkAttributes<IDotEdg
     /// </param>
     public override void Set(DotHyperlink attributes)
     {
-        Set(attributes.Href, attributes.Target, attributes.Tooltip, attributes.Url);
+        Set(attributes.Href, attributes.Target, attributes.Url, attributes.Tooltip);
     }
 }
