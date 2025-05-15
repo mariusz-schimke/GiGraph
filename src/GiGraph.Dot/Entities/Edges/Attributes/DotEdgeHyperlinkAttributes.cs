@@ -64,15 +64,18 @@ public partial class DotEdgeHyperlinkAttributes : DotHyperlinkAttributes<IDotEdg
     /// <param name="target">
     ///     The target of the hyperlink. See <see cref="DotHyperlinkTargets"/> for accepted values.
     /// </param>
-    /// <param name="tooltip">
-    ///     The tooltip of the hyperlink.
-    /// </param>
     /// <param name="url">
     ///     The URL of the hyperlink. Equivalent to <paramref name="href"/>.
     /// </param>
-    public virtual void Set(DotEscapeString? href, DotEscapeString? target = null, DotEscapeString? tooltip = null, DotEscapeString? url = null)
+    /// <param name="tooltip">
+    ///     The tooltip of the hyperlink.
+    /// </param>
+    public virtual void Set(DotEscapeString? href, DotEscapeString? target = null, DotEscapeString? url = null, DotEscapeString? tooltip = null)
     {
         Tooltip = tooltip;
+
+        // make sure the order of params here is equivalent to the order of params in the base method because they are both available
+        // on the edge as overloads, and it would be misleading if the initial params didn't overlap
         base.Set(href, target, url);
     }
 
