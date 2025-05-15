@@ -2,6 +2,7 @@
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Html.Attributes.Collections;
 using GiGraph.Dot.Output.Metadata;
+using GiGraph.Dot.Types.Geometry;
 
 namespace GiGraph.Dot.Entities.Html.Table.Attributes;
 
@@ -30,4 +31,38 @@ public partial class DotHtmlTableTableCellSizeAttributes : DotEntityAttributes<I
     /// <inheritdoc cref="IDotHtmlTableTableCellSizeAttributes.FixedSize"/>
     [DotAttributeKey("fixedsize")]
     public virtual partial bool? FixedSize { get; set; }
+
+    /// <summary>
+    ///     Sets size attributes.
+    /// </summary>
+    /// <param name="width">
+    ///     The width to set.
+    /// </param>
+    /// <param name="height">
+    ///     The width to set.
+    /// </param>
+    /// <param name="fixedSize">
+    ///     Specifies whether the values given by the <paramref name="width"/> and <paramref name="height"/> attributes are enforced.
+    /// </param>
+    public virtual void Set(int? width = null, int? height = null, bool? fixedSize = null)
+    {
+        Width = width;
+        Height = height;
+        FixedSize = fixedSize;
+    }
+
+    /// <summary>
+    ///     Sets size attributes.
+    /// </summary>
+    /// <param name="attributes">
+    ///     The attributes to set. Note that double values will be cast to integers, potentially losing the fractional part.
+    /// </param>
+    /// <param name="fixedSize">
+    ///     Specifies whether the values given by the <see cref="DotSize.Width"/> and <see cref="DotSize.Height"/> attributes are
+    ///     enforced.
+    /// </param>
+    public virtual void Set(DotSize attributes, bool? fixedSize = null)
+    {
+        Set((int?) attributes.Width, (int?) attributes.Height, fixedSize);
+    }
 }
