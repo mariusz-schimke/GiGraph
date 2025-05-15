@@ -48,10 +48,13 @@ public class DotHtmlTableTest
                 RoundedCorners = true
             },
 
-            Title = "Title",
-            Tooltip = "Tooltip",
-            Href = "https://www.google.pl",
-            Target = "_blank",
+            Hyperlink =
+            {
+                Title = "Title",
+                Tooltip = "Tooltip",
+                Href = "https://www.google.pl",
+                Target = "_blank"
+            },
 
             ColumnFormat = "column format",
             RowFormat = "row format",

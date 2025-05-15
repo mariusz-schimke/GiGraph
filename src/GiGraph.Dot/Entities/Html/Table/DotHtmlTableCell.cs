@@ -18,15 +18,16 @@ public partial class DotHtmlTableCell : DotHtmlElement
     }
 
     protected DotHtmlTableCell(DotHtmlAttributeCollection attributes)
-        : this(new DotHtmlTableCellAttributes(attributes), new DotHtmlTableCellStyleAttributes(attributes))
+        : this(new DotHtmlTableCellAttributes(attributes), new DotHtmlTableCellStyleAttributes(attributes), new DotHtmlTableTableCellHyperlinkAttributes(attributes))
     {
     }
 
-    protected DotHtmlTableCell(DotHtmlTableCellAttributes attributes, DotHtmlTableCellStyleAttributes styleAttributes)
+    protected DotHtmlTableCell(DotHtmlTableCellAttributes attributes, DotHtmlTableCellStyleAttributes styleAttributes, DotHtmlTableTableCellHyperlinkAttributes hyperlinkAttributes)
         : base("td", attributes.Collection)
     {
         Attributes = new DotHtmlElementRootAttributesAccessor<IDotHtmlTableCellAttributes, DotHtmlTableCellAttributes>(attributes);
         Style = styleAttributes;
+        Hyperlink = hyperlinkAttributes;
     }
 
     /// <summary>

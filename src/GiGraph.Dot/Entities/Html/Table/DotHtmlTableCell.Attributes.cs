@@ -12,6 +12,11 @@ public partial class DotHtmlTableCell : IDotHtmlTableCellAttributes
     /// </summary>
     public DotHtmlTableCellStyleAttributes Style { get; }
 
+    /// <summary>
+    ///     Gets the hyperlink attributes.
+    /// </summary>
+    public DotHtmlTableTableCellHyperlinkAttributes Hyperlink { get; }
+
     /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Id"/>
     public virtual DotEscapeString? Id
     {
@@ -101,33 +106,5 @@ public partial class DotHtmlTableCell : IDotHtmlTableCellAttributes
     {
         get => Attributes.Implementation.Height;
         set => Attributes.Implementation.Height = value;
-    }
-
-    /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Href"/>
-    public virtual DotEscapeString? Href
-    {
-        get => Attributes.Implementation.Href;
-        set => Attributes.Implementation.Href = value;
-    }
-
-    /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Target"/>
-    public virtual DotEscapeString? Target
-    {
-        get => Attributes.Implementation.Target;
-        set => Attributes.Implementation.Target = value;
-    }
-
-    /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Title"/>
-    public virtual DotEscapeString? Title
-    {
-        get => Attributes.Implementation.Title;
-        set => Attributes.Implementation.Title = value;
-    }
-
-    /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Tooltip"/>
-    public virtual DotEscapeString? Tooltip
-    {
-        get => Attributes.Implementation.Tooltip;
-        set => Attributes.Implementation.Tooltip = value;
     }
 }
