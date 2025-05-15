@@ -7,9 +7,9 @@ using GiGraph.Dot.Types.Hyperlinks;
 
 namespace GiGraph.Dot.Entities.Html.Table.Attributes;
 
-public partial class DotHtmlTableTableCellHyperlinkAttributes : DotEntityAttributes<IDotHtmlTableHyperlinkAttributes, DotHtmlTableTableCellHyperlinkAttributes>, IDotHtmlTableHyperlinkAttributes
+public partial class DotHtmlTableTableCellHyperlinkAttributes : DotEntityAttributes<IDotHtmlTableTableCellHyperlinkAttributes, DotHtmlTableTableCellHyperlinkAttributes>, IDotHtmlTableTableCellHyperlinkAttributes
 {
-    private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlTableTableCellHyperlinkAttributes, IDotHtmlTableHyperlinkAttributes>().BuildLazy();
+    private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlTableTableCellHyperlinkAttributes, IDotHtmlTableTableCellHyperlinkAttributes>().BuildLazy();
 
     public DotHtmlTableTableCellHyperlinkAttributes(DotHtmlAttributeCollection attributes)
         : base(attributes, AttributeKeyLookup)
@@ -21,19 +21,19 @@ public partial class DotHtmlTableTableCellHyperlinkAttributes : DotEntityAttribu
     {
     }
 
-    /// <inheritdoc cref="IDotHtmlTableHyperlinkAttributes.Href"/>
+    /// <inheritdoc cref="IDotHtmlTableTableCellHyperlinkAttributes.Href"/>
     [DotAttributeKey("href")]
     public virtual partial DotEscapeString? Href { get; set; }
 
-    /// <inheritdoc cref="IDotHtmlTableHyperlinkAttributes.Target"/>
+    /// <inheritdoc cref="IDotHtmlTableTableCellHyperlinkAttributes.Target"/>
     [DotAttributeKey("target")]
     public virtual partial DotEscapeString? Target { get; set; }
 
-    /// <inheritdoc cref="IDotHtmlTableHyperlinkAttributes.Title"/>
+    /// <inheritdoc cref="IDotHtmlTableTableCellHyperlinkAttributes.Title"/>
     [DotAttributeKey("title")]
     public virtual partial DotEscapeString? Title { get; set; }
 
-    /// <inheritdoc cref="IDotHtmlTableHyperlinkAttributes.Tooltip"/>
+    /// <inheritdoc cref="IDotHtmlTableTableCellHyperlinkAttributes.Tooltip"/>
     [DotAttributeKey("tooltip")]
     public virtual partial DotEscapeString? Tooltip { get; set; }
 

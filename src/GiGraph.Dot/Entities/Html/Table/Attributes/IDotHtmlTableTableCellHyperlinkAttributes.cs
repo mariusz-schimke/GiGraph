@@ -5,7 +5,7 @@ namespace GiGraph.Dot.Entities.Html.Table.Attributes;
 /// <summary>
 ///     The hyperlink attributes of an HTML table (&lt;table&gt;) and an HTML table cell (&lt;td&gt;).
 /// </summary>
-public interface IDotHtmlTableHyperlinkAttributes
+public interface IDotHtmlTableTableCellHyperlinkAttributes
 {
     /// <summary>
     ///     Attaches a URL to the object.

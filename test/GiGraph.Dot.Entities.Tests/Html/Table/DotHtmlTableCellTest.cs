@@ -23,10 +23,10 @@ public class DotHtmlTableCellTest
 
             Height = 10,
             Width = 11,
+            FixedSize = true,
 
             CellPadding = 20,
             CellSpacing = 21,
-            FixedSize = true,
 
             Borders = DotHtmlTableBorders.Vertical,
 
