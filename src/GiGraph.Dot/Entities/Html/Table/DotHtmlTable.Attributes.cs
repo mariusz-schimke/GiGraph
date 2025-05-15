@@ -15,7 +15,7 @@ public partial class DotHtmlTable : IDotHtmlTableAttributes
     /// <summary>
     ///     Gets the hyperlink attributes.
     /// </summary>
-    public DotHtmlTableHyperlinkAttributes Hyperlink { get; }
+    public DotHtmlTableTableCellHyperlinkAttributes Hyperlink { get; }
 
     /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Id"/>
     public virtual DotEscapeString? Id

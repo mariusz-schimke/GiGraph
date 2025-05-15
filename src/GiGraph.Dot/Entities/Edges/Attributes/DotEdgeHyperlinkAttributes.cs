@@ -3,7 +3,6 @@ using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 using GiGraph.Dot.Output.Metadata;
-using GiGraph.Dot.Types.Edges.Hyperlinks;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Hyperlinks;
 
@@ -59,8 +58,8 @@ public partial class DotEdgeHyperlinkAttributes : DotHyperlinkAttributes<IDotEdg
     /// <summary>
     ///     Specifies hyperlink attributes.
     /// </summary>
-    /// <param name="url">
-    ///     The URL of the hyperlink.
+    /// <param name="href">
+    ///     The URL of the hyperlink. Equivalent to <paramref name="url"/>.
     /// </param>
     /// <param name="target">
     ///     The target of the hyperlink. See <see cref="DotHyperlinkTargets"/> for accepted values.
@@ -68,16 +67,13 @@ public partial class DotEdgeHyperlinkAttributes : DotHyperlinkAttributes<IDotEdg
     /// <param name="tooltip">
     ///     The tooltip of the hyperlink.
     /// </param>
-    public virtual void Set(DotEscapeString? url, DotEscapeString? target = null, DotEscapeString? tooltip = null)
+    /// <param name="url">
+    ///     The URL of the hyperlink. Equivalent to <paramref name="href"/>.
+    /// </param>
+    public virtual void Set(DotEscapeString? href, DotEscapeString? target = null, DotEscapeString? tooltip = null, DotEscapeString? url = null)
     {
         Tooltip = tooltip;
-        base.Set(url, target);
-    }
-
-    protected virtual void SetAll(DotEscapeString? url, DotEscapeString? target, DotEscapeString? href, DotEscapeString? tooltip)
-    {
-        Tooltip = tooltip;
-        base.SetAll(url, target, href);
+        base.Set(href, target, url);
     }
 
     /// <summary>
@@ -86,9 +82,8 @@ public partial class DotEdgeHyperlinkAttributes : DotHyperlinkAttributes<IDotEdg
     /// <param name="attributes">
     ///     The attributes to set.
     /// </param>
-    public virtual void Set(DotEdgeHyperlink attributes)
+    public override void Set(DotHyperlink attributes)
     {
-        Tooltip = attributes.Tooltip;
-        base.Set(attributes);
+        Set(attributes.Href, attributes.Target, attributes.Tooltip, attributes.Url);
     }
 }

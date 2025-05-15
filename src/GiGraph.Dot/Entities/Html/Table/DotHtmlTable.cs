@@ -19,11 +19,11 @@ public partial class DotHtmlTable : DotHtmlElement
     }
 
     protected DotHtmlTable(DotHtmlAttributeCollection attributes)
-        : this(new DotHtmlTableAttributes(attributes), new DotHtmlTableStyleAttributes(attributes), new DotHtmlTableHyperlinkAttributes(attributes))
+        : this(new DotHtmlTableAttributes(attributes), new DotHtmlTableStyleAttributes(attributes), new DotHtmlTableTableCellHyperlinkAttributes(attributes))
     {
     }
 
-    protected DotHtmlTable(DotHtmlTableAttributes attributes, DotHtmlTableStyleAttributes styleAttributes, DotHtmlTableHyperlinkAttributes hyperlinkAttributes)
+    protected DotHtmlTable(DotHtmlTableAttributes attributes, DotHtmlTableStyleAttributes styleAttributes, DotHtmlTableTableCellHyperlinkAttributes hyperlinkAttributes)
         : base("table", attributes.Collection)
     {
         Attributes = new DotHtmlElementRootAttributesAccessor<IDotHtmlTableAttributes, DotHtmlTableAttributes>(attributes);
