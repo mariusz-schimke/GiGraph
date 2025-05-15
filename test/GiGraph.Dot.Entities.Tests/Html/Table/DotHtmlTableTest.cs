@@ -25,12 +25,8 @@ public class DotHtmlTableTest
         {
             Id = "id",
 
-            Height = 10,
-            Width = 11,
-
             CellPadding = 20,
             CellSpacing = 21,
-            FixedSize = false,
 
             Borders = DotHtmlTableBorders.Vertical,
 
@@ -46,6 +42,13 @@ public class DotHtmlTableTest
                 GradientFillAngle = 15,
                 RadialFill = true,
                 RoundedCorners = true
+            },
+
+            Size =
+            {
+                Height = 10,
+                Width = 11,
+                FixedSize = false
             },
 
             Hyperlink =

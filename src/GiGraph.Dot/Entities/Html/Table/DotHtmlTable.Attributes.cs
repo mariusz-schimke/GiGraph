@@ -8,14 +8,19 @@ namespace GiGraph.Dot.Entities.Html.Table;
 public partial class DotHtmlTable : IDotHtmlTableAttributes
 {
     /// <summary>
-    ///     Gets the style attributes.
+    ///     The style attributes.
     /// </summary>
     public DotHtmlTableStyleAttributes Style { get; }
 
     /// <summary>
-    ///     Gets the hyperlink attributes.
+    ///     The hyperlink attributes.
     /// </summary>
     public DotHtmlTableTableCellHyperlinkAttributes Hyperlink { get; }
+
+    /// <summary>
+    ///     The size attributes.
+    /// </summary>
+    public DotHtmlTableTableCellSizeAttributes Size { get; }
 
     /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Id"/>
     public virtual DotEscapeString? Id
@@ -78,26 +83,5 @@ public partial class DotHtmlTable : IDotHtmlTableAttributes
     {
         get => Attributes.Implementation.Borders;
         set => Attributes.Implementation.Borders = value;
-    }
-
-    /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.FixedSize"/>
-    public virtual bool? FixedSize
-    {
-        get => Attributes.Implementation.FixedSize;
-        set => Attributes.Implementation.FixedSize = value;
-    }
-
-    /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Width"/>
-    public virtual int? Width
-    {
-        get => Attributes.Implementation.Width;
-        set => Attributes.Implementation.Width = value;
-    }
-
-    /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Height"/>
-    public virtual int? Height
-    {
-        get => Attributes.Implementation.Height;
-        set => Attributes.Implementation.Height = value;
     }
 }

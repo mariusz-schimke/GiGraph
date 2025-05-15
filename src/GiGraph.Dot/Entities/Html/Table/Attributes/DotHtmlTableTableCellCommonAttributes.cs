@@ -36,16 +36,4 @@ public abstract partial class DotHtmlTableTableCellCommonAttributes<TIHtmlTableT
     /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Borders"/>
     [DotAttributeKey("sides")]
     public virtual partial DotHtmlTableBorders? Borders { get; set; }
-
-    /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.FixedSize"/>
-    [DotAttributeKey("fixedsize")]
-    public virtual partial bool? FixedSize { get; set; }
-
-    /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Width"/>
-    [DotAttributeKey("width")]
-    public virtual partial int? Width { get; set; }
-
-    /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Height"/>
-    [DotAttributeKey("height")]
-    public virtual partial int? Height { get; set; }
 }
