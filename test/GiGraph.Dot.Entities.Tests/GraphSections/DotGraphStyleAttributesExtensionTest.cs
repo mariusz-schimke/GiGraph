@@ -8,15 +8,15 @@ using Xunit;
 
 namespace GiGraph.Dot.Entities.Tests.GraphSections;
 
-public class DotGraphSectionExtensionTest
+public class DotGraphStyleAttributesExtensionTest
 {
     [Fact]
     private void sets_plain_background_color()
     {
         var graph = new DotGraph();
 
-        graph.SetBackground(Color.Gold);
-        graph.Subsections.Add().SetBackground(Color.Gold);
+        graph.Style.SetBackground(Color.Gold);
+        graph.Subsections.Add().Style.SetBackground(Color.Gold);
 
         Snapshot.Match(graph.ToDot(), "plain_graph_background");
     }
@@ -29,11 +29,11 @@ public class DotGraphSectionExtensionTest
         // this should be removed by the extension method (radial style by none)
         graph.Clusters.Style.FillStyle = DotClusterFillStyle.Radial;
 
-        graph.SetGradientBackground(new DotGradientColor(Color.Gold, Color.DarkMagenta));
+        graph.Style.SetGradientBackground(new DotGradientColor(Color.Gold, Color.DarkMagenta));
 
         // an overload (with the same result as the call above)
-        graph.Subsections.Add().SetGradientBackground(Color.Gold, Color.DarkMagenta);
-        graph.Subsections.Add().SetGradientBackground(Color.Gold, Color.DarkMagenta, 10);
+        graph.Subsections.Add().Style.SetGradientBackground(Color.Gold, Color.DarkMagenta);
+        graph.Subsections.Add().Style.SetGradientBackground(Color.Gold, Color.DarkMagenta, 10);
 
         graph.Subsections
             .Add(s =>
@@ -42,6 +42,7 @@ public class DotGraphSectionExtensionTest
                     s.Clusters.Style.FillStyle = DotClusterFillStyle.Striped;
                 }
             )
+            .Style
             .SetGradientBackground(new DotGradientColor(Color.Gold, Color.DarkMagenta), 20);
 
         Snapshot.Match(graph.ToDot(), "gradient_graph_background");
@@ -54,14 +55,15 @@ public class DotGraphSectionExtensionTest
 
         // this setting should be overwritten by the extension method (a non-radial style by the radial style)
         graph.Clusters.Style.FillStyle = DotClusterFillStyle.Striped;
-        graph.SetRadialGradientBackground(new DotGradientColor(Color.Gold, Color.DarkMagenta));
+        graph.Style.SetRadialGradientBackground(new DotGradientColor(Color.Gold, Color.DarkMagenta));
 
         // an overload (with the same result as the call above)
-        graph.Subsections.Add().SetRadialGradientBackground(Color.Gold, Color.DarkMagenta);
-        graph.Subsections.Add().SetRadialGradientBackground(Color.Gold, Color.DarkMagenta, 10);
+        graph.Subsections.Add().Style.SetRadialGradientBackground(Color.Gold, Color.DarkMagenta);
+        graph.Subsections.Add().Style.SetRadialGradientBackground(Color.Gold, Color.DarkMagenta, 10);
 
         graph.Subsections
             .Add()
+            .Style
             .SetRadialGradientBackground(new DotGradientColor(Color.Gold, Color.DarkMagenta), 20);
 
         Snapshot.Match(graph.ToDot(), "radial_gradient_graph_background");

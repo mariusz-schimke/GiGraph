@@ -1,10 +1,10 @@
-using GiGraph.Dot.Entities.Graphs;
+using GiGraph.Dot.Entities.Graphs.Attributes;
 using GiGraph.Dot.Types.Clusters.Style;
 using GiGraph.Dot.Types.Colors;
 
 namespace GiGraph.Dot.Extensions;
 
-public static class DotGraphSectionExtension
+public static class DotGraphStyleAttributesExtension
 {
     /// <summary>
     ///     Sets a background color.
@@ -15,9 +15,9 @@ public static class DotGraphSectionExtension
     /// <param name="color">
     ///     The color to use.
     /// </param>
-    public static void SetBackground(this DotGraphSection @this, DotColor color)
+    public static void SetBackground(this DotGraphStyleAttributes @this, DotColor color)
     {
-        @this.Style.BackgroundColor = color;
+        @this.BackgroundColor = color;
     }
 
     /// <summary>
@@ -34,7 +34,7 @@ public static class DotGraphSectionExtension
     /// <param name="angle">
     ///     The angle of the fill. Note that this attribute also applies to clusters.
     /// </param>
-    public static void SetGradientBackground(this DotGraphSection @this, DotGradientColor color, int? angle = null)
+    public static void SetGradientBackground(this DotGraphStyleAttributes @this, DotGradientColor color, int? angle = null)
     {
         @this.SetGradientBackground(color, angle, radial: false);
     }
@@ -63,7 +63,7 @@ public static class DotGraphSectionExtension
     /// <param name="angle">
     ///     The angle of the fill. Note that this attribute also applies to clusters.
     /// </param>
-    public static void SetGradientBackground(this DotGraphSection @this, DotColor startColor, DotColor endColor, int? angle = null)
+    public static void SetGradientBackground(this DotGraphStyleAttributes @this, DotColor startColor, DotColor endColor, int? angle = null)
     {
         @this.SetGradientBackground(new DotGradientColor(startColor, endColor), angle);
     }
@@ -81,7 +81,7 @@ public static class DotGraphSectionExtension
     /// <param name="angle">
     ///     The angle of the fill. Note that this attribute also applies to clusters.
     /// </param>
-    public static void SetRadialGradientBackground(this DotGraphSection @this, DotGradientColor color, int? angle = null)
+    public static void SetRadialGradientBackground(this DotGraphStyleAttributes @this, DotGradientColor color, int? angle = null)
     {
         @this.SetGradientBackground(color, angle, radial: true);
     }
@@ -102,27 +102,27 @@ public static class DotGraphSectionExtension
     /// <param name="angle">
     ///     The angle of the fill. Note that this attribute also applies to clusters.
     /// </param>
-    public static void SetRadialGradientBackground(this DotGraphSection @this, DotColor startColor, DotColor endColor, int? angle = null)
+    public static void SetRadialGradientBackground(this DotGraphStyleAttributes @this, DotColor startColor, DotColor endColor, int? angle = null)
     {
         @this.SetRadialGradientBackground(new DotGradientColor(startColor, endColor), angle);
     }
 
-    private static void SetGradientBackground(this DotGraphSection @this, DotGradientColor color, int? angle, bool? radial)
+    private static void SetGradientBackground(this DotGraphStyleAttributes @this, DotGradientColor color, int? angle, bool? radial)
     {
         switch (radial)
         {
             // the style may also be set from the Clusters collection on graph, and radial is the only attribute
             // that applies to graph background and to cluster fill
             case true:
-                @this.Style.FillStyle = DotClusterFillStyle.Radial;
+                @this.FillStyle = DotClusterFillStyle.Radial;
                 break;
 
-            case false when @this.Style.FillStyle == DotClusterFillStyle.Radial:
-                @this.Style.FillStyle = DotClusterFillStyle.None;
+            case false when @this.FillStyle == DotClusterFillStyle.Radial:
+                @this.FillStyle = DotClusterFillStyle.None;
                 break;
         }
 
-        @this.Style.BackgroundColor = color;
-        @this.Style.GradientFillAngle = angle;
+        @this.BackgroundColor = color;
+        @this.GradientFillAngle = angle;
     }
 }

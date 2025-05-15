@@ -2,6 +2,4 @@
 {
     node1 [ fillcolor = "red:blue", style = striped ]
     node2 [ fillcolor = "red:blue", style = striped ]
-    node3 [ fillcolor = "red:blue", shape = rect, style = striped ]
-    node4 [ fillcolor = "red:blue", shape = rectangle, style = striped ]
 }
