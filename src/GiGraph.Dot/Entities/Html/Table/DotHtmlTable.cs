@@ -2,6 +2,7 @@ using GiGraph.Dot.Entities.Html.Attributes.Collections;
 using GiGraph.Dot.Entities.Html.Attributes.Properties;
 using GiGraph.Dot.Entities.Html.Rule;
 using GiGraph.Dot.Entities.Html.Table.Attributes;
+using GiGraph.Dot.Entities.Qualities;
 using GiGraph.Dot.Types.Html.Table;
 
 namespace GiGraph.Dot.Entities.Html.Table;
@@ -9,7 +10,7 @@ namespace GiGraph.Dot.Entities.Html.Table;
 /// <summary>
 ///     An HTML &lt;table&gt; element.
 /// </summary>
-public partial class DotHtmlTable : DotHtmlElement
+public partial class DotHtmlTable : DotHtmlElement, IDotHasHtmlTableBorders
 {
     /// <summary>
     ///     Initializes a new table instance.

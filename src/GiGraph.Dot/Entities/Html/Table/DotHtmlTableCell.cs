@@ -1,13 +1,14 @@
 using GiGraph.Dot.Entities.Html.Attributes.Collections;
 using GiGraph.Dot.Entities.Html.Attributes.Properties;
 using GiGraph.Dot.Entities.Html.Table.Attributes;
+using GiGraph.Dot.Entities.Qualities;
 
 namespace GiGraph.Dot.Entities.Html.Table;
 
 /// <summary>
 ///     A cell of an HTML table row (&lt;td&gt;).
 /// </summary>
-public partial class DotHtmlTableCell : DotHtmlElement
+public partial class DotHtmlTableCell : DotHtmlElement, IDotHasHtmlTableBorders
 {
     /// <summary>
     ///     Initializes a new table cell instance.
