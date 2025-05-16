@@ -1,6 +1,7 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Html.Attributes.Collections;
 using GiGraph.Dot.Output.Metadata;
+using GiGraph.Dot.Types.Alignment;
 
 namespace GiGraph.Dot.Entities.Html.Table.Attributes;
 
@@ -17,6 +18,10 @@ public partial class DotHtmlTableCellAttributes : DotHtmlTableTableCellCommonAtt
         : base(attributes, attributeKeyLookup)
     {
     }
+
+    /// <inheritdoc cref="IDotHtmlTableCellAttributes.LineAlignment"/>
+    [DotAttributeKey("balign")]
+    public virtual partial DotHorizontalAlignment? LineAlignment { get; set; }
 
     /// <inheritdoc cref="IDotHtmlTableCellAttributes.ColumnSpan"/>
     [DotAttributeKey("colspan")]

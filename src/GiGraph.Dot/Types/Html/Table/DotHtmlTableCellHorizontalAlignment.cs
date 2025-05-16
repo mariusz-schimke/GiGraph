@@ -40,5 +40,5 @@ public enum DotHtmlTableCellHorizontalAlignment
     ///     </para>
     /// </summary>
     [DotHtmlAttributeValue("TEXT")]
-    Justify = DotHorizontalAlignment.Right << 1
+    Justify = Right << 1
 }

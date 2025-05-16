@@ -1,5 +1,4 @@
-﻿using GiGraph.Dot.Entities.Attributes.Properties;
-using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
+﻿using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Html.Attributes.Collections;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Alignment;
@@ -7,7 +6,7 @@ using GiGraph.Dot.Types.Html.Table;
 
 namespace GiGraph.Dot.Entities.Html.Table.Attributes;
 
-public partial class DotHtmlTableCellAlignmentAttributes : DotEntityAttributes<IDotHtmlTableCellAlignmentAttributes, DotHtmlTableCellAlignmentAttributes>, IDotHtmlTableCellAlignmentAttributes
+public partial class DotHtmlTableCellAlignmentAttributes : DotHtmlTableTableCellCommonAlignmentAttributes<IDotHtmlTableCellAlignmentAttributes, DotHtmlTableCellAlignmentAttributes>, IDotHtmlTableCellAlignmentAttributes
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlTableCellAlignmentAttributes, IDotHtmlTableCellAlignmentAttributes>().BuildLazy();
 
@@ -25,11 +24,23 @@ public partial class DotHtmlTableCellAlignmentAttributes : DotEntityAttributes<I
     [DotAttributeKey("align")]
     public virtual partial DotHtmlTableCellHorizontalAlignment? Horizontal { get; set; }
 
-    /// <inheritdoc cref="IDotHtmlTableCellAlignmentAttributes.Vertical"/>
-    [DotAttributeKey("valign")]
-    public virtual partial DotVerticalAlignment? Vertical { get; set; }
+    /// <summary>
+    ///     Sets alignment.
+    /// </summary>
+    /// <param name="horizontal">
+    ///     The horizontal alignment to set.
+    /// </param>
+    /// <param name="vertical">
+    ///     The vertical alignment to set.
+    /// </param>
+    public virtual void Set(DotHtmlTableCellHorizontalAlignment? horizontal, DotVerticalAlignment? vertical)
+    {
+        Horizontal = horizontal;
+        Vertical = vertical;
+    }
 
-    /// <inheritdoc cref="IDotHtmlTableCellAlignmentAttributes.Line"/>
-    [DotAttributeKey("balign")]
-    public virtual partial DotHorizontalAlignment? Line { get; set; }
+    protected override void SetAlignment(DotHorizontalAlignment? horizontal, DotVerticalAlignment? vertical)
+    {
+        Set((DotHtmlTableCellHorizontalAlignment?) horizontal, vertical);
+    }
 }

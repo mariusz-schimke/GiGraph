@@ -1,12 +1,11 @@
-﻿using GiGraph.Dot.Entities.Attributes.Properties;
-using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
+﻿using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Html.Attributes.Collections;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Alignment;
 
 namespace GiGraph.Dot.Entities.Html.Table.Attributes;
 
-public partial class DotHtmlTableAlignmentAttributes : DotEntityAttributes<IDotHtmlTableAlignmentAttributes, DotHtmlTableAlignmentAttributes>, IDotHtmlTableAlignmentAttributes
+public partial class DotHtmlTableAlignmentAttributes : DotHtmlTableTableCellCommonAlignmentAttributes<IDotHtmlTableAlignmentAttributes, DotHtmlTableAlignmentAttributes>, IDotHtmlTableAlignmentAttributes
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlTableAlignmentAttributes, IDotHtmlTableAlignmentAttributes>().BuildLazy();
 
@@ -24,10 +23,6 @@ public partial class DotHtmlTableAlignmentAttributes : DotEntityAttributes<IDotH
     [DotAttributeKey("align")]
     public virtual partial DotHorizontalAlignment? Horizontal { get; set; }
 
-    /// <inheritdoc cref="IDotHtmlTableAlignmentAttributes.Vertical"/>
-    [DotAttributeKey("valign")]
-    public virtual partial DotVerticalAlignment? Vertical { get; set; }
-
     /// <summary>
     ///     Sets alignment.
     /// </summary>
@@ -43,25 +38,8 @@ public partial class DotHtmlTableAlignmentAttributes : DotEntityAttributes<IDotH
         Vertical = vertical;
     }
 
-    /// <summary>
-    ///     Sets alignment.
-    /// </summary>
-    /// <param name="alignment">
-    ///     The alignment to set.
-    /// </param>
-    public virtual void Set(DotAlignment alignment)
+    protected override void SetAlignment(DotHorizontalAlignment? horizontal, DotVerticalAlignment? vertical)
     {
-        Set(new DotAlignmentOptions(alignment));
-    }
-
-    /// <summary>
-    ///     Sets alignment.
-    /// </summary>
-    /// <param name="alignment">
-    ///     The alignment to set.
-    /// </param>
-    public virtual void Set(DotAlignmentOptions alignment)
-    {
-        Set(alignment.Horizontal, alignment.Vertical);
+        Set(horizontal, vertical);
     }
 }

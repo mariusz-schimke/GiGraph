@@ -1,4 +1,5 @@
 using GiGraph.Dot.Entities.Html.Table.Attributes;
+using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Html.Table;
 
@@ -73,5 +74,12 @@ public partial class DotHtmlTableCell : IDotHtmlTableCellAttributes
     {
         get => Attributes.Implementation.Borders;
         set => Attributes.Implementation.Borders = value;
+    }
+
+    /// <inheritdoc cref="IDotHtmlTableCellAttributes.LineAlignment"/>
+    public virtual DotHorizontalAlignment? LineAlignment
+    {
+        get => Attributes.Implementation.LineAlignment;
+        set => Attributes.Implementation.LineAlignment = value;
     }
 }

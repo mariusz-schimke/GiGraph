@@ -59,9 +59,10 @@ public class DotHtmlTableCellTest
             Alignment =
             {
                 Horizontal = DotHtmlTableCellHorizontalAlignment.Justify,
-                Vertical = DotVerticalAlignment.Bottom,
-                Line = DotHorizontalAlignment.Center
-            }
+                Vertical = DotVerticalAlignment.Bottom
+            },
+
+            LineAlignment = DotHorizontalAlignment.Center
         };
 
         Snapshot.Match(
