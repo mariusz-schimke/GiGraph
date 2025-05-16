@@ -25,13 +25,11 @@ public static class IDotHasHtmlTableBordersExtension
     /// </param>
     public static void SetBorders(this IDotHasHtmlTableBorders @this, bool top = false, bool right = false, bool bottom = false, bool left = false)
     {
-        var borders = default(DotHtmlTableBorders);
-
-        borders |= top ? DotHtmlTableBorders.Top : borders;
-        borders |= right ? DotHtmlTableBorders.Right : borders;
-        borders |= bottom ? DotHtmlTableBorders.Bottom : borders;
-        borders |= left ? DotHtmlTableBorders.Left : borders;
-
-        @this.Borders = borders;
+        @this.Borders = DotHtmlTableBorders.Top.When(top)
+            | DotHtmlTableBorders.Right.When(right)
+            | DotHtmlTableBorders.Bottom.When(bottom)
+            | DotHtmlTableBorders.Left.When(left);
     }
+
+    private static DotHtmlTableBorders When(this DotHtmlTableBorders flag, bool value) => value ? flag : default(DotHtmlTableBorders);
 }
