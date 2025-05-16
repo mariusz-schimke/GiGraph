@@ -3,6 +3,7 @@ using GiGraph.Dot.Entities.Html.Font.Styles;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Entities.Nodes.Attributes;
 using GiGraph.Dot.Types.EscapeString;
+using GiGraph.Dot.Types.Graphs.Charset;
 using GiGraph.Dot.Types.Html;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes;
@@ -42,8 +43,33 @@ public interface IDotGraphAttributes
     /// <summary>
     ///     Specifies the character encoding used when interpreting string input as a text label. The default value is "UTF-8". The other
     ///     legal value is "iso-8859-1" or, equivalently, "Latin1". The charset attribute is case-insensitive. Note that if the character
-    ///     encoding used in the input does not match the charset value, the resulting output may be very strange.
+    ///     encoding used in the input does not match the charset value, the resulting output may be very strange. See also
+    ///     <see cref="DotCharsets"/> to use predefined values.
     /// </summary>
+    /// <remarks>
+    ///     Following are the legal values:
+    ///     <list type="bullet">
+    ///         <item>
+    ///             <description>
+    ///                 "utf-8" / "utf8" (default value),
+    ///             </description>
+    ///         </item>
+    ///         <item>
+    ///             <description>
+    ///                 "iso-8859-1" / "ISO_8859-1" / "ISO8859-1" / "ISO-IR-100" / "Latin1" / "l1" / "latin-1",
+    ///             </description>
+    ///         </item>
+    ///         <item>
+    ///             <description>
+    ///                 "big-5" / "big5" (see
+    ///                 <see href="https://en.wikipedia.org/wiki/Big5">
+    ///                     the Big-5 Chinese encoding
+    ///                 </see>
+    ///                 ).
+    ///             </description>
+    ///         </item>
+    ///     </list>
+    /// </remarks>
     string? Charset { get; set; }
 
     /// <summary>
