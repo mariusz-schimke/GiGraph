@@ -32,7 +32,7 @@ public partial class DotLabelOptionsAttributes : DotEntityAttributesWithMetadata
     public virtual partial bool? DisableJustification { get; set; }
 
     /// <summary>
-    ///     Sets label alignment options.
+    ///     Sets label alignment.
     /// </summary>
     /// <param name="horizontal">
     ///     The horizontal label alignment to set.
@@ -54,7 +54,7 @@ public partial class DotLabelOptionsAttributes : DotEntityAttributesWithMetadata
     /// </param>
     public virtual void SetAlignment(DotAlignment alignment)
     {
-        SetAlignment(new DotAlignmentProperties(alignment));
+        SetAlignment(new DotAlignmentOptions(alignment));
     }
 
     /// <summary>
@@ -63,7 +63,7 @@ public partial class DotLabelOptionsAttributes : DotEntityAttributesWithMetadata
     /// <param name="alignment">
     ///     The alignment to set.
     /// </param>
-    public virtual void SetAlignment(DotAlignmentProperties alignment)
+    public virtual void SetAlignment(DotAlignmentOptions alignment)
     {
         SetAlignment(alignment.Horizontal, alignment.Vertical);
     }

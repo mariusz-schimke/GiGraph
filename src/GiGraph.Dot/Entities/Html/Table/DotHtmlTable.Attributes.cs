@@ -22,6 +22,11 @@ public partial class DotHtmlTable : IDotHtmlTableAttributes
     /// </summary>
     public DotHtmlTableTableCellSizeAttributes Size { get; }
 
+    /// <summary>
+    ///     The alignment attributes.
+    /// </summary>
+    public DotHtmlTableAlignmentAttributes Alignment { get; }
+
     /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Id"/>
     public virtual DotEscapeString? Id
     {
@@ -34,13 +39,6 @@ public partial class DotHtmlTable : IDotHtmlTableAttributes
     {
         get => Attributes.Implementation.PortName;
         set => Attributes.Implementation.PortName = value;
-    }
-
-    /// <inheritdoc cref="IDotHtmlTableAttributes.HorizontalAlignment"/>
-    public virtual DotHorizontalAlignment? HorizontalAlignment
-    {
-        get => Attributes.Implementation.HorizontalAlignment;
-        set => Attributes.Implementation.HorizontalAlignment = value;
     }
 
     /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.VerticalAlignment"/>
