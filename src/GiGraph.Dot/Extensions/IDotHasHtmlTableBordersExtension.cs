@@ -23,6 +23,10 @@ public static class IDotHasHtmlTableBordersExtension
     /// <param name="left">
     ///     Determines if the left border should be drawn.
     /// </param>
+    /// <remarks>
+    ///     If you want to hide all borders, set the border width to 0 (it can't be achieved by setting the visibility of all borders to
+    ///     false).
+    /// </remarks>
     public static void SetBorders(this IDotHasHtmlTableBorders @this, bool top = false, bool right = false, bool bottom = false, bool left = false)
     {
         var borders = DotHtmlTableBorders.Top.When(top)
