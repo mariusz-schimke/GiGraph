@@ -7,7 +7,10 @@ using GiGraph.Dot.Types.Html.Table;
 
 namespace GiGraph.Dot.Entities.Html.Table.Attributes;
 
-public abstract partial class DotHtmlTableTableCellCommonAttributes<TIHtmlTableTableCellAttributeProperties, THtmlTableTableCellAttributeProperties>(DotHtmlAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+public abstract partial class DotHtmlTableTableCellCommonAttributes<TIHtmlTableTableCellAttributeProperties, THtmlTableTableCellAttributeProperties>(
+    DotHtmlAttributeCollection attributes,
+    Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup
+)
     : DotHtmlElementAttributes<TIHtmlTableTableCellAttributeProperties, THtmlTableTableCellAttributeProperties>(attributes, attributeKeyLookup), IDotHtmlTableTableCellCommonAttributes
     where TIHtmlTableTableCellAttributeProperties : IDotHtmlTableTableCellCommonAttributes
     where THtmlTableTableCellAttributeProperties : DotHtmlTableTableCellCommonAttributes<TIHtmlTableTableCellAttributeProperties, THtmlTableTableCellAttributeProperties>, TIHtmlTableTableCellAttributeProperties
