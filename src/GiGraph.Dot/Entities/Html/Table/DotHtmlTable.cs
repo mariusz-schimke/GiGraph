@@ -2,6 +2,7 @@ using GiGraph.Dot.Entities.Html.Attributes.Collections;
 using GiGraph.Dot.Entities.Html.Attributes.Properties;
 using GiGraph.Dot.Entities.Html.Rule;
 using GiGraph.Dot.Entities.Html.Table.Attributes;
+using GiGraph.Dot.Types.Html.Table;
 
 namespace GiGraph.Dot.Entities.Html.Table;
 
@@ -62,4 +63,19 @@ public partial class DotHtmlTable : DotHtmlElement
     ///     Adds a horizontal rule to separate two neighboring rows.
     /// </summary>
     public virtual DotHtmlHorizontalRule AddHorizontalRule() => Content.Add(new DotHtmlHorizontalRule(), init: null);
+
+    /// <summary>
+    ///     Sets alignment.
+    /// </summary>
+    /// <param name="columnFormat">
+    ///     The column format to set. See <see cref="DotHtmlTableColumnFormat"/> for accepted values.
+    /// </param>
+    /// <param name="rowFormat">
+    ///     The row format to set. See <see cref="DotHtmlTableRowFormat"/> for accepted values.
+    /// </param>
+    public virtual void SetFormat(string? columnFormat = null, string? rowFormat = null)
+    {
+        ColumnFormat = columnFormat;
+        RowFormat = rowFormat;
+    }
 }
