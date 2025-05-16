@@ -1,11 +1,10 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Html.Attributes.Collections;
-using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Alignment;
 
 namespace GiGraph.Dot.Entities.Html.Table.Attributes;
 
-public partial class DotHtmlTableAlignmentAttributes : DotHtmlTableTableCellCommonAlignmentAttributes<IDotHtmlTableAlignmentAttributes, DotHtmlTableAlignmentAttributes>, IDotHtmlTableAlignmentAttributes
+public class DotHtmlTableAlignmentAttributes : DotHtmlTableTableCellCommonAlignmentAttributes<IDotHtmlTableAlignmentAttributes, DotHtmlTableAlignmentAttributes, DotHorizontalAlignment>, IDotHtmlTableAlignmentAttributes
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlTableAlignmentAttributes, IDotHtmlTableAlignmentAttributes>().BuildLazy();
 
@@ -19,27 +18,14 @@ public partial class DotHtmlTableAlignmentAttributes : DotHtmlTableTableCellComm
     {
     }
 
-    /// <inheritdoc cref="IDotHtmlTableAlignmentAttributes.Horizontal"/>
-    [DotAttributeKey("align")]
-    public virtual partial DotHorizontalAlignment? Horizontal { get; set; }
-
     /// <summary>
     ///     Sets alignment.
     /// </summary>
-    /// <param name="horizontal">
-    ///     The horizontal alignment to set.
+    /// <param name="alignment">
+    ///     The alignment to set.
     /// </param>
-    /// <param name="vertical">
-    ///     The vertical alignment to set.
-    /// </param>
-    public virtual void Set(DotHorizontalAlignment? horizontal, DotVerticalAlignment? vertical)
+    public virtual void Set(DotAlignmentOptions alignment)
     {
-        Horizontal = horizontal;
-        Vertical = vertical;
-    }
-
-    protected override void SetAlignment(DotHorizontalAlignment? horizontal, DotVerticalAlignment? vertical)
-    {
-        Set(horizontal, vertical);
+        base.Set(alignment);
     }
 }

@@ -6,15 +6,20 @@ using GiGraph.Dot.Types.Alignment;
 
 namespace GiGraph.Dot.Entities.Html.Table.Attributes;
 
-public abstract partial class DotHtmlTableTableCellCommonAlignmentAttributes<TIHtmlTableTableCellAlignmentAttributeProperties, THtmlTableTableCellAlignmentAttributeProperties>(
+public abstract partial class DotHtmlTableTableCellCommonAlignmentAttributes<TIHtmlTableTableCellAlignmentAttributeProperties, THtmlTableTableCellAlignmentAttributeProperties, THorizontalAlignment>(
     DotHtmlAttributeCollection attributes,
     Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup
 )
-    : DotHtmlElementAttributes<TIHtmlTableTableCellAlignmentAttributeProperties, THtmlTableTableCellAlignmentAttributeProperties>(attributes, attributeKeyLookup), IDotHtmlTableTableCellCommonAlignmentAttributes
-    where TIHtmlTableTableCellAlignmentAttributeProperties : IDotHtmlTableTableCellCommonAlignmentAttributes
-    where THtmlTableTableCellAlignmentAttributeProperties : DotHtmlTableTableCellCommonAlignmentAttributes<TIHtmlTableTableCellAlignmentAttributeProperties, THtmlTableTableCellAlignmentAttributeProperties>, TIHtmlTableTableCellAlignmentAttributeProperties
+    : DotHtmlElementAttributes<TIHtmlTableTableCellAlignmentAttributeProperties, THtmlTableTableCellAlignmentAttributeProperties>(attributes, attributeKeyLookup), IDotHtmlTableTableCellCommonAlignmentAttributes<THorizontalAlignment>
+    where TIHtmlTableTableCellAlignmentAttributeProperties : IDotHtmlTableTableCellCommonAlignmentAttributes<THorizontalAlignment>
+    where THtmlTableTableCellAlignmentAttributeProperties : DotHtmlTableTableCellCommonAlignmentAttributes<TIHtmlTableTableCellAlignmentAttributeProperties, THtmlTableTableCellAlignmentAttributeProperties, THorizontalAlignment>, TIHtmlTableTableCellAlignmentAttributeProperties
+    where THorizontalAlignment : struct, Enum
 {
-    /// <inheritdoc cref="IDotHtmlTableTableCellCommonAlignmentAttributes.Vertical"/>
+    /// <inheritdoc cref="IDotHtmlTableTableCellCommonAlignmentAttributes{THorizontalAlignment}.Horizontal"/>
+    [DotAttributeKey("align")]
+    public virtual partial THorizontalAlignment? Horizontal { get; set; }
+
+    /// <inheritdoc cref="IDotHtmlTableTableCellCommonAlignmentAttributes{THorizontalAlignment}.Vertical"/>
     [DotAttributeKey("valign")]
     public virtual partial DotVerticalAlignment? Vertical { get; set; }
 
@@ -27,7 +32,11 @@ public abstract partial class DotHtmlTableTableCellCommonAlignmentAttributes<TIH
     /// <param name="vertical">
     ///     The vertical alignment to set.
     /// </param>
-    protected abstract void SetAlignment(DotHorizontalAlignment? horizontal, DotVerticalAlignment? vertical);
+    public virtual void Set(THorizontalAlignment? horizontal, DotVerticalAlignment? vertical)
+    {
+        Horizontal = horizontal;
+        Vertical = vertical;
+    }
 
     /// <summary>
     ///     Sets alignment.
@@ -37,17 +46,12 @@ public abstract partial class DotHtmlTableTableCellCommonAlignmentAttributes<TIH
     /// </param>
     public virtual void Set(DotAlignment alignment)
     {
-        Set(new DotAlignmentOptions(alignment));
+        Set(new DotAlignmentOptions<THorizontalAlignment, DotVerticalAlignment>(alignment));
     }
 
-    /// <summary>
-    ///     Sets alignment.
-    /// </summary>
-    /// <param name="alignment">
-    ///     The alignment to set.
-    /// </param>
-    public virtual void Set(DotAlignmentOptions alignment)
+    protected virtual void Set<TAlignmentOptions>(TAlignmentOptions alignment)
+        where TAlignmentOptions : DotAlignmentOptions<THorizontalAlignment, DotVerticalAlignment>
     {
-        SetAlignment(alignment.Horizontal, alignment.Vertical);
+        Set(alignment.Horizontal, alignment.Vertical);
     }
 }
