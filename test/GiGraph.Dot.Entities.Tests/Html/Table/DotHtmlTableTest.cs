@@ -56,7 +56,7 @@ public class DotHtmlTableTest
             {
                 Height = 10,
                 Width = 11,
-                FixedSize = false
+                Fixed = false
             },
 
             Hyperlink =

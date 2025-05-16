@@ -28,9 +28,9 @@ public partial class DotHtmlTableTableCellSizeAttributes : DotEntityAttributes<I
     [DotAttributeKey("height")]
     public virtual partial int? Height { get; set; }
 
-    /// <inheritdoc cref="IDotHtmlTableTableCellSizeAttributes.FixedSize"/>
+    /// <inheritdoc cref="IDotHtmlTableTableCellSizeAttributes.Fixed"/>
     [DotAttributeKey("fixedsize")]
-    public virtual partial bool? FixedSize { get; set; }
+    public virtual partial bool? Fixed { get; set; }
 
     /// <summary>
     ///     Sets size attributes.
@@ -41,14 +41,14 @@ public partial class DotHtmlTableTableCellSizeAttributes : DotEntityAttributes<I
     /// <param name="height">
     ///     The width to set.
     /// </param>
-    /// <param name="fixedSize">
+    /// <param name="isFixed">
     ///     Specifies whether the values given by the <paramref name="width"/> and <paramref name="height"/> attributes are enforced.
     /// </param>
-    public virtual void Set(int? width = null, int? height = null, bool? fixedSize = null)
+    public virtual void Set(int? width = null, int? height = null, bool? isFixed = null)
     {
         Width = width;
         Height = height;
-        FixedSize = fixedSize;
+        Fixed = isFixed;
     }
 
     /// <summary>
@@ -57,12 +57,12 @@ public partial class DotHtmlTableTableCellSizeAttributes : DotEntityAttributes<I
     /// <param name="attributes">
     ///     The attributes to set. Note that double values will be cast to integers, potentially losing the fractional part.
     /// </param>
-    /// <param name="fixedSize">
+    /// <param name="isFixed">
     ///     Specifies whether the values given by the <see cref="DotSize.Width"/> and <see cref="DotSize.Height"/> attributes are
     ///     enforced.
     /// </param>
-    public virtual void Set(DotSize attributes, bool? fixedSize = null)
+    public virtual void Set(DotSize attributes, bool? isFixed = null)
     {
-        Set((int?) attributes.Width, (int?) attributes.Height, fixedSize);
+        Set((int?) attributes.Width, (int?) attributes.Height, isFixed);
     }
 }

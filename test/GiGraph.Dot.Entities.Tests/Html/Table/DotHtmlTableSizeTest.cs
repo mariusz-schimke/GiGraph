@@ -13,7 +13,7 @@ public class DotHtmlTableSizeTest
 
         Assert.Null(table.Size.Width);
         Assert.Null(table.Size.Height);
-        Assert.Null(table.Size.FixedSize);
+        Assert.Null(table.Size.Fixed);
 
         const int width = 1;
         const int height = 2;
@@ -23,7 +23,7 @@ public class DotHtmlTableSizeTest
 
         Assert.Equal(width, table.Size.Width);
         Assert.Equal(height, table.Size.Height);
-        Assert.Equal(fixedSize, table.Size.FixedSize);
+        Assert.Equal(fixedSize, table.Size.Fixed);
     }
 
     [Fact]
@@ -33,7 +33,7 @@ public class DotHtmlTableSizeTest
 
         Assert.Null(table.Size.Width);
         Assert.Null(table.Size.Height);
-        Assert.Null(table.Size.FixedSize);
+        Assert.Null(table.Size.Fixed);
 
         var size = new DotSize(1.234, 2.94567);
         const bool fixedSize = true;
@@ -42,6 +42,6 @@ public class DotHtmlTableSizeTest
 
         Assert.Equal(1, table.Size.Width);
         Assert.Equal(2, table.Size.Height);
-        Assert.Equal(fixedSize, table.Size.FixedSize);
+        Assert.Equal(fixedSize, table.Size.Fixed);
     }
 }
