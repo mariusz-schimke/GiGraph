@@ -2,7 +2,6 @@
 using GiGraph.Dot.Entities.Html.Attributes.Collections;
 using GiGraph.Dot.Entities.Html.Attributes.Properties;
 using GiGraph.Dot.Output.Metadata;
-using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Html.Table;
 
@@ -20,10 +19,6 @@ public abstract partial class DotHtmlTableTableCellCommonAttributes<TIHtmlTableT
     /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.PortName"/>
     [DotAttributeKey("port")]
     public virtual partial string? PortName { get; set; }
-
-    /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.VerticalAlignment"/>
-    [DotAttributeKey("valign")]
-    public virtual partial DotVerticalAlignment? VerticalAlignment { get; set; }
 
     /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.CellPadding"/>
     [DotAttributeKey("cellpadding")]

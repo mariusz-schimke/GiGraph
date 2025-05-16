@@ -22,7 +22,8 @@ public partial class DotHtmlTableCell : DotHtmlElement
             new DotHtmlTableCellAttributes(attributes),
             new DotHtmlTableCellStyleAttributes(attributes),
             new DotHtmlTableTableCellHyperlinkAttributes(attributes),
-            new DotHtmlTableTableCellSizeAttributes(attributes)
+            new DotHtmlTableTableCellSizeAttributes(attributes),
+            new DotHtmlTableCellAlignmentAttributes(attributes)
         )
     {
     }
@@ -31,7 +32,8 @@ public partial class DotHtmlTableCell : DotHtmlElement
         DotHtmlTableCellAttributes attributes,
         DotHtmlTableCellStyleAttributes styleAttributes,
         DotHtmlTableTableCellHyperlinkAttributes hyperlinkAttributes,
-        DotHtmlTableTableCellSizeAttributes sizeAttributes
+        DotHtmlTableTableCellSizeAttributes sizeAttributes,
+        DotHtmlTableCellAlignmentAttributes alignmentAttributes
     )
         : base("td", attributes.Collection)
     {
@@ -39,6 +41,7 @@ public partial class DotHtmlTableCell : DotHtmlElement
         Style = styleAttributes;
         Hyperlink = hyperlinkAttributes;
         Size = sizeAttributes;
+        Alignment = alignmentAttributes;
     }
 
     /// <summary>
