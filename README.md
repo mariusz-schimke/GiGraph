@@ -307,7 +307,7 @@ graph.Nodes.Add("restored", node =>
 
     // the following wouldn't do the trick because it removes the attribute from the collection,
     // so it wouldn't appear in the DOT output at all
-    // node.Color = null;
+    // node.Style.Color = null;
 });
 ```
 
@@ -669,10 +669,13 @@ var graph = new DotGraph();
 
 var table = new DotHtmlTable
 {
-    BorderWidth = 0,
-    CellBorderWidth = 1,
     CellSpacing = 0,
-    CellPadding = 4
+    CellPadding = 4,
+    Style =
+    {
+        BorderWidth = 0,
+        CellBorderWidth = 1
+    }
 };
 
 table.AddRow(row =>
@@ -684,7 +687,7 @@ table.AddRow(row =>
         cell =>
         {
             cell.ColumnSpan = 3;
-            cell.HorizontalAlignment = DotHtmlTableCellHorizontalAlignment.Left;
+            cell.Alignment.Horizontal = DotHtmlTableCellHorizontalAlignment.Left;
         }
     );
 
@@ -703,16 +706,13 @@ table.AddRow(row =>
     );
 });
 
-table.AddRow(row =>
-    row.AddCell(
-        "Plugh",
-        cell =>
-        {
-            cell.ColumnSpan = 3;
-            cell.HorizontalAlignment = DotHtmlTableCellHorizontalAlignment.Right;
-        }
-    )
-);
+table.AddRow().AddCell(
+    "Plugh",
+    cell =>
+    {
+        cell.ColumnSpan = 3;
+        cell.Alignment.Horizontal = DotHtmlTableCellHorizontalAlignment.Right;
+    });
 
 // sets a borderless (plain) shape of the node so that the HTML table fully determines the shape
 graph.Nodes.Add("Bar").SetHtmlTableAsLabel(table);
@@ -797,23 +797,24 @@ digraph
 When adding nodes to a graph, subgraph, or cluster, you can use a node group, which has a shared list of attributes for all the nodes within it. To do it, use one of the overloads of the *AddGroup* method on a node collection. This way you can generate more concise DOT output if that's necessary (otherwise you can just add nodes in the standard way, one by one).
 
 ```c#
-graph.Nodes.AddGroup
-(
+graph.Nodes.AddGroup(
+    ["Foo", "Bar", "Baz"],
     nodeGroup =>
     {
         nodeGroup.Style.Color = Color.Orange;
         nodeGroup.Shape = DotNodeShape.Hexagon;
-    },
-    "Foo", "Bar", "Baz"
+    }
 );
 ```
 
 You can also do it this way:
 
 ```c#
-var nodeGroup = new DotNodeGroup("Foo", "Bar", "Baz");
-nodeGroup.Style.Color = Color.Orange;
-nodeGroup.Shape = DotNodeShape.Hexagon;
+var nodeGroup = new DotNodeGroup("Foo", "Bar", "Baz")
+{
+    Style = { Color = Color.Orange },
+    Shape = DotNodeShape.Hexagon
+};
 
 graph.Nodes.Add(nodeGroup);
 ```
@@ -835,12 +836,12 @@ Note that there is also an ***AddRange*** method available on the node collectio
 ```c#
 graph.Nodes.AddRange
 (
+    ["Foo", "Bar", "Baz"],
     node =>
     {
         node.Style.Color = Color.Orange;
         node.Shape = DotNodeShape.Hexagon;
-    },
-    "Foo", "Bar", "Baz"
+    }
 );
 ```
 
@@ -941,10 +942,10 @@ graph.Edges.Add("Foo", "Bar", edge =>
     edge.Head.Arrowhead = DotArrowheadShape.Crow;
 });
 
-// some basic arrowhead variants 
-graph.Edges.Add("Foo", "Bar").Head.Arrowhead = DotArrowhead.Empty();
-graph.Edges.Add("Foo", "Bar").Head.Arrowhead = DotArrowhead.Empty(DotArrowheadParts.Right);
-graph.Edges.Add("Foo", "Bar").Head.Arrowhead = DotArrowhead.Filled(DotArrowheadParts.Left);
+// some basic arrowhead variants
+graph.Edges.Add("Foo", "Bar").Head.Arrowhead = new DotArrowhead(DotArrowheadShape.Normal, filled: false, visibleParts: DotArrowheadParts.Both);
+graph.Edges.Add("Foo", "Bar").Head.Arrowhead = DotArrowhead.Empty(visibleParts: DotArrowheadParts.Right);
+graph.Edges.Add("Foo", "Bar").Head.SetArrowhead(visibleParts: DotArrowheadParts.Left);
 
 // a composition of multiple arrowheads
 graph.Edges.Add("Foo", "Bar").Head.Arrowhead = new DotCompositeArrowhead
@@ -982,10 +983,10 @@ Consider the following example:
 using GiGraph.Dot.Extensions;
 
 graph.Edges.Add("Foo", "Bar")
-   .SetSegmentedStyle(new DotWeightedColor(Color.RoyalBlue, 0.5), Color.Turquoise);
+    .Style.SetSegmentedStyle(new DotWeightedColor(Color.RoyalBlue, 0.5), Color.Turquoise);
 
 graph.Edges.Add("Foo", "Bar")
-   .SetMultilineStyle(Color.RoyalBlue, Color.Turquoise);
+    .Style.SetMultilineStyle(Color.RoyalBlue, Color.Turquoise);
 ```
 
 Note that in the case of multicolor segments, at least one color has to have a weight specified. The weight is interpreted as a length proportion of that segment in relation to other segments. Other colors may be provided without weights, in which case the lengths of their segments are distributed proportionally within the remaining part of an edge.
@@ -1013,7 +1014,7 @@ There are two types that represent endpoint groups: *DotEndpointGroup* and *DotS
 #### Joining one node to multiple nodes
 
 ```c#
-graph.Edges.AddOneToMany("Foo", "Bar", "Baz");
+graph.Edges.AddOneToMany("Foo", ["Bar", "Baz"]);
 
 // the code above is equivalent to
 var edge = new DotEdge<DotEndpoint, DotSubgraphEndpoint>(
@@ -1070,7 +1071,7 @@ digraph
 
 
 ```c#
-graph.Edges.AddManyToOne("Baz", "Foo", "Bar");
+graph.Edges.AddManyToOne(["Baz", "Foo"], "Bar");
 
 // the code above is equivalent to
 var edge = new DotEdge<DotSubgraphEndpoint, DotEndpoint>(
@@ -1166,7 +1167,7 @@ An edge sequence represented by the *DotEdgeSequence* class lets you define end
 #### A sequence of consecutive nodes
 
 ```c#
-graph.Edges.AddSequence("Foo", "Bar", "Baz");
+graph.Edges.AddSequence(["Foo", "Bar", "Baz"]);
 
 // the code above is equivalent to
 var edgeSequence = new DotEdgeSequence("Foo", "Bar", "Baz");
@@ -1187,10 +1188,10 @@ digraph
 #### A sequence of consecutive nodes and groups of nodes
 
 ```c#
-graph.Edges.AddSequence(
+graph.Edges.AddSequence([
     new DotEndpoint("Foo"),
     new DotSubgraphEndpoint("Bar", "Baz", "Qux"),
-    new DotEndpoint("Quux"));
+    new DotEndpoint("Quux")]);
 
 // the code above is equivalent to
 var edgeSequence = new DotEdgeSequence(
@@ -1216,23 +1217,25 @@ digraph
 Attributes for a sequence may be set either directly on its attribute collection, or by using a lambda expression passed by an argument of the *AddSequence* method on the *Edges* collection of an element.
 
 ```c#
-graph.Edges.AddSequence
-(
+graph.Edges.AddSequence(
+    [
+        "Foo",
+        new DotSubgraphEndpoint("Bar", "Baz", "Qux"),
+        new DotEndpoint("Quux", DotCompassPoint.North)
+    ],
     edge =>
     {
         // attributes specified here affect all edges in this sequence
         edge.Style.Color = Color.Red;
-    },
-    "Foo",
-    new DotSubgraphEndpoint("Bar", "Baz", "Qux"),
-    new DotEndpoint("Quux", DotCompassPoint.North)
+    }
 );
 
 // the code above is equivalent to
 var edgeSequence = new DotEdgeSequence(
     "Foo",
     new DotSubgraphEndpoint("Bar", "Baz", "Qux"),
-    new DotEndpoint("Quux", DotCompassPoint.North));
+    new DotEndpoint("Quux", DotCompassPoint.North)
+);
 
 edgeSequence.Style.Color = Color.Red;
 
@@ -1263,15 +1266,15 @@ There are several ways you can add a subgraph to a graph, and the code below pre
 // add a subgraph with a custom content initialization
 graph.Subgraphs.Add(DotRank.Same, subgraph =>
 {
-    subgraph.Nodes.AddRange("a", "b", "c");
+    subgraph.Nodes.AddRange(["a", "b", "c"]);
 });
 
 // or simply (if only nodes are going to be specified)
-graph.Subgraphs.AddWithNodes(DotRank.Same, "a", "b", "c");
+graph.Subgraphs.AddWithNodes(DotRank.Same,["a", "b", "c"]);
 
 // you can also create a new instance and initialize it manually
 var subgraph = new DotSubgraph(DotRank.Same);
-subgraph.Nodes.AddRange("a", "b", "c");
+subgraph.Nodes.AddRange(["a", "b", "c"]);
 
 // or use a factory method to add nodes conveniently
 subgraph = DotSubgraph.FromNodes(DotRank.Same, "a", "b", "c");
@@ -1285,8 +1288,12 @@ graph.Subgraphs.Add(subgraph);
 ```dot
 digraph
 {
+    // (omitted fragment)
+
     {
         rank = same
+
+        node [ shape = box ]
 
         a
         b
@@ -1315,18 +1322,12 @@ There are several ways you can add a cluster to a graph, and the code below pres
 // add a cluster with custom content initialization
 graph.Clusters.Add("My cluster 1", cluster =>
 {
-    cluster.Nodes.AddRange("a", "b", "c");
+    cluster.Nodes.AddRange(["a", "b", "c"]);
 });
-
-// or simply (if only nodes are going to be specified)
-graph.Clusters.AddWithNodes("My cluster 1", "a", "b", "c");
 
 // you can also create a new instance and initialize it manually
 var cluster = new DotCluster("My cluster 1");
-cluster.Nodes.AddRange("a", "b", "c");
-
-// or use a factory method to add nodes conveniently
-cluster = DotCluster.FromNodes("My cluster 1", "a", "b", "c");
+cluster.Nodes.AddRange(["a", "b", "c"]);
 
 // style settings are accepted as well for the elements inside
 cluster.Nodes.Shape = DotNodeShape.Box;
@@ -1337,8 +1338,12 @@ graph.Clusters.Add(cluster);
 ```dot
 digraph
 {
+    // (omitted fragment)
+
     subgraph "cluster My cluster 1"
     {
+        node [ shape = box ]
+
         a
         b
         c
@@ -1460,7 +1465,7 @@ graph.Font.Name = "Helvetica";
 // set global node attributes (for all nodes of the graph)
 graph.Nodes.Shape = DotNodeShape.Rectangle;
 graph.Nodes.Font.Name = graph.Font.Name;
-graph.Nodes.SetGradientFill(Color.Turquoise, Color.RoyalBlue);
+graph.Nodes.Style.SetGradientFill(Color.Turquoise, Color.RoyalBlue);
 
 // set global edge attributes (for all edges of the graph)
 graph.Edges.Head.Arrowhead = graph.Edges.Tail.Arrowhead = DotArrowheadShape.Vee;
@@ -1488,15 +1493,15 @@ graph.Subgraphs.Add(sg =>
         edge.Directions = DotEdgeDirections.Both;
 
         // this will render two parallel splines (but more of them may be specified)
-        edge.SetMultilineStyle(Color.Turquoise, Color.RoyalBlue);
+        edge.Style.SetMultilineStyle(Color.Turquoise, Color.RoyalBlue);
     });
 });
 
 graph.Subgraphs.Add(sg =>
 {
     // nodes with a dual-color fill; fill proportions specified by the weight properties (this is actually a degenerate linear gradient fill)
-    sg.Nodes.Add("C").SetGradientFill(Color.RoyalBlue, new DotWeightedColor(Color.Turquoise, 0.25));
-    sg.Nodes.Add("D").SetGradientFill(new DotWeightedColor(Color.Navy, 0.25), Color.RoyalBlue);
+    sg.Nodes.Add("C").Style.SetGradientFill(Color.RoyalBlue, new DotWeightedColor(Color.Turquoise, 0.25));
+    sg.Nodes.Add("D").Style.SetGradientFill(new DotWeightedColor(Color.Navy, 0.25), Color.RoyalBlue);
 
     sg.Edges.Add("C", "D", edge =>
     {
@@ -1504,7 +1509,7 @@ graph.Subgraphs.Add(sg =>
         edge.Directions = DotEdgeDirections.Both;
 
         // this will render a multicolor edge where each color may optionally have an area proportion determined by the weight parameter
-        edge.SetSegmentedStyle(
+        edge.Style.SetSegmentedStyle(
             new DotWeightedColor(Color.Turquoise, 0.33),
             new DotWeightedColor(Color.Gray, 0.33),
             Color.Navy);
@@ -1518,7 +1523,7 @@ graph.Subgraphs.Add(sg =>
     {
         node.Style.Color = Color.Transparent;
 
-        node.SetStripedFill(
+        node.Style.SetStripedFill(
             new DotWeightedColor(Color.Navy, 0.1),
             Color.RoyalBlue,
             Color.Turquoise,
@@ -1531,7 +1536,7 @@ graph.Subgraphs.Add(sg =>
         node.Shape = DotNodeShape.Circle;
         node.Style.Color = Color.Transparent;
 
-        node.SetWedgedFill(
+        node.Style.SetWedgedFill(
             Color.Orange,
             Color.RoyalBlue,
             new DotWeightedColor(Color.Navy, 0.1),
@@ -1668,7 +1673,7 @@ graph.Clusters.Add(id: "Flow 1", cluster =>
     cluster.Style.BackgroundColor = Color.Turquoise;
     cluster.Label = "Flow 1";
 
-    cluster.Edges.AddSequence("Cluster 1 Start", "Cluster 1 Node", "Cluster 1 Exit");
+    cluster.Edges.AddSequence(["Cluster 1 Start", "Cluster 1 Node", "Cluster 1 Exit"]);
 });
 
 graph.Clusters.Add(id: "Flow 2", cluster =>
@@ -1676,7 +1681,7 @@ graph.Clusters.Add(id: "Flow 2", cluster =>
     cluster.Label = "Flow 2";
     cluster.Style.BackgroundColor = Color.Orange;
 
-    cluster.Edges.AddSequence("Cluster 2 Start", "Cluster 2 Node", "Cluster 2 Exit");
+    cluster.Edges.AddSequence(["Cluster 2 Start", "Cluster 2 Node", "Cluster 2 Exit"]);
 });
 
 // generate and save the DOT output
@@ -1757,31 +1762,31 @@ graph.Edges.Add("e", "h");
 graph.Edges.Add("g", "k");
 graph.Edges.Add("r", "t");
 
-graph.Edges.AddOneToMany("a", "b", "c", "d");
-graph.Edges.AddOneToMany("b", "c", "e");
-graph.Edges.AddOneToMany("c", "e", "f");
-graph.Edges.AddOneToMany("d", "f", "g");
-graph.Edges.AddOneToMany("f", "h", "i", "j", "g");
-graph.Edges.AddOneToMany("h", "o", "l");
-graph.Edges.AddOneToMany("i", "l", "m", "j");
-graph.Edges.AddOneToMany("j", "m", "n", "k");
-graph.Edges.AddOneToMany("k", "n", "r");
-graph.Edges.AddOneToMany("l", "o", "m");
-graph.Edges.AddOneToMany("m", "o", "p", "n");
-graph.Edges.AddOneToMany("n", "q", "r");
-graph.Edges.AddOneToMany("o", "s", "p");
-graph.Edges.AddOneToMany("p", "t", "q");
-graph.Edges.AddOneToMany("q", "t", "r");
+graph.Edges.AddOneToMany("a", ["b", "c", "d"]);
+graph.Edges.AddOneToMany("b", ["c", "e"]);
+graph.Edges.AddOneToMany("c", ["e", "f"]);
+graph.Edges.AddOneToMany("d", ["f", "g"]);
+graph.Edges.AddOneToMany("f", ["h", "i", "j", "g"]);
+graph.Edges.AddOneToMany("h", ["o", "l"]);
+graph.Edges.AddOneToMany("i", ["l", "m", "j"]);
+graph.Edges.AddOneToMany("j", ["m", "n", "k"]);
+graph.Edges.AddOneToMany("k", ["n", "r"]);
+graph.Edges.AddOneToMany("l", ["o", "m"]);
+graph.Edges.AddOneToMany("m", ["o", "p", "n"]);
+graph.Edges.AddOneToMany("n", ["q", "r"]);
+graph.Edges.AddOneToMany("o", ["s", "p"]);
+graph.Edges.AddOneToMany("p", ["t", "q"]);
+graph.Edges.AddOneToMany("q", ["t", "r"]);
 
 // place the following groups of nodes in the same ranks
-graph.Subgraphs.AddWithNodes(DotRank.Same, "b", "c", "d");
-graph.Subgraphs.AddWithNodes(DotRank.Same, "e", "f", "g");
-graph.Subgraphs.AddWithNodes(DotRank.Same, "h", "i", "j", "k");
-graph.Subgraphs.AddWithNodes(DotRank.Same, "l", "m", "n");
-graph.Subgraphs.AddWithNodes(DotRank.Same, "q", "r");
+graph.Subgraphs.AddWithNodes(DotRank.Same, ["b", "c", "d"]);
+graph.Subgraphs.AddWithNodes(DotRank.Same, ["e", "f", "g"]);
+graph.Subgraphs.AddWithNodes(DotRank.Same, ["h", "i", "j", "k"]);
+graph.Subgraphs.AddWithNodes(DotRank.Same, ["l", "m", "n"]);
+graph.Subgraphs.AddWithNodes(DotRank.Same, ["q", "r"]);
 
 // place the three nodes in the maximum rank (rightmost in this case)
-graph.Subgraphs.AddWithNodes(DotRank.Max, "o", "s", "p");
+graph.Subgraphs.AddWithNodes(DotRank.Max, ["o", "s", "p"]);
 
 
 var options = new DotFormattingOptions
@@ -1982,7 +1987,7 @@ The following example shows how the primary section (on the graph instance level
 graph.Annotation = "the example graph (the primary section)";
 
 graph.Nodes.Attributes.Annotation = "set node color and style globally";
-graph.Nodes.SetPlainFill(Color.Orange);
+graph.Nodes.Style.SetPlainFill(Color.Orange);
 
 graph.Edges.Add("foo", "bar");
 
