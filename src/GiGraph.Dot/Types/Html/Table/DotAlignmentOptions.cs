@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.EnumHelpers;
 
@@ -28,4 +29,20 @@ public record DotHtmlTableCellAlignmentOptions(DotHtmlTableCellHorizontalAlignme
         )
     {
     }
+
+    /// <summary>
+    ///     Initializes a new instance.
+    /// </summary>
+    /// <param name="alignment">
+    ///     The alignment to set.
+    /// </param>
+    public DotHtmlTableCellAlignmentOptions(DotAlignmentOptions alignment)
+        : this((DotHtmlTableCellHorizontalAlignment?) alignment.Horizontal, alignment.Vertical)
+    {
+    }
+
+    [return: NotNullIfNotNull(nameof(alignment))]
+    public static implicit operator DotHtmlTableCellAlignmentOptions?(DotAlignmentOptions? alignment) => alignment is not null
+        ? new DotHtmlTableCellAlignmentOptions(alignment)
+        : null;
 }
