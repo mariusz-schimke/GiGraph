@@ -33,18 +33,6 @@ public class DotNodeStyleAttributeOptionsTest
         Assert.False(node.Style.HasDefaultStyleOptions());
         node.Style.SetDefaultStyleOptions();
         Assert.True(node.Style.HasDefaultStyleOptions());
-
-        // set the same another way
-        node.Style.SetStyleOptions(
-            DotNodeFillStyle.Radial,
-            DotBorderStyle.Dashed,
-            DotBorderWeight.Bold,
-            DotCornerStyle.Rounded,
-            true,
-            true
-        );
-
-        Snapshot.Match(graph.ToDot(), snapshotName);
     }
 
     [Fact]
@@ -89,5 +77,17 @@ public class DotNodeStyleAttributeOptionsTest
         Assert.Equal(default(DotCornerStyle), node.Style.CornerStyle);
         Assert.False(node.Style.Diagonals);
         Assert.False(node.Style.Invisible);
+    }
+
+    [Fact]
+    public void border_style_setter_sets_all_specified_attributes()
+    {
+        var graph = new DotGraph();
+        var node = graph.Nodes.Add("n1");
+        node.Style.SetBorderStyle(DotBorderStyle.Dashed, DotBorderWeight.Bold, 2);
+
+        Assert.Equal(DotBorderStyle.Dashed, node.Style.BorderStyle);
+        Assert.Equal(DotBorderWeight.Bold, node.Style.BorderWeight);
+        Assert.Equal(2, node.Style.BorderWidth);
     }
 }

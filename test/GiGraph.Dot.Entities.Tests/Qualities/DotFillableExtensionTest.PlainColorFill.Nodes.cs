@@ -15,16 +15,21 @@ public partial class DotFillableExtensionTest
     {
         var graph = new DotGraph();
 
+        var style = new DotNodeStyleOptions(
+            DotNodeFillStyle.None,
+            DotBorderStyle.Solid,
+            DotBorderWeight.Bold,
+            DotCornerStyle.Rounded,
+            true,
+            true
+        );
+
         graph.Nodes
-            .Add(
-                "node",
-                c =>
-                    c.Style.SetStyleOptions(DotNodeFillStyle.None, DotBorderStyle.Solid, DotBorderWeight.Bold, DotCornerStyle.Rounded, true, true)
-            )
+            .Add("node", c => c.Style.SetStyleOptions(style))
             .Style
             .SetPlainFill(Color.Red);
 
-        graph.Nodes.Style.SetStyleOptions(DotNodeFillStyle.None, DotBorderStyle.Solid, DotBorderWeight.Bold, DotCornerStyle.Rounded, true, true);
+        graph.Nodes.Style.SetStyleOptions(style);
         graph.Nodes.Style.SetPlainFill(Color.Red);
 
         Snapshot.Match(graph.ToDot(), "gradient_fill_on_nodes_with_other_styles_set");

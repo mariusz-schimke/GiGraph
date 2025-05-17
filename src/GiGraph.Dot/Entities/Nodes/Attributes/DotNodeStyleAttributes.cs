@@ -113,41 +113,45 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     }
 
     /// <summary>
-    ///     Applies the specified style options.
+    ///     Applies the specified border style.
     /// </summary>
-    /// <param name="fillStyle">
-    ///     The fill style to set.
-    /// </param>
-    /// <param name="borderStyle">
+    /// <param name="style">
     ///     The border style to set.
     /// </param>
-    /// <param name="borderWeight">
+    /// <param name="weight">
     ///     The border weight to set.
     /// </param>
-    /// <param name="cornerStyle">
-    ///     The corner style to set.
+    /// <param name="width">
+    ///     Specifies the width of the border in points (default: 1.0, minimum: 0.0).
     /// </param>
-    /// <param name="diagonals">
-    ///     Causes small chords to be drawn near the vertices of the node’s polygon or, in case of circles and ellipses, two chords near
-    ///     the top and the bottom of the shape.
+    /// <param name="color">
+    ///     The color to set for the border. If the node has a <see cref="DotNodeFillStyle.Regular"/> fill style but no
+    ///     <see cref="FillColor"/> is specified, then this border color will also be used to fill the node.
     /// </param>
-    /// <param name="invisible">
-    ///     Determines whether the node should be invisible.
-    /// </param>
-    public virtual void SetStyleOptions(
-        DotNodeFillStyle fillStyle = default,
-        DotBorderStyle borderStyle = default,
-        DotBorderWeight borderWeight = default,
-        DotCornerStyle cornerStyle = default,
-        bool diagonals = false,
-        bool invisible = false
-    )
+    public virtual void SetBorder(DotBorderStyle style = default, DotBorderWeight weight = default, double? width = null, DotColor? color = null)
     {
-        FillStyle = fillStyle;
-        BorderStyle = borderStyle;
-        BorderWeight = borderWeight;
-        CornerStyle = cornerStyle;
-        Diagonals = diagonals;
-        Invisible = invisible;
+        BorderStyle = style;
+        BorderWeight = weight;
+        BorderWidth = width;
+        Color = color;
+    }
+
+    /// <summary>
+    ///     Applies the specified border style.
+    /// </summary>
+    /// <param name="style">
+    ///     The border style to set.
+    /// </param>
+    /// <param name="weight">
+    ///     The border weight to set.
+    /// </param>
+    /// <param name="width">
+    ///     Specifies the width of the border in points (default: 1.0, minimum: 0.0).
+    /// </param>
+    public virtual void SetBorderStyle(DotBorderStyle style = default, DotBorderWeight weight = default, double? width = null)
+    {
+        BorderStyle = style;
+        BorderWeight = weight;
+        BorderWidth = width;
     }
 }
