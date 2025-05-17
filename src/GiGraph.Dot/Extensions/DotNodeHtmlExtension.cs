@@ -60,10 +60,10 @@ public static class DotNodeHtmlExtension
     /// <param name="buildHtml">
     ///     A method delegate that provides an HTML builder to compose the node's content.
     /// </param>
-    public static void SetHtmlAsLabel(this DotNodeDefinition node, Action<DotHtmlBuilder> buildHtml)
+    public static void SetHtmlAsLabel(this DotNodeDefinition node, Action<DotHtmlBuilder>? buildHtml)
     {
         var builder = new DotHtmlBuilder();
-        buildHtml(builder);
+        buildHtml?.Invoke(builder);
 
         SetHtmlAsLabel(node, builder.Build());
     }
@@ -78,10 +78,10 @@ public static class DotNodeHtmlExtension
     /// <param name="buildTable">
     ///     A method delegate that provides an HTML table to compose the node's content.
     /// </param>
-    public static void SetHtmlTableAsLabel(this DotNodeDefinition node, Action<DotHtmlTable> buildTable)
+    public static void SetHtmlTableAsLabel(this DotNodeDefinition node, Action<DotHtmlTable>? buildTable)
     {
         var table = new DotHtmlTable();
-        buildTable(table);
+        buildTable?.Invoke(table);
 
         SetHtmlAsLabel(node, table);
     }

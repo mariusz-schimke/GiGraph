@@ -11,7 +11,7 @@ public partial class DotHtmlBuilder
     /// <param name="init">
     ///     A content initialization delegate.
     /// </param>
-    public virtual DotHtmlBuilder AppendBold(Action<DotHtmlBuilder> init) => Append(new DotHtmlBold(), init);
+    public virtual DotHtmlBuilder AppendBold(Action<DotHtmlBuilder>? init) => Append(new DotHtmlBold(), init);
 
     /// <summary>
     ///     Appends an italic element to this instance and builds its content.
@@ -19,7 +19,7 @@ public partial class DotHtmlBuilder
     /// <param name="init">
     ///     A content initialization delegate.
     /// </param>
-    public virtual DotHtmlBuilder AppendItalic(Action<DotHtmlBuilder> init) => Append(new DotHtmlItalic(), init);
+    public virtual DotHtmlBuilder AppendItalic(Action<DotHtmlBuilder>? init) => Append(new DotHtmlItalic(), init);
 
     /// <summary>
     ///     Appends an underline element to this instance and builds its content.
@@ -27,7 +27,7 @@ public partial class DotHtmlBuilder
     /// <param name="init">
     ///     A content initialization delegate.
     /// </param>
-    public virtual DotHtmlBuilder AppendUnderline(Action<DotHtmlBuilder> init) => Append(new DotHtmlUnderline(), init);
+    public virtual DotHtmlBuilder AppendUnderline(Action<DotHtmlBuilder>? init) => Append(new DotHtmlUnderline(), init);
 
     /// <summary>
     ///     Appends an overline element to this instance and builds its content.
@@ -35,7 +35,7 @@ public partial class DotHtmlBuilder
     /// <param name="init">
     ///     A content initialization delegate.
     /// </param>
-    public virtual DotHtmlBuilder AppendOverline(Action<DotHtmlBuilder> init) => Append(new DotHtmlOverline(), init);
+    public virtual DotHtmlBuilder AppendOverline(Action<DotHtmlBuilder>? init) => Append(new DotHtmlOverline(), init);
 
     /// <summary>
     ///     Appends a subscript element to this instance and builds its content.
@@ -43,7 +43,7 @@ public partial class DotHtmlBuilder
     /// <param name="init">
     ///     A content initialization delegate.
     /// </param>
-    public virtual DotHtmlBuilder AppendSubscript(Action<DotHtmlBuilder> init) => Append(new DotHtmlSubscript(), init);
+    public virtual DotHtmlBuilder AppendSubscript(Action<DotHtmlBuilder>? init) => Append(new DotHtmlSubscript(), init);
 
     /// <summary>
     ///     Appends a superscript element to this instance and builds its content.
@@ -51,7 +51,7 @@ public partial class DotHtmlBuilder
     /// <param name="init">
     ///     A content initialization delegate.
     /// </param>
-    public virtual DotHtmlBuilder AppendSuperscript(Action<DotHtmlBuilder> init) => Append(new DotHtmlSuperscript(), init);
+    public virtual DotHtmlBuilder AppendSuperscript(Action<DotHtmlBuilder>? init) => Append(new DotHtmlSuperscript(), init);
 
     /// <summary>
     ///     Appends a strikethrough element to this instance and builds its content.
@@ -59,7 +59,7 @@ public partial class DotHtmlBuilder
     /// <param name="init">
     ///     A content initialization delegate.
     /// </param>
-    public virtual DotHtmlBuilder AppendStrikethrough(Action<DotHtmlBuilder> init) => Append(new DotHtmlStrikethrough(), init);
+    public virtual DotHtmlBuilder AppendStrikethrough(Action<DotHtmlBuilder>? init) => Append(new DotHtmlStrikethrough(), init);
 
     /// <summary>
     ///     Appends nested font style elements to this instance based on the specified style and initializes the content of the bottom
@@ -71,7 +71,7 @@ public partial class DotHtmlBuilder
     /// <param name="init">
     ///     A content initialization delegate.
     /// </param>
-    public virtual DotHtmlBuilder AppendStyled(DotFontStyles fontStyle, Action<DotHtmlBuilder> init)
+    public virtual DotHtmlBuilder AppendStyled(DotFontStyles fontStyle, Action<DotHtmlBuilder>? init)
     {
         var rootElement = (IDotHtmlContentEntity?) DotHtmlFontStyle.FromStyle(fontStyle, out var contentElement)
          ?? new DotHtmlEntityCollection();
