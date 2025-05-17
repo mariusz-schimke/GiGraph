@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Entities.Tests.Qualities;
 public class DotShapableNodeExtensionTest
 {
     [Fact]
-    public void sets_striped_fill_on_individual_nodes()
+    public void sets_polygonal_shape_on_individual_nodes()
     {
         var graph = new DotGraph();
 
