@@ -3,7 +3,7 @@ using GiGraph.Dot.Entities.Attributes.Properties.Common.GraphCluster;
 using GiGraph.Dot.Types.Alignment;
 using Xunit;
 
-namespace GiGraph.Dot.Entities.Tests.Attributes;
+namespace GiGraph.Dot.Entities.Tests.Attributes.Setters;
 
 public class DotLabelOptionsAttributesTest
 {

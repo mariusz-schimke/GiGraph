@@ -5,7 +5,7 @@ using GiGraph.Dot.Types.Fonts;
 using GiGraph.Dot.Types.Graphs.Font;
 using Xunit;
 
-namespace GiGraph.Dot.Entities.Tests.Attributes;
+namespace GiGraph.Dot.Entities.Tests.Attributes.Setters;
 
 public class DotGraphFontAttributesTest
 {

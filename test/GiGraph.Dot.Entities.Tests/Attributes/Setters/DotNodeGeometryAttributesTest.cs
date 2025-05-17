@@ -3,7 +3,7 @@ using GiGraph.Dot.Entities.Nodes.Attributes;
 using GiGraph.Dot.Types.Geometry;
 using Xunit;
 
-namespace GiGraph.Dot.Entities.Tests.Attributes;
+namespace GiGraph.Dot.Entities.Tests.Attributes.Setters;
 
 public class DotNodeGeometryAttributesTest
 {

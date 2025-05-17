@@ -4,7 +4,7 @@ using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.Images;
 using Xunit;
 
-namespace GiGraph.Dot.Entities.Tests.Attributes;
+namespace GiGraph.Dot.Entities.Tests.Attributes.Setters;
 
 public class DotNodeImageAttributesTest
 {
