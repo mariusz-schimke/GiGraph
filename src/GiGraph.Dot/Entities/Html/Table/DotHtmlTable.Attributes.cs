@@ -74,4 +74,19 @@ public partial class DotHtmlTable : IDotHtmlTableAttributes
         get => Attributes.Implementation.Borders;
         set => Attributes.Implementation.Borders = value;
     }
+
+    /// <summary>
+    ///     Sets alignment.
+    /// </summary>
+    /// <param name="columnFormat">
+    ///     The column format to set. See <see cref="DotHtmlTableColumnFormat"/> for accepted values.
+    /// </param>
+    /// <param name="rowFormat">
+    ///     The row format to set. See <see cref="DotHtmlTableRowFormat"/> for accepted values.
+    /// </param>
+    public virtual void SetFormat(string? columnFormat = null, string? rowFormat = null)
+    {
+        ColumnFormat = columnFormat;
+        RowFormat = rowFormat;
+    }
 }

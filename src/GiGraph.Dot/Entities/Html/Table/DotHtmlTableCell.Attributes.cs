@@ -82,4 +82,19 @@ public partial class DotHtmlTableCell : IDotHtmlTableCellAttributes
         get => Attributes.Implementation.LineAlignment;
         set => Attributes.Implementation.LineAlignment = value;
     }
+
+    /// <summary>
+    ///     Sets row and column span.
+    /// </summary>
+    /// <param name="columnSpan">
+    ///     The column span to set.
+    /// </param>
+    /// <param name="rowSpan">
+    ///     The row span to set.
+    /// </param>
+    public virtual void SetSpan(int? columnSpan = null, int? rowSpan = null)
+    {
+        ColumnSpan = columnSpan;
+        RowSpan = rowSpan;
+    }
 }
