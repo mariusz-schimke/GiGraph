@@ -98,11 +98,12 @@ public class DotNodeStyleAttributeOptionsTest
     {
         var graph = new DotGraph();
         var node = graph.Nodes.Add("n1");
-        node.Style.SetBorder(DotBorderStyle.Dashed, DotBorderWeight.Bold, 2, Color.Blue);
+        node.Style.SetBorder(DotBorderStyle.Dashed, DotBorderWeight.Bold, 2, Color.Blue, 3);
 
         Assert.Equal(DotBorderStyle.Dashed, node.Style.BorderStyle);
         Assert.Equal(DotBorderWeight.Bold, node.Style.BorderWeight);
         Assert.Equal(2, node.Style.BorderWidth);
         Assert.Equal(Color.Blue, ((DotColor?) node.Style.Color)!.Color);
+        Assert.Equal(3, node.Style.Peripheries);
     }
 }

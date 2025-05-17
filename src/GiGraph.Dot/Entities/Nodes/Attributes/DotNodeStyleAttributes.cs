@@ -109,7 +109,12 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// </param>
     public virtual void SetStyleOptions(DotNodeStyleOptions options)
     {
-        SetStyleOptions(options.FillStyle, options.BorderStyle, options.BorderWeight, options.CornerStyle, options.Diagonals, options.Invisible);
+        FillStyle = options.FillStyle;
+        BorderStyle = options.BorderStyle;
+        BorderWeight = options.BorderWeight;
+        CornerStyle = options.CornerStyle;
+        Diagonals = options.Diagonals;
+        Invisible = options.Invisible;
     }
 
     /// <summary>
@@ -128,12 +133,17 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     ///     The color to set for the border. If the node has a <see cref="DotNodeFillStyle.Regular"/> fill style but no
     ///     <see cref="FillColor"/> is specified, then this border color will also be used to fill the node.
     /// </param>
-    public virtual void SetBorder(DotBorderStyle style = default, DotBorderWeight weight = default, double? width = null, DotColor? color = null)
+    /// <param name="peripheries">
+    ///     Sets the number of peripheries used in polygonal node shapes (<see cref="IDotNodeAttributes.Shape"/>). The default value is
+    ///     shape dependent, the minimum value is 0.
+    /// </param>
+    public virtual void SetBorder(DotBorderStyle style = default, DotBorderWeight weight = default, double? width = null, DotColor? color = null, int? peripheries = null)
     {
         BorderStyle = style;
         BorderWeight = weight;
         BorderWidth = width;
         Color = color;
+        Peripheries = peripheries;
     }
 
     /// <summary>
