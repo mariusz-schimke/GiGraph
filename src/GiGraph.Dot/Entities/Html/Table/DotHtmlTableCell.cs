@@ -49,19 +49,4 @@ public partial class DotHtmlTableCell : DotHtmlElement, IDotHasHtmlTableBorders
     ///     Provides access to the attributes of the table cell.
     /// </summary>
     public new DotHtmlElementRootAttributesAccessor<IDotHtmlTableCellAttributes, DotHtmlTableCellAttributes> Attributes { get; }
-
-    /// <summary>
-    ///     Sets row and column span.
-    /// </summary>
-    /// <param name="columnSpan">
-    ///     The column span to set.
-    /// </param>
-    /// <param name="rowSpan">
-    ///     The row span to set.
-    /// </param>
-    public virtual void SetSpan(int? columnSpan = null, int? rowSpan = null)
-    {
-        ColumnSpan = columnSpan;
-        RowSpan = rowSpan;
-    }
 }

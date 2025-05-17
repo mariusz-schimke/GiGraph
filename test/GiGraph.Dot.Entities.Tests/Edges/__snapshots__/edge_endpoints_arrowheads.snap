@@ -1,0 +1,8 @@
+﻿digraph
+{
+    edge [ arrowhead = rdot, arrowtail = oldiamond ]
+
+    node1 -> node2 [ arrowhead = olcrow ]
+    node3 -> node4 [ arrowtail = crowbox ]
+    node5 -> node6 [ arrowtail = rtee ]
+}

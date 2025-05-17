@@ -12,7 +12,7 @@ public partial class DotHtmlBuilder
     /// <param name="init">
     ///     A content initialization delegate.
     /// </param>
-    public virtual DotHtmlBuilder AppendFont(Action<DotHtmlBuilder> init) => Append(new DotHtmlFont(), init);
+    public virtual DotHtmlBuilder AppendFont(Action<DotHtmlBuilder>? init) => Append(new DotHtmlFont(), init);
 
     /// <summary>
     ///     Appends a font element to this instance and builds its content.
@@ -23,7 +23,7 @@ public partial class DotHtmlBuilder
     /// <param name="init">
     ///     A content initialization delegate.
     /// </param>
-    public virtual DotHtmlBuilder AppendFont(DotFont font, Action<DotHtmlBuilder> init) => Append(new DotHtmlFont(font), init);
+    public virtual DotHtmlBuilder AppendFont(DotFont font, Action<DotHtmlBuilder>? init) => Append(new DotHtmlFont(font), init);
 
     /// <summary>
     ///     Appends a font element with nested font style elements to this instance and builds the content of the bottom one.
@@ -34,7 +34,7 @@ public partial class DotHtmlBuilder
     /// <param name="init">
     ///     A content initialization delegate.
     /// </param>
-    public virtual DotHtmlBuilder AppendStyledFont(DotStyledFont font, Action<DotHtmlBuilder> init)
+    public virtual DotHtmlBuilder AppendStyledFont(DotStyledFont font, Action<DotHtmlBuilder>? init)
     {
         var fontElement = new DotHtmlFont(font);
         DotHtmlElement initElement = fontElement;
