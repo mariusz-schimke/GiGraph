@@ -1,5 +1,6 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
+using GiGraph.Dot.Entities.Attributes.Properties.Extensions;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Colors;
@@ -137,13 +138,14 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     ///     Sets the number of peripheries used in polygonal node shapes (<see cref="IDotNodeAttributes.Shape"/>). The default value is
     ///     shape dependent, the minimum value is 0.
     /// </param>
-    public virtual void SetBorder(DotBorderStyle style = default, DotBorderWeight weight = default, double? width = null, DotColor? color = null, int? peripheries = null)
+    /// <remarks>
+    ///     Note that passing null parameters does not overwrite the existing value of the corresponding property.
+    /// </remarks>
+    public virtual void SetBorder(DotBorderStyle? style = null, DotBorderWeight? weight = null, double? width = null, DotColor? color = null, int? peripheries = null)
     {
-        BorderStyle = style;
-        BorderWeight = weight;
-        BorderWidth = width;
-        Color = color;
-        Peripheries = peripheries;
+        SetBorderStyle(style, weight, width);
+        color.IfSet(v => Color = v);
+        peripheries.IfSet(v => Peripheries = v);
     }
 
     /// <summary>
@@ -158,10 +160,13 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// <param name="width">
     ///     Specifies the width of the border in points (default: 1.0, minimum: 0.0).
     /// </param>
-    public virtual void SetBorderStyle(DotBorderStyle style = default, DotBorderWeight weight = default, double? width = null)
+    /// <remarks>
+    ///     Note that passing null parameters does not overwrite the existing value of the corresponding property.
+    /// </remarks>
+    public virtual void SetBorderStyle(DotBorderStyle? style = null, DotBorderWeight? weight = null, double? width = null)
     {
-        BorderStyle = style;
-        BorderWeight = weight;
-        BorderWidth = width;
+        style.IfSet(v => BorderStyle = v);
+        weight.IfSet(v => BorderWeight = v);
+        width.IfSet(v => BorderWidth = v);
     }
 }

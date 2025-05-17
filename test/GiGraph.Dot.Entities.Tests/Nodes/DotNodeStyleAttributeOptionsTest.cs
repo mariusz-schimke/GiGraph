@@ -1,5 +1,6 @@
 using System.Drawing;
 using GiGraph.Dot.Entities.Graphs;
+using GiGraph.Dot.Entities.Nodes.Attributes;
 using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Nodes.Style;
@@ -82,28 +83,46 @@ public class DotNodeStyleAttributeOptionsTest
     }
 
     [Fact]
-    public void border_style_setter_sets_all_specified_attributes()
+    public void border_setter_sets_all_attributes_except_nullified()
     {
         var graph = new DotGraph();
         var node = graph.Nodes.Add("n1");
-        node.Style.SetBorderStyle(DotBorderStyle.Dashed, DotBorderWeight.Bold, 2);
 
-        Assert.Equal(DotBorderStyle.Dashed, node.Style.BorderStyle);
-        Assert.Equal(DotBorderWeight.Bold, node.Style.BorderWeight);
-        Assert.Equal(2, node.Style.BorderWidth);
+        node.Style.BorderStyle = DotBorderStyle.Solid;
+        node.Style.BorderWeight = DotBorderWeight.Default;
+        node.Style.BorderWidth = 1;
+        node.Style.Color = Color.Red;
+        node.Style.Peripheries = 1;
+
+        // Test style
+        node.Style.SetBorder(DotBorderStyle.Dashed);
+        AssertBorderState(node.Style, new BorderState(DotBorderStyle.Dashed, DotBorderWeight.Default, 1, Color.Red, 1));
+
+        // Test weight
+        node.Style.SetBorder(null, DotBorderWeight.Bold);
+        AssertBorderState(node.Style, new BorderState(DotBorderStyle.Dashed, DotBorderWeight.Bold, 1, Color.Red, 1));
+
+        // Test width
+        node.Style.SetBorder(null, null, 2);
+        AssertBorderState(node.Style, new BorderState(DotBorderStyle.Dashed, DotBorderWeight.Bold, 2, Color.Red, 1));
+
+        // Test color
+        node.Style.SetBorder(null, null, null, Color.Blue);
+        AssertBorderState(node.Style, new BorderState(DotBorderStyle.Dashed, DotBorderWeight.Bold, 2, Color.Blue, 1));
+
+        // Test peripheries
+        node.Style.SetBorder(null, null, null, null, 3);
+        AssertBorderState(node.Style, new BorderState(DotBorderStyle.Dashed, DotBorderWeight.Bold, 2, Color.Blue, 3));
     }
 
-    [Fact]
-    public void border_setter_sets_all_specified_attributes()
+    private static void AssertBorderState(DotNodeStyleAttributes nodeStyle, BorderState expected)
     {
-        var graph = new DotGraph();
-        var node = graph.Nodes.Add("n1");
-        node.Style.SetBorder(DotBorderStyle.Dashed, DotBorderWeight.Bold, 2, Color.Blue, 3);
-
-        Assert.Equal(DotBorderStyle.Dashed, node.Style.BorderStyle);
-        Assert.Equal(DotBorderWeight.Bold, node.Style.BorderWeight);
-        Assert.Equal(2, node.Style.BorderWidth);
-        Assert.Equal(Color.Blue, ((DotColor?) node.Style.Color)!.Color);
-        Assert.Equal(3, node.Style.Peripheries);
+        Assert.Equal(expected.Style, nodeStyle.BorderStyle);
+        Assert.Equal(expected.Weight, nodeStyle.BorderWeight);
+        Assert.Equal(expected.Width, nodeStyle.BorderWidth);
+        Assert.Equal(expected.Color, ((DotColor?) nodeStyle.Color)!.Color);
+        Assert.Equal(expected.Peripheries, nodeStyle.Peripheries);
     }
+
+    private record BorderState(DotBorderStyle Style, DotBorderWeight Weight, double Width, Color Color, int Peripheries);
 }
