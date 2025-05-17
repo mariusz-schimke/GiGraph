@@ -15,14 +15,7 @@ public class DotHtmlEntityCollection : List<IDotHtmlEntity>, IDotHtmlContentEnti
     /// <summary>
     ///     Creates a new entity collection.
     /// </summary>
-    /// <param name="entities">
-    ///     The entities to initialize the collection with.
-    /// </param>
-    /// <exception cref="ArgumentNullException">
-    ///     Thrown when a null collection is passed.
-    /// </exception>
-    public DotHtmlEntityCollection(params IDotHtmlEntity[] entities)
-        : base(entities)
+    public DotHtmlEntityCollection()
     {
     }
 
@@ -40,7 +33,7 @@ public class DotHtmlEntityCollection : List<IDotHtmlEntity>, IDotHtmlContentEnti
     {
     }
 
-    /// <inheritdoc cref="IDotHtmlEntity.ToHtml()" />
+    /// <inheritdoc cref="IDotHtmlEntity.ToHtml()"/>
     public virtual DotHtmlString ToHtml() => ToHtml(DotSyntaxOptions.Default, DotSyntaxRules.Default);
 
     string IDotHtmlEncodable.ToHtml(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => ToHtml(options, syntaxRules);
@@ -87,24 +80,12 @@ public class DotHtmlEntityCollection : List<IDotHtmlEntity>, IDotHtmlContentEnti
     /// <param name="init">
     ///     An optional entity initializer.
     /// </param>
-    public virtual TEntity Add<TEntity>(TEntity entity, Action<TEntity>? init = null)
+    protected internal virtual TEntity Add<TEntity>(TEntity entity, Action<TEntity>? init = null)
         where TEntity : IDotHtmlEntity
     {
         init?.Invoke(entity);
         base.Add(entity);
         return entity;
-    }
-
-    /// <summary>
-    ///     Adds new HTML entities to the collection.
-    /// </summary>
-    /// <param name="entities">
-    ///     The entities to add.
-    /// </param>
-    public virtual IDotHtmlEntity[] AddRange(params IDotHtmlEntity[] entities)
-    {
-        base.AddRange(entities);
-        return entities;
     }
 
     /// <summary>

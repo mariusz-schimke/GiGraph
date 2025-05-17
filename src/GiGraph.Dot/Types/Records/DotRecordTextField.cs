@@ -5,7 +5,7 @@ using GiGraph.Dot.Types.EscapeString;
 namespace GiGraph.Dot.Types.Records;
 
 /// <summary>
-///     Represents a textual field of a record (<see cref="DotRecord" />). A record can be used as the label of a
+///     Represents a textual field of a record (<see cref="DotRecord"/>). A record can be used as the label of a
 ///     <see href="https://www.graphviz.org/doc/info/shapes.html#record">
 ///         record-shaped node
 ///     </see>
@@ -40,7 +40,7 @@ public class DotRecordTextField : DotRecordField
     ///     current field. You can specify the port on an edge's head or tail endpoint, or, alternatively, by using a corresponding
     ///     attribute for the head or tail among the attributes of the edge.
     /// </summary>
-    public string? PortName { get; init; }
+    public string? PortName { get; }
 
     protected internal override string GetDotEncoded(DotSyntaxOptions options, DotSyntaxRules syntaxRules, bool hasParent)
     {

@@ -64,7 +64,7 @@ public static class WithClusters
             cluster.Style.BackgroundColor = Color.Turquoise;
             cluster.Label = "Flow 1";
 
-            cluster.Edges.AddSequence("Cluster 1 Start", "Cluster 1 Node", "Cluster 1 Exit");
+            cluster.Edges.AddSequence(["Cluster 1 Start", "Cluster 1 Node", "Cluster 1 Exit"]);
         });
 
         graph.Clusters.Add(id: "Flow 2", cluster =>
@@ -72,7 +72,7 @@ public static class WithClusters
             cluster.Label = "Flow 2";
             cluster.Style.BackgroundColor = Color.Orange;
 
-            cluster.Edges.AddSequence("Cluster 2 Start", "Cluster 2 Node", "Cluster 2 Exit");
+            cluster.Edges.AddSequence(["Cluster 2 Start", "Cluster 2 Node", "Cluster 2 Exit"]);
         });
 
         return graph;

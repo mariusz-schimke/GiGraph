@@ -18,7 +18,7 @@ public class DotCommonGraphCollection<TGraph> : List<TGraph>, IDotEntity, IDotAn
     /// <param name="init">
     ///     An optional graph initializer delegate.
     /// </param>
-    public virtual TGraph Add(TGraph graph, Action<TGraph>? init)
+    protected virtual TGraph Add(TGraph graph, Action<TGraph>? init)
     {
         init?.Invoke(graph);
         Add(graph);

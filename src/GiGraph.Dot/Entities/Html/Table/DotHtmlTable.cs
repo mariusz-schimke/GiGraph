@@ -2,13 +2,14 @@ using GiGraph.Dot.Entities.Html.Attributes.Collections;
 using GiGraph.Dot.Entities.Html.Attributes.Properties;
 using GiGraph.Dot.Entities.Html.Rule;
 using GiGraph.Dot.Entities.Html.Table.Attributes;
+using GiGraph.Dot.Entities.Qualities;
 
 namespace GiGraph.Dot.Entities.Html.Table;
 
 /// <summary>
 ///     An HTML &lt;table&gt; element.
 /// </summary>
-public partial class DotHtmlTable : DotHtmlElement
+public partial class DotHtmlTable : DotHtmlElement, IDotHasHtmlTableBorders
 {
     /// <summary>
     ///     Initializes a new table instance.
@@ -19,14 +20,30 @@ public partial class DotHtmlTable : DotHtmlElement
     }
 
     protected DotHtmlTable(DotHtmlAttributeCollection attributes)
-        : this(new DotHtmlTableAttributes(attributes))
+        : this(
+            new DotHtmlTableAttributes(attributes),
+            new DotHtmlTableStyleAttributes(attributes),
+            new DotHtmlTableTableCellHyperlinkAttributes(attributes),
+            new DotHtmlTableTableCellSizeAttributes(attributes),
+            new DotHtmlTableAlignmentAttributes(attributes)
+        )
     {
     }
 
-    protected DotHtmlTable(DotHtmlTableAttributes attributes)
+    protected DotHtmlTable(
+        DotHtmlTableAttributes attributes,
+        DotHtmlTableStyleAttributes styleAttributes,
+        DotHtmlTableTableCellHyperlinkAttributes hyperlinkAttributes,
+        DotHtmlTableTableCellSizeAttributes sizeAttributes,
+        DotHtmlTableAlignmentAttributes alignmentAttributes
+    )
         : base("table", attributes.Collection)
     {
         Attributes = new DotHtmlElementRootAttributesAccessor<IDotHtmlTableAttributes, DotHtmlTableAttributes>(attributes);
+        Style = styleAttributes;
+        Hyperlink = hyperlinkAttributes;
+        Size = sizeAttributes;
+        Alignment = alignmentAttributes;
     }
 
     /// <summary>

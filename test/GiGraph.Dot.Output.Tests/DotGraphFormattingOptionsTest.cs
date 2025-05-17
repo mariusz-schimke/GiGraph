@@ -189,8 +189,8 @@ public class DotGraphFormattingOptionsTest
     {
         var graph = new DotGraph();
 
-        graph.Edges.AddOneToMany("a", "b", "c");
-        graph.Edges.AddOneToMany("d", "e", "f").Head.Endpoint.Subgraph.Id = "subgraph1";
+        graph.Edges.AddOneToMany("a", ["b", "c"]);
+        graph.Edges.AddOneToMany("d", ["e", "f"]).Head.Endpoint.Subgraph.Id = "subgraph1";
 
         graph.Edges.AddManyToMany(["g", "h"], ["i", "j"], e =>
         {
@@ -207,7 +207,7 @@ public class DotGraphFormattingOptionsTest
             e.Tail.Endpoint.Subgraph.Id = "tail";
         });
 
-        graph.Edges.AddManyToMany(["o", "p"], "q", "r");
+        graph.Edges.AddManyToMany(["o", "p"], ["q", "r"]);
 
         return graph;
     }

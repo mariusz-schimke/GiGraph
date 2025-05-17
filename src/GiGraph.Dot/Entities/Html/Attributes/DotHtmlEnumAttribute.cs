@@ -9,7 +9,7 @@ namespace GiGraph.Dot.Entities.Html.Attributes;
 ///     An enumeration attribute for use in the context of HTML elements.
 /// </summary>
 /// <typeparam name="TEnum">
-///     An enumeration type whose values are annotated with the <see cref="DotAttributeValueAttribute" /> attributes.
+///     An enumeration type whose values are annotated with the <see cref="DotAttributeValueAttribute"/> attributes.
 /// </typeparam>
 public class DotHtmlEnumAttribute<TEnum> : DotEnumAttribute<TEnum>
     where TEnum : struct, Enum

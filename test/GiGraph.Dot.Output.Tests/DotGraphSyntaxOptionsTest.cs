@@ -137,7 +137,7 @@ public partial class DotGraphSyntaxOptionsTest
     {
         var graph = new DotGraph();
         graph.Subgraphs.Add();
-        graph.Edges.AddOneToMany("a", "b", "c");
+        graph.Edges.AddOneToMany("a", ["b", "c"]);
 
         var options = new DotSyntaxOptions
         {

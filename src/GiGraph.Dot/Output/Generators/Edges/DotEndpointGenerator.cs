@@ -17,10 +17,10 @@ public class DotEndpointGenerator<TEndpoint> : DotEntityGenerator<TEndpoint, IDo
     protected override void WriteEntity(TEndpoint endpoint, IDotEndpointWriter writer)
     {
         var id = EncodeEndpointIdentifier(endpoint.Id);
-        var portName = EncodeIdentifier(endpoint.Port.Name);
+        var portName = EncodeIdentifier(endpoint.Port?.Name);
 
-        var compassPoint = endpoint.Port.CompassPoint.HasValue
-            ? DotAttributeValue.Get(endpoint.Port.CompassPoint.Value)
+        var compassPoint = endpoint.Port?.CompassPoint is { } value
+            ? DotAttributeValue.Get(value)
             : null;
 
         writer.WriteEndpoint

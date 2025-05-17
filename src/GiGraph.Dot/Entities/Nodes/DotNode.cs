@@ -31,9 +31,9 @@ public class DotNode : DotNodeDefinition
     }
 
     /// <summary>
-    ///     Gets or sets the unique identifier of the node.
+    ///     Gets the unique identifier of the node.
     /// </summary>
-    public virtual string Id { get; set; }
+    public virtual string Id { get; }
 
     protected override string GetOrderingKey() => Id;
 }

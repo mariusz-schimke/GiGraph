@@ -64,7 +64,7 @@ public class DotColor : DotColorDefinition
     /// <summary>
     ///     The color scheme (see <see cref="DotColorSchemes" />).
     /// </summary>
-    public string? Scheme { get; init; }
+    public string? Scheme { get; }
 
     protected internal virtual double? GetWeight() => null;
 

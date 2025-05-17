@@ -18,8 +18,11 @@ public static class HtmlTableNode
 
         var table = new DotHtmlTable
         {
-            BorderWidth = 0,
-            CellBorderWidth = 1,
+            Style =
+            {
+                BorderWidth = 0,
+                CellBorderWidth = 1,
+            },
             CellSpacing = 0,
             CellPadding = 4
         };
@@ -33,7 +36,7 @@ public static class HtmlTableNode
                 cell =>
                 {
                     cell.ColumnSpan = 3;
-                    cell.HorizontalAlignment = DotHtmlTableCellHorizontalAlignment.Left;
+                    cell.Alignment.Horizontal = DotHtmlTableCellHorizontalAlignment.Left;
                 }
             );
 
@@ -58,7 +61,7 @@ public static class HtmlTableNode
                 cell =>
                 {
                     cell.ColumnSpan = 3;
-                    cell.HorizontalAlignment = DotHtmlTableCellHorizontalAlignment.Right;
+                    cell.Alignment.Horizontal = DotHtmlTableCellHorizontalAlignment.Right;
                 }
             )
         );

@@ -20,7 +20,7 @@ public static class DotTextCasing
     {
         return casing switch
         {
-            DotTextCase.Normal => text,
+            DotTextCase.Default => text,
             DotTextCase.Lower => text?.ToLowerInvariant(),
             DotTextCase.Upper => text?.ToUpperInvariant(),
             _ => throw new ArgumentException($"The '{casing}' text casing option is invalid.", nameof(casing))

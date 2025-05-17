@@ -15,13 +15,17 @@ public partial class DotFillableExtensionTest
     {
         var graph = new DotGraph();
 
-        graph.Nodes.Add("node", c =>
-                c.Style.SetStyleOptions(DotNodeFillStyle.None, DotBorderStyle.Solid, DotBorderWeight.Bold, DotCornerStyle.Rounded, true, true)
+        graph.Nodes
+            .Add(
+                "node",
+                c =>
+                    c.Style.SetStyleOptions(DotNodeFillStyle.None, DotBorderStyle.Solid, DotBorderWeight.Bold, DotCornerStyle.Rounded, true, true)
             )
+            .Style
             .SetPlainFill(Color.Red);
 
         graph.Nodes.Style.SetStyleOptions(DotNodeFillStyle.None, DotBorderStyle.Solid, DotBorderWeight.Bold, DotCornerStyle.Rounded, true, true);
-        graph.Nodes.SetPlainFill(Color.Red);
+        graph.Nodes.Style.SetPlainFill(Color.Red);
 
         Snapshot.Match(graph.ToDot(), "gradient_fill_on_nodes_with_other_styles_set");
     }
@@ -30,7 +34,7 @@ public partial class DotFillableExtensionTest
     public void sets_plain_color_fill_on_node()
     {
         var graph = new DotGraph();
-        graph.Nodes.Add("node").SetPlainFill(Color.Red);
+        graph.Nodes.Add("node").Style.SetPlainFill(Color.Red);
         Snapshot.Match(graph.ToDot(), "plain_color_fill_on_node");
     }
 
@@ -38,7 +42,7 @@ public partial class DotFillableExtensionTest
     public void sets_plain_color_fill_on_node_group()
     {
         var graph = new DotGraph();
-        graph.Nodes.AddGroup("node1", "node2").SetPlainFill(Color.Red);
+        graph.Nodes.AddGroup(["node1", "node2"]).Style.SetPlainFill(Color.Red);
         Snapshot.Match(graph.ToDot(), "plain_color_fill_on_node_group");
     }
 
@@ -46,7 +50,7 @@ public partial class DotFillableExtensionTest
     public void sets_plain_color_fill_on_node_collection()
     {
         var graph = new DotGraph();
-        graph.Nodes.SetPlainFill(Color.Red);
+        graph.Nodes.Style.SetPlainFill(Color.Red);
         Snapshot.Match(graph.ToDot(), "plain_color_fill_on_node_collection");
     }
 }

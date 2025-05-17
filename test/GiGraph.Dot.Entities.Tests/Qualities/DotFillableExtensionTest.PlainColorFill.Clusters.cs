@@ -15,13 +15,17 @@ public partial class DotFillableExtensionTest
     {
         var graph = new DotGraph();
 
-        graph.Clusters.Add("", c =>
-                c.Style.SetStyleOptions(DotClusterFillStyle.None, DotBorderStyle.Solid, DotBorderWeight.Bold, DotCornerStyle.Rounded, true)
+        graph.Clusters
+            .Add(
+                "",
+                c =>
+                    c.Style.SetStyleOptions(DotClusterFillStyle.None, DotBorderStyle.Solid, DotBorderWeight.Bold, DotCornerStyle.Rounded, true)
             )
+            .Style
             .SetPlainFill(Color.Red);
 
         graph.Clusters.Style.SetStyleOptions(DotClusterFillStyle.None, DotBorderStyle.Solid, DotBorderWeight.Bold, DotCornerStyle.Rounded, true);
-        graph.Clusters.SetPlainFill(Color.Red);
+        graph.Clusters.Style.SetPlainFill(Color.Red);
 
         Snapshot.Match(graph.ToDot(), "gradient_fill_on_clusters_with_other_styles_set");
     }
@@ -30,7 +34,7 @@ public partial class DotFillableExtensionTest
     public void sets_plain_color_fill_on_cluster()
     {
         var graph = new DotGraph();
-        graph.Clusters.Add("").SetPlainFill(Color.Red);
+        graph.Clusters.Add("").Style.SetPlainFill(Color.Red);
         Snapshot.Match(graph.ToDot(), "plain_color_fill_on_cluster");
     }
 
@@ -38,7 +42,7 @@ public partial class DotFillableExtensionTest
     public void sets_plain_color_fill_on_cluster_collection()
     {
         var graph = new DotGraph();
-        graph.Clusters.SetPlainFill(Color.Red);
+        graph.Clusters.Style.SetPlainFill(Color.Red);
         Snapshot.Match(graph.ToDot(), "plain_color_fill_on_cluster_collection");
     }
 }

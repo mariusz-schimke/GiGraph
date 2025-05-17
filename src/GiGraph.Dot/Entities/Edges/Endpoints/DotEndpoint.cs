@@ -19,20 +19,13 @@ public class DotEndpoint : DotEndpointDefinition
     /// <param name="id">
     ///     The node identifier.
     /// </param>
-    /// <param name="portName">
-    ///     Determines the edge placement to aim for the specified port. If specified, the corresponding node, referred to by the
-    ///     <paramref name="id"/> parameter, must either have a record shape (<see cref="DotNodeShape.Record"/>,
-    ///     <see cref="DotNodeShape.RoundedRecord"/>) with one of its fields having the given port name, or have an HTML-like label, one
-    ///     of whose components has a PORT attribute set to the specified port name.
+    /// <param name="port">
+    ///     The endpoint port, that is a point on a node an edge will be attached to.
     /// </param>
-    /// <param name="compassPoint">
-    ///     Determines the edge placement to aim for the specified compass point on the <paramref name="portName"/> if specified, or on
-    ///     the node itself otherwise. If no compass point is specified explicitly, the default value is
-    ///     <see cref="DotCompassPoint.Center"/>.
-    /// </param>
-    public DotEndpoint(string id, string? portName, DotCompassPoint? compassPoint = null)
-        : this(id, new DotEndpointPort(portName, compassPoint))
+    public DotEndpoint(string id, DotEndpointPort? port = null)
     {
+        Id = id ?? throw new ArgumentNullException(nameof(id), "Endpoint identifier must not be null.");
+        Port = port;
     }
 
     /// <summary>
@@ -45,8 +38,8 @@ public class DotEndpoint : DotEndpointDefinition
     ///     Determines the edge placement to aim for the specified compass point on the node. If no compass point is specified
     ///     explicitly, the default value is <see cref="DotCompassPoint.Center"/>.
     /// </param>
-    public DotEndpoint(string id, DotCompassPoint? compassPoint = null)
-        : this(id, new DotEndpointPort(compassPoint))
+    public DotEndpoint(string id, DotCompassPoint? compassPoint)
+        : this(id, (DotEndpointPort?) compassPoint)
     {
     }
 
@@ -56,13 +49,20 @@ public class DotEndpoint : DotEndpointDefinition
     /// <param name="id">
     ///     The node identifier.
     /// </param>
-    /// <param name="port">
-    ///     The endpoint port, that is a point on a node an edge will be attached to.
+    /// <param name="portName">
+    ///     Determines the edge placement to aim for the specified port. If specified, the corresponding node, referred to by the
+    ///     <paramref name="id"/> parameter, must either have a record shape (<see cref="DotNodeShape.Record"/>,
+    ///     <see cref="DotNodeShape.RoundedRecord"/>) with one of its fields having the given port name, or have an HTML-like label, one
+    ///     of whose components has a PORT attribute set to the specified port name.
     /// </param>
-    public DotEndpoint(string id, DotEndpointPort port)
+    /// <param name="compassPoint">
+    ///     Determines the edge placement to aim for the specified compass point on the <paramref name="portName"/> if specified, or on
+    ///     the node itself otherwise. If no compass point is specified explicitly, the default value is
+    ///     <see cref="DotCompassPoint.Center"/>.
+    /// </param>
+    public DotEndpoint(string id, string? portName, DotCompassPoint? compassPoint = null)
+        : this(id, portName is not null || compassPoint is not null ? new DotEndpointPort(portName, compassPoint) : null)
     {
-        Id = id ?? throw new ArgumentNullException(nameof(id), "Endpoint identifier must not be null.");
-        Port = port ?? throw new ArgumentNullException(nameof(port), "Endpoint port must not be null.");
     }
 
     /// <summary>
@@ -73,9 +73,9 @@ public class DotEndpoint : DotEndpointDefinition
     /// <summary>
     ///     Gets or sets the endpoint port, that is a point on a node where an edge is attached to.
     /// </summary>
-    public virtual DotEndpointPort Port { get; set; }
+    public virtual DotEndpointPort? Port { get; set; }
 
-    protected override string GetOrderingKey() => $"{Id}:{Port.Name}:{Port.CompassPoint}";
+    protected override string GetOrderingKey() => $"{Id}:{Port?.Name}:{Port?.CompassPoint}";
 
     /// <summary>
     ///     Determines the equality of endpoint identifiers (ignores port). Ensures that the endpoints are of the same type.

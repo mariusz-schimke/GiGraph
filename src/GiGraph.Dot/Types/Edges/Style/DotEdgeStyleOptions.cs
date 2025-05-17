@@ -14,4 +14,4 @@ namespace GiGraph.Dot.Types.Edges.Style;
 /// <param name="Invisible">
 ///     Determines whether the element is invisible.
 /// </param>
-public record DotEdgeStyleOptions(DotLineStyle? LineStyle = null, DotLineWeight? LineWeight = null, bool? Invisible = null);
+public record DotEdgeStyleOptions(DotLineStyle LineStyle = default, DotLineWeight LineWeight = default, bool Invisible = false);

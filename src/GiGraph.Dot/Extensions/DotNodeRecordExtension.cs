@@ -45,10 +45,10 @@ public static class DotNodeRecordExtension
     ///     <see cref="DotLayoutDirection.LeftToRight"/> or <see cref="DotLayoutDirection.RightToLeft"/>, corresponding to horizontal
     ///     layouts, the top-level fields are displayed vertically.
     /// </param>
-    public static void SetRecordAsLabel(this DotNodeDefinition node, Action<DotRecordBuilder> buildRecord, bool flip = false)
+    public static void SetRecordAsLabel(this DotNodeDefinition node, Action<DotRecordBuilder>? buildRecord, bool flip = false)
     {
         var builder = new DotRecordBuilder();
-        buildRecord(builder);
+        buildRecord?.Invoke(builder);
 
         SetRecordAsLabel(node, builder.Build(flip));
     }

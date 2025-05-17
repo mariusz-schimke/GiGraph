@@ -12,11 +12,11 @@ public class DotHtmlAttributeValueAttribute : Attribute, IDotAttributeValueAttri
     /// <param name="value">
     ///     The value of the HTML attribute.
     /// </param>
-    public DotHtmlAttributeValueAttribute(string value)
+    public DotHtmlAttributeValueAttribute(string? value)
     {
         Value = value;
     }
 
-    /// <inheritdoc cref="IDotAttributeValueAttribute.Value" />
-    public string Value { get; }
+    /// <inheritdoc cref="IDotAttributeValueAttribute.Value"/>
+    public string? Value { get; }
 }

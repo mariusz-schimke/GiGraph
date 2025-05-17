@@ -51,7 +51,7 @@ public partial class DotGraphLayoutAttributes
     ///     Rank separation may be set by calling this method or <see cref="SetRankSeparation"/>. Only one of them should be used, as
     ///     they write the same graph attribute.
     /// </remarks>
-    public void SetRadialRankSeparation(params IEnumerable<double> radii)
+    public void SetRadialRankSeparation(params double[] radii)
     {
         RankSeparation = new DotRadialRankSeparation(radii);
     }

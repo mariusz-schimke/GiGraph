@@ -36,11 +36,8 @@ public class DotPoint : IDotEncodable
     /// <param name="coordinates">
     ///     The coordinates of the point.
     /// </param>
-    /// <param name="isFixed">
-    ///     Determines whether the node position (if applied to nodes) should not change (input-only).
-    /// </param>
-    public DotPoint(IEnumerable<double> coordinates, bool? isFixed = null)
-        : this(isFixed, coordinates.ToArray())
+    public DotPoint(params double[] coordinates)
+        : this(isFixed: null, coordinates)
     {
     }
 
@@ -50,8 +47,11 @@ public class DotPoint : IDotEncodable
     /// <param name="coordinates">
     ///     The coordinates of the point.
     /// </param>
-    public DotPoint(params double[] coordinates)
-        : this(isFixed: null, coordinates)
+    /// <param name="isFixed">
+    ///     Determines whether the node position (if applied to nodes) should not change (input-only).
+    /// </param>
+    public DotPoint(IEnumerable<double> coordinates, bool? isFixed = null)
+        : this(isFixed, coordinates.ToArray())
     {
     }
 
@@ -123,7 +123,7 @@ public class DotPoint : IDotEncodable
     /// <summary>
     ///     Determines whether the node position (if applied to nodes) should not change (input-only).
     /// </summary>
-    public bool? IsFixed { get; init; }
+    public bool? IsFixed { get; }
 
     string IDotEncodable.GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => GetDotEncodedValue(options, syntaxRules);
 

@@ -25,56 +25,56 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// <summary>
     ///     Gets or sets a fill style.
     /// </summary>
-    public virtual DotNodeFillStyle? FillStyle
+    public virtual DotNodeFillStyle FillStyle
     {
-        get => GetPartialStyleOption<DotNodeFillStyle>();
-        set => SetPartialStyleOption(value);
+        get => this.GetPartialStyleOption<DotNodeFillStyle, DotStyles>();
+        set => this.SetPartialStyleOption(value);
     }
 
     /// <summary>
     ///     Gets or sets a border style.
     /// </summary>
-    public virtual DotBorderStyle? BorderStyle
+    public virtual DotBorderStyle BorderStyle
     {
-        get => GetPartialStyleOption<DotBorderStyle>();
-        set => SetPartialStyleOption(value);
+        get => this.GetPartialStyleOption<DotBorderStyle, DotStyles>();
+        set => this.SetPartialStyleOption(value);
     }
 
     /// <summary>
     ///     Gets or sets a border weight.
     /// </summary>
-    public virtual DotBorderWeight? BorderWeight
+    public virtual DotBorderWeight BorderWeight
     {
-        get => GetPartialStyleOption<DotBorderWeight>();
-        set => SetPartialStyleOption(value);
+        get => this.GetPartialStyleOption<DotBorderWeight, DotStyles>();
+        set => this.SetPartialStyleOption(value);
     }
 
     /// <summary>
     ///     Gets or sets a corner style.
     /// </summary>
-    public virtual DotCornerStyle? CornerStyle
+    public virtual DotCornerStyle CornerStyle
     {
-        get => GetPartialStyleOption<DotCornerStyle>();
-        set => SetPartialStyleOption(value);
+        get => this.GetPartialStyleOption<DotCornerStyle, DotStyles>();
+        set => this.SetPartialStyleOption(value);
     }
 
     /// <summary>
     ///     When set, causes small chords to be drawn near the vertices of the node’s polygon or, in case of circles and ellipses, two
     ///     chords near the top and the bottom of the shape.
     /// </summary>
-    public virtual bool? Diagonals
+    public virtual bool Diagonals
     {
-        get => HasStyleOption(DotStyles.Diagonals);
-        set => SetStyleOption(DotStyles.Diagonals, value);
+        get => this.HasStyleOption(DotStyles.Diagonals);
+        set => this.SetStyleOption(DotStyles.Diagonals, value);
     }
 
     /// <summary>
     ///     When set, makes the element invisible.
     /// </summary>
-    public virtual bool? Invisible
+    public virtual bool Invisible
     {
-        get => HasStyleOption(DotStyles.Invisible);
-        set => SetStyleOption(DotStyles.Invisible, value);
+        get => this.HasStyleOption(DotStyles.Invisible);
+        set => this.SetStyleOption(DotStyles.Invisible, value);
     }
 
     /// <inheritdoc cref="IDotNodeStyleAttributes.Color"/>
@@ -135,12 +135,12 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     ///     Determines whether the node should be invisible.
     /// </param>
     public virtual void SetStyleOptions(
-        DotNodeFillStyle? fillStyle = null,
-        DotBorderStyle? borderStyle = null,
-        DotBorderWeight? borderWeight = null,
-        DotCornerStyle? cornerStyle = null,
-        bool? diagonals = null,
-        bool? invisible = null
+        DotNodeFillStyle fillStyle = default,
+        DotBorderStyle borderStyle = default,
+        DotBorderWeight borderWeight = default,
+        DotCornerStyle cornerStyle = default,
+        bool diagonals = false,
+        bool invisible = false
     )
     {
         FillStyle = fillStyle;

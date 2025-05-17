@@ -6,9 +6,9 @@ namespace GiGraph.Dot.Output.Options;
 public enum DotTextCase
 {
     /// <summary>
-    ///     Leaves the current text casing as is.
+    ///     Uses the default text casing.
     /// </summary>
-    Normal,
+    Default,
 
     /// <summary>
     ///     Converts text to upper case.

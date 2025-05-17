@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.Contracts;
 using GiGraph.Dot.Entities.Graphs;
+using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Types.Edges;
 using GiGraph.Dot.Types.Edges.Arrowheads;
 
@@ -22,13 +23,20 @@ public static class Arrowheads
         });
 
         // some basic arrowhead combinations
-        graph.Edges.Add("Foo", "Bar").Head.Arrowhead = DotArrowhead.Empty();
-        graph.Edges.Add("Foo", "Bar").Head.Arrowhead = DotArrowhead.Empty(DotArrowheadParts.Right);
-        graph.Edges.Add("Foo", "Bar").Head.Arrowhead = DotArrowhead.Filled(DotArrowheadParts.Left);
+        graph.Edges.Add("Foo", "Bar").Head.Arrowhead = new DotArrowhead(DotArrowheadShape.Normal, filled: false, visibleParts: DotArrowheadParts.Both);
+        graph.Edges.Add("Foo", "Bar").Head.Arrowhead = DotArrowhead.Empty(visibleParts: DotArrowheadParts.Right);
+        graph.Edges.Add("Foo", "Bar").Head.SetArrowhead(visibleParts: DotArrowheadParts.Left);
 
         // a composition of multiple arrowheads
         graph.Edges.Add("Foo", "Bar").Head.Arrowhead = new DotCompositeArrowhead
         (
+            DotArrowheadShape.Tee,
+            DotArrowheadShape.None, // may be used as a separator
+            DotArrowhead.Empty(DotArrowheadShape.Diamond, DotArrowheadParts.Left)
+        );
+
+        // or the same by a method
+        graph.Edges.Add("Foo", "Bar").Head.SetCompositeArrowhead(
             DotArrowheadShape.Tee,
             DotArrowheadShape.None, // may be used as a separator
             DotArrowhead.Empty(DotArrowheadShape.Diamond, DotArrowheadParts.Left)

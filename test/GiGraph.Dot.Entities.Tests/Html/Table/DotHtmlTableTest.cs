@@ -25,35 +25,47 @@ public class DotHtmlTableTest
         {
             Id = "id",
 
-            Height = 10,
-            Width = 11,
-
             CellPadding = 20,
             CellSpacing = 21,
-            CellBorderWidth = 22,
-            FixedSize = false,
 
             Borders = DotHtmlTableBorders.Vertical,
-            BorderWidth = 23,
-            BorderColor = Color.Blue,
-
-            HorizontalAlignment = DotHorizontalAlignment.Right,
-            VerticalAlignment = DotVerticalAlignment.Top,
-
-            Style = DotHtmlTableStyles.Radial | DotHtmlTableStyles.Rounded,
-
-            BackgroundColor = new DotGradientColor(Color.Red, Color.Blue),
-            GradientFillAngle = 15,
-
-            Title = "Title",
-            Tooltip = "Tooltip",
-            Href = "https://www.google.pl",
-            Target = "_blank",
 
             ColumnFormat = "column format",
             RowFormat = "row format",
 
-            PortName = "port name"
+            PortName = "port name",
+
+            Alignment =
+            {
+                Horizontal = DotHorizontalAlignment.Right,
+                Vertical = DotVerticalAlignment.Top
+            },
+
+            Style =
+            {
+                BorderWidth = 23,
+                CellBorderWidth = 22,
+                BorderColor = Color.Blue,
+                BackgroundColor = new DotGradientColor(Color.Red, Color.Blue),
+                GradientFillAngle = 15,
+                RadialFill = true,
+                RoundedCorners = true
+            },
+
+            Size =
+            {
+                Height = 10,
+                Width = 11,
+                Fixed = false
+            },
+
+            Hyperlink =
+            {
+                Title = "Title",
+                Tooltip = "Tooltip",
+                Href = "https://www.google.pl",
+                Target = "_blank"
+            }
         };
 
         Snapshot.Match(
@@ -95,13 +107,7 @@ public class DotHtmlTableTest
 
                 row.AddImageCell("image.png", DotImageScaling.None, cell => cell.Id = "img-cell");
 
-                row.AddTableCell(t => t.Id = "table-in-cell6").Id = "cell6";
-                row.AddTableCell((c, t) =>
-                    {
-                        c.Id = "cell7";
-                        t.Id = "table-in-cell7";
-                    }
-                );
+                row.AddTableCell(c => c.Id = "cell6", t => t.Id = "table-in-cell6");
             }
         );
 

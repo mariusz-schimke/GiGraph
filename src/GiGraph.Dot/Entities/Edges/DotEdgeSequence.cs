@@ -39,19 +39,7 @@ public class DotEdgeSequence : DotEdgeDefinition
     /// <param name="nodeIds">
     ///     The node identifiers to initialize the instance with.
     /// </param>
-    public DotEdgeSequence(params string[] nodeIds)
-        : this((IEnumerable<string>) nodeIds)
-    {
-    }
-
-    /// <summary>
-    ///     Creates a new edge sequence initialized with the specified node identifiers. At least a pair of identifiers has to be
-    ///     provided.
-    /// </summary>
-    /// <param name="nodeIds">
-    ///     The node identifiers to initialize the instance with.
-    /// </param>
-    public DotEdgeSequence(IEnumerable<string> nodeIds)
+    public DotEdgeSequence(params IEnumerable<string> nodeIds)
         : this(nodeIds.Select(nodeId => new DotEndpoint(nodeId)))
     {
     }
@@ -80,8 +68,7 @@ public class DotEdgeSequence : DotEdgeDefinition
 
     protected override string GetOrderingKey()
     {
-        return string.Join
-        (
+        return string.Join(
             " ",
             Endpoints.Cast<IDotOrderable>()
                 .Select(endpoint => endpoint.OrderingKey)
@@ -98,27 +85,16 @@ public class DotEdgeSequence : DotEdgeDefinition
     /// <param name="initEndpoint">
     ///     An optional endpoint initializer to call for each created endpoint.
     /// </param>
-    public static DotEdgeSequence FromNodes(Action<DotEndpoint>? initEndpoint, params string[] nodeIds) => FromNodes(nodeIds, initEndpoint);
-
-    /// <summary>
-    ///     Creates a new edge sequence initialized with the specified node identifiers. At least a pair of identifiers has to be
-    ///     provided.
-    /// </summary>
-    /// <param name="nodeIds">
-    ///     The node identifiers to initialize the instance with.
-    /// </param>
-    /// <param name="initEndpoint">
-    ///     An optional endpoint initializer to call for each created endpoint.
-    /// </param>
     public static DotEdgeSequence FromNodes(IEnumerable<string> nodeIds, Action<DotEndpoint>? initEndpoint = null)
     {
         return new DotEdgeSequence(
             nodeIds.Select(nodeId =>
-            {
-                var endpoint = new DotEndpoint(nodeId);
-                initEndpoint?.Invoke(endpoint);
-                return endpoint;
-            })
+                {
+                    var endpoint = new DotEndpoint(nodeId);
+                    initEndpoint?.Invoke(endpoint);
+                    return endpoint;
+                }
+            )
         );
     }
 }

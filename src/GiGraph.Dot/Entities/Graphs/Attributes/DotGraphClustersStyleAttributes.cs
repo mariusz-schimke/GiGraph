@@ -4,17 +4,19 @@ using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes;
 
-public class DotGraphClustersStyleAttributes : DotGraphClusterCommonStyleAttributes<IDotGraphClustersStyleAttributes, DotGraphClustersStyleAttributes>, IDotGraphClustersStyleAttributes
+public partial class DotGraphClustersStyleAttributes : DotGraphClusterCommonStyleAttributes<IDotGraphClustersStyleAttributes, DotGraphClustersStyleAttributes>, IDotGraphClustersStyleAttributes
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphClustersStyleAttributes, IDotGraphClustersStyleAttributes>().BuildLazy();
+    protected readonly DotGraphStyleAttributes _graphStyleAttributes;
 
     public DotGraphClustersStyleAttributes(DotAttributeCollection attributes)
-        : base(attributes, AttributeKeyLookup)
+        : this(attributes, new DotGraphStyleAttributes(attributes), AttributeKeyLookup)
     {
     }
 
-    protected DotGraphClustersStyleAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+    protected DotGraphClustersStyleAttributes(DotAttributeCollection attributes, DotGraphStyleAttributes graphStyleAttributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
         : base(attributes, attributeKeyLookup)
     {
+        _graphStyleAttributes = graphStyleAttributes;
     }
 }

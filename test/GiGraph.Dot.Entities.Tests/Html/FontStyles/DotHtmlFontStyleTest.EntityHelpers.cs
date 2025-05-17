@@ -13,7 +13,10 @@ public partial class DotHtmlFontStyleTest
     [Fact]
     public void entity_factory_method_generates_correct_style()
     {
-        var entityCollection = new DotHtmlEntityCollection(new DotHtmlText("text"));
+        var entityCollection = new DotHtmlEntityCollection
+        {
+            new DotHtmlText("text")
+        };
         var entity = DotHtmlFontStyle.WithEntity(entityCollection, DotFontStyles.Bold);
 
         Snapshot.Match(
@@ -25,7 +28,10 @@ public partial class DotHtmlFontStyleTest
     [Fact]
     public void entity_factory_method_returns_source_entity_for_normal_font_style()
     {
-        var entityCollection = new DotHtmlEntityCollection(new DotHtmlText("text"));
+        var entityCollection = new DotHtmlEntityCollection
+        {
+            new DotHtmlText("text")
+        };
         var entity = DotHtmlFontStyle.WithEntity(entityCollection, DotFontStyles.Regular);
 
         Snapshot.Match(

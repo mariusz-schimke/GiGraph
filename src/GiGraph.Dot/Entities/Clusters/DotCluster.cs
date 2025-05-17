@@ -22,22 +22,22 @@ public class DotCluster : DotClusterSection, IDotGraph, IDotOrderable
     ///     The unique identifier of the cluster.
     /// </param>
     public DotCluster(string id)
-        : this(new DotClusterSection(), new DotGraphSectionCollection<DotClusterSection>())
+        : this(id, new DotClusterSection(), new DotGraphSectionCollection<DotClusterSection>())
     {
-        Id = id ?? throw new ArgumentNullException(nameof(id), "Cluster identifier must not be null.");
     }
 
-    protected DotCluster(DotClusterSection rootSection, DotGraphSectionCollection<DotClusterSection> subsections)
+    protected DotCluster(string id, DotClusterSection rootSection, DotGraphSectionCollection<DotClusterSection> subsections)
         : base(rootSection)
     {
+        Id = id ?? throw new ArgumentNullException(nameof(id), "Cluster identifier must not be null.");
         Subsections = subsections;
     }
 
     /// <summary>
     ///     <para>
-    ///         The subsections of the graph. They appear consecutively in the DOT output, and inherit the graph attributes, and
-    ///         the global node and/or edge attributes of their predecessors. When overridden in any subsection, the new graph attributes
-    ///         and global node/edge attributes apply to the elements the section itself contains, and also to those that belong to the
+    ///         The subsections of the graph. They appear consecutively in the DOT output, and inherit the graph attributes, and the
+    ///         global node and/or edge attributes of their predecessors. When overridden in any subsection, the new graph attributes and
+    ///         global node/edge attributes apply to the elements the section itself contains, and also to those that belong to the
     ///         sections that follow it (if any).
     ///     </para>
     ///     <para>
@@ -53,9 +53,9 @@ public class DotCluster : DotClusterSection, IDotGraph, IDotOrderable
     public DotGraphSectionCollection<DotClusterSection> Subsections { get; }
 
     /// <summary>
-    ///     Gets or sets the identifier of the cluster.
+    ///     Gets the identifier of the cluster.
     /// </summary>
-    public virtual string Id { get; set; } = null!;
+    public virtual string Id { get; }
 
     IEnumerable<IDotGraphSection> IDotGraph.Subsections => Subsections;
 
@@ -82,33 +82,6 @@ public class DotCluster : DotClusterSection, IDotGraph, IDotOrderable
 
         result = new DotAttributeCollection(result);
         result.SetValue(DotAttributeKeys.Cluster, true);
-        return result;
-    }
-
-    /// <summary>
-    ///     Creates a new cluster with the specified nodes.
-    /// </summary>
-    /// <param name="id">
-    ///     The unique identifier of the cluster.
-    /// </param>
-    /// <param name="nodeIds">
-    ///     The identifiers of nodes to add to the subgraph.
-    /// </param>
-    public static DotCluster FromNodes(string id, params string[] nodeIds) => FromNodes(id, (IEnumerable<string>) nodeIds);
-
-    /// <summary>
-    ///     Creates a new cluster with the specified nodes.
-    /// </summary>
-    /// <param name="id">
-    ///     The unique identifier of the cluster.
-    /// </param>
-    /// <param name="nodeIds">
-    ///     The identifiers of nodes to add to the subgraph.
-    /// </param>
-    public static DotCluster FromNodes(string id, IEnumerable<string> nodeIds)
-    {
-        var result = new DotCluster(id);
-        result.Nodes.AddRange(nodeIds);
         return result;
     }
 }

@@ -1,4 +1,0 @@
-﻿digraph
-{
-    node [ fillcolor = "red:blue", shape = rect, style = striped ]
-}

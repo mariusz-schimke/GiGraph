@@ -21,35 +21,48 @@ public class DotHtmlTableCellTest
         {
             Id = "id",
 
-            Height = 10,
-            Width = 11,
-
             CellPadding = 20,
             CellSpacing = 21,
-            FixedSize = true,
 
             Borders = DotHtmlTableBorders.Vertical,
-            BorderWidth = 23,
-            BorderColor = Color.Blue,
-
-            HorizontalAlignment = DotHtmlTableCellHorizontalAlignment.Justify,
-            HorizontalLineAlignment = DotHorizontalAlignment.Center,
-            VerticalAlignment = DotVerticalAlignment.Bottom,
-
-            Style = DotHtmlTableStyles.Radial,
-
-            BackgroundColor = Color.Red,
-            GradientFillAngle = 15,
-
-            Title = "Title",
-            Tooltip = "Tooltip",
-            Href = "https://www.google.pl",
-            Target = "_blank",
 
             ColumnSpan = 2,
             RowSpan = 3,
 
-            PortName = "port name"
+            PortName = "port name",
+
+            Style =
+            {
+                BorderWidth = 23,
+                BorderColor = Color.Blue,
+
+                BackgroundColor = Color.Red,
+                GradientFillAngle = 15,
+                RadialFill = true
+            },
+
+            Size =
+            {
+                Height = 10,
+                Width = 11,
+                Fixed = true
+            },
+
+            Hyperlink =
+            {
+                Title = "Title",
+                Tooltip = "Tooltip",
+                Href = "https://www.google.pl",
+                Target = "_blank"
+            },
+
+            Alignment =
+            {
+                Horizontal = DotHtmlTableCellHorizontalAlignment.Justify,
+                Vertical = DotVerticalAlignment.Bottom
+            },
+
+            LineAlignment = DotHorizontalAlignment.Center
         };
 
         Snapshot.Match(
