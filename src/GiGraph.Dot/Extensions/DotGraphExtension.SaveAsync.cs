@@ -1,6 +1,4 @@
-﻿#if !NETSTANDARD2_0
-
-using System.Text;
+﻿using System.Text;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Output.Options;
 
@@ -43,7 +41,12 @@ public static partial class DotGraphExtension
         CancellationToken cancellationToken = default
     )
     {
+#if NETSTANDARD2_0
+        using var fileStream = File.Create(filePath);
+#else
         await using var fileStream = File.Create(filePath);
+#endif
+
         await graph.SaveAsync(fileStream, formattingOptions, syntaxOptions, syntaxRules, encoding, cancellationToken);
         await fileStream.FlushAsync(cancellationToken);
     }
@@ -83,13 +86,20 @@ public static partial class DotGraphExtension
         CancellationToken cancellationToken = default
     )
     {
+#if NETSTANDARD2_0
+        using var streamWriter = CreateStreamWriter(stream, encoding);
+#else
         await using var streamWriter = CreateStreamWriter(stream, encoding);
+#endif
 
         // it would be better to build the graph directly to stream, but the solution does not support async building
         var output = graph.ToDot(formattingOptions, syntaxOptions, syntaxRules);
         await streamWriter.WriteAsync(output);
+
+#if NETSTANDARD2_0
+        await streamWriter.FlushAsync();
+#else
         await streamWriter.FlushAsync(cancellationToken);
+#endif
     }
 }
-
-#endif
