@@ -4,7 +4,7 @@ using GiGraph.Dot.Extensions;
 using Snapshooter.Xunit;
 using Xunit;
 
-namespace GiGraph.Dot.Tests;
+namespace GiGraph.Dot.Entities.Tests.Nodes;
 
 public class DotNodeHtmlExtensionTest
 {
