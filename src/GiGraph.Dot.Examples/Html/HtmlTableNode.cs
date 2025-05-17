@@ -36,7 +36,7 @@ public static class HtmlTableNode
                 cell =>
                 {
                     cell.ColumnSpan = 3;
-                    cell.HorizontalAlignment = DotHtmlTableCellHorizontalAlignment.Left;
+                    cell.Alignment.Horizontal = DotHtmlTableCellHorizontalAlignment.Left;
                 }
             );
 
@@ -61,7 +61,7 @@ public static class HtmlTableNode
                 cell =>
                 {
                     cell.ColumnSpan = 3;
-                    cell.HorizontalAlignment = DotHtmlTableCellHorizontalAlignment.Right;
+                    cell.Alignment.Horizontal = DotHtmlTableCellHorizontalAlignment.Right;
                 }
             )
         );

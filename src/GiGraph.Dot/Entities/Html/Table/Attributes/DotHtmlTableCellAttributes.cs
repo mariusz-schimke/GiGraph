@@ -2,7 +2,6 @@
 using GiGraph.Dot.Entities.Html.Attributes.Collections;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Alignment;
-using GiGraph.Dot.Types.Html.Table;
 
 namespace GiGraph.Dot.Entities.Html.Table.Attributes;
 
@@ -20,13 +19,9 @@ public partial class DotHtmlTableCellAttributes : DotHtmlTableTableCellCommonAtt
     {
     }
 
-    /// <inheritdoc cref="IDotHtmlTableCellAttributes.HorizontalAlignment"/>
-    [DotAttributeKey("align")]
-    public virtual partial DotHtmlTableCellHorizontalAlignment? HorizontalAlignment { get; set; }
-
-    /// <inheritdoc cref="IDotHtmlTableCellAttributes.HorizontalLineAlignment"/>
+    /// <inheritdoc cref="IDotHtmlTableCellAttributes.LineAlignment"/>
     [DotAttributeKey("balign")]
-    public virtual partial DotHorizontalAlignment? HorizontalLineAlignment { get; set; }
+    public virtual partial DotHorizontalAlignment? LineAlignment { get; set; }
 
     /// <inheritdoc cref="IDotHtmlTableCellAttributes.ColumnSpan"/>
     [DotAttributeKey("colspan")]

@@ -1,5 +1,4 @@
 using GiGraph.Dot.Entities.Html.Table.Attributes;
-using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Html.Table;
 
@@ -22,6 +21,11 @@ public partial class DotHtmlTable : IDotHtmlTableAttributes
     /// </summary>
     public DotHtmlTableTableCellSizeAttributes Size { get; }
 
+    /// <summary>
+    ///     The alignment attributes.
+    /// </summary>
+    public DotHtmlTableAlignmentAttributes Alignment { get; }
+
     /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.Id"/>
     public virtual DotEscapeString? Id
     {
@@ -34,20 +38,6 @@ public partial class DotHtmlTable : IDotHtmlTableAttributes
     {
         get => Attributes.Implementation.PortName;
         set => Attributes.Implementation.PortName = value;
-    }
-
-    /// <inheritdoc cref="IDotHtmlTableAttributes.HorizontalAlignment"/>
-    public virtual DotHorizontalAlignment? HorizontalAlignment
-    {
-        get => Attributes.Implementation.HorizontalAlignment;
-        set => Attributes.Implementation.HorizontalAlignment = value;
-    }
-
-    /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.VerticalAlignment"/>
-    public virtual DotVerticalAlignment? VerticalAlignment
-    {
-        get => Attributes.Implementation.VerticalAlignment;
-        set => Attributes.Implementation.VerticalAlignment = value;
     }
 
     /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.CellPadding"/>

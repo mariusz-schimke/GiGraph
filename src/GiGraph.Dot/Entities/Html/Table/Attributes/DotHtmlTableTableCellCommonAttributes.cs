@@ -2,13 +2,15 @@
 using GiGraph.Dot.Entities.Html.Attributes.Collections;
 using GiGraph.Dot.Entities.Html.Attributes.Properties;
 using GiGraph.Dot.Output.Metadata;
-using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Html.Table;
 
 namespace GiGraph.Dot.Entities.Html.Table.Attributes;
 
-public abstract partial class DotHtmlTableTableCellCommonAttributes<TIHtmlTableTableCellAttributeProperties, THtmlTableTableCellAttributeProperties>(DotHtmlAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+public abstract partial class DotHtmlTableTableCellCommonAttributes<TIHtmlTableTableCellAttributeProperties, THtmlTableTableCellAttributeProperties>(
+    DotHtmlAttributeCollection attributes,
+    Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup
+)
     : DotHtmlElementAttributes<TIHtmlTableTableCellAttributeProperties, THtmlTableTableCellAttributeProperties>(attributes, attributeKeyLookup), IDotHtmlTableTableCellCommonAttributes
     where TIHtmlTableTableCellAttributeProperties : IDotHtmlTableTableCellCommonAttributes
     where THtmlTableTableCellAttributeProperties : DotHtmlTableTableCellCommonAttributes<TIHtmlTableTableCellAttributeProperties, THtmlTableTableCellAttributeProperties>, TIHtmlTableTableCellAttributeProperties
@@ -20,10 +22,6 @@ public abstract partial class DotHtmlTableTableCellCommonAttributes<TIHtmlTableT
     /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.PortName"/>
     [DotAttributeKey("port")]
     public virtual partial string? PortName { get; set; }
-
-    /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.VerticalAlignment"/>
-    [DotAttributeKey("valign")]
-    public virtual partial DotVerticalAlignment? VerticalAlignment { get; set; }
 
     /// <inheritdoc cref="IDotHtmlTableTableCellCommonAttributes.CellPadding"/>
     [DotAttributeKey("cellpadding")]

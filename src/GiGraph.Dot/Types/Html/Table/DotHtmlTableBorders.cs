@@ -3,7 +3,7 @@
 namespace GiGraph.Dot.Types.Html.Table;
 
 /// <summary>
-///     The sides of a border of an HTML table or cell.
+///     The borders of an HTML table or cell.
 /// </summary>
 [Flags]
 [DotHtmlJoinableType(separator: "", order: false)]

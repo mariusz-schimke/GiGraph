@@ -26,10 +26,6 @@ public class DotHtmlTableCellTest
 
             Borders = DotHtmlTableBorders.Vertical,
 
-            HorizontalAlignment = DotHtmlTableCellHorizontalAlignment.Justify,
-            HorizontalLineAlignment = DotHorizontalAlignment.Center,
-            VerticalAlignment = DotVerticalAlignment.Bottom,
-
             ColumnSpan = 2,
             RowSpan = 3,
 
@@ -49,7 +45,7 @@ public class DotHtmlTableCellTest
             {
                 Height = 10,
                 Width = 11,
-                FixedSize = true
+                Fixed = true
             },
 
             Hyperlink =
@@ -58,7 +54,15 @@ public class DotHtmlTableCellTest
                 Tooltip = "Tooltip",
                 Href = "https://www.google.pl",
                 Target = "_blank"
-            }
+            },
+
+            Alignment =
+            {
+                Horizontal = DotHtmlTableCellHorizontalAlignment.Justify,
+                Vertical = DotVerticalAlignment.Bottom
+            },
+
+            LineAlignment = DotHorizontalAlignment.Center
         };
 
         Snapshot.Match(

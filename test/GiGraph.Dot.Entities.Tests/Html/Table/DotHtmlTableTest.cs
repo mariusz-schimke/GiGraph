@@ -30,8 +30,16 @@ public class DotHtmlTableTest
 
             Borders = DotHtmlTableBorders.Vertical,
 
-            HorizontalAlignment = DotHorizontalAlignment.Right,
-            VerticalAlignment = DotVerticalAlignment.Top,
+            ColumnFormat = "column format",
+            RowFormat = "row format",
+
+            PortName = "port name",
+
+            Alignment =
+            {
+                Horizontal = DotHorizontalAlignment.Right,
+                Vertical = DotVerticalAlignment.Top
+            },
 
             Style =
             {
@@ -48,7 +56,7 @@ public class DotHtmlTableTest
             {
                 Height = 10,
                 Width = 11,
-                FixedSize = false
+                Fixed = false
             },
 
             Hyperlink =
@@ -57,12 +65,7 @@ public class DotHtmlTableTest
                 Tooltip = "Tooltip",
                 Href = "https://www.google.pl",
                 Target = "_blank"
-            },
-
-            ColumnFormat = "column format",
-            RowFormat = "row format",
-
-            PortName = "port name"
+            }
         };
 
         Snapshot.Match(

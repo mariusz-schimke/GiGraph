@@ -1,4 +1,3 @@
-using GiGraph.Dot.Types.Alignment;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Html.Table;
 
@@ -19,12 +18,6 @@ public interface IDotHtmlTableTableCellCommonAttributes
     ///     to the object.
     /// </summary>
     string? PortName { get; set; }
-
-    /// <summary>
-    ///     Specifies vertical placement. When an object is allocated more space than required, this value determines where the extra
-    ///     space is placed above and below the object. Default: <see cref="DotVerticalAlignment.Center"/>.
-    /// </summary>
-    DotVerticalAlignment? VerticalAlignment { get; set; }
 
     /// <summary>
     ///     Specifies the space, in points, between a cell's border and its content. The default is 2. The maximum value is 255.
