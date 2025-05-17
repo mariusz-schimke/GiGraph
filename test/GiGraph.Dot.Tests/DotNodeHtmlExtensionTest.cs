@@ -31,4 +31,40 @@ public class DotNodeHtmlExtensionTest
             "graph_with_plain_html_node_from_html_entity"
         );
     }
+
+    [Fact]
+    public void converts_node_to_plain_html_node_from_html_entity_builder()
+    {
+        var graph = new DotGraph();
+        graph.Nodes.Add("node1").SetHtmlAsLabel(builder => builder.AppendTable(null));
+
+        Snapshot.Match(
+            graph.ToDot(),
+            "graph_with_plain_html_node_from_html_entity_builder"
+        );
+    }
+
+    [Fact]
+    public void converts_node_to_plain_html_node_from_table()
+    {
+        var graph = new DotGraph();
+        graph.Nodes.Add("node1").SetHtmlTableAsLabel([]);
+
+        Snapshot.Match(
+            graph.ToDot(),
+            "graph_with_plain_html_node_from_table"
+        );
+    }
+
+    [Fact]
+    public void converts_node_to_plain_html_node_from_table_builder()
+    {
+        var graph = new DotGraph();
+        graph.Nodes.Add("node1").SetHtmlTableAsLabel(buildTable: null);
+
+        Snapshot.Match(
+            graph.ToDot(),
+            "graph_with_plain_html_node_from_table_builder"
+        );
+    }
 }
