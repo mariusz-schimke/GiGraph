@@ -1,5 +1,7 @@
+using System.Drawing;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
+using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Nodes.Style;
 using GiGraph.Dot.Types.Styling;
 using Snapshooter.Xunit;
@@ -89,5 +91,18 @@ public class DotNodeStyleAttributeOptionsTest
         Assert.Equal(DotBorderStyle.Dashed, node.Style.BorderStyle);
         Assert.Equal(DotBorderWeight.Bold, node.Style.BorderWeight);
         Assert.Equal(2, node.Style.BorderWidth);
+    }
+
+    [Fact]
+    public void border_setter_sets_all_specified_attributes()
+    {
+        var graph = new DotGraph();
+        var node = graph.Nodes.Add("n1");
+        node.Style.SetBorder(DotBorderStyle.Dashed, DotBorderWeight.Bold, 2, Color.Blue);
+
+        Assert.Equal(DotBorderStyle.Dashed, node.Style.BorderStyle);
+        Assert.Equal(DotBorderWeight.Bold, node.Style.BorderWeight);
+        Assert.Equal(2, node.Style.BorderWidth);
+        Assert.Equal(Color.Blue, ((DotColor?) node.Style.Color)!.Color);
     }
 }
