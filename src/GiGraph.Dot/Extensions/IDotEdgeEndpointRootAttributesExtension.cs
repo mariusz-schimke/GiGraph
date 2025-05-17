@@ -26,7 +26,12 @@ public static class IDotEdgeEndpointRootAttributesExtension
     /// <param name="visibleParts">
     ///     Determines whether and how to clip the shape, leaving visible only the part to the left or to the right of the edge.
     /// </param>
-    public static void SetArrowhead(this IDotEdgeEndpointRootAttributes attributes, DotArrowheadShape shape, bool filled = true, DotArrowheadParts visibleParts = DotArrowheadParts.Both)
+    public static void SetArrowhead(
+        this IDotEdgeEndpointRootAttributes attributes,
+        DotArrowheadShape shape = DotArrowheadShape.Normal,
+        bool filled = true,
+        DotArrowheadParts visibleParts = DotArrowheadParts.Both
+    )
     {
         attributes.Arrowhead = new DotArrowhead(shape, filled, visibleParts);
     }
@@ -49,7 +54,11 @@ public static class IDotEdgeEndpointRootAttributesExtension
     /// <param name="visibleParts">
     ///     Determines whether and how to clip the shape, leaving visible only the part to the left or to the right of the edge.
     /// </param>
-    public static void SetEmptyArrowhead(this IDotEdgeEndpointRootAttributes attributes, DotArrowheadShape shape, DotArrowheadParts visibleParts = DotArrowheadParts.Both)
+    public static void SetEmptyArrowhead(
+        this IDotEdgeEndpointRootAttributes attributes,
+        DotArrowheadShape shape = DotArrowheadShape.Normal,
+        DotArrowheadParts visibleParts = DotArrowheadParts.Both
+    )
     {
         attributes.SetArrowhead(shape, filled: false, visibleParts);
     }

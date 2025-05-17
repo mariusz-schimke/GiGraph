@@ -66,14 +66,6 @@ public class DotArrowhead : DotArrowheadDefinition
     }
 
     /// <summary>
-    ///     Creates a filled arrowhead with the <see cref="DotArrowheadShape.Normal"/> shape.
-    /// </summary>
-    /// <param name="visibleParts">
-    ///     Determines whether and how to clip the shape, leaving visible only the part to the left or to the right of the edge.
-    /// </param>
-    public static DotArrowhead Filled(DotArrowheadParts visibleParts = DotArrowheadParts.Both) => Filled(DotArrowheadShape.Normal, visibleParts);
-
-    /// <summary>
     ///     Creates a filled arrowhead with the specified shape.
     /// </summary>
     /// <param name="shape">
@@ -82,15 +74,7 @@ public class DotArrowhead : DotArrowheadDefinition
     /// <param name="visibleParts">
     ///     Determines whether and how to clip the shape, leaving visible only the part to the left or to the right of the edge.
     /// </param>
-    public static DotArrowhead Filled(DotArrowheadShape shape, DotArrowheadParts visibleParts = DotArrowheadParts.Both) => new(shape, filled: true, visibleParts);
-
-    /// <summary>
-    ///     Creates a non-filled arrowhead with the <see cref="DotArrowheadShape.Normal"/> shape.
-    /// </summary>
-    /// <param name="visibleParts">
-    ///     Determines whether and how to clip the shape, leaving visible only the part to the left or to the right of the edge.
-    /// </param>
-    public static DotArrowhead Empty(DotArrowheadParts visibleParts = DotArrowheadParts.Both) => Empty(DotArrowheadShape.Normal, visibleParts);
+    public static DotArrowhead Filled(DotArrowheadShape shape = DotArrowheadShape.Normal, DotArrowheadParts visibleParts = DotArrowheadParts.Both) => new(shape, filled: true, visibleParts);
 
     /// <summary>
     ///     Creates a non-filled arrowhead with the specified shape.
@@ -101,7 +85,7 @@ public class DotArrowhead : DotArrowheadDefinition
     /// <param name="visibleParts">
     ///     Determines whether and how to clip the shape, leaving visible only the part to the left or to the right of the edge.
     /// </param>
-    public static DotArrowhead Empty(DotArrowheadShape shape, DotArrowheadParts visibleParts = DotArrowheadParts.Both) => new(shape, filled: false, visibleParts);
+    public static DotArrowhead Empty(DotArrowheadShape shape = DotArrowheadShape.Normal, DotArrowheadParts visibleParts = DotArrowheadParts.Both) => new(shape, filled: false, visibleParts);
 
     [return: NotNullIfNotNull(nameof(shape))]
     public static implicit operator DotArrowhead?(DotArrowheadShape? shape) => shape.HasValue ? new DotArrowhead(shape.Value) : null;
