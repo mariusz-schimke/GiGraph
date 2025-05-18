@@ -28,7 +28,7 @@ public partial class DotEdgeStyleAttributes : DotEntityStyleAttributesWithMetada
     public virtual DotLineStyle LineStyle
     {
         get => this.GetPartialStyleOption<DotLineStyle, DotStyles>();
-        set => this.SetPartialStyleOption(value);
+        set => SetPartialStyleOption(value);
     }
 
     /// <summary>
@@ -37,7 +37,7 @@ public partial class DotEdgeStyleAttributes : DotEntityStyleAttributesWithMetada
     public virtual DotLineWeight LineWeight
     {
         get => this.GetPartialStyleOption<DotLineWeight, DotStyles>();
-        set => this.SetPartialStyleOption(value);
+        set => SetPartialStyleOption(value);
     }
 
     /// <summary>
@@ -46,7 +46,7 @@ public partial class DotEdgeStyleAttributes : DotEntityStyleAttributesWithMetada
     public virtual bool Invisible
     {
         get => this.HasStyleOption(DotStyles.Invisible);
-        set => this.SetStyleOption(DotStyles.Invisible, value);
+        set => SetStyleOption(DotStyles.Invisible, value);
     }
 
     /// <inheritdoc cref="IDotEdgeStyleAttributes.LineColor"/>

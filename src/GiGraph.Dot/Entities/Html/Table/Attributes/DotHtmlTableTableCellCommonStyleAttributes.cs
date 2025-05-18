@@ -2,10 +2,10 @@
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Html.Attributes.Collections;
-using GiGraph.Dot.Entities.Html.Rule;
 using GiGraph.Dot.Entities.Qualities;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Colors;
+using GiGraph.Dot.Types.EnumHelpers;
 using GiGraph.Dot.Types.Html.Table;
 
 namespace GiGraph.Dot.Entities.Html.Table.Attributes;
@@ -21,25 +21,21 @@ public abstract partial class DotHtmlTableTableCellCommonStyleAttributes<TIHtmlT
     protected const string StyleAttributeKey = "style";
 
     /// <summary>
-    ///     True indicates that the element will have rounded corners. This probably works best if the outmost cells have no borders, or
-    ///     their cell spacing is sufficiently large. If it is desirable to have borders around the cells, use HR (
-    ///     <see cref="DotHtmlHorizontalRule"/>) and VR (<see cref="DotHtmlVerticalRule"/>) elements, or the column and row formatting
-    ///     attributes of the table.
+    ///     Gets or sets a fill style.
     /// </summary>
-    public virtual bool RoundedCorners
+    public virtual DotHtmlTableFillStyle FillStyle
     {
-        get => this.HasStyleOption(DotHtmlTableStyles.Rounded);
-        set => this.SetStyleOption(DotHtmlTableStyles.Rounded, value);
+        get => this.GetPartialStyleOption<DotHtmlTableFillStyle, DotHtmlTableStyles>();
+        set => SetPartialStyleOption(value);
     }
 
     /// <summary>
-    ///     True indicates that the element will have a radial gradient fill if a <see cref="DotGradientColor"/> is specified for
-    ///     <see cref="BackgroundColor"/>.
+    ///     Gets or sets a corner style.
     /// </summary>
-    public virtual bool RadialFill
+    public virtual DotHtmlTableCornerStyle CornerStyle
     {
-        get => this.HasStyleOption(DotHtmlTableStyles.Radial);
-        set => this.SetStyleOption(DotHtmlTableStyles.Radial, value);
+        get => this.GetPartialStyleOption<DotHtmlTableCornerStyle, DotHtmlTableStyles>();
+        set => SetPartialStyleOption(value);
     }
 
     protected virtual DotHtmlTableStyles? Style
@@ -87,25 +83,31 @@ public abstract partial class DotHtmlTableTableCellCommonStyleAttributes<TIHtmlT
     /// </param>
     public virtual void SetStyleOptions(DotHtmlTableStyleOptions options)
     {
-        SetStyleOptions(options.RoundedCorners, options.RadialFill);
+        SetStyleOptions(options.FillStyle, options.CornerStyle);
     }
 
     /// <summary>
     ///     Applies the specified style options to the element.
     /// </summary>
-    /// <param name="roundedCorners">
-    ///     True indicates that the element will have rounded corners. This probably works best if the outmost cells have no borders, or
-    ///     their cell spacing is sufficiently large. If it is desirable to have borders around the cells, use HR (
-    ///     <see cref="DotHtmlHorizontalRule"/>) and VR (<see cref="DotHtmlVerticalRule"/>) elements, or the column and row formatting
-    ///     attributes of the table.
+    /// <param name="fillStyle">
+    ///     Specifies a fill style.
     /// </param>
-    /// <param name="radialFill">
-    ///     True indicates that the element will have a radial gradient fill if a <see cref="DotGradientColor"/> is specified for
-    ///     <see cref="BackgroundColor"/>.
+    /// <param name="cornerStyle">
+    ///     Specifies a corner style.
     /// </param>
-    public virtual void SetStyleOptions(bool roundedCorners = false, bool radialFill = false)
+    public virtual void SetStyleOptions(DotHtmlTableFillStyle fillStyle = DotHtmlTableFillStyle.Regular, DotHtmlTableCornerStyle cornerStyle = DotHtmlTableCornerStyle.Sharp)
     {
-        RoundedCorners = roundedCorners;
-        RadialFill = radialFill;
+        FillStyle = fillStyle;
+        CornerStyle = cornerStyle;
+    }
+
+    protected virtual void SetPartialStyleOption<TPartialStyle>(TPartialStyle option)
+        where TPartialStyle : struct, Enum
+    {
+        var style = Style.GetValueOrDefault();
+        style = DotPartialEnumMapper.ReplacePartialFlags(option, style);
+
+        // since the style option may be set through helper methods, setting regular fill style would implicitly cause an empty style attribute to be rendered, which makes no sense
+        Style = DotEnumHelper.IsDefault(style) ? null : style;
     }
 }

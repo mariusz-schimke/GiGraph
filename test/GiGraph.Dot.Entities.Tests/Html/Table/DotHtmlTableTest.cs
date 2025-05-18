@@ -48,8 +48,8 @@ public class DotHtmlTableTest
                 BorderColor = Color.Blue,
                 BackgroundColor = new DotGradientColor(Color.Red, Color.Blue),
                 GradientFillAngle = 15,
-                RadialFill = true,
-                RoundedCorners = true
+                FillStyle = DotHtmlTableFillStyle.Radial,
+                CornerStyle = DotHtmlTableCornerStyle.Rounded
             },
 
             Size =
