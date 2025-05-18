@@ -82,17 +82,6 @@ public abstract partial class DotHtmlTableTableCellCommonStyleAttributes<TIHtmlT
     /// <summary>
     ///     Applies the specified style options to the element.
     /// </summary>
-    /// <param name="options">
-    ///     The options to apply.
-    /// </param>
-    public virtual void SetStyleOptions(DotHtmlTableStyleOptions options)
-    {
-        SetStyleOptions(options.RoundedCorners, options.RadialFill);
-    }
-
-    /// <summary>
-    ///     Applies the specified style options to the element.
-    /// </summary>
     /// <param name="roundedCorners">
     ///     True indicates that the element will have rounded corners. This probably works best if the outmost cells have no borders, or
     ///     their cell spacing is sufficiently large. If it is desirable to have borders around the cells, use HR (
