@@ -31,9 +31,9 @@ public partial class DotEdgeLayoutAttributes : DotEntityAttributesWithMetadata<I
     [DotAttributeKey(DotAttributeKeys.MinLen)]
     public virtual partial int? MinLength { get; set; }
 
-    /// <inheritdoc cref="IDotEdgeLayoutAttributes.EnableLabelFloating"/>
+    /// <inheritdoc cref="IDotEdgeLayoutAttributes.AllowLabelFloating"/>
     [DotAttributeKey(DotAttributeKeys.LabelFloat)]
-    public virtual partial bool? EnableLabelFloating { get; set; }
+    public virtual partial bool? AllowLabelFloating { get; set; }
 
     /// <inheritdoc cref="IDotEdgeLayoutAttributes.IncludeInNodeRanking"/>
     [DotAttributeKey(DotAttributeKeys.Constraint)]

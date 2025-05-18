@@ -6,7 +6,7 @@ public interface IDotEdgeLayoutAttributes
     ///     If true, allows edge labels to be less constrained in position. In particular, it may appear on top of other edges. Default:
     ///     false.
     /// </summary>
-    bool? EnableLabelFloating { get; set; }
+    bool? AllowLabelFloating { get; set; }
 
     /// <summary>
     ///     Minimum edge length (rank difference between head and tail). Dot only, default: 1, minimum: 0.
