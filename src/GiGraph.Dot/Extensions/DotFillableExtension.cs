@@ -15,11 +15,12 @@ public static class DotFillableExtension
     /// <param name="color">
     ///     The color to use.
     /// </param>
-    public static void SetPlainFill<T>(this T @this, DotColor color)
+    public static T SetPlainFill<T>(this T @this, DotColor color)
         where T : IDotFillable
     {
         @this.SetFillStyle(DotFillStyle.Regular);
         @this.SetFillColor(color);
+        return @this;
     }
 
     /// <summary>
@@ -34,19 +35,17 @@ public static class DotFillableExtension
     /// <param name="angle">
     ///     The angle of the fill.
     /// </param>
-    public static void SetGradientFill<T>(this T @this, DotGradientColor color, int? angle = null)
-        where T : IDotFillable
-    {
+    public static T SetGradientFill<T>(this T @this, DotGradientColor color, int? angle = null)
+        where T : IDotFillable =>
         @this.SetGradientFill(color, angle, radial: false);
-    }
 
     /// <summary>
     ///     <para>
     ///         Sets a gradient fill.
     ///     </para>
     ///     <para>
-    ///         Note that if at least one weighted color is specified (see <see cref="DotWeightedColor" />), a degenerate linear gradient
-    ///         fill is done. This essentially does a fill using two colors, with the <see cref="DotWeightedColor.Weight" /> specifying
+    ///         Note that if at least one weighted color is specified (see <see cref="DotWeightedColor"/>), a degenerate linear gradient
+    ///         fill is done. This essentially does a fill using two colors, with the <see cref="DotWeightedColor.Weight"/> specifying
     ///         how much of region is filled with each color.
     ///     </para>
     /// </summary>
@@ -62,11 +61,9 @@ public static class DotFillableExtension
     /// <param name="angle">
     ///     The angle of the fill.
     /// </param>
-    public static void SetGradientFill<T>(this T @this, DotColor startColor, DotColor endColor, int? angle = null)
-        where T : IDotFillable
-    {
+    public static T SetGradientFill<T>(this T @this, DotColor startColor, DotColor endColor, int? angle = null)
+        where T : IDotFillable =>
         @this.SetGradientFill(new DotGradientColor(startColor, endColor), angle);
-    }
 
     /// <summary>
     ///     Sets a radial gradient fill.
@@ -80,11 +77,9 @@ public static class DotFillableExtension
     /// <param name="angle">
     ///     The angle of the fill.
     /// </param>
-    public static void SetRadialGradientFill<T>(this T @this, DotGradientColor color, int? angle = null)
-        where T : IDotFillable
-    {
+    public static T SetRadialGradientFill<T>(this T @this, DotGradientColor color, int? angle = null)
+        where T : IDotFillable =>
         @this.SetGradientFill(color, angle, radial: true);
-    }
 
     /// <summary>
     ///     Sets a radial gradient fill.
@@ -101,17 +96,16 @@ public static class DotFillableExtension
     /// <param name="angle">
     ///     The angle of the fill.
     /// </param>
-    public static void SetRadialGradientFill<T>(this T @this, DotColor startColor, DotColor endColor, int? angle = null)
-        where T : IDotFillable
-    {
+    public static T SetRadialGradientFill<T>(this T @this, DotColor startColor, DotColor endColor, int? angle = null)
+        where T : IDotFillable =>
         @this.SetRadialGradientFill(new DotGradientColor(startColor, endColor), angle);
-    }
 
-    private static void SetGradientFill<T>(this T @this, DotGradientColor color, int? angle, bool radial)
+    private static T SetGradientFill<T>(this T @this, DotGradientColor color, int? angle, bool radial)
         where T : IDotFillable
     {
         @this.SetFillStyle(radial ? DotFillStyle.Radial : DotFillStyle.Regular);
         @this.SetFillColor(color);
         @this.SetGradientFillAngle(angle);
+        return @this;
     }
 }

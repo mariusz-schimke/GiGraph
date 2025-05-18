@@ -23,9 +23,10 @@ public partial class DotGraphLayoutAttributes
     ///     Packing may be enabled by calling this method or <see cref="SetPackingMargin"/>. Only one of them should be used, as both of
     ///     them write the same graph attribute.
     /// </remarks>
-    public void SetPackingEnabled(bool enabled = true)
+    public DotGraphLayoutAttributes SetPackingEnabled(bool enabled = true)
     {
         Packing = new DotPackingEnabled(enabled);
+        return this;
     }
 
     /// <summary>
@@ -46,8 +47,9 @@ public partial class DotGraphLayoutAttributes
     ///     Packing may be enabled by calling this method or <see cref="SetPackingEnabled"/>. Only one of them should be used, as both of
     ///     them write the same graph attribute.
     /// </remarks>
-    public void SetPackingMargin(int margin)
+    public DotGraphLayoutAttributes SetPackingMargin(int margin)
     {
         Packing = new DotPackingMargin(margin);
+        return this;
     }
 }

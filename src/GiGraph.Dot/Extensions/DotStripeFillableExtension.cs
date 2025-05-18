@@ -17,11 +17,12 @@ public static class DotStripeFillableExtension
     ///     The colors to use for consecutive stripes. Proportions for individual stripes may be specified optionally by using a
     ///     <see cref="DotWeightedColor"/> for them.
     /// </param>
-    public static void SetStripedFill<T>(this T @this, DotMulticolor colors)
+    public static T SetStripedFill<T>(this T @this, DotMulticolor colors)
         where T : IDotFillable, IDotStripeFillable
     {
         @this.SetFillStyle(DotFillStyle.Striped);
         @this.SetFillColor(colors);
+        return @this;
     }
 
     /// <summary>
@@ -34,9 +35,7 @@ public static class DotStripeFillableExtension
     ///     The colors to use for consecutive stripes. Proportions for individual stripes may be specified optionally by using a
     ///     <see cref="DotWeightedColor"/> for them.
     /// </param>
-    public static void SetStripedFill<T>(this T @this, params DotColor[] colors)
-        where T : IDotFillable, IDotStripeFillable
-    {
+    public static T SetStripedFill<T>(this T @this, params DotColor[] colors)
+        where T : IDotFillable, IDotStripeFillable =>
         @this.SetStripedFill(new DotMulticolor(colors));
-    }
 }

@@ -48,11 +48,11 @@ public partial class DotGraphFontAttributes : DotFontAttributes<IDotGraphFontAtt
     /// <param name="convention">
     ///     The font convention to use.
     /// </param>
-    public virtual void Set(string? name = null, double? size = null, DotColor? color = null, string? directories = null, DotFontConvention? convention = null)
+    public virtual DotGraphFontAttributes Set(string? name = null, double? size = null, DotColor? color = null, string? directories = null, DotFontConvention? convention = null)
     {
-        base.Set(name, size, color);
         Directories = directories;
         Convention = convention;
+        return base.Set(name, size, color);
     }
 
     /// <summary>
@@ -61,10 +61,10 @@ public partial class DotGraphFontAttributes : DotFontAttributes<IDotGraphFontAtt
     /// <param name="attributes">
     ///     The attributes to set.
     /// </param>
-    public virtual void Set(DotGraphFont attributes)
+    public virtual DotGraphFontAttributes Set(DotGraphFont attributes)
     {
-        base.Set(attributes);
         Directories = attributes.Directories;
         Convention = attributes.Convention;
+        return base.Set(attributes);
     }
 }

@@ -23,9 +23,10 @@ public partial class DotGraphLayoutAttributes
     /// <remarks>
     ///     Only granularity-based or array packing mode can be set at once.
     /// </remarks>
-    public void SetArrayPackingMode(DotArrayPackingOptions? options = null, int? rankCount = null)
+    public DotGraphLayoutAttributes SetArrayPackingMode(DotArrayPackingOptions? options = null, int? rankCount = null)
     {
         PackingMode = new DotArrayPackingMode(options, rankCount);
+        return this;
     }
 
     /// <summary>
@@ -44,9 +45,10 @@ public partial class DotGraphLayoutAttributes
     /// <remarks>
     ///     Only granularity-based or array packing mode can be set at once.
     /// </remarks>
-    public void SetArrayPackingMode(int rankCount)
+    public DotGraphLayoutAttributes SetArrayPackingMode(int rankCount)
     {
         PackingMode = new DotArrayPackingMode(rankCount);
+        return this;
     }
 
     /// <summary>
@@ -65,8 +67,9 @@ public partial class DotGraphLayoutAttributes
     /// <remarks>
     ///     Only granularity-based or array packing mode can be set at once.
     /// </remarks>
-    public void SetGranularityPackingMode(DotPackingGranularity granularity)
+    public DotGraphLayoutAttributes SetGranularityPackingMode(DotPackingGranularity granularity)
     {
         PackingMode = new DotGranularityPackingMode(granularity);
+        return this;
     }
 }

@@ -39,11 +39,12 @@ public partial class DotHtmlFont : IDotHtmlFontAttributes
     /// <param name="color">
     ///     Font color.
     /// </param>
-    public virtual void Set(string? name = null, double? size = null, DotColor? color = null)
+    public virtual DotHtmlFont Set(string? name = null, double? size = null, DotColor? color = null)
     {
         Size = size;
         Color = color;
         Name = name;
+        return this;
     }
 
     /// <summary>
@@ -52,8 +53,5 @@ public partial class DotHtmlFont : IDotHtmlFontAttributes
     /// <param name="attributes">
     ///     The attributes to set.
     /// </param>
-    public virtual void Set(DotFont attributes)
-    {
-        Set(attributes.Name, attributes.Size, attributes.Color);
-    }
+    public virtual DotHtmlFont Set(DotFont attributes) => Set(attributes.Name, attributes.Size, attributes.Color);
 }

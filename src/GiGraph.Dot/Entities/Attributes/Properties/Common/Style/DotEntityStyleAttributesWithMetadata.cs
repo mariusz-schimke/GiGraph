@@ -49,9 +49,10 @@ public abstract class DotEntityStyleAttributesWithMetadata<TIEntityStyleAttribut
     ///     and needs to be restored to the default value for the current element. To check if the default style is set for the current
     ///     element, use the <see cref="HasDefaultStyleOptions"/> method.
     /// </summary>
-    public virtual void SetDefaultStyleOptions()
+    public virtual TEntityStyleAttributeProperties SetDefaultStyleOptions()
     {
         Style = DotStyles.Default;
+        return (TEntityStyleAttributeProperties) this;
     }
 
     protected virtual void SetStyleOption(DotStyles option, bool value)

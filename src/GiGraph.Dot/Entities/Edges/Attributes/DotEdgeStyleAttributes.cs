@@ -78,9 +78,10 @@ public partial class DotEdgeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// <param name="scale">
     ///     The multiplicative scale factor (default: 1.0, minimum: 0.0).
     /// </param>
-    public virtual void SetArrowheadStyle(DotColorDefinition? fillColor, double? scale)
+    public virtual DotEdgeStyleAttributes SetArrowheadStyle(DotColorDefinition? fillColor, double? scale)
     {
         ArrowheadFillColor = fillColor;
         ArrowheadScale = scale;
+        return this;
     }
 }

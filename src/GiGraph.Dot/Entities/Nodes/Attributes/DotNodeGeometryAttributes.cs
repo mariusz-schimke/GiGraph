@@ -58,13 +58,14 @@ public partial class DotNodeGeometryAttributes : DotEntityAttributesWithMetadata
     /// <param name="distortion">
     ///     The distortion factor.
     /// </param>
-    public virtual void Set(int? sides = null, bool? regular = null, double? rotation = null, double? skew = null, double? distortion = null)
+    public virtual DotNodeGeometryAttributes Set(int? sides = null, bool? regular = null, double? rotation = null, double? skew = null, double? distortion = null)
     {
         Sides = sides;
         Regular = regular;
         Rotation = rotation;
         Skew = skew;
         Distortion = distortion;
+        return this;
     }
 
     /// <summary>
@@ -73,8 +74,5 @@ public partial class DotNodeGeometryAttributes : DotEntityAttributesWithMetadata
     /// <param name="attributes">
     ///     The attributes to set.
     /// </param>
-    public virtual void Set(DotPolygon attributes)
-    {
-        Set(attributes.Sides, attributes.Regular, attributes.Rotation, attributes.Skew, attributes.Distortion);
-    }
+    public virtual DotNodeGeometryAttributes Set(DotPolygon attributes) => Set(attributes.Sides, attributes.Regular, attributes.Rotation, attributes.Skew, attributes.Distortion);
 }

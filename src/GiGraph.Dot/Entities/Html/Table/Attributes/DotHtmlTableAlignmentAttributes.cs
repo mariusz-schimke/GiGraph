@@ -24,8 +24,5 @@ public class DotHtmlTableAlignmentAttributes : DotHtmlTableTableCellCommonAlignm
     /// <param name="alignment">
     ///     The alignment to set.
     /// </param>
-    public virtual void Set(DotAlignmentOptions alignment)
-    {
-        base.Set(alignment);
-    }
+    public virtual DotHtmlTableAlignmentAttributes Set(DotAlignmentOptions alignment) => base.Set(alignment);
 }

@@ -84,10 +84,11 @@ public abstract partial class DotHtmlTableTableCellCommonStyleAttributes<TIHtmlT
     /// <param name="width">
     ///     The width to set.
     /// </param>
-    public virtual void SetBorderStyle(DotColor? color, int? width)
+    public virtual THtmlTableTableCellStyleAttributeProperties SetBorderStyle(DotColor? color, int? width)
     {
         BorderColor = color;
         BorderWidth = width;
+        return (THtmlTableTableCellStyleAttributeProperties) this;
     }
 
     protected virtual void SetPartialStyleOption<TPartialStyle>(TPartialStyle option)

@@ -35,9 +35,9 @@ public partial class DotHtmlTableStyleAttributes : DotHtmlTableTableCellCommonSt
     /// <param name="cellBorderWidth">
     ///     The cell border width to set.
     /// </param>
-    public virtual void SetBorderStyle(DotColor? color, int? width, int? cellBorderWidth)
+    public virtual DotHtmlTableStyleAttributes SetBorderStyle(DotColor? color, int? width, int? cellBorderWidth)
     {
         CellBorderWidth = cellBorderWidth;
-        SetBorderStyle(color, width);
+        return SetBorderStyle(color, width);
     }
 }

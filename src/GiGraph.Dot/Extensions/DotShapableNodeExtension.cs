@@ -30,7 +30,7 @@ public static class DotShapableNodeExtension
     ///     Distortion factor (default: 0, minimum: -100). Positive values cause top part to be larger than bottom; negative values do
     ///     the opposite.
     /// </param>
-    public static void SetPolygonalShape<T>(
+    public static T SetPolygonalShape<T>(
         this T @this,
         int? sides = null,
         bool? regular = null,
@@ -38,10 +38,8 @@ public static class DotShapableNodeExtension
         double? skew = null,
         double? distortion = null
     )
-        where T : IDotShapableNode
-    {
+        where T : IDotShapableNode =>
         @this.SetPolygonalShape(new DotPolygon(sides, regular, rotation, skew, distortion));
-    }
 
     /// <summary>
     ///     Applies a polygonal shape.
@@ -52,10 +50,11 @@ public static class DotShapableNodeExtension
     /// <param name="attributes">
     ///     The polygon attributes to set.
     /// </param>
-    public static void SetPolygonalShape<T>(this T @this, DotPolygon attributes)
+    public static T SetPolygonalShape<T>(this T @this, DotPolygon attributes)
         where T : IDotShapableNode
     {
         @this.SetShape(DotNodeShape.Polygon);
         @this.SetGeometry(attributes);
+        return @this;
     }
 }

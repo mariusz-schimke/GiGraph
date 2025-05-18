@@ -6,16 +6,14 @@ using GiGraph.Dot.Types.Fonts;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common.Font;
 
-public abstract partial class DotFontAttributes<TIEntityFontAttributes, TEntityFontAttributes>
-    : DotEntityAttributesWithMetadata<TIEntityFontAttributes, TEntityFontAttributes>, IDotFontAttributes
+public abstract partial class DotFontAttributes<TIEntityFontAttributes, TEntityFontAttributes>(
+    DotAttributeCollection attributes,
+    Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup
+)
+    : DotEntityAttributesWithMetadata<TIEntityFontAttributes, TEntityFontAttributes>(attributes, attributeKeyLookup), IDotFontAttributes
     where TIEntityFontAttributes : IDotFontAttributes
     where TEntityFontAttributes : DotFontAttributes<TIEntityFontAttributes, TEntityFontAttributes>, TIEntityFontAttributes
 {
-    protected DotFontAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
-        : base(attributes, attributeKeyLookup)
-    {
-    }
-
     /// <inheritdoc cref="IDotFontAttributes.Name"/>
     [DotAttributeKey(DotAttributeKeys.FontName)]
     public virtual partial string? Name { get; set; }
@@ -40,11 +38,12 @@ public abstract partial class DotFontAttributes<TIEntityFontAttributes, TEntityF
     /// <param name="color">
     ///     Font color.
     /// </param>
-    public virtual void Set(string? name = null, double? size = null, DotColor? color = null)
+    public virtual TEntityFontAttributes Set(string? name = null, double? size = null, DotColor? color = null)
     {
         Size = size;
         Color = color;
         Name = name;
+        return (TEntityFontAttributes) this;
     }
 
     /// <summary>
@@ -53,8 +52,5 @@ public abstract partial class DotFontAttributes<TIEntityFontAttributes, TEntityF
     /// <param name="attributes">
     ///     The attributes to set.
     /// </param>
-    public virtual void Set(DotFont attributes)
-    {
-        Set(attributes.Name, attributes.Size, attributes.Color);
-    }
+    public virtual TEntityFontAttributes Set(DotFont attributes) => Set(attributes.Name, attributes.Size, attributes.Color);
 }

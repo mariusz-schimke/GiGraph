@@ -32,10 +32,11 @@ public abstract partial class DotHtmlTableTableCellCommonAlignmentAttributes<TIH
     /// <param name="vertical">
     ///     The vertical alignment to set.
     /// </param>
-    public virtual void Set(THorizontalAlignment? horizontal, DotVerticalAlignment? vertical)
+    public virtual THtmlTableTableCellAlignmentAttributeProperties Set(THorizontalAlignment? horizontal, DotVerticalAlignment? vertical)
     {
         Horizontal = horizontal;
         Vertical = vertical;
+        return (THtmlTableTableCellAlignmentAttributeProperties) this;
     }
 
     /// <summary>
@@ -44,14 +45,10 @@ public abstract partial class DotHtmlTableTableCellCommonAlignmentAttributes<TIH
     /// <param name="alignment">
     ///     The alignment to set.
     /// </param>
-    public virtual void Set(DotAlignment alignment)
-    {
+    public virtual THtmlTableTableCellAlignmentAttributeProperties Set(DotAlignment alignment) =>
         Set(new DotAlignmentOptions<THorizontalAlignment, DotVerticalAlignment>(alignment));
-    }
 
-    protected virtual void Set<TAlignmentOptions>(TAlignmentOptions alignment)
-        where TAlignmentOptions : DotAlignmentOptions<THorizontalAlignment, DotVerticalAlignment>
-    {
+    protected virtual THtmlTableTableCellAlignmentAttributeProperties Set<TAlignmentOptions>(TAlignmentOptions alignment)
+        where TAlignmentOptions : DotAlignmentOptions<THorizontalAlignment, DotVerticalAlignment> =>
         Set(alignment.Horizontal, alignment.Vertical);
-    }
 }

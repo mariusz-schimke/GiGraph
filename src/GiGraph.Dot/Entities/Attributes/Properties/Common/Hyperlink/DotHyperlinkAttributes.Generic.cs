@@ -40,7 +40,7 @@ public abstract partial class DotHyperlinkAttributes<TIEntityHyperlinkAttributes
     /// <param name="url">
     ///     The URL of the hyperlink. Equivalent to <paramref name="href"/>.
     /// </param>
-    public virtual void Set(DotEscapeString? href = null, DotEscapeString? target = null, DotEscapeString? url = null)
+    public virtual TEntityHyperlinkAttributes Set(DotEscapeString? href = null, DotEscapeString? target = null, DotEscapeString? url = null)
     {
         // make sure the param order of this method is equivalent to the order of params in equivalent methods in descendants
         // because they are all available as overloads, and it would be misleading if their initial params didn't overlap
@@ -48,6 +48,8 @@ public abstract partial class DotHyperlinkAttributes<TIEntityHyperlinkAttributes
         Href = href;
         Target = target;
         Url = url;
+
+        return (TEntityHyperlinkAttributes) this;
     }
 
     /// <summary>
@@ -56,8 +58,5 @@ public abstract partial class DotHyperlinkAttributes<TIEntityHyperlinkAttributes
     /// <param name="attributes">
     ///     The attributes to set.
     /// </param>
-    public virtual void Set(DotHyperlink attributes)
-    {
-        Set(attributes.Href, attributes.Target, attributes.Url);
-    }
+    public virtual TEntityHyperlinkAttributes Set(DotHyperlink attributes) => Set(attributes.Href, attributes.Target, attributes.Url);
 }
