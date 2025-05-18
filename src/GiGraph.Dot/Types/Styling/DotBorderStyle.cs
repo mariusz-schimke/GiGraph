@@ -6,7 +6,9 @@ namespace GiGraph.Dot.Types.Styling;
 public enum DotBorderStyle
 {
     /// <summary>
-    ///     The default border style.
+    ///     A normal border style. Since this is not an explicit border style setting but rather expresses a lack of weight
+    ///     specification, the actual style displayed will be solid (default) or based on the global style options set for this element
+    ///     type.
     /// </summary>
     Default = DotStyles.Default,
 

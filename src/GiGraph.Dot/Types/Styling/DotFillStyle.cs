@@ -6,7 +6,8 @@
 public enum DotFillStyle
 {
     /// <summary>
-    ///     No fill.
+    ///     No fill. Since this is not an explicit fill style setting but rather expresses a lack of style specification, the actual
+    ///     style applied will be no fill (by default) or based on the global style options set for this element type.
     /// </summary>
     None = DotStyles.Default,
 

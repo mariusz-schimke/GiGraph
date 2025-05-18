@@ -6,7 +6,8 @@ namespace GiGraph.Dot.Types.Html.Table;
 public enum DotHtmlTableCornerStyle
 {
     /// <summary>
-    ///     The table will have sharp corners.
+    ///     A sharp corner style. Note that this is not an explicit corner style setting but rather expresses a lack of style
+    ///     specification, so the default style will be used (sharp).
     /// </summary>
     Sharp = DotHtmlTableStyles.Default,
 

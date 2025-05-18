@@ -74,14 +74,14 @@ public class DotClusterStyleAttributeOptionsTest
 
         Assert.Equal(DotClusterFillStyle.None, cluster.Style.FillStyle);
         Assert.Equal(DotBorderStyle.Default, cluster.Style.BorderStyle);
-        Assert.Equal(DotBorderWeight.Default, cluster.Style.BorderWeight);
+        Assert.Equal(DotBorderWeight.Normal, cluster.Style.BorderWeight);
         Assert.False(cluster.Style.Invisible);
 
         cluster.Style.RemoveStyleOptions();
 
         Assert.Equal(DotClusterFillStyle.None, cluster.Style.FillStyle);
         Assert.Equal(DotBorderStyle.Default, cluster.Style.BorderStyle);
-        Assert.Equal(DotBorderWeight.Default, cluster.Style.BorderWeight);
+        Assert.Equal(DotBorderWeight.Normal, cluster.Style.BorderWeight);
         Assert.False(cluster.Style.Invisible);
     }
 }

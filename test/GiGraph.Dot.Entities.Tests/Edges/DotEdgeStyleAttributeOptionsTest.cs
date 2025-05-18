@@ -69,13 +69,13 @@ public class DotEdgeStyleAttributeOptionsTest
         edge.Style.SetDefaultStyleOptions();
 
         Assert.Equal(DotLineStyle.Default, edge.Style.LineStyle);
-        Assert.Equal(DotLineWeight.Default, edge.Style.LineWeight);
+        Assert.Equal(DotLineWeight.Normal, edge.Style.LineWeight);
         Assert.False(edge.Style.Invisible);
 
         edge.Style.RemoveStyleOptions();
 
         Assert.Equal(DotLineStyle.Default, edge.Style.LineStyle);
-        Assert.Equal(DotLineWeight.Default, edge.Style.LineWeight);
+        Assert.Equal(DotLineWeight.Normal, edge.Style.LineWeight);
         Assert.False(edge.Style.Invisible);
     }
 }
