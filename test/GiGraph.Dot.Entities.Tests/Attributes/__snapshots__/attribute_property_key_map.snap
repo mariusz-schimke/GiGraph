@@ -58,7 +58,7 @@
     "Edge": "Layout.IncludeInNodeRanking: Boolean?"
   },
   "decorate": {
-    "Edge": "Style.DrawLabelConnector: Boolean?"
+    "Edge": "LabelOptions.LabelConnector: Boolean?"
   },
   "dir": {
     "Edge": "Directions: DotEdgeDirections?"
@@ -186,7 +186,7 @@
     "Edge": "EndpointLabels.Distance: Double?"
   },
   "labelfloat": {
-    "Edge": "Layout.EnableLabelFloating: Boolean?"
+    "Edge": "Layout.AllowLabelFloating: Boolean?"
   },
   "labelfontcolor": {
     "Edge": "EndpointLabels.Font.Color: DotColor"
