@@ -1,4 +1,5 @@
 using System.Drawing;
+using GiGraph.Dot.Entities.Clusters.Attributes;
 using GiGraph.Dot.Entities.Graphs;
 using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Types.Clusters.Style;
@@ -16,15 +17,16 @@ public partial class DotFillableExtensionTest
         var graph = new DotGraph();
 
         graph.Clusters
-            .Add(
-                "",
-                c =>
-                    c.Style.SetStyleOptions(DotClusterFillStyle.None, DotBorderStyle.Solid, DotBorderWeight.Bold, DotCornerStyle.Rounded, true)
-            )
+            .Add("", c => SetAllStyleOptions(c.Style))
             .Style
             .SetPlainFill(Color.Red);
 
-        graph.Clusters.Style.SetStyleOptions(DotClusterFillStyle.None, DotBorderStyle.Solid, DotBorderWeight.Bold, DotCornerStyle.Rounded, true);
+        graph.Clusters.Style.FillStyle = DotClusterFillStyle.None;
+        graph.Clusters.Style.BorderStyle = DotBorderStyle.Solid;
+        graph.Clusters.Style.BorderWeight = DotBorderWeight.Bold;
+        graph.Clusters.Style.CornerStyle = DotCornerStyle.Rounded;
+        graph.Clusters.Style.Invisible = true;
+
         graph.Clusters.Style.SetPlainFill(Color.Red);
 
         Snapshot.Match(graph.ToDot(), "gradient_fill_on_clusters_with_other_styles_set");
@@ -44,5 +46,14 @@ public partial class DotFillableExtensionTest
         var graph = new DotGraph();
         graph.Clusters.Style.SetPlainFill(Color.Red);
         Snapshot.Match(graph.ToDot(), "plain_color_fill_on_cluster_collection");
+    }
+
+    private void SetAllStyleOptions(DotClusterStyleAttributes clusterStyle, DotClusterFillStyle fillStyle = DotClusterFillStyle.None)
+    {
+        clusterStyle.FillStyle = fillStyle;
+        clusterStyle.BorderStyle = DotBorderStyle.Solid;
+        clusterStyle.BorderWeight = DotBorderWeight.Bold;
+        clusterStyle.CornerStyle = DotCornerStyle.Rounded;
+        clusterStyle.Invisible = true;
     }
 }
