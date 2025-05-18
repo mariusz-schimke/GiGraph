@@ -37,7 +37,7 @@ public class DotGraphFactory
                 sg.Nodes.Style.Color = Color.Chartreuse;
                 sg.Nodes.Label = "nodes_label";
 
-                sg.Edges.Style.Color = Color.Chocolate;
+                sg.Edges.Style.LineColor = Color.Chocolate;
                 sg.Edges.Label = "edges_label";
             }
         );
@@ -55,7 +55,7 @@ public class DotGraphFactory
                 cluster.Nodes.Style.Color = Color.Chartreuse;
                 cluster.Nodes.Label = "nodes label";
 
-                cluster.Edges.Style.Color = Color.Chocolate;
+                cluster.Edges.Style.LineColor = Color.Chocolate;
                 cluster.Edges.Label = "edges label";
             }
         );
@@ -66,7 +66,7 @@ public class DotGraphFactory
         graph.Nodes.Style.Color = Color.Red;
         graph.Nodes.Label = "node_label";
 
-        graph.Edges.Style.Color = Color.Blue;
+        graph.Edges.Style.LineColor = Color.Blue;
         graph.Edges.Label = "edge_label";
 
         graph.Nodes.Add("no_attributes");
@@ -96,7 +96,7 @@ public class DotGraphFactory
             edge =>
             {
                 edge.Tail.Endpoint.Port = new DotEndpointPort("port6", DotCompassPoint.East);
-                edge.Style.Color = Color.Gold;
+                edge.Style.LineColor = Color.Gold;
                 edge.Style.LineStyle = DotLineStyle.Dotted;
             }
         );
@@ -114,7 +114,7 @@ public class DotGraphFactory
             ["node1", "node2", "node3"],
             edge =>
             {
-                edge.Style.Color = Color.Beige;
+                edge.Style.LineColor = Color.Beige;
                 edge.Style.Invisible = true;
             }
         );
@@ -254,7 +254,7 @@ public class DotGraphFactory
                 edge.Tail.Endpoint.Annotation = "tail";
 
                 edge.Attributes.Annotation = "edge attributes";
-                edge.Style.Attributes.SetValue(a => a.Color, Color.Red).Annotation = "color";
+                edge.Style.Attributes.SetValue(a => a.LineColor, Color.Red).Annotation = "color";
             }
         );
 
@@ -270,7 +270,7 @@ public class DotGraphFactory
 
                 edge.Annotation = "edge sequence comment";
                 edge.Attributes.Annotation = "edge sequence attributes";
-                edge.Style.Attributes.SetValue(a => a.Color, Color.Red).Annotation = "color";
+                edge.Style.Attributes.SetValue(a => a.LineColor, Color.Red).Annotation = "color";
             }
         );
 

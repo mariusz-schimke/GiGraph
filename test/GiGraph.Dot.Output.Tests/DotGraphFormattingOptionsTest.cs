@@ -128,7 +128,7 @@ public class DotGraphFormattingOptionsTest
 
         foreach (var edge in graph.Edges)
         {
-            edge.Style.Color = Color.Wheat;
+            edge.Style.LineColor = Color.Wheat;
         }
 
         var options = new DotFormattingOptions
@@ -150,7 +150,7 @@ public class DotGraphFormattingOptionsTest
 
         foreach (var edge in graph.Edges)
         {
-            edge.Style.Color = Color.Wheat;
+            edge.Style.LineColor = Color.Wheat;
         }
 
         var options = new DotFormattingOptions

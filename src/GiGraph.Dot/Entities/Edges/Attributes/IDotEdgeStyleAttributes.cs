@@ -21,7 +21,7 @@ public interface IDotEdgeStyleAttributes : IDotEntityStyleAttributes
     ///         <see cref="DotWeightedColor.Weight"/> property.
     ///     </para>
     /// </summary>
-    DotColorDefinition? Color { get; set; }
+    DotColorDefinition? LineColor { get; set; }
 
     /// <summary>
     ///     Specifies a color scheme namespace to use. If defined, specifies the context for interpreting color names. If no color scheme
@@ -33,11 +33,11 @@ public interface IDotEdgeStyleAttributes : IDotEntityStyleAttributes
     string? ColorScheme { get; set; }
 
     /// <summary>
-    ///     Gets or sets the color used to fill the arrowhead, assuming it has a filled style. If <see cref="FillColor"/> is not defined,
-    ///     <see cref="Color"/> is used. If it is not defined too, the default is used, except when the output format is MIF, which use
-    ///     black by default.
+    ///     Gets or sets the color used to fill the arrowhead, assuming it has a filled style. If <see cref="ArrowheadColor"/> is not
+    ///     defined, <see cref="LineColor"/> is used. If it is not defined too, the default is used, except when the output format is MIF,
+    ///     which use black by default.
     /// </summary>
-    DotColorDefinition? FillColor { get; set; }
+    DotColorDefinition? ArrowheadColor { get; set; }
 
     /// <summary>
     ///     Specifies the width of the pen, in points, used to draw lines and curves, including the boundaries of edges. The value has no

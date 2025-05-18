@@ -113,7 +113,7 @@ public static class WithCustomStyles
             sg.Nodes.Style.FillColor = Color.Orange;
             sg.Nodes.Shape = DotNodeShape.Circle;
 
-            sg.Edges.Style.Color = Color.RoyalBlue;
+            sg.Edges.Style.LineColor = Color.RoyalBlue;
 
             sg.Edges.Add("A", "B").Label = "PLAIN COLOR";
         });

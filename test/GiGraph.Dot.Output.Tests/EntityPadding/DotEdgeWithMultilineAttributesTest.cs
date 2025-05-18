@@ -60,7 +60,7 @@ public class DotEdgeWithMultilineAttributesTest
     {
         var graph = new DotGraph();
 
-        graph.Edges.AddLoop("node1").Style.Color = Color.Red;
+        graph.Edges.AddLoop("node1").Style.LineColor = Color.Red;
         graph.Edges.AddLoop("node2").Font.Size = 10;
         graph.Edges.AddLoop("node3").Font.Name = "arial";
 
@@ -76,7 +76,7 @@ public class DotEdgeWithMultilineAttributesTest
     {
         var graph = new DotGraph();
 
-        graph.Edges.AddLoop("node1").Style.Color = Color.Red;
+        graph.Edges.AddLoop("node1").Style.LineColor = Color.Red;
         graph.Edges.AddLoop("node2");
         graph.Edges.AddLoop("node3");
 
@@ -94,7 +94,7 @@ public class DotEdgeWithMultilineAttributesTest
 
         graph.Edges.AddLoop("node1");
         graph.Edges.AddLoop("node2");
-        graph.Edges.AddLoop("node3").Style.Color = Color.Red;
+        graph.Edges.AddLoop("node3").Style.LineColor = Color.Red;
 
         var formatting = new DotFormattingOptions { Edges = { SingleLineAttributeLists = false } };
         Snapshot.Match(graph.ToDot(formatting), "edge_with_attributes_with_top_padding.gv");
