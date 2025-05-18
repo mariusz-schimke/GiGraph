@@ -16,6 +16,6 @@ internal static class DotStyleOptionsExtension
         where TCompleteStyle : struct, Enum
     {
         var style = @this.Style.GetValueOrDefault();
-        return DotPartialEnumMapper.ExtractPartialFlags<TPartialStyle, TCompleteStyle>(style);
+        return DotPartialEnumMapper.ExtractPartialFlags<TCompleteStyle, TPartialStyle>(style);
     }
 }

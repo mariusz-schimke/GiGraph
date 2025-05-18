@@ -24,8 +24,8 @@ public record DotHtmlTableCellAlignmentOptions(DotHtmlTableCellHorizontalAlignme
     /// </param>
     public DotHtmlTableCellAlignmentOptions(DotAlignment alignment)
         : this(
-            DotPartialEnumMapper.ExtractPartialFlags<DotHtmlTableCellHorizontalAlignment, DotAlignment>(alignment),
-            DotPartialEnumMapper.ExtractPartialFlags<DotVerticalAlignment, DotAlignment>(alignment)
+            DotPartialEnumMapper.ExtractPartialFlags<DotAlignment, DotHtmlTableCellHorizontalAlignment>(alignment),
+            DotPartialEnumMapper.ExtractPartialFlags<DotAlignment, DotVerticalAlignment>(alignment)
         )
     {
     }
