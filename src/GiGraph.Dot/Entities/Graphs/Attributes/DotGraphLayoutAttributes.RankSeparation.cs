@@ -28,9 +28,10 @@ public partial class DotGraphLayoutAttributes
     ///     Rank separation may be set by calling this method or <see cref="SetRadialRankSeparation"/>. Only one of them should be used,
     ///     as they write the same graph attribute.
     /// </remarks>
-    public void SetRankSeparation(double? minNodeDistance, bool equalRankSpacing = false)
+    public DotGraphLayoutAttributes SetRankSeparation(double? minNodeDistance, bool equalRankSpacing = false)
     {
         RankSeparation = new DotRankSeparation(minNodeDistance, equalRankSpacing);
+        return this;
     }
 
     /// <summary>
@@ -51,8 +52,9 @@ public partial class DotGraphLayoutAttributes
     ///     Rank separation may be set by calling this method or <see cref="SetRankSeparation"/>. Only one of them should be used, as
     ///     they write the same graph attribute.
     /// </remarks>
-    public void SetRadialRankSeparation(params double[] radii)
+    public DotGraphLayoutAttributes SetRadialRankSeparation(params double[] radii)
     {
         RankSeparation = new DotRadialRankSeparation(radii);
+        return this;
     }
 }

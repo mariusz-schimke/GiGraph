@@ -32,9 +32,10 @@ public partial class DotGraphCanvasAttributes
     ///     Scaling may be set by calling this method or <see cref="SetScalingMode"/>. Only one of them should be used, as both of them
     ///     write the same graph attribute.
     /// </remarks>
-    public void SetAspectRatio(double aspectRatio)
+    public DotGraphCanvasAttributes SetAspectRatio(double aspectRatio)
     {
         Scaling = new DotGraphAspectRatio(aspectRatio);
+        return this;
     }
 
     /// <summary>
@@ -54,8 +55,9 @@ public partial class DotGraphCanvasAttributes
     ///     Scaling may be set by calling this method or <see cref="SetAspectRatio"/>. Only one of them should be used, as both of them
     ///     write the same graph attribute.
     /// </remarks>
-    public void SetScalingMode(DotGraphScaling mode)
+    public DotGraphCanvasAttributes SetScalingMode(DotGraphScaling mode)
     {
         Scaling = new DotGraphScalingMode(mode);
+        return this;
     }
 }

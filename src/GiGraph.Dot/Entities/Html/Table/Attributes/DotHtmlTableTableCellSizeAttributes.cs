@@ -44,11 +44,12 @@ public partial class DotHtmlTableTableCellSizeAttributes : DotEntityAttributes<I
     /// <param name="isFixed">
     ///     Specifies whether the values given by the <paramref name="width"/> and <paramref name="height"/> attributes are enforced.
     /// </param>
-    public virtual void Set(int? width = null, int? height = null, bool? isFixed = null)
+    public virtual DotHtmlTableTableCellSizeAttributes Set(int? width = null, int? height = null, bool? isFixed = null)
     {
         Width = width;
         Height = height;
         Fixed = isFixed;
+        return this;
     }
 
     /// <summary>
@@ -61,8 +62,5 @@ public partial class DotHtmlTableTableCellSizeAttributes : DotEntityAttributes<I
     ///     Specifies whether the values given by the <see cref="DotSize.Width"/> and <see cref="DotSize.Height"/> attributes are
     ///     enforced.
     /// </param>
-    public virtual void Set(DotSize attributes, bool? isFixed = null)
-    {
-        Set((int?) attributes.Width, (int?) attributes.Height, isFixed);
-    }
+    public virtual DotHtmlTableTableCellSizeAttributes Set(DotSize attributes, bool? isFixed = null) => Set((int?) attributes.Width, (int?) attributes.Height, isFixed);
 }

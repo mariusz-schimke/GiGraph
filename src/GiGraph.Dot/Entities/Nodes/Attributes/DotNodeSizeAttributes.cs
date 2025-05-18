@@ -45,11 +45,12 @@ public partial class DotNodeSizeAttributes : DotEntityAttributesWithMetadata<IDo
     /// <param name="mode">
     ///     The sizing mode to set.
     /// </param>
-    public virtual void Set(double? width = null, double? height = null, DotNodeSizing? mode = null)
+    public virtual DotNodeSizeAttributes Set(double? width = null, double? height = null, DotNodeSizing? mode = null)
     {
         Width = width;
         Height = height;
         Mode = mode;
+        return this;
     }
 
     /// <summary>
@@ -61,10 +62,7 @@ public partial class DotNodeSizeAttributes : DotEntityAttributesWithMetadata<IDo
     /// <param name="mode">
     ///     The sizing mode to set.
     /// </param>
-    public virtual void Set(DotSize attributes, DotNodeSizing? mode = null)
-    {
-        Set(attributes.Width, attributes.Height, mode);
-    }
+    public virtual DotNodeSizeAttributes Set(DotSize attributes, DotNodeSizing? mode = null) => Set(attributes.Width, attributes.Height, mode);
 
     /// <summary>
     ///     Sets size attributes.
@@ -72,8 +70,5 @@ public partial class DotNodeSizeAttributes : DotEntityAttributesWithMetadata<IDo
     /// <param name="attributes">
     ///     The attributes to set.
     /// </param>
-    public virtual void Set(DotNodeSize attributes)
-    {
-        Set(attributes, attributes.Mode);
-    }
+    public virtual DotNodeSizeAttributes Set(DotNodeSize attributes) => Set(attributes, attributes.Mode);
 }

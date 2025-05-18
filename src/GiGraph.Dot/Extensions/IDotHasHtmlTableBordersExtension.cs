@@ -8,7 +8,7 @@ public static class IDotHasHtmlTableBordersExtension
     /// <summary>
     ///     Sets borders to draw.
     /// </summary>
-    /// <param name="this">
+    /// <param name="entity">
     ///     The current object.
     /// </param>
     /// <param name="top">
@@ -27,14 +27,16 @@ public static class IDotHasHtmlTableBordersExtension
     ///     If you want to hide all borders, set the border width to 0 (it can't be achieved by setting the visibility of all borders to
     ///     false).
     /// </remarks>
-    public static void SetBorders(this IDotHasHtmlTableBorders @this, bool top = false, bool right = false, bool bottom = false, bool left = false)
+    public static T SetBorders<T>(this T entity, bool top = false, bool right = false, bool bottom = false, bool left = false)
+        where T : IDotHasHtmlTableBorders
     {
         var borders = DotHtmlTableBorders.Top.When(top)
             | DotHtmlTableBorders.Right.When(right)
             | DotHtmlTableBorders.Bottom.When(bottom)
             | DotHtmlTableBorders.Left.When(left);
 
-        @this.Borders = borders == default(DotHtmlTableBorders) ? null : borders;
+        entity.Borders = borders == default(DotHtmlTableBorders) ? null : borders;
+        return entity;
     }
 
     private static DotHtmlTableBorders When(this DotHtmlTableBorders flag, bool value) => value ? flag : default(DotHtmlTableBorders);

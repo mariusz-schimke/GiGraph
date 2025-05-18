@@ -32,9 +32,10 @@ public partial class DotGraphSvgStyleSheetAttributes : DotSvgStyleSheetAttribute
     /// <param name="class">
     ///     The CSS class to set.
     /// </param>
-    public virtual void Set(string? url = null, string? @class = null)
+    public virtual DotGraphSvgStyleSheetAttributes Set(string? url = null, string? @class = null)
     {
         Url = url;
         Class = @class;
+        return this;
     }
 }

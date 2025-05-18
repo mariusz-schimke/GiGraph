@@ -40,10 +40,11 @@ public partial class DotLabelOptionsAttributes : DotEntityAttributesWithMetadata
     /// <param name="vertical">
     ///     The vertical label alignment to set.
     /// </param>
-    public virtual void SetAlignment(DotHorizontalAlignment? horizontal, DotVerticalAlignment? vertical)
+    public virtual DotLabelOptionsAttributes SetAlignment(DotHorizontalAlignment? horizontal, DotVerticalAlignment? vertical)
     {
         HorizontalAlignment = horizontal;
         VerticalAlignment = vertical;
+        return this;
     }
 
     /// <summary>
@@ -52,10 +53,7 @@ public partial class DotLabelOptionsAttributes : DotEntityAttributesWithMetadata
     /// <param name="alignment">
     ///     The alignment to set.
     /// </param>
-    public virtual void SetAlignment(DotAlignment alignment)
-    {
-        SetAlignment(new DotAlignmentOptions(alignment));
-    }
+    public virtual DotLabelOptionsAttributes SetAlignment(DotAlignment alignment) => SetAlignment(new DotAlignmentOptions(alignment));
 
     /// <summary>
     ///     Sets label alignment.
@@ -63,8 +61,5 @@ public partial class DotLabelOptionsAttributes : DotEntityAttributesWithMetadata
     /// <param name="alignment">
     ///     The alignment to set.
     /// </param>
-    public virtual void SetAlignment(DotAlignmentOptions alignment)
-    {
-        SetAlignment(alignment.Horizontal, alignment.Vertical);
-    }
+    public virtual DotLabelOptionsAttributes SetAlignment(DotAlignmentOptions alignment) => SetAlignment(alignment.Horizontal, alignment.Vertical);
 }
