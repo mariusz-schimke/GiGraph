@@ -27,7 +27,8 @@ public static class IDotHasHtmlTableBordersExtension
     ///     If you want to hide all borders, set the border width to 0 (it can't be achieved by setting the visibility of all borders to
     ///     false).
     /// </remarks>
-    public static void SetBorders(this IDotHasHtmlTableBorders @this, bool top = false, bool right = false, bool bottom = false, bool left = false)
+    public static T SetBorders<T>(this T @this, bool top = false, bool right = false, bool bottom = false, bool left = false)
+        where T : IDotHasHtmlTableBorders
     {
         var borders = DotHtmlTableBorders.Top.When(top)
             | DotHtmlTableBorders.Right.When(right)
@@ -35,6 +36,7 @@ public static class IDotHasHtmlTableBordersExtension
             | DotHtmlTableBorders.Left.When(left);
 
         @this.Borders = borders == default(DotHtmlTableBorders) ? null : borders;
+        return @this;
     }
 
     private static DotHtmlTableBorders When(this DotHtmlTableBorders flag, bool value) => value ? flag : default(DotHtmlTableBorders);

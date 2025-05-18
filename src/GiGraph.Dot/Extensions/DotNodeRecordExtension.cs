@@ -22,10 +22,12 @@ public static class DotNodeRecordExtension
     /// <param name="record">
     ///     The record to use as the label of the node.
     /// </param>
-    public static void SetRecordAsLabel(this DotNodeDefinition node, DotRecord? record)
+    public static T SetRecordAsLabel<T>(this T node, DotRecord? record)
+        where T : DotNodeDefinition
     {
         node.Shape = DotNodeShape.Record;
         node.Label = record;
+        return node;
     }
 
     /// <summary>
@@ -45,11 +47,12 @@ public static class DotNodeRecordExtension
     ///     <see cref="DotLayoutDirection.LeftToRight"/> or <see cref="DotLayoutDirection.RightToLeft"/>, corresponding to horizontal
     ///     layouts, the top-level fields are displayed vertically.
     /// </param>
-    public static void SetRecordAsLabel(this DotNodeDefinition node, Action<DotRecordBuilder>? buildRecord, bool flip = false)
+    public static T SetRecordAsLabel<T>(this T node, Action<DotRecordBuilder>? buildRecord, bool flip = false)
+        where T : DotNodeDefinition
     {
         var builder = new DotRecordBuilder();
         buildRecord?.Invoke(builder);
 
-        SetRecordAsLabel(node, builder.Build(flip));
+        return SetRecordAsLabel(node, builder.Build(flip));
     }
 }
