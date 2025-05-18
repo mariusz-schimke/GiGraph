@@ -35,7 +35,7 @@
     "Graph": "Clusters.Style.Color: DotColorDefinition",
     "Cluster": "Style.Color: DotColorDefinition",
     "Node": "Style.Color: DotColorDefinition",
-    "Edge": "Style.Color: DotColorDefinition"
+    "Edge": "Style.LineColor: DotColorDefinition"
   },
   "colorscheme": {
     "Graph": "Style.ColorScheme: String",
@@ -85,7 +85,7 @@
     "Graph": "Clusters.Style.FillColor: DotColorDefinition",
     "Cluster": "Style.FillColor: DotColorDefinition",
     "Node": "Style.FillColor: DotColorDefinition",
-    "Edge": "Style.FillColor: DotColorDefinition"
+    "Edge": "Style.ArrowheadColor: DotColorDefinition"
   },
   "fixedsize": {
     "Node": "Size.Mode: DotNodeSizing?"
