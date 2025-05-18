@@ -3,6 +3,7 @@ using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Qualities;
 using GiGraph.Dot.Output.Metadata;
+using GiGraph.Dot.Types.EnumHelpers;
 using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
@@ -51,5 +52,16 @@ public abstract class DotEntityStyleAttributesWithMetadata<TIEntityStyleAttribut
     public virtual void SetDefaultStyleOptions()
     {
         Style = DotStyles.Default;
+    }
+
+    protected virtual void SetStyleOption(DotStyles option, bool value)
+    {
+        Style = DotEnumHelper.SetFlag(Style.GetValueOrDefault(), option, value);
+    }
+
+    protected virtual void SetPartialStyleOption<TPartialStyle>(TPartialStyle option)
+        where TPartialStyle : struct, Enum
+    {
+        Style = DotPartialEnumMapper.ReplacePartialFlags(Style.GetValueOrDefault(), option);
     }
 }

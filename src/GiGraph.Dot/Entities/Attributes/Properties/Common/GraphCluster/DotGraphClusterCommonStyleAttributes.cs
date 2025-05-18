@@ -21,7 +21,7 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
     public virtual DotClusterFillStyle FillStyle
     {
         get => this.GetPartialStyleOption<DotClusterFillStyle, DotStyles>();
-        set => this.SetPartialStyleOption(value);
+        set => SetPartialStyleOption(value);
     }
 
     /// <summary>
@@ -30,7 +30,7 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
     public virtual DotBorderStyle BorderStyle
     {
         get => this.GetPartialStyleOption<DotBorderStyle, DotStyles>();
-        set => this.SetPartialStyleOption(value);
+        set => SetPartialStyleOption(value);
     }
 
     /// <summary>
@@ -39,7 +39,7 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
     public virtual DotBorderWeight BorderWeight
     {
         get => this.GetPartialStyleOption<DotBorderWeight, DotStyles>();
-        set => this.SetPartialStyleOption(value);
+        set => SetPartialStyleOption(value);
     }
 
     /// <summary>
@@ -48,7 +48,7 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
     public virtual DotCornerStyle CornerStyle
     {
         get => this.GetPartialStyleOption<DotCornerStyle, DotStyles>();
-        set => this.SetPartialStyleOption(value);
+        set => SetPartialStyleOption(value);
     }
 
     /// <summary>
@@ -57,7 +57,7 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
     public virtual bool Invisible
     {
         get => this.HasStyleOption(DotStyles.Invisible);
-        set => this.SetStyleOption(DotStyles.Invisible, value);
+        set => SetStyleOption(DotStyles.Invisible, value);
     }
 
     [DotAttributeKey(DotAttributeKeys.Color)]

@@ -38,7 +38,7 @@ public class DotHtmlTableCellTest
 
                 BackgroundColor = Color.Red,
                 GradientFillAngle = 15,
-                RadialFill = true
+                FillStyle = DotHtmlTableFillStyle.Radial
             },
 
             Size =

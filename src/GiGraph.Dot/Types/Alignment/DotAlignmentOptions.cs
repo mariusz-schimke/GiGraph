@@ -29,8 +29,8 @@ public record DotAlignmentOptions<THorizontalAlignment, TVerticalAlignment>(THor
     /// </param>
     public DotAlignmentOptions(DotAlignment alignment)
         : this(
-            DotPartialEnumMapper.ExtractPartialFlags<THorizontalAlignment, DotAlignment>(alignment),
-            DotPartialEnumMapper.ExtractPartialFlags<TVerticalAlignment, DotAlignment>(alignment)
+            DotPartialEnumMapper.ExtractPartialFlags<DotAlignment, THorizontalAlignment>(alignment),
+            DotPartialEnumMapper.ExtractPartialFlags<DotAlignment, TVerticalAlignment>(alignment)
         )
     {
     }
@@ -56,8 +56,8 @@ public record DotAlignmentOptions(DotHorizontalAlignment? Horizontal = null, Dot
     /// </param>
     public DotAlignmentOptions(DotAlignment alignment)
         : this(
-            DotPartialEnumMapper.ExtractPartialFlags<DotHorizontalAlignment, DotAlignment>(alignment),
-            DotPartialEnumMapper.ExtractPartialFlags<DotVerticalAlignment, DotAlignment>(alignment)
+            DotPartialEnumMapper.ExtractPartialFlags<DotAlignment, DotHorizontalAlignment>(alignment),
+            DotPartialEnumMapper.ExtractPartialFlags<DotAlignment, DotVerticalAlignment>(alignment)
         )
     {
     }
