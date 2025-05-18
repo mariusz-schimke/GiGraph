@@ -23,7 +23,7 @@
 
         <Deterministic>true</Deterministic>
 
-        <Version>5.0.0-rc.1</Version>
+        <Version>5.0.0-rc.2</Version>
         <IncludeSourceRevisionInInformationalVersion>true</IncludeSourceRevisionInInformationalVersion>
 
         <PackageId>GiGraph.Dot</PackageId>
@@ -63,7 +63,7 @@
 
 - Convenience methods on element collections have been redesigned to reduce the number of overloads by leveraging the new collection initializer syntax ([]). 
 
-- Other refactoring and optimizations.
+- Refactoring and optimizations.
 
 See also https://github.com/$(Repository)/releases</PackageReleaseNotes>
     </PropertyGroup>
