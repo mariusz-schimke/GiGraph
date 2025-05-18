@@ -43,46 +43,11 @@ public class DotHtmlTableStyleAttributeOptionsTest
         var table = new DotHtmlTable();
         Assert.False(table.Style.HasStyleOptions());
 
-        table.Style.SetStyleOptions(cornerStyle: DotHtmlTableCornerStyle.Rounded);
+        table.Style.CornerStyle = DotHtmlTableCornerStyle.Rounded;
         Assert.True(table.Style.HasStyleOptions());
 
         table.Style.RemoveStyleOptions();
         Assert.False(table.Style.HasStyleOptions());
-    }
-
-    [Fact]
-    public void helper_methods_set_all_style_options()
-    {
-        var table = new DotHtmlTable();
-        Assert.Equal(DotHtmlTableFillStyle.Regular, table.Style.FillStyle);
-        Assert.Equal(DotHtmlTableCornerStyle.Sharp, table.Style.CornerStyle);
-        Assert.False(table.Style.HasStyleOptions());
-
-        table.Style.SetStyleOptions(
-            new DotHtmlTableStyleOptions(
-                DotHtmlTableFillStyle.Regular,
-                DotHtmlTableCornerStyle.Rounded
-            )
-        );
-
-        Assert.Equal(DotHtmlTableFillStyle.Regular, table.Style.FillStyle);
-        Assert.Equal(DotHtmlTableCornerStyle.Rounded, table.Style.CornerStyle);
-        Assert.True(table.Style.HasStyleOptions());
-
-        table.Style.SetStyleOptions();
-        Assert.Equal(DotHtmlTableFillStyle.Regular, table.Style.FillStyle);
-        Assert.Equal(DotHtmlTableCornerStyle.Sharp, table.Style.CornerStyle);
-        Assert.False(table.Style.HasStyleOptions());
-
-        table.Style.SetStyleOptions(cornerStyle: DotHtmlTableCornerStyle.Rounded);
-        Assert.Equal(DotHtmlTableFillStyle.Regular, table.Style.FillStyle);
-        Assert.Equal(DotHtmlTableCornerStyle.Rounded, table.Style.CornerStyle);
-        Assert.True(table.Style.HasStyleOptions());
-
-        table.Style.SetStyleOptions(fillStyle: DotHtmlTableFillStyle.Radial);
-        Assert.Equal(DotHtmlTableFillStyle.Radial, table.Style.FillStyle);
-        Assert.Equal(DotHtmlTableCornerStyle.Sharp, table.Style.CornerStyle);
-        Assert.True(table.Style.HasStyleOptions());
     }
 
     [Fact]
