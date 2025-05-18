@@ -62,7 +62,6 @@ public abstract class DotEntityStyleAttributesWithMetadata<TIEntityStyleAttribut
     protected virtual void SetPartialStyleOption<TPartialStyle>(TPartialStyle option)
         where TPartialStyle : struct, Enum
     {
-        var style = Style.GetValueOrDefault();
-        Style = DotPartialEnumMapper.ReplacePartialFlags(option, style);
+        Style = DotPartialEnumMapper.ReplacePartialFlags(option, Style.GetValueOrDefault());
     }
 }

@@ -119,8 +119,7 @@ public abstract partial class DotHtmlTableTableCellCommonStyleAttributes<TIHtmlT
     protected virtual void SetPartialStyleOption<TPartialStyle>(TPartialStyle option)
         where TPartialStyle : struct, Enum
     {
-        var style = Style.GetValueOrDefault();
-        style = DotPartialEnumMapper.ReplacePartialFlags(option, style);
+        var style = DotPartialEnumMapper.ReplacePartialFlags(option, Style.GetValueOrDefault());
 
         // since the style option may be set through helper methods, setting regular fill style would implicitly cause an empty style attribute to be rendered, which makes no sense
         Style = DotEnumHelper.IsDefault(style) ? null : style;
