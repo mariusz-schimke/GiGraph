@@ -36,20 +36,37 @@ public abstract class DotEntityStyleAttributesWithMetadata<TIEntityStyleAttribut
     }
 
     /// <summary>
-    ///     Determines if the default style is assigned to the element, that is, if the Graphviz 'style' attribute is set and has the
-    ///     value of <see cref="DotStyles.Default"/>. Use the <see cref="SetDefaultStyleOptions"/> method to set the default style on the
-    ///     element.
+    ///     Determines if the default style is assigned to the element, that is, if the Graphviz 'style' attribute has an empty value.
+    ///     Use the <see cref="SetDefaultStyleOptions"/> method to set the default style on the element.
     /// </summary>
     [Pure]
     public virtual bool HasDefaultStyleOptions() => Style == DotStyles.Default;
 
     /// <summary>
-    ///     Assigns the default style option flags to the element. Useful when the style of elements of the current type is set globally
-    ///     and needs to be restored to the default value for the current element. To check if the default style is set for the current
-    ///     element, use the <see cref="HasDefaultStyleOptions"/> method.
+    ///     Assigns an empty 'style' attribute to the element. Useful when the style for the current element type is set globally and
+    ///     needs to be restored to the default value for the current element only.
     /// </summary>
-    public virtual void SetDefaultStyleOptions()
+    public virtual TEntityStyleAttributeProperties SetDefaultStyleOptions()
     {
         Style = DotStyles.Default;
+        return (TEntityStyleAttributeProperties) this;
+    }
+
+    /// <summary>
+    ///     Indicates whether the element has a 'style' attribute assigned. Returns true if the 'style' attribute has any value,
+    ///     including its default value that renders an empty 'style' attribute. The 'style' attribute is a composite of multiple
+    ///     options, each of which is exposed and configurable via a dedicated property.
+    /// </summary>
+    [Pure]
+    public bool HasStyleOptions() => Style.HasValue;
+
+    /// <summary>
+    ///     Removes the style options of the element if set. The 'style' attribute will not be rendered.
+    /// </summary>
+    [Pure]
+    public TEntityStyleAttributeProperties RemoveStyleOptions()
+    {
+        Style = null;
+        return (TEntityStyleAttributeProperties) this;
     }
 }
