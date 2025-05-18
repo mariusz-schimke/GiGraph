@@ -101,6 +101,21 @@ public abstract partial class DotHtmlTableTableCellCommonStyleAttributes<TIHtmlT
         CornerStyle = cornerStyle;
     }
 
+    /// <summary>
+    ///     Sets border style.
+    /// </summary>
+    /// <param name="color">
+    ///     The color to set.
+    /// </param>
+    /// <param name="width">
+    ///     The width to set.
+    /// </param>
+    public virtual void SetBorderStyle(DotColor? color, int? width)
+    {
+        BorderColor = color;
+        BorderWidth = width;
+    }
+
     protected virtual void SetPartialStyleOption<TPartialStyle>(TPartialStyle option)
         where TPartialStyle : struct, Enum
     {

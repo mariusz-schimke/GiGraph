@@ -99,4 +99,20 @@ public class DotHtmlTableStyleAttributeOptionsTest
         table.Style.SetRadialGradientFill(Color.Red, Color.Blue);
         Assert.True(table.Style.HasStyleOptions());
     }
+
+    [Fact]
+    public void set_border_style_helper_method_sets_all_attributes()
+    {
+        var table = new DotHtmlTable();
+        table.Style.SetBorderStyle(Color.Azure, 4);
+
+        Assert.Equal(Color.Azure, table.Style.BorderColor!.Color);
+        Assert.Equal(4, table.Style.BorderWidth);
+
+        table.Style.SetBorderStyle(Color.Bisque, 5, 4);
+
+        Assert.Equal(Color.Bisque, table.Style.BorderColor!.Color);
+        Assert.Equal(5, table.Style.BorderWidth);
+        Assert.Equal(4, table.Style.CellBorderWidth);
+    }
 }
