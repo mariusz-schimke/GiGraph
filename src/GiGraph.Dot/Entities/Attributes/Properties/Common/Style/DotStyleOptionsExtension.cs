@@ -7,15 +7,15 @@ namespace GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
 internal static class DotStyleOptionsExtension
 {
     [Pure]
-    public static bool HasStyleOption<TStyles>(this IDotHasStyleOptions<TStyles> @this, TStyles option)
-        where TStyles : struct, Enum => @this.Style?.HasFlag(option) ?? false;
+    public static bool HasStyleOption<TStyles>(this IDotHasStyleOptions<TStyles> entity, TStyles option)
+        where TStyles : struct, Enum => entity.Style?.HasFlag(option) ?? false;
 
     [Pure]
-    public static TPartialStyle GetPartialStyleOption<TPartialStyle, TCompleteStyle>(this IDotHasStyleOptions<TCompleteStyle> @this)
+    public static TPartialStyle GetPartialStyleOption<TPartialStyle, TCompleteStyle>(this IDotHasStyleOptions<TCompleteStyle> entity)
         where TPartialStyle : struct, Enum
         where TCompleteStyle : struct, Enum
     {
-        var style = @this.Style.GetValueOrDefault();
+        var style = entity.Style.GetValueOrDefault();
         return DotPartialEnumMapper.ExtractPartialFlags<TCompleteStyle, TPartialStyle>(style);
     }
 }

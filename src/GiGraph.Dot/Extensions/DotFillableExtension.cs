@@ -9,24 +9,24 @@ public static class DotFillableExtension
     /// <summary>
     ///     Sets a plain-color fill.
     /// </summary>
-    /// <param name="this">
+    /// <param name="entity">
     ///     The current context to set the fill for.
     /// </param>
     /// <param name="color">
     ///     The color to use.
     /// </param>
-    public static T SetPlainFill<T>(this T @this, DotColor color)
+    public static T SetPlainFill<T>(this T entity, DotColor color)
         where T : IDotFillable
     {
-        @this.SetFillStyle(DotFillStyle.Regular);
-        @this.SetFillColor(color);
-        return @this;
+        entity.SetFillStyle(DotFillStyle.Regular);
+        entity.SetFillColor(color);
+        return entity;
     }
 
     /// <summary>
     ///     Sets a gradient fill.
     /// </summary>
-    /// <param name="this">
+    /// <param name="entity">
     ///     The current context to set the fill for.
     /// </param>
     /// <param name="color">
@@ -35,9 +35,9 @@ public static class DotFillableExtension
     /// <param name="angle">
     ///     The angle of the fill.
     /// </param>
-    public static T SetGradientFill<T>(this T @this, DotGradientColor color, int? angle = null)
+    public static T SetGradientFill<T>(this T entity, DotGradientColor color, int? angle = null)
         where T : IDotFillable =>
-        @this.SetGradientFill(color, angle, radial: false);
+        entity.SetGradientFill(color, angle, radial: false);
 
     /// <summary>
     ///     <para>
@@ -49,7 +49,7 @@ public static class DotFillableExtension
     ///         how much of region is filled with each color.
     ///     </para>
     /// </summary>
-    /// <param name="this">
+    /// <param name="entity">
     ///     The current context to set the fill for.
     /// </param>
     /// <param name="startColor">
@@ -61,14 +61,14 @@ public static class DotFillableExtension
     /// <param name="angle">
     ///     The angle of the fill.
     /// </param>
-    public static T SetGradientFill<T>(this T @this, DotColor startColor, DotColor endColor, int? angle = null)
+    public static T SetGradientFill<T>(this T entity, DotColor startColor, DotColor endColor, int? angle = null)
         where T : IDotFillable =>
-        @this.SetGradientFill(new DotGradientColor(startColor, endColor), angle);
+        entity.SetGradientFill(new DotGradientColor(startColor, endColor), angle);
 
     /// <summary>
     ///     Sets a radial gradient fill.
     /// </summary>
-    /// <param name="this">
+    /// <param name="entity">
     ///     The current context to set the fill for.
     /// </param>
     /// <param name="color">
@@ -77,14 +77,14 @@ public static class DotFillableExtension
     /// <param name="angle">
     ///     The angle of the fill.
     /// </param>
-    public static T SetRadialGradientFill<T>(this T @this, DotGradientColor color, int? angle = null)
+    public static T SetRadialGradientFill<T>(this T entity, DotGradientColor color, int? angle = null)
         where T : IDotFillable =>
-        @this.SetGradientFill(color, angle, radial: true);
+        entity.SetGradientFill(color, angle, radial: true);
 
     /// <summary>
     ///     Sets a radial gradient fill.
     /// </summary>
-    /// <param name="this">
+    /// <param name="entity">
     ///     The current context to set the fill for.
     /// </param>
     /// <param name="startColor">
@@ -96,16 +96,16 @@ public static class DotFillableExtension
     /// <param name="angle">
     ///     The angle of the fill.
     /// </param>
-    public static T SetRadialGradientFill<T>(this T @this, DotColor startColor, DotColor endColor, int? angle = null)
+    public static T SetRadialGradientFill<T>(this T entity, DotColor startColor, DotColor endColor, int? angle = null)
         where T : IDotFillable =>
-        @this.SetRadialGradientFill(new DotGradientColor(startColor, endColor), angle);
+        entity.SetRadialGradientFill(new DotGradientColor(startColor, endColor), angle);
 
-    private static T SetGradientFill<T>(this T @this, DotGradientColor color, int? angle, bool radial)
+    private static T SetGradientFill<T>(this T entity, DotGradientColor color, int? angle, bool radial)
         where T : IDotFillable
     {
-        @this.SetFillStyle(radial ? DotFillStyle.Radial : DotFillStyle.Regular);
-        @this.SetFillColor(color);
-        @this.SetGradientFillAngle(angle);
-        return @this;
+        entity.SetFillStyle(radial ? DotFillStyle.Radial : DotFillStyle.Regular);
+        entity.SetFillColor(color);
+        entity.SetGradientFillAngle(angle);
+        return entity;
     }
 }

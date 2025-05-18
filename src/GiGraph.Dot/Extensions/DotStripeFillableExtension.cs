@@ -10,32 +10,32 @@ public static class DotStripeFillableExtension
     /// <summary>
     ///     Sets a striped fill. Applicable to clusters and rectangularly-shaped nodes (see <see cref="DotNodeDefinition.Shape"/>).
     /// </summary>
-    /// <param name="this">
+    /// <param name="entity">
     ///     The current context to set the fill for.
     /// </param>
     /// <param name="colors">
     ///     The colors to use for consecutive stripes. Proportions for individual stripes may be specified optionally by using a
     ///     <see cref="DotWeightedColor"/> for them.
     /// </param>
-    public static T SetStripedFill<T>(this T @this, DotMulticolor colors)
+    public static T SetStripedFill<T>(this T entity, DotMulticolor colors)
         where T : IDotFillable, IDotStripeFillable
     {
-        @this.SetFillStyle(DotFillStyle.Striped);
-        @this.SetFillColor(colors);
-        return @this;
+        entity.SetFillStyle(DotFillStyle.Striped);
+        entity.SetFillColor(colors);
+        return entity;
     }
 
     /// <summary>
     ///     Sets a striped fill. Applicable to clusters and rectangularly-shaped nodes (see <see cref="DotNodeDefinition.Shape"/>).
     /// </summary>
-    /// <param name="this">
+    /// <param name="entity">
     ///     The current context to set the fill for.
     /// </param>
     /// <param name="colors">
     ///     The colors to use for consecutive stripes. Proportions for individual stripes may be specified optionally by using a
     ///     <see cref="DotWeightedColor"/> for them.
     /// </param>
-    public static T SetStripedFill<T>(this T @this, params DotColor[] colors)
+    public static T SetStripedFill<T>(this T entity, params DotColor[] colors)
         where T : IDotFillable, IDotStripeFillable =>
-        @this.SetStripedFill(new DotMulticolor(colors));
+        entity.SetStripedFill(new DotMulticolor(colors));
 }

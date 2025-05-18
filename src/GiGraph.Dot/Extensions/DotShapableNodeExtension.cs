@@ -9,7 +9,7 @@ public static class DotShapableNodeExtension
     /// <summary>
     ///     Applies a polygonal shape.
     /// </summary>
-    /// <param name="this">
+    /// <param name="node">
     ///     The current context to set the fill for.
     /// </param>
     /// <param name="sides">
@@ -31,7 +31,7 @@ public static class DotShapableNodeExtension
     ///     the opposite.
     /// </param>
     public static T SetPolygonalShape<T>(
-        this T @this,
+        this T node,
         int? sides = null,
         bool? regular = null,
         double? rotation = null,
@@ -39,22 +39,22 @@ public static class DotShapableNodeExtension
         double? distortion = null
     )
         where T : IDotShapableNode =>
-        @this.SetPolygonalShape(new DotPolygon(sides, regular, rotation, skew, distortion));
+        node.SetPolygonalShape(new DotPolygon(sides, regular, rotation, skew, distortion));
 
     /// <summary>
     ///     Applies a polygonal shape.
     /// </summary>
-    /// <param name="this">
+    /// <param name="node">
     ///     The current context to set the fill for.
     /// </param>
     /// <param name="attributes">
     ///     The polygon attributes to set.
     /// </param>
-    public static T SetPolygonalShape<T>(this T @this, DotPolygon attributes)
+    public static T SetPolygonalShape<T>(this T node, DotPolygon attributes)
         where T : IDotShapableNode
     {
-        @this.SetShape(DotNodeShape.Polygon);
-        @this.SetGeometry(attributes);
-        return @this;
+        node.SetShape(DotNodeShape.Polygon);
+        node.SetGeometry(attributes);
+        return node;
     }
 }

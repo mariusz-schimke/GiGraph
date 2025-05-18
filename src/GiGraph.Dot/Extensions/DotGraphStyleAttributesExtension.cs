@@ -9,16 +9,16 @@ public static class DotGraphStyleAttributesExtension
     /// <summary>
     ///     Sets a background color.
     /// </summary>
-    /// <param name="this">
+    /// <param name="attributes">
     ///     The current context to set the background for.
     /// </param>
     /// <param name="color">
     ///     The color to use.
     /// </param>
-    public static DotGraphStyleAttributes SetBackground(this DotGraphStyleAttributes @this, DotColor color)
+    public static DotGraphStyleAttributes SetBackground(this DotGraphStyleAttributes attributes, DotColor color)
     {
-        @this.BackgroundColor = color;
-        return @this;
+        attributes.BackgroundColor = color;
+        return attributes;
     }
 
     /// <summary>
@@ -26,7 +26,7 @@ public static class DotGraphStyleAttributesExtension
     ///     the root graph, but also to clusters (globally) since this is a root graph's attribute. So if radial fill style was
     ///     previously specified on the clusters collection, it will be removed by this method.
     /// </summary>
-    /// <param name="this">
+    /// <param name="attributes">
     ///     The current context to set the background for.
     /// </param>
     /// <param name="color">
@@ -35,8 +35,8 @@ public static class DotGraphStyleAttributesExtension
     /// <param name="angle">
     ///     The angle of the fill. Note that this attribute also applies to clusters.
     /// </param>
-    public static DotGraphStyleAttributes SetGradientBackground(this DotGraphStyleAttributes @this, DotGradientColor color, int? angle = null) =>
-        @this.SetGradientBackground(color, angle, radial: false);
+    public static DotGraphStyleAttributes SetGradientBackground(this DotGraphStyleAttributes attributes, DotGradientColor color, int? angle = null) =>
+        attributes.SetGradientBackground(color, angle, radial: false);
 
     /// <summary>
     ///     <para>
@@ -50,7 +50,7 @@ public static class DotGraphStyleAttributesExtension
     ///         how much of region is filled with each color.
     ///     </para>
     /// </summary>
-    /// <param name="this">
+    /// <param name="attributes">
     ///     The current context to set the background for.
     /// </param>
     /// <param name="startColor">
@@ -62,14 +62,14 @@ public static class DotGraphStyleAttributesExtension
     /// <param name="angle">
     ///     The angle of the fill. Note that this attribute also applies to clusters.
     /// </param>
-    public static DotGraphStyleAttributes SetGradientBackground(this DotGraphStyleAttributes @this, DotColor startColor, DotColor endColor, int? angle = null) =>
-        @this.SetGradientBackground(new DotGradientColor(startColor, endColor), angle);
+    public static DotGraphStyleAttributes SetGradientBackground(this DotGraphStyleAttributes attributes, DotColor startColor, DotColor endColor, int? angle = null) =>
+        attributes.SetGradientBackground(new DotGradientColor(startColor, endColor), angle);
 
     /// <summary>
     ///     Sets a radial gradient background color. Note that the radial fill style set by this method (as opposed to the color) applies
     ///     not only to the root graph, but also to clusters (globally) since this is a root graph's attribute.
     /// </summary>
-    /// <param name="this">
+    /// <param name="attributes">
     ///     The current context to set the background for.
     /// </param>
     /// <param name="color">
@@ -78,14 +78,14 @@ public static class DotGraphStyleAttributesExtension
     /// <param name="angle">
     ///     The angle of the fill. Note that this attribute also applies to clusters.
     /// </param>
-    public static DotGraphStyleAttributes SetRadialGradientBackground(this DotGraphStyleAttributes @this, DotGradientColor color, int? angle = null) =>
-        @this.SetGradientBackground(color, angle, radial: true);
+    public static DotGraphStyleAttributes SetRadialGradientBackground(this DotGraphStyleAttributes attributes, DotGradientColor color, int? angle = null) =>
+        attributes.SetGradientBackground(color, angle, radial: true);
 
     /// <summary>
     ///     Sets a radial gradient background color. Note that the radial fill style set by this method (as opposed to the color) applies
     ///     not only to the root graph, but also to clusters (globally) since this is a root graph's attribute.
     /// </summary>
-    /// <param name="this">
+    /// <param name="attributes">
     ///     The current context to set the background for.
     /// </param>
     /// <param name="startColor">
@@ -97,26 +97,26 @@ public static class DotGraphStyleAttributesExtension
     /// <param name="angle">
     ///     The angle of the fill. Note that this attribute also applies to clusters.
     /// </param>
-    public static DotGraphStyleAttributes SetRadialGradientBackground(this DotGraphStyleAttributes @this, DotColor startColor, DotColor endColor, int? angle = null) =>
-        @this.SetRadialGradientBackground(new DotGradientColor(startColor, endColor), angle);
+    public static DotGraphStyleAttributes SetRadialGradientBackground(this DotGraphStyleAttributes attributes, DotColor startColor, DotColor endColor, int? angle = null) =>
+        attributes.SetRadialGradientBackground(new DotGradientColor(startColor, endColor), angle);
 
-    private static DotGraphStyleAttributes SetGradientBackground(this DotGraphStyleAttributes @this, DotGradientColor color, int? angle, bool? radial)
+    private static DotGraphStyleAttributes SetGradientBackground(this DotGraphStyleAttributes attributes, DotGradientColor color, int? angle, bool? radial)
     {
         switch (radial)
         {
             // the style may also be set from the Clusters collection on graph, and radial is the only attribute
             // that applies to graph background and to cluster fill
             case true:
-                @this.FillStyle = DotClusterFillStyle.Radial;
+                attributes.FillStyle = DotClusterFillStyle.Radial;
                 break;
 
-            case false when @this.FillStyle == DotClusterFillStyle.Radial:
-                @this.FillStyle = DotClusterFillStyle.None;
+            case false when attributes.FillStyle == DotClusterFillStyle.Radial:
+                attributes.FillStyle = DotClusterFillStyle.None;
                 break;
         }
 
-        @this.BackgroundColor = color;
-        @this.GradientFillAngle = angle;
-        return @this;
+        attributes.BackgroundColor = color;
+        attributes.GradientFillAngle = angle;
+        return attributes;
     }
 }

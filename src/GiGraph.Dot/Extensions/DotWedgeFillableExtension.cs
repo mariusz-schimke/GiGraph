@@ -10,35 +10,35 @@ public static class DotWedgeFillableExtension
     /// <summary>
     ///     Sets a wedged fill. Applicable to elliptically-shaped nodes (see <see cref="DotNodeDefinition.Shape"/>).
     /// </summary>
-    /// <param name="this">
+    /// <param name="entity">
     ///     The current context to set the fill for.
     /// </param>
     /// <param name="colors">
     ///     The colors to use for consecutive wedges. Proportions for individual wedges may be specified optionally by using a
     ///     <see cref="DotWeightedColor"/> for them.
     /// </param>
-    public static T SetWedgedFill<T>(this T @this, DotMulticolor colors)
+    public static T SetWedgedFill<T>(this T entity, DotMulticolor colors)
         where T : IDotFillable, IDotWedgeFillable
     {
-        @this.SetFillStyle(DotFillStyle.Wedged);
-        @this.SetFillColor(colors);
-        return @this;
+        entity.SetFillStyle(DotFillStyle.Wedged);
+        entity.SetFillColor(colors);
+        return entity;
     }
 
     /// <summary>
     ///     Sets a wedged fill. Applicable to elliptically-shaped nodes (see <see cref="DotNodeDefinition.Shape"/>).
     /// </summary>
-    /// <param name="this">
+    /// <param name="entity">
     ///     The current context to set the fill for.
     /// </param>
     /// <param name="colors">
     ///     The colors to use for consecutive wedges. Proportions for individual wedges may be specified optionally by using a
     ///     <see cref="DotWeightedColor"/> for them.
     /// </param>
-    public static T SetWedgedFill<T>(this T @this, params DotColor[] colors)
+    public static T SetWedgedFill<T>(this T entity, params DotColor[] colors)
         where T : IDotFillable, IDotWedgeFillable
     {
-        @this.SetWedgedFill(new DotMulticolor(colors));
-        return @this;
+        entity.SetWedgedFill(new DotMulticolor(colors));
+        return entity;
     }
 }

@@ -10,30 +10,30 @@ public static class IDotHasStyleOptionsExtension
     ///     its default value that renders an empty 'style' attribute. The attribute is a composite of multiple options, each of which is
     ///     exposed and configurable via a dedicated property.
     /// </summary>
-    /// <param name="this">
+    /// <param name="entity">
     ///     The current object.
     /// </param>
     /// <typeparam name="TStyles">
     ///     The type of the style options the object implements.
     /// </typeparam>
     [Pure]
-    public static bool HasStyleOptions<TStyles>(this IDotHasStyleOptions<TStyles> @this)
+    public static bool HasStyleOptions<TStyles>(this IDotHasStyleOptions<TStyles> entity)
         where TStyles : struct, Enum =>
-        @this.Style.HasValue;
+        entity.Style.HasValue;
 
     /// <summary>
     ///     Removes the style options of the element if set. The 'style' attribute will not be rendered.
     /// </summary>
-    /// <param name="this">
+    /// <param name="entity">
     ///     The current object.
     /// </param>
     /// <typeparam name="T">
     ///     The type of the style options implementation.
     /// </typeparam>
-    public static T RemoveStyleOptions<T>(this T @this)
+    public static T RemoveStyleOptions<T>(this T entity)
         where T : IDotHasStyleOptions
     {
-        @this.NullifyStyle();
-        return @this;
+        entity.NullifyStyle();
+        return entity;
     }
 }
