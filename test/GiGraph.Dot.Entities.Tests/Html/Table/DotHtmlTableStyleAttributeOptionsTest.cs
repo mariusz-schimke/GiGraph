@@ -59,12 +59,12 @@ public class DotHtmlTableStyleAttributeOptionsTest
 
         table.Style.SetStyleOptions(
             new DotHtmlTableStyleOptions(
-                DotHtmlTableFillStyle.Radial,
+                DotHtmlTableFillStyle.Regular,
                 DotHtmlTableCornerStyle.Rounded
             )
         );
 
-        Assert.Equal(DotHtmlTableFillStyle.Radial, table.Style.FillStyle);
+        Assert.Equal(DotHtmlTableFillStyle.Regular, table.Style.FillStyle);
         Assert.Equal(DotHtmlTableCornerStyle.Rounded, table.Style.CornerStyle);
         Assert.True(table.Style.HasStyleOptions());
 
