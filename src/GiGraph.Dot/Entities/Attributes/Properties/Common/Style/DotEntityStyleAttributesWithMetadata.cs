@@ -36,6 +36,11 @@ public abstract class DotEntityStyleAttributesWithMetadata<TIEntityStyleAttribut
         set => Style = value;
     }
 
+    void IDotHasStyleOptions.NullifyStyle()
+    {
+        Style = null;
+    }
+
     /// <summary>
     ///     Determines if the default style is assigned to the element, that is, if the Graphviz 'style' attribute is set and has the
     ///     value of <see cref="DotStyles.Default"/>. Use the <see cref="SetDefaultStyleOptions"/> method to set the default style on the

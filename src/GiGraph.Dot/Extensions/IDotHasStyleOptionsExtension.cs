@@ -27,12 +27,13 @@ public static class IDotHasStyleOptionsExtension
     /// <param name="this">
     ///     The current object.
     /// </param>
-    /// <typeparam name="TStyles">
-    ///     The type of the style options the object implements.
+    /// <typeparam name="T">
+    ///     The type of the style options implementation.
     /// </typeparam>
-    public static void RemoveStyleOptions<TStyles>(this IDotHasStyleOptions<TStyles> @this)
-        where TStyles : struct, Enum
+    public static T RemoveStyleOptions<T>(this T @this)
+        where T : IDotHasStyleOptions
     {
-        @this.Style = null;
+        @this.NullifyStyle();
+        return @this;
     }
 }

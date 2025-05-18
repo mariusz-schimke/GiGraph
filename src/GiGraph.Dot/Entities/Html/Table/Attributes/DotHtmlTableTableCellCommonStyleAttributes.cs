@@ -50,6 +50,11 @@ public abstract partial class DotHtmlTableTableCellCommonStyleAttributes<TIHtmlT
         set => Style = value;
     }
 
+    void IDotHasStyleOptions.NullifyStyle()
+    {
+        Style = null;
+    }
+
     [DotAttributeKey(StyleAttributeKey)]
     DotHtmlTableStyles? IDotHtmlTableTableCellCommonStyleAttributes.Style
     {
