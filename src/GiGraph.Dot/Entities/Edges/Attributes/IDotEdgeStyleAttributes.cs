@@ -33,11 +33,11 @@ public interface IDotEdgeStyleAttributes : IDotEntityStyleAttributes
     string? ColorScheme { get; set; }
 
     /// <summary>
-    ///     Gets or sets the color used to fill the arrowhead, assuming it has a filled style. If <see cref="ArrowheadColor"/> is not
+    ///     Gets or sets the color used to fill the arrowhead, assuming it has a filled style. If <see cref="ArrowheadFillColor"/> is not
     ///     defined, <see cref="LineColor"/> is used. If it is not defined too, the default is used, except when the output format is MIF,
     ///     which use black by default.
     /// </summary>
-    DotColorDefinition? ArrowheadColor { get; set; }
+    DotColorDefinition? ArrowheadFillColor { get; set; }
 
     /// <summary>
     ///     Specifies the width of the pen, in points, used to draw lines and curves, including the boundaries of edges. The value has no

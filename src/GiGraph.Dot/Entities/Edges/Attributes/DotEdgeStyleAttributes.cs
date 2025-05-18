@@ -57,9 +57,9 @@ public partial class DotEdgeStyleAttributes : DotEntityStyleAttributesWithMetada
     [DotAttributeKey(DotAttributeKeys.ColorScheme)]
     public virtual partial string? ColorScheme { get; set; }
 
-    /// <inheritdoc cref="IDotEdgeStyleAttributes.ArrowheadColor"/>
+    /// <inheritdoc cref="IDotEdgeStyleAttributes.ArrowheadFillColor"/>
     [DotAttributeKey(DotAttributeKeys.FillColor)]
-    public virtual partial DotColorDefinition? ArrowheadColor { get; set; }
+    public virtual partial DotColorDefinition? ArrowheadFillColor { get; set; }
 
     /// <inheritdoc cref="IDotEdgeStyleAttributes.LineWidth"/>
     [DotAttributeKey(DotAttributeKeys.PenWidth)]
@@ -97,5 +97,21 @@ public partial class DotEdgeStyleAttributes : DotEntityStyleAttributesWithMetada
         LineStyle = lineStyle;
         LineWeight = lineWeight;
         Invisible = invisible;
+    }
+
+    /// <summary>
+    ///     Sets the arrowhead style.
+    /// </summary>
+    /// <param name="fillColor">
+    ///     The color to use to fill the arrowhead, assuming it has a filled style. If null is specified, <see cref="LineColor"/> will be
+    ///     used.
+    /// </param>
+    /// <param name="scale">
+    ///     The multiplicative scale factor (default: 1.0, minimum: 0.0).
+    /// </param>
+    public virtual void SetArrowheadStyle(DotColorDefinition? fillColor = null, double? scale = null)
+    {
+        ArrowheadFillColor = fillColor;
+        ArrowheadScale = scale;
     }
 }

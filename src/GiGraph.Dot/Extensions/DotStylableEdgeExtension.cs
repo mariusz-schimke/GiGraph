@@ -19,8 +19,8 @@ public static class DotStylableEdgeExtension
     public static void SetTaperedStyle<T>(this T @this, double startWidth)
         where T : IDotStylableEdge
     {
-        @this.SetStyle(DotLineStyle.Tapered);
-        @this.SetWidth(startWidth);
+        @this.SetLineStyle(DotLineStyle.Tapered);
+        @this.SetLineWidth(startWidth);
     }
 
     /// <summary>
@@ -63,7 +63,7 @@ public static class DotStylableEdgeExtension
             throw new ArgumentException("At least one color has to have a weight specified.", nameof(segments));
         }
 
-        @this.SetColor(segments);
+        @this.SetLineColor(segments);
     }
 
     /// <summary>
@@ -87,7 +87,7 @@ public static class DotStylableEdgeExtension
     }
 
     /// <summary>
-    ///     Converts the edge to multiple parallel lines.
+    ///     Converts the edge to multiple parallel lines if at least two colors are specified.
     /// </summary>
     /// <param name="this">
     ///     The current context to set the style for.
@@ -120,6 +120,6 @@ public static class DotStylableEdgeExtension
             throw new ArgumentException("Weighted colors cannot be applied to multiline edges.", nameof(lines));
         }
 
-        @this.SetColor(lines);
+        @this.SetLineColor(lines);
     }
 }

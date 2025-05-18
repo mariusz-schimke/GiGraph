@@ -85,7 +85,7 @@
     "Graph": "Clusters.Style.FillColor: DotColorDefinition",
     "Cluster": "Style.FillColor: DotColorDefinition",
     "Node": "Style.FillColor: DotColorDefinition",
-    "Edge": "Style.ArrowheadColor: DotColorDefinition"
+    "Edge": "Style.ArrowheadFillColor: DotColorDefinition"
   },
   "fixedsize": {
     "Node": "Size.Mode: DotNodeSizing?"

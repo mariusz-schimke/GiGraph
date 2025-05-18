@@ -11,7 +11,7 @@ public interface IDotStylableEdge
     /// <param name="style">
     ///     The style to set.
     /// </param>
-    void SetStyle(DotLineStyle style);
+    void SetLineStyle(DotLineStyle style);
 
     /// <summary>
     ///     Sets the color of the edge.
@@ -19,7 +19,7 @@ public interface IDotStylableEdge
     /// <param name="color">
     ///     The color to set.
     /// </param>
-    void SetColor(DotColorDefinition color);
+    void SetLineColor(DotColorDefinition color);
 
     /// <summary>
     ///     Sets the width of the edge.
@@ -27,5 +27,5 @@ public interface IDotStylableEdge
     /// <param name="width">
     ///     The width to set.
     /// </param>
-    void SetWidth(double? width);
+    void SetLineWidth(double? width);
 }

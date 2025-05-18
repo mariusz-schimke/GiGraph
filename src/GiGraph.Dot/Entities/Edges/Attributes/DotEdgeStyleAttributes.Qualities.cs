@@ -6,7 +6,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes;
 
 public partial class DotEdgeStyleAttributes : IDotStylableEdge
 {
-    void IDotStylableEdge.SetStyle(DotLineStyle style) => LineStyle = style;
-    void IDotStylableEdge.SetColor(DotColorDefinition color) => LineColor = color;
-    void IDotStylableEdge.SetWidth(double? width) => LineWidth = width;
+    void IDotStylableEdge.SetLineStyle(DotLineStyle style) => LineStyle = style;
+    void IDotStylableEdge.SetLineColor(DotColorDefinition color) => LineColor = color;
+    void IDotStylableEdge.SetLineWidth(double? width) => LineWidth = width;
 }
