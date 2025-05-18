@@ -69,10 +69,6 @@ public partial class DotEdgeStyleAttributes : DotEntityStyleAttributesWithMetada
     [DotAttributeKey(DotAttributeKeys.ArrowSize)]
     public virtual partial double? ArrowheadScale { get; set; }
 
-    /// <inheritdoc cref="IDotEdgeStyleAttributes.DrawLabelConnector"/>
-    [DotAttributeKey(DotAttributeKeys.Decorate)]
-    public virtual partial bool? DrawLabelConnector { get; set; }
-
     /// <summary>
     ///     Applies the specified style options to the edge.
     /// </summary>
