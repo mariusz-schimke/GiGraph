@@ -76,32 +76,6 @@ public abstract partial class DotHtmlTableTableCellCommonStyleAttributes<TIHtmlT
     public virtual partial int? GradientFillAngle { get; set; }
 
     /// <summary>
-    ///     Applies the specified style options to the element.
-    /// </summary>
-    /// <param name="options">
-    ///     The options to apply.
-    /// </param>
-    public virtual void SetStyleOptions(DotHtmlTableStyleOptions options)
-    {
-        SetStyleOptions(options.FillStyle, options.CornerStyle);
-    }
-
-    /// <summary>
-    ///     Applies the specified style options to the element.
-    /// </summary>
-    /// <param name="fillStyle">
-    ///     Specifies a fill style.
-    /// </param>
-    /// <param name="cornerStyle">
-    ///     Specifies a corner style.
-    /// </param>
-    public virtual void SetStyleOptions(DotHtmlTableFillStyle fillStyle = DotHtmlTableFillStyle.Regular, DotHtmlTableCornerStyle cornerStyle = DotHtmlTableCornerStyle.Sharp)
-    {
-        FillStyle = fillStyle;
-        CornerStyle = cornerStyle;
-    }
-
-    /// <summary>
     ///     Sets border style.
     /// </summary>
     /// <param name="color">

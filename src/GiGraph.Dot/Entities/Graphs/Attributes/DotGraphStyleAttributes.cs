@@ -4,7 +4,6 @@ using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Clusters.Style;
 using GiGraph.Dot.Types.Colors;
-using GiGraph.Dot.Types.Graphs.Style;
 using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes;
@@ -48,26 +47,4 @@ public partial class DotGraphStyleAttributes : DotEntityStyleAttributesWithMetad
     /// <inheritdoc cref="IDotGraphStyleAttributes.GradientFillAngle"/>
     [DotAttributeKey(DotAttributeKeys.GradientAngle)]
     public virtual partial int? GradientFillAngle { get; set; }
-
-    /// <summary>
-    ///     Applies the specified style options to the graph.
-    /// </summary>
-    /// <param name="options">
-    ///     The options to apply.
-    /// </param>
-    public virtual void SetStyleOptions(DotGraphStyleOptions options)
-    {
-        SetStyleOptions(options.FillStyle);
-    }
-
-    /// <summary>
-    ///     Applies the specified style options to the graph.
-    /// </summary>
-    /// <param name="fillStyle">
-    ///     The fill style to set.
-    /// </param>
-    public virtual void SetStyleOptions(DotClusterFillStyle fillStyle)
-    {
-        FillStyle = fillStyle;
-    }
 }

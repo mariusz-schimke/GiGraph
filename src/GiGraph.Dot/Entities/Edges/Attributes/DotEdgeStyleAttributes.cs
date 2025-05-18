@@ -3,7 +3,6 @@ using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Colors;
-using GiGraph.Dot.Types.Edges.Style;
 using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Edges.Attributes;
@@ -70,36 +69,6 @@ public partial class DotEdgeStyleAttributes : DotEntityStyleAttributesWithMetada
     public virtual partial double? ArrowheadScale { get; set; }
 
     /// <summary>
-    ///     Applies the specified style options to the edge.
-    /// </summary>
-    /// <param name="options">
-    ///     The options to apply.
-    /// </param>
-    public virtual void SetStyleOptions(DotEdgeStyleOptions options)
-    {
-        SetStyleOptions(options.LineStyle, options.LineWeight, options.Invisible);
-    }
-
-    /// <summary>
-    ///     Applies the specified style options to the edge.
-    /// </summary>
-    /// <param name="lineStyle">
-    ///     The line style to set.
-    /// </param>
-    /// <param name="lineWeight">
-    ///     The line weight to set.
-    /// </param>
-    /// <param name="invisible">
-    ///     Determines whether the edge should be invisible.
-    /// </param>
-    public virtual void SetStyleOptions(DotLineStyle lineStyle = default, DotLineWeight lineWeight = default, bool invisible = false)
-    {
-        LineStyle = lineStyle;
-        LineWeight = lineWeight;
-        Invisible = invisible;
-    }
-
-    /// <summary>
     ///     Sets the arrowhead style.
     /// </summary>
     /// <param name="fillColor">
@@ -109,7 +78,7 @@ public partial class DotEdgeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// <param name="scale">
     ///     The multiplicative scale factor (default: 1.0, minimum: 0.0).
     /// </param>
-    public virtual void SetArrowheadStyle(DotColorDefinition? fillColor = null, double? scale = null)
+    public virtual void SetArrowheadStyle(DotColorDefinition? fillColor, double? scale)
     {
         ArrowheadFillColor = fillColor;
         ArrowheadScale = scale;

@@ -71,48 +71,4 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
 
     [DotAttributeKey(DotAttributeKeys.PenWidth)]
     public virtual partial double? BorderWidth { get; set; }
-
-    /// <summary>
-    ///     Applies the specified style options.
-    /// </summary>
-    /// <param name="options">
-    ///     The options to apply.
-    /// </param>
-    public virtual void SetStyleOptions(DotClusterStyleOptions options)
-    {
-        SetStyleOptions(options.FillStyle, options.BorderStyle, options.BorderWeight, options.CornerStyle, options.Invisible);
-    }
-
-    /// <summary>
-    ///     Applies the specified style options.
-    /// </summary>
-    /// <param name="fillStyle">
-    ///     The fill style to set.
-    /// </param>
-    /// <param name="borderStyle">
-    ///     The border style to set.
-    /// </param>
-    /// <param name="borderWeight">
-    ///     The border weight to set.
-    /// </param>
-    /// <param name="cornerStyle">
-    ///     The corner style to set.
-    /// </param>
-    /// <param name="invisible">
-    ///     Determines whether the node should be invisible.
-    /// </param>
-    public virtual void SetStyleOptions(
-        DotClusterFillStyle fillStyle = default,
-        DotBorderStyle borderStyle = default,
-        DotBorderWeight borderWeight = default,
-        DotCornerStyle cornerStyle = default,
-        bool invisible = false
-    )
-    {
-        FillStyle = fillStyle;
-        BorderStyle = borderStyle;
-        BorderWeight = borderWeight;
-        CornerStyle = cornerStyle;
-        Invisible = invisible;
-    }
 }
