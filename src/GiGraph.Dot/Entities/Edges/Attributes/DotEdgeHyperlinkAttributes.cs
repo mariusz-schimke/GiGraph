@@ -40,7 +40,7 @@ public partial class DotEdgeHyperlinkAttributes : DotHyperlinkAttributes<IDotEdg
     /// <summary>
     ///     If <see cref="Url"/> is specified, or if the edge has a <see cref="IDotEdgeRootAttributes.Hyperlink"/>
     ///     <see cref="IDotHyperlinkAttributes.Url"/> attribute specified, determines which window of the browser is used for the URL
-    ///     attached to the non-label part of the edge (svg, map only). Setting it to <see cref="DotHyperlinkTargets.NewWindow"/> will
+    ///     attached to the non-label part of the edge (svg, map only). Setting it to <see cref="DotHyperlinkTargets.Graphviz"/> will
     ///     open a new window if it doesn't already exist, or reuse it if it does. If undefined, the value of the edge's
     ///     <see cref="IDotEdgeRootAttributes.Hyperlink"/> <see cref="IDotHyperlinkAttributes.Target"/> is used.
     /// </summary>
