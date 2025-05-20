@@ -9,8 +9,7 @@ namespace GiGraph.Dot.Types.Hyperlinks;
 ///     The URL (equivalent to <see cref="Url"/>).
 /// </param>
 /// <param name="Target">
-///     Determines which window of the browser is used for the URL. See
-///     <see cref="GiGraph.Dot.Types.Hyperlinks.DotHyperlinkTargets"/>.
+///     Determines which window of the browser is used for the URL. See <see cref="DotHyperlinkTargets"/> for special values.
 /// </param>
 /// <param name="Tooltip">
 ///     The tooltip of the hyperlink (equivalent to <see cref="Title"/>).
