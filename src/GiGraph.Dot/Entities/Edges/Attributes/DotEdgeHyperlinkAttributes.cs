@@ -65,10 +65,7 @@ public partial class DotEdgeHyperlinkAttributes : DotHyperlinkAttributes<IDotEdg
     /// </param>
     public override DotEdgeHyperlinkAttributes Set(DotHyperlink attributes)
     {
-        Url = attributes.Url;
-        Href = attributes.Href;
-        Target = attributes.Target;
         Tooltip = attributes.Tooltip;
-        return this;
+        return base.Set(attributes);
     }
 }
