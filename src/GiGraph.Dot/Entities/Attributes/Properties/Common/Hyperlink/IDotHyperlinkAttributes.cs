@@ -1,6 +1,7 @@
 ﻿using GiGraph.Dot.Entities.Edges.Attributes;
 using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 using GiGraph.Dot.Types.EscapeString;
+using GiGraph.Dot.Types.Hyperlinks;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 
@@ -27,9 +28,9 @@ public interface IDotHyperlinkAttributes
     ///         label, this will also be active.
     ///     </para>
     ///     <para>
-    ///         Note that, for edges, the <see cref="DotEdgeHeadHyperlinkAttributes.Url" /> attribute of the head and the tail, the
-    ///         <see cref="DotEdgeLabelHyperlinkAttributes.Url" /> attribute of <see cref="IDotEdgeRootAttributes.LabelHyperlink" />, and
-    ///         the <see cref="DotEdgeHyperlinkAttributes.Url" /> attribute of <see cref="IDotEdgeRootAttributes.EdgeHyperlink" />, allow
+    ///         Note that, for edges, the <see cref="DotEdgeHeadHyperlinkAttributes.Url"/> attribute of the head and the tail, the
+    ///         <see cref="DotEdgeLabelHyperlinkAttributes.Url"/> attribute of <see cref="IDotEdgeRootAttributes.LabelHyperlink"/>, and
+    ///         the <see cref="DotEdgeHyperlinkAttributes.Url"/> attribute of <see cref="IDotEdgeRootAttributes.EdgeHyperlink"/>, allow
     ///         control of various parts of an edge. Also note that, if active areas of two edges overlap, it is unspecified which area
     ///         dominates.
     ///     </para>
@@ -37,17 +38,17 @@ public interface IDotHyperlinkAttributes
     DotEscapeString? Url { get; set; }
 
     /// <summary>
-    ///     Synonym for <see cref="Url" /> (svg, postscript, map only).
+    ///     Synonym for <see cref="Url"/> (svg, postscript, map only).
     /// </summary>
     DotEscapeString? Href { get; set; }
 
     /// <summary>
-    ///     If <see cref="Url" /> is specified, this attribute determines which window of the browser is used for the URL (svg, map
-    ///     only). See
+    ///     If <see cref="Url"/> is specified, this attribute determines which window of the browser is used for the URL (svg, map only).
+    ///     See the
     ///     <see href="http://www.w3.org/TR/html401/present/frames.html#adef-target">
     ///         W3C documentation
     ///     </see>
-    ///     .
+    ///     or use one of the predefined values from <see cref="DotHyperlinkTargets"/>.
     /// </summary>
     DotEscapeString? Target { get; set; }
 }

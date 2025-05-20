@@ -1,4 +1,5 @@
 using GiGraph.Dot.Types.EscapeString;
+using GiGraph.Dot.Types.Hyperlinks;
 
 namespace GiGraph.Dot.Entities.Html.Table.Attributes;
 
@@ -13,11 +14,11 @@ public interface IDotHtmlTableTableCellHyperlinkAttributes
     DotEscapeString? Href { get; set; }
 
     /// <summary>
-    ///     Determines which window of the browser is used for the URL if the object has one. See
+    ///     Determines which window of the browser is used for the URL if the object has one. See the
     ///     <see href="http://www.w3.org/TR/html401/present/frames.html#adef-target">
     ///         W3C documentation
     ///     </see>
-    ///     .
+    ///     or use one of the predefined values from <see cref="DotHyperlinkTargets"/>.
     /// </summary>
     DotEscapeString? Target { get; set; }
 
