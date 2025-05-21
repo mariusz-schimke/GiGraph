@@ -3,7 +3,7 @@ using GiGraph.Dot.Types.Html.Table;
 
 namespace GiGraph.Dot.Extensions;
 
-public static class IDotHasHtmlTableBordersExtension
+public static class DotHasHtmlTableBordersExtension
 {
     /// <summary>
     ///     Sets borders to draw.
