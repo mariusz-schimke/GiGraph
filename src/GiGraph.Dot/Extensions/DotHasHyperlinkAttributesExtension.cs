@@ -4,7 +4,7 @@ using GiGraph.Dot.Types.Hyperlinks;
 
 namespace GiGraph.Dot.Extensions;
 
-public static class DotHasHyperlinkExtension
+public static class DotHasHyperlinkAttributesExtension
 {
     /// <summary>
     ///     Sets hyperlink attributes.
@@ -19,7 +19,7 @@ public static class DotHasHyperlinkExtension
     ///     Determines which window of the browser is used for the URL. See <see cref="DotHyperlinkTargets"/> for special values.
     /// </param>
     public static T Set<T>(this T entity, DotEscapeString? href, DotEscapeString? target)
-        where T : IDotHasHyperlink
+        where T : IDotHasHyperlinkAttributes
     {
         entity.Href = href;
         entity.Target = target;
@@ -42,7 +42,7 @@ public static class DotHasHyperlinkExtension
     ///     The tooltip to set on the element.
     /// </param>
     public static T Set<T>(this T entity, DotEscapeString? href, DotEscapeString? target, DotEscapeString? tooltip)
-        where T : IDotHasHyperlinkWithTooltip
+        where T : IDotHasHyperlinkAttributesWithTooltip
     {
         entity.Tooltip = tooltip;
         return entity.Set(href, target);
@@ -61,7 +61,7 @@ public static class DotHasHyperlinkExtension
     ///     The tooltip to set on the element.
     /// </param>
     public static T SetWithTooltip<T>(this T entity, DotEscapeString? href, DotEscapeString? tooltip)
-        where T : IDotHasHyperlinkWithTooltip
+        where T : IDotHasHyperlinkAttributesWithTooltip
     {
         entity.Href = href;
         entity.Tooltip = tooltip;
@@ -69,7 +69,8 @@ public static class DotHasHyperlinkExtension
     }
 
     /// <summary>
-    ///     Sets hyperlink attributes with the <see cref="IDotHasHyperlink.Target"/> as <see cref="DotHyperlinkTargets.Blank"/>.
+    ///     Sets hyperlink attributes with the <see cref="IDotHasHyperlinkAttributes.Target"/> as <see cref="DotHyperlinkTargets.Blank"/>
+    ///     .
     /// </summary>
     /// <param name="entity">
     ///     The current object.
@@ -78,11 +79,15 @@ public static class DotHasHyperlinkExtension
     ///     The URL of the hyperlink.
     /// </param>
     public static T SetWithNewWindowTarget<T>(this T entity, DotEscapeString? href)
-        where T : IDotHasHyperlink =>
-        entity.Set(href, target: DotHyperlinkTargets.Blank);
+        where T : IDotHasHyperlinkAttributes
+    {
+        entity.Href = href;
+        return entity.SetNewWindowTarget();
+    }
 
     /// <summary>
-    ///     Sets hyperlink attributes with the <see cref="IDotHasHyperlink.Target"/> as <see cref="DotHyperlinkTargets.Blank"/>.
+    ///     Sets hyperlink attributes with the <see cref="IDotHasHyperlinkAttributes.Target"/> as <see cref="DotHyperlinkTargets.Blank"/>
+    ///     .
     /// </summary>
     /// <param name="entity">
     ///     The current object.
@@ -94,17 +99,17 @@ public static class DotHasHyperlinkExtension
     ///     The tooltip to set on the element.
     /// </param>
     public static T SetWithNewWindowTarget<T>(this T entity, DotEscapeString? href, DotEscapeString? tooltip)
-        where T : IDotHasHyperlinkWithTooltip
+        where T : IDotHasHyperlinkAttributesWithTooltip
     {
         entity.SetWithTooltip(href, tooltip);
         return entity.SetNewWindowTarget();
     }
 
     /// <summary>
-    ///     Sets the <see cref="IDotHasHyperlink.Target"/> property as <see cref="DotHyperlinkTargets.Blank"/>.
+    ///     Sets the <see cref="IDotHasHyperlinkAttributes.Target"/> property as <see cref="DotHyperlinkTargets.Blank"/>.
     /// </summary>
     public static T SetNewWindowTarget<T>(this T entity)
-        where T : IDotHasHyperlink
+        where T : IDotHasHyperlinkAttributes
     {
         entity.Target = DotHyperlinkTargets.Blank;
         return entity;

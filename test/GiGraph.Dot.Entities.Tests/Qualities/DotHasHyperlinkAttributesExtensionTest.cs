@@ -8,7 +8,7 @@ using Xunit;
 
 namespace GiGraph.Dot.Entities.Tests.Qualities;
 
-public class DotHasHyperlinkExtensionTest
+public class DotHasHyperlinkAttributesExtensionTest
 {
     [Fact]
     public void table_hyperlink_setter_with_params_sets_all_properties()
@@ -42,7 +42,7 @@ public class DotHasHyperlinkExtensionTest
     }
 
     private void TestMethodsOfHasHyperlink<T>(T entity)
-        where T : IDotHasHyperlink
+        where T : IDotHasHyperlinkAttributes
     {
         var hyperlink = CreateRandomHyperlink();
         entity.Set(hyperlink.Href, hyperlink.Target);
@@ -62,7 +62,7 @@ public class DotHasHyperlinkExtensionTest
     }
 
     private void TestMethodsOfHasHyperlinkWithTooltip<T>(T entity)
-        where T : IDotHasHyperlinkWithTooltip
+        where T : IDotHasHyperlinkAttributesWithTooltip
     {
         var hyperlink = CreateRandomHyperlink();
         entity.Set(hyperlink.Href, hyperlink.Target, hyperlink.Tooltip);

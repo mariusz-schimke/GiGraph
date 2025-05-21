@@ -10,7 +10,7 @@ using GiGraph.Dot.Types.Hyperlinks;
 namespace GiGraph.Dot.Entities.Edges.Attributes;
 
 public partial class DotEdgeHyperlinkAttributes : DotHyperlinkAttributes<IDotEdgeHyperlinkAttributes, DotEdgeHyperlinkAttributes>,
-    IDotEdgeHyperlinkAttributes, IDotHasHyperlinkWithTooltip
+    IDotEdgeHyperlinkAttributes, IDotHasHyperlinkAttributesWithTooltip
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeHyperlinkAttributes, IDotEdgeHyperlinkAttributes>().BuildLazy();
 
