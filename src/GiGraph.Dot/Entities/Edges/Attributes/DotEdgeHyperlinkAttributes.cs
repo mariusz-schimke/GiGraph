@@ -2,13 +2,15 @@ using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
+using GiGraph.Dot.Entities.Qualities;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Hyperlinks;
 
 namespace GiGraph.Dot.Entities.Edges.Attributes;
 
-public partial class DotEdgeHyperlinkAttributes : DotHyperlinkAttributes<IDotEdgeHyperlinkAttributes, DotEdgeHyperlinkAttributes>, IDotEdgeHyperlinkAttributes
+public partial class DotEdgeHyperlinkAttributes : DotHyperlinkAttributes<IDotEdgeHyperlinkAttributes, DotEdgeHyperlinkAttributes>,
+    IDotEdgeHyperlinkAttributes, IDotHasHyperlinkAttributesWithTooltip
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeHyperlinkAttributes, IDotEdgeHyperlinkAttributes>().BuildLazy();
 
@@ -58,32 +60,12 @@ public partial class DotEdgeHyperlinkAttributes : DotHyperlinkAttributes<IDotEdg
     /// <summary>
     ///     Specifies hyperlink attributes.
     /// </summary>
-    /// <param name="href">
-    ///     The URL of the hyperlink. Equivalent to <paramref name="url"/>.
-    /// </param>
-    /// <param name="target">
-    ///     The target of the hyperlink. See <see cref="DotHyperlinkTargets"/> for accepted values.
-    /// </param>
-    /// <param name="url">
-    ///     The URL of the hyperlink. Equivalent to <paramref name="href"/>.
-    /// </param>
-    /// <param name="tooltip">
-    ///     The tooltip of the hyperlink.
-    /// </param>
-    public virtual DotEdgeHyperlinkAttributes Set(DotEscapeString? href = null, DotEscapeString? target = null, DotEscapeString? url = null, DotEscapeString? tooltip = null)
-    {
-        Tooltip = tooltip;
-
-        // make sure the order of params here is equivalent to the order of params in the base method because they are both available
-        // on the edge as overloads, and it would be misleading if the initial params didn't overlap
-        return base.Set(href, target, url);
-    }
-
-    /// <summary>
-    ///     Specifies hyperlink attributes.
-    /// </summary>
     /// <param name="attributes">
     ///     The attributes to set.
     /// </param>
-    public override DotEdgeHyperlinkAttributes Set(DotHyperlink attributes) => Set(attributes.Href, attributes.Target, attributes.Url, attributes.Tooltip);
+    public override DotEdgeHyperlinkAttributes Set(DotHyperlink attributes)
+    {
+        Tooltip = attributes.Tooltip;
+        return base.Set(attributes);
+    }
 }

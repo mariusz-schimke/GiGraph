@@ -3,7 +3,7 @@ using GiGraph.Dot.Entities.Qualities;
 
 namespace GiGraph.Dot.Extensions;
 
-public static class IDotHasStyleOptionsExtension
+public static class DotHasStyleOptionsExtension
 {
     /// <summary>
     ///     Indicates whether the element has a style attribute assigned. Returns true if the style attribute has any value, including

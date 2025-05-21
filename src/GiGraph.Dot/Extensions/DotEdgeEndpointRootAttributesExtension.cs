@@ -3,7 +3,7 @@ using GiGraph.Dot.Types.Edges.Arrowheads;
 
 namespace GiGraph.Dot.Extensions;
 
-public static class IDotEdgeEndpointRootAttributesExtension
+public static class DotEdgeEndpointRootAttributesExtension
 {
     /// <summary>
     ///     <para>
