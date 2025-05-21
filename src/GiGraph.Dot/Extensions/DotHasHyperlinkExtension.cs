@@ -4,7 +4,7 @@ using GiGraph.Dot.Types.Hyperlinks;
 
 namespace GiGraph.Dot.Extensions;
 
-public static class IDotHasHyperlinkExtension
+public static class DotHasHyperlinkExtension
 {
     /// <summary>
     ///     Sets hyperlink attributes.
