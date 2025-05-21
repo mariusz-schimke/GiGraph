@@ -9,7 +9,7 @@ using GiGraph.Dot.Types.Hyperlinks;
 namespace GiGraph.Dot.Entities.Html.Table.Attributes;
 
 public partial class DotHtmlTableTableCellHyperlinkAttributes : DotEntityAttributes<IDotHtmlTableTableCellHyperlinkAttributes, DotHtmlTableTableCellHyperlinkAttributes>,
-    IDotHtmlTableTableCellHyperlinkAttributes, IDotHasHyperlink
+    IDotHtmlTableTableCellHyperlinkAttributes, IDotHasHyperlinkWithTooltip
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlTableTableCellHyperlinkAttributes, IDotHtmlTableTableCellHyperlinkAttributes>().BuildLazy();
 
