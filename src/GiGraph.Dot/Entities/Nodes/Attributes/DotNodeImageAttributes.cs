@@ -9,7 +9,8 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes;
 
 public partial class DotNodeImageAttributes : DotEntityAttributesWithMetadata<IDotNodeImageAttributes, DotNodeImageAttributes>, IDotNodeImageAttributes
 {
-    private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeImageAttributes, IDotNodeImageAttributes>().BuildLazy();
+    private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup =
+        new DotMemberAttributeKeyLookupBuilder<DotNodeImageAttributes, IDotNodeImageAttributes>().BuildLazy();
 
     public DotNodeImageAttributes(DotAttributeCollection attributes)
         : base(attributes, AttributeKeyLookup)
@@ -45,7 +46,7 @@ public partial class DotNodeImageAttributes : DotEntityAttributesWithMetadata<ID
     /// <param name="scaling">
     ///     The scaling option to apply to the image.
     /// </param>
-    public virtual DotNodeImageAttributes Set(string? path, DotAlignment? alignment = null, DotImageScaling? scaling = null)
+    public virtual DotNodeImageAttributes Set(string? path, DotAlignment? alignment, DotImageScaling? scaling)
     {
         Path = path;
         Alignment = alignment;
