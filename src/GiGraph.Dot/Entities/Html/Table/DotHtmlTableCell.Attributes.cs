@@ -92,7 +92,7 @@ public partial class DotHtmlTableCell : IDotHtmlTableCellAttributes
     /// <param name="rowSpan">
     ///     The row span to set.
     /// </param>
-    public virtual DotHtmlTableCell SetSpan(int? columnSpan = null, int? rowSpan = null)
+    public virtual DotHtmlTableCell SetSpan(int? columnSpan, int? rowSpan)
     {
         ColumnSpan = columnSpan;
         RowSpan = rowSpan;
