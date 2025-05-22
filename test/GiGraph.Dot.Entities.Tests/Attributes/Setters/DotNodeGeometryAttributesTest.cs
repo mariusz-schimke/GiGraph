@@ -11,9 +11,11 @@ public class DotNodeGeometryAttributesTest
     public void setter_with_params_sets_all_properties()
     {
         var geometry = new DotNodeGeometryAttributes(new DotAttributeCollection());
-        geometry.Set(5, true, 45.0, 1.5, 2.0);
+        geometry.SetGeometry(5, true);
         Assert.Equal(5, geometry.Sides);
         Assert.Equal(true, geometry.Regular);
+
+        geometry.SetTransform(45.0, 1.5, 2.0);
         Assert.Equal(45.0, geometry.Rotation);
         Assert.Equal(1.5, geometry.Skew);
         Assert.Equal(2.0, geometry.Distortion);

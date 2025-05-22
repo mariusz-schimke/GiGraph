@@ -6,9 +6,11 @@ using GiGraph.Dot.Types.Geometry;
 
 namespace GiGraph.Dot.Entities.Nodes.Attributes;
 
-public partial class DotNodeGeometryAttributes : DotEntityAttributesWithMetadata<IDotNodeGeometryAttributes, DotNodeGeometryAttributes>, IDotNodeGeometryAttributes
+public partial class DotNodeGeometryAttributes : DotEntityAttributesWithMetadata<IDotNodeGeometryAttributes, DotNodeGeometryAttributes>,
+    IDotNodeGeometryAttributes
 {
-    private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeGeometryAttributes, IDotNodeGeometryAttributes>().BuildLazy();
+    private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup =
+        new DotMemberAttributeKeyLookupBuilder<DotNodeGeometryAttributes, IDotNodeGeometryAttributes>().BuildLazy();
 
     public DotNodeGeometryAttributes(DotAttributeCollection attributes)
         : base(attributes, AttributeKeyLookup)
@@ -49,6 +51,16 @@ public partial class DotNodeGeometryAttributes : DotEntityAttributesWithMetadata
     /// <param name="regular">
     ///     Determines whether the shape should be regular.
     /// </param>
+    public virtual DotNodeGeometryAttributes SetGeometry(int? sides, bool? regular)
+    {
+        Sides = sides;
+        Regular = regular;
+        return this;
+    }
+
+    /// <summary>
+    ///     Sets polygon transform attributes.
+    /// </summary>
     /// <param name="rotation">
     ///     The rotation angle.
     /// </param>
@@ -58,10 +70,8 @@ public partial class DotNodeGeometryAttributes : DotEntityAttributesWithMetadata
     /// <param name="distortion">
     ///     The distortion factor.
     /// </param>
-    public virtual DotNodeGeometryAttributes Set(int? sides = null, bool? regular = null, double? rotation = null, double? skew = null, double? distortion = null)
+    public virtual DotNodeGeometryAttributes SetTransform(double? rotation, double? skew, double? distortion)
     {
-        Sides = sides;
-        Regular = regular;
         Rotation = rotation;
         Skew = skew;
         Distortion = distortion;
@@ -74,5 +84,6 @@ public partial class DotNodeGeometryAttributes : DotEntityAttributesWithMetadata
     /// <param name="attributes">
     ///     The attributes to set.
     /// </param>
-    public virtual DotNodeGeometryAttributes Set(DotPolygon attributes) => Set(attributes.Sides, attributes.Regular, attributes.Rotation, attributes.Skew, attributes.Distortion);
+    public virtual DotNodeGeometryAttributes Set(DotPolygon attributes) => SetGeometry(attributes.Sides, attributes.Regular)
+        .SetTransform(attributes.Rotation, attributes.Skew, attributes.Distortion);
 }
