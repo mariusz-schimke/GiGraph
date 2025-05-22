@@ -4,7 +4,7 @@ using GiGraph.Dot.Output.Metadata.Html;
 namespace GiGraph.Dot.Types.Images;
 
 /// <summary>
-///     Image scaling options.
+///     Image scaling mode.
 /// </summary>
 public enum DotImageScaling
 {

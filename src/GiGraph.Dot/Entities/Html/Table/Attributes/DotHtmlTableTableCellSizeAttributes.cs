@@ -74,10 +74,11 @@ public partial class DotHtmlTableTableCellSizeAttributes : DotEntityAttributes<I
     /// <param name="attributes">
     ///     The attributes to set. Note that double values will be cast to integers, potentially losing the fractional part.
     /// </param>
-    /// <param name="asFixed">
-    ///     Specifies whether the values given by the <see cref="DotSize.Width"/> and <see cref="DotSize.Height"/> attributes are
-    ///     enforced.
-    /// </param>
-    public virtual DotHtmlTableTableCellSizeAttributes Set(DotSize attributes, bool? asFixed = null) =>
-        Set((int?) attributes.Width, (int?) attributes.Height, asFixed);
+    public virtual DotHtmlTableTableCellSizeAttributes Set(DotSize attributes)
+    {
+        var asFixed = attributes.Mode is { } mode
+            ? mode == DotSizingMode.Fixed
+            : (bool?) null;
+        return Set((int?) attributes.Width, (int?) attributes.Height, asFixed);
+    }
 }
