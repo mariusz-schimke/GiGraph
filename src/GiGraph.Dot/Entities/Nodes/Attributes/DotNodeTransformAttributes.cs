@@ -60,6 +60,5 @@ public partial class DotNodeTransformAttributes : DotEntityAttributesWithMetadat
     /// <param name="attributes">
     ///     The attributes to set.
     /// </param>
-    public virtual DotNodeTransformAttributes Set(DotTransform attributes) =>
-        Set(attributes.Rotation, attributes.Skew, attributes.Distortion);
+    public virtual DotNodeTransformAttributes Set(DotTransform attributes) => Set(attributes.Rotation, attributes.Skew, attributes.Distortion);
 }
