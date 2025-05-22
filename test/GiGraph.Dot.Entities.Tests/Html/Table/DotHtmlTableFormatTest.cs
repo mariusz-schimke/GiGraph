@@ -19,7 +19,7 @@ public class DotHtmlTableFormatTest
         Assert.Equal(columnFormat, table.ColumnFormat);
         Assert.Equal(rowFormat, table.RowFormat);
 
-        table.SetFormat();
+        table.SetFormat(null, null);
         Assert.Null(table.ColumnFormat);
         Assert.Null(table.RowFormat);
     }
