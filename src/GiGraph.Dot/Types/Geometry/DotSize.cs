@@ -9,4 +9,7 @@ namespace GiGraph.Dot.Types.Geometry;
 /// <param name="Height">
 ///     The height.
 /// </param>
-public record DotSize(double? Width = null, double? Height = null);
+/// <param name="Mode">
+///     The sizing mode.
+/// </param>
+public record DotSize(double? Width = null, double? Height = null, DotSizing? Mode = null);

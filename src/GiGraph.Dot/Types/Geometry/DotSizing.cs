@@ -1,11 +1,11 @@
 ﻿using GiGraph.Dot.Output.Metadata;
 
-namespace GiGraph.Dot.Types.Nodes.Size;
+namespace GiGraph.Dot.Types.Geometry;
 
 /// <summary>
-///     The node sizing mode values.
+///     The node sizing options.
 /// </summary>
-public enum DotNodeSizing
+public enum DotSizing
 {
     /// <summary>
     ///     The node size is specified by the values of the width and height attributes only, and is not expanded to contain the text

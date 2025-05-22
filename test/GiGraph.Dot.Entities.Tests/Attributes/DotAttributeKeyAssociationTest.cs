@@ -27,7 +27,6 @@ using GiGraph.Dot.Types.Graphs.Layout.Spacing;
 using GiGraph.Dot.Types.Identifiers;
 using GiGraph.Dot.Types.Images;
 using GiGraph.Dot.Types.Nodes;
-using GiGraph.Dot.Types.Nodes.Size;
 using GiGraph.Dot.Types.Styling;
 using Snapshooter.Xunit;
 using Xunit;
@@ -56,7 +55,7 @@ public class DotAttributeKeyAssociationTest
         { typeof(DotImageScaling), DotImageScaling.Uniform },
         { typeof(DotLayoutDirection), DotLayoutDirection.LeftToRight },
         { typeof(DotNodeShape), DotNodeShape.Box },
-        { typeof(DotNodeSizing), DotNodeSizing.Auto },
+        { typeof(DotSizing), DotSizing.Auto },
         { typeof(DotOrientation), DotOrientation.Landscape },
         { typeof(DotOutputOrder), DotOutputOrder.EdgesFirst },
         { typeof(DotRank), DotRank.Same },
