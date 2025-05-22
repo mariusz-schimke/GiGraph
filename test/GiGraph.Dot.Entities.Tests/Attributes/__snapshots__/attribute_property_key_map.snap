@@ -88,7 +88,7 @@
     "Edge": "Style.ArrowheadFillColor: DotColorDefinition"
   },
   "fixedsize": {
-    "Node": "Size.Mode: DotNodeSizing?"
+    "Node": "Size.Mode: DotSizing?"
   },
   "fontcolor": {
     "Graph": "Font.Color: DotColor",
