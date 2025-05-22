@@ -15,16 +15,16 @@ public class DotNodeSizeAttributesTest
         Assert.Null(size.Height);
         Assert.Null(size.Mode);
 
-        size.Mode = DotSizingMode.Fixed;
+        size.Mode = DotSizing.Fixed;
         size.Set(1.5, 2.0);
         Assert.Equal(1.5, size.Width);
         Assert.Equal(2.0, size.Height);
-        Assert.Equal(DotSizingMode.Fixed, size.Mode);
+        Assert.Equal(DotSizing.Fixed, size.Mode);
 
-        size.Set(1.5, 2.0, DotSizingMode.Auto);
+        size.Set(1.5, 2.0, DotSizing.Auto);
         Assert.Equal(1.5, size.Width);
         Assert.Equal(2.0, size.Height);
-        Assert.Equal(DotSizingMode.Auto, size.Mode);
+        Assert.Equal(DotSizing.Auto, size.Mode);
     }
 
     [Fact]
@@ -35,15 +35,15 @@ public class DotNodeSizeAttributesTest
         Assert.Null(size.Height);
         Assert.Null(size.Mode);
 
-        size.Mode = DotSizingMode.Fixed;
+        size.Mode = DotSizing.Fixed;
         size.Set(new DotSize(1.5, 2.0));
         Assert.Equal(1.5, size.Width);
         Assert.Equal(2.0, size.Height);
         Assert.Null(size.Mode);
 
-        size.Set(new DotSize(1.6, 2.1, DotSizingMode.Shape));
+        size.Set(new DotSize(1.6, 2.1, DotSizing.Shape));
         Assert.Equal(1.6, size.Width);
         Assert.Equal(2.1, size.Height);
-        Assert.Equal(DotSizingMode.Shape, size.Mode);
+        Assert.Equal(DotSizing.Shape, size.Mode);
     }
 }

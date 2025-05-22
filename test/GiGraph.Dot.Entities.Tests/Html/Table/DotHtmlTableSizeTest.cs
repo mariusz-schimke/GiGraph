@@ -43,17 +43,17 @@ public class DotHtmlTableSizeTest
         Assert.Equal(2, table.Size.Height);
         Assert.Null(table.Size.Fixed);
 
-        size = new DotSize(1.3, 3.9, DotSizingMode.Fixed);
+        size = new DotSize(1.3, 3.9, DotSizing.Fixed);
         table.Size.Set(size);
         Assert.Equal(1, table.Size.Width);
         Assert.Equal(3, table.Size.Height);
         Assert.True(table.Size.Fixed);
 
-        size = new DotSize(1, 2, DotSizingMode.Auto);
+        size = new DotSize(1, 2, DotSizing.Auto);
         table.Size.Set(size);
         Assert.False(table.Size.Fixed);
 
-        size = new DotSize(1, 2, DotSizingMode.Shape);
+        size = new DotSize(1, 2, DotSizing.Shape);
         table.Size.Set(size);
         Assert.False(table.Size.Fixed);
     }

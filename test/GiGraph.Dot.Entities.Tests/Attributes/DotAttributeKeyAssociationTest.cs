@@ -55,7 +55,7 @@ public class DotAttributeKeyAssociationTest
         { typeof(DotImageScaling), DotImageScaling.Uniform },
         { typeof(DotLayoutDirection), DotLayoutDirection.LeftToRight },
         { typeof(DotNodeShape), DotNodeShape.Box },
-        { typeof(DotSizingMode), DotSizingMode.Auto },
+        { typeof(DotSizing), DotSizing.Auto },
         { typeof(DotOrientation), DotOrientation.Landscape },
         { typeof(DotOutputOrder), DotOutputOrder.EdgesFirst },
         { typeof(DotRank), DotRank.Same },

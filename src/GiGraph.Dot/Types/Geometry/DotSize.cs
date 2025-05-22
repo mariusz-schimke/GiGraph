@@ -12,4 +12,4 @@ namespace GiGraph.Dot.Types.Geometry;
 /// <param name="Mode">
 ///     The sizing mode.
 /// </param>
-public record DotSize(double? Width = null, double? Height = null, DotSizingMode? Mode = null);
+public record DotSize(double? Width = null, double? Height = null, DotSizing? Mode = null);

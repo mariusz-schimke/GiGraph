@@ -43,7 +43,7 @@ public interface IDotNodeImageAttributes
     ///         the <see cref="DotGraphCanvasAttributes.Dpi"/> attribute on graph <see cref="IDotGraphRootAttributes.Canvas"/>), and the
     ///         node size is made large enough to contain its image, its label, its padding, and its peripheries. Its width and height
     ///         will also be at least as large as its minimum width and height. If, however, the node's
-    ///         <see cref="IDotNodeRootAttributes.Size"/> <see cref="DotNodeSizeAttributes.Mode"/> is <see cref="DotSizingMode.Fixed"/>,
+    ///         <see cref="IDotNodeRootAttributes.Size"/> <see cref="DotNodeSizeAttributes.Mode"/> is <see cref="DotSizing.Fixed"/>,
     ///         the <see cref="DotNodeSizeAttributes.Width"/> and <see cref="DotNodeSizeAttributes.Height"/> attributes specify the exact
     ///         size of the node.
     ///     </para>

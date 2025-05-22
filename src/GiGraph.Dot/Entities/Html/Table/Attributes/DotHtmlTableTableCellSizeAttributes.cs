@@ -77,7 +77,7 @@ public partial class DotHtmlTableTableCellSizeAttributes : DotEntityAttributes<I
     public virtual DotHtmlTableTableCellSizeAttributes Set(DotSize attributes)
     {
         var asFixed = attributes.Mode is { } mode
-            ? mode == DotSizingMode.Fixed
+            ? mode == DotSizing.Fixed
             : (bool?) null;
         return Set((int?) attributes.Width, (int?) attributes.Height, asFixed);
     }

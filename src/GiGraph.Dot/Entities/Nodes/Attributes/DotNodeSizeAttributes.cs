@@ -31,7 +31,7 @@ public partial class DotNodeSizeAttributes : DotEntityAttributesWithMetadata<IDo
 
     /// <inheritdoc cref="IDotNodeSizeAttributes.Mode"/>
     [DotAttributeKey(DotAttributeKeys.FixedSize)]
-    public virtual partial DotSizingMode? Mode { get; set; }
+    public virtual partial DotSizing? Mode { get; set; }
 
     /// <summary>
     ///     Sets size attributes.
@@ -61,7 +61,7 @@ public partial class DotNodeSizeAttributes : DotEntityAttributesWithMetadata<IDo
     /// <param name="mode">
     ///     The sizing mode to set.
     /// </param>
-    public virtual DotNodeSizeAttributes Set(double? width, double? height, DotSizingMode? mode)
+    public virtual DotNodeSizeAttributes Set(double? width, double? height, DotSizing? mode)
     {
         Mode = mode;
         return Set(width, height);
