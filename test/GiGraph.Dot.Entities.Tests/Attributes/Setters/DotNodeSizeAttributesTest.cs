@@ -12,20 +12,40 @@ public class DotNodeSizeAttributesTest
     public void setter_with_params_sets_all_properties()
     {
         var size = new DotNodeSizeAttributes(new DotAttributeCollection());
-        size.Set(1.5, 2.0, DotNodeSizing.Fixed);
+        Assert.Null(size.Width);
+        Assert.Null(size.Height);
+        Assert.Null(size.Mode);
+
+        size.Mode = DotNodeSizing.Fixed;
+        size.Set(1.5, 2.0);
         Assert.Equal(1.5, size.Width);
         Assert.Equal(2.0, size.Height);
         Assert.Equal(DotNodeSizing.Fixed, size.Mode);
+
+        size.Set(1.5, 2.0, DotNodeSizing.Auto);
+        Assert.Equal(1.5, size.Width);
+        Assert.Equal(2.0, size.Height);
+        Assert.Equal(DotNodeSizing.Auto, size.Mode);
     }
 
     [Fact]
     public void setter_with_size_sets_all_properties()
     {
         var size = new DotNodeSizeAttributes(new DotAttributeCollection());
-        size.Set(new DotSize(1.5, 2.0), DotNodeSizing.Fixed);
+        Assert.Null(size.Width);
+        Assert.Null(size.Height);
+        Assert.Null(size.Mode);
+
+        size.Mode = DotNodeSizing.Fixed;
+        size.Set(new DotSize(1.5, 2.0));
         Assert.Equal(1.5, size.Width);
         Assert.Equal(2.0, size.Height);
         Assert.Equal(DotNodeSizing.Fixed, size.Mode);
+
+        size.Set(new DotSize(1.6, 2.1), DotNodeSizing.Shape);
+        Assert.Equal(1.6, size.Width);
+        Assert.Equal(2.1, size.Height);
+        Assert.Equal(DotNodeSizing.Shape, size.Mode);
     }
 
     [Fact]

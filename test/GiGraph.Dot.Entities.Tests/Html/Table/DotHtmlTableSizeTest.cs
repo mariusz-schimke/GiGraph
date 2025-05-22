@@ -22,8 +22,8 @@ public class DotHtmlTableSizeTest
         Assert.Equal(true, table.Size.Fixed);
 
         table.Size.Set(4, 3, false);
-        Assert.Equal(1, table.Size.Width);
-        Assert.Equal(2, table.Size.Height);
+        Assert.Equal(4, table.Size.Width);
+        Assert.Equal(3, table.Size.Height);
         Assert.Equal(false, table.Size.Fixed);
     }
 

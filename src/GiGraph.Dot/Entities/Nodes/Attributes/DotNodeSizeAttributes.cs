@@ -9,7 +9,8 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes;
 
 public partial class DotNodeSizeAttributes : DotEntityAttributesWithMetadata<IDotNodeSizeAttributes, DotNodeSizeAttributes>, IDotNodeSizeAttributes
 {
-    private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeSizeAttributes, IDotNodeSizeAttributes>().BuildLazy();
+    private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup =
+        new DotMemberAttributeKeyLookupBuilder<DotNodeSizeAttributes, IDotNodeSizeAttributes>().BuildLazy();
 
     public DotNodeSizeAttributes(DotAttributeCollection attributes)
         : base(attributes, AttributeKeyLookup)
@@ -42,16 +43,38 @@ public partial class DotNodeSizeAttributes : DotEntityAttributesWithMetadata<IDo
     /// <param name="height">
     ///     The width to set.
     /// </param>
-    /// <param name="mode">
-    ///     The sizing mode to set.
-    /// </param>
-    public virtual DotNodeSizeAttributes Set(double? width = null, double? height = null, DotNodeSizing? mode = null)
+    public virtual DotNodeSizeAttributes Set(double? width, double? height)
     {
         Width = width;
         Height = height;
-        Mode = mode;
         return this;
     }
+
+    /// <summary>
+    ///     Sets size attributes.
+    /// </summary>
+    /// <param name="width">
+    ///     The width to set.
+    /// </param>
+    /// <param name="height">
+    ///     The width to set.
+    /// </param>
+    /// <param name="mode">
+    ///     The sizing mode to set.
+    /// </param>
+    public virtual DotNodeSizeAttributes Set(double? width, double? height, DotNodeSizing? mode)
+    {
+        Mode = mode;
+        return Set(width, height);
+    }
+
+    /// <summary>
+    ///     Sets size attributes.
+    /// </summary>
+    /// <param name="attributes">
+    ///     The attributes to set.
+    /// </param>
+    public virtual DotNodeSizeAttributes Set(DotSize attributes) => Set(attributes.Width, attributes.Height);
 
     /// <summary>
     ///     Sets size attributes.
@@ -62,7 +85,11 @@ public partial class DotNodeSizeAttributes : DotEntityAttributesWithMetadata<IDo
     /// <param name="mode">
     ///     The sizing mode to set.
     /// </param>
-    public virtual DotNodeSizeAttributes Set(DotSize attributes, DotNodeSizing? mode = null) => Set(attributes.Width, attributes.Height, mode);
+    public virtual DotNodeSizeAttributes Set(DotSize attributes, DotNodeSizing? mode)
+    {
+        Mode = mode;
+        return Set(attributes);
+    }
 
     /// <summary>
     ///     Sets size attributes.
