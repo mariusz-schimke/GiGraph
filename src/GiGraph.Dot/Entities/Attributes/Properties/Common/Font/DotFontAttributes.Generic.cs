@@ -38,11 +38,11 @@ public abstract partial class DotFontAttributes<TIEntityFontAttributes, TEntityF
     /// <param name="color">
     ///     Font color.
     /// </param>
-    public virtual TEntityFontAttributes Set(string? name = null, double? size = null, DotColor? color = null)
+    public virtual TEntityFontAttributes Set(string? name, double? size, DotColor? color)
     {
+        Name = name;
         Size = size;
         Color = color;
-        Name = name;
         return (TEntityFontAttributes) this;
     }
 

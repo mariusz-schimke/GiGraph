@@ -13,7 +13,7 @@ public class DotGraphWithCommentedAttributesTest
     public void graph_attributes_have_no_padding_when_not_commented()
     {
         var graph = new DotGraph();
-        graph.Font.Set("arial", 10);
+        graph.Font.Set("arial", 10, color: null);
 
         Snapshot.Match(graph.ToDot(), "commented_graph_attribute_without_padding.gv");
 

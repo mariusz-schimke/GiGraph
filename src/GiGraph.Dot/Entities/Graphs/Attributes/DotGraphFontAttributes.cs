@@ -10,7 +10,8 @@ namespace GiGraph.Dot.Entities.Graphs.Attributes;
 
 public partial class DotGraphFontAttributes : DotFontAttributes<IDotGraphFontAttributes, DotGraphFontAttributes>, IDotGraphFontAttributes
 {
-    private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphFontAttributes, IDotGraphFontAttributes>().BuildLazy();
+    private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup =
+        new DotMemberAttributeKeyLookupBuilder<DotGraphFontAttributes, IDotGraphFontAttributes>().BuildLazy();
 
     public DotGraphFontAttributes(DotAttributeCollection attributes)
         : base(attributes, AttributeKeyLookup)
@@ -48,7 +49,7 @@ public partial class DotGraphFontAttributes : DotFontAttributes<IDotGraphFontAtt
     /// <param name="convention">
     ///     The font convention to use.
     /// </param>
-    public virtual DotGraphFontAttributes Set(string? name = null, double? size = null, DotColor? color = null, string? directories = null, DotFontConvention? convention = null)
+    public virtual DotGraphFontAttributes Set(string? name, double? size, DotColor? color, string? directories, DotFontConvention? convention)
     {
         Directories = directories;
         Convention = convention;

@@ -29,7 +29,7 @@ public static class WithCustomStyles
 
         // set global edge attributes (for all edges of the graph)
         graph.Edges.Head.Arrowhead = graph.Edges.Tail.Arrowhead = DotArrowheadShape.Vee;
-        graph.Edges.Font.Set(graph.Font.Name, 10);
+        graph.Edges.Font.Set(graph.Font.Name, 10, color: null);
 
 
         // -- (subgraphs are used here only to control the order the elements are visualized, and may be removed) --
