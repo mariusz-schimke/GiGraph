@@ -30,18 +30,6 @@ public partial class DotNodeGeometryAttributes : DotEntityAttributesWithMetadata
     [DotAttributeKey(DotAttributeKeys.Regular)]
     public virtual partial bool? Regular { get; set; }
 
-    /// <inheritdoc cref="IDotNodeGeometryAttributes.Rotation"/>
-    [DotAttributeKey(DotAttributeKeys.Orientation)]
-    public virtual partial double? Rotation { get; set; }
-
-    /// <inheritdoc cref="IDotNodeGeometryAttributes.Skew"/>
-    [DotAttributeKey(DotAttributeKeys.Skew)]
-    public virtual partial double? Skew { get; set; }
-
-    /// <inheritdoc cref="IDotNodeGeometryAttributes.Distortion"/>
-    [DotAttributeKey(DotAttributeKeys.Distortion)]
-    public virtual partial double? Distortion { get; set; }
-
     /// <summary>
     ///     Sets polygon geometry attributes.
     /// </summary>
@@ -51,30 +39,10 @@ public partial class DotNodeGeometryAttributes : DotEntityAttributesWithMetadata
     /// <param name="regular">
     ///     Determines whether the shape should be regular.
     /// </param>
-    public virtual DotNodeGeometryAttributes SetGeometry(int? sides, bool? regular)
+    public virtual DotNodeGeometryAttributes Set(int? sides, bool? regular)
     {
         Sides = sides;
         Regular = regular;
-        return this;
-    }
-
-    /// <summary>
-    ///     Sets polygon transform attributes.
-    /// </summary>
-    /// <param name="rotation">
-    ///     The rotation angle.
-    /// </param>
-    /// <param name="skew">
-    ///     The skew factor.
-    /// </param>
-    /// <param name="distortion">
-    ///     The distortion factor.
-    /// </param>
-    public virtual DotNodeGeometryAttributes SetTransform(double? rotation, double? skew, double? distortion)
-    {
-        Rotation = rotation;
-        Skew = skew;
-        Distortion = distortion;
         return this;
     }
 
@@ -84,13 +52,5 @@ public partial class DotNodeGeometryAttributes : DotEntityAttributesWithMetadata
     /// <param name="attributes">
     ///     The attributes to set.
     /// </param>
-    public virtual DotNodeGeometryAttributes SetGeometry(DotPolygon attributes) => SetGeometry(attributes.Sides, attributes.Regular);
-
-    /// <summary>
-    ///     Sets polygon transform attributes.
-    /// </summary>
-    /// <param name="attributes">
-    ///     The attributes to set.
-    /// </param>
-    public virtual DotNodeGeometryAttributes SetTransform(DotTransform attributes) => SetTransform(attributes.Rotation, attributes.Skew, attributes.Distortion);
+    public virtual DotNodeGeometryAttributes Set(DotPolygon attributes) => Set(attributes.Sides, attributes.Regular);
 }

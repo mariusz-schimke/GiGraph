@@ -7,5 +7,5 @@ namespace GiGraph.Dot.Entities.Nodes.Collections;
 public partial class DotNodeCollection : IDotShapableNode
 {
     void IDotShapableNode.SetShape(DotNodeShape shape) => Shape = shape;
-    void IDotShapableNode.SetGeometry(DotPolygon geometry) => Geometry.SetGeometry(geometry);
+    void IDotShapableNode.SetGeometry(DotPolygon geometry) => Geometry.Set(geometry);
 }

@@ -64,7 +64,7 @@
     "Edge": "Directions: DotEdgeDirections?"
   },
   "distortion": {
-    "Node": "Geometry.Distortion: Double?"
+    "Node": "Transform.Distortion: Double?"
   },
   "dpi": {
     "Graph": "Canvas.Dpi: Double?"
@@ -265,7 +265,7 @@
   },
   "orientation": {
     "Graph": "Canvas.Orientation: DotOrientation?",
-    "Node": "Geometry.Rotation: Double?"
+    "Node": "Transform.Rotation: Double?"
   },
   "outputorder": {
     "Graph": "Layout.OutputOrder: DotOutputOrder?"
@@ -342,7 +342,7 @@
     "Graph": "Canvas.Size: DotPoint"
   },
   "skew": {
-    "Node": "Geometry.Skew: Double?"
+    "Node": "Transform.Skew: Double?"
   },
   "sortv": {
     "Graph": "Layout.SortIndex: Int32?",
