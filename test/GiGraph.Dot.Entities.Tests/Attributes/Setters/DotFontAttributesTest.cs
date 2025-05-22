@@ -1,6 +1,7 @@
 using System.Drawing;
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Font;
+using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Types.Fonts;
 using Xunit;
 
@@ -17,7 +18,7 @@ public class DotFontAttributesTest
         Assert.Equal(12, font.Size);
         Assert.Equal(Color.Red, font.Color!.Color);
     }
-    
+
     [Fact]
     public void setter_with_font_sets_all_properties()
     {

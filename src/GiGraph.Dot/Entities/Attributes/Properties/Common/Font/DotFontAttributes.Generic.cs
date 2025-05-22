@@ -1,5 +1,7 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
+using GiGraph.Dot.Entities.Qualities;
+using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Fonts;
@@ -10,7 +12,7 @@ public abstract partial class DotFontAttributes<TIEntityFontAttributes, TEntityF
     DotAttributeCollection attributes,
     Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup
 )
-    : DotEntityAttributesWithMetadata<TIEntityFontAttributes, TEntityFontAttributes>(attributes, attributeKeyLookup), IDotFontAttributes
+    : DotEntityAttributesWithMetadata<TIEntityFontAttributes, TEntityFontAttributes>(attributes, attributeKeyLookup), IDotFontAttributes, IDotHasFontAttributes
     where TIEntityFontAttributes : IDotFontAttributes
     where TEntityFontAttributes : DotFontAttributes<TIEntityFontAttributes, TEntityFontAttributes>, TIEntityFontAttributes
 {
@@ -29,28 +31,8 @@ public abstract partial class DotFontAttributes<TIEntityFontAttributes, TEntityF
     /// <summary>
     ///     Sets font attributes.
     /// </summary>
-    /// <param name="name">
-    ///     Font name.
-    /// </param>
-    /// <param name="size">
-    ///     Font size.
-    /// </param>
-    /// <param name="color">
-    ///     Font color.
-    /// </param>
-    public virtual TEntityFontAttributes Set(string? name, double? size, DotColor? color)
-    {
-        Name = name;
-        Size = size;
-        Color = color;
-        return (TEntityFontAttributes) this;
-    }
-
-    /// <summary>
-    ///     Sets font attributes.
-    /// </summary>
     /// <param name="attributes">
     ///     The attributes to set.
     /// </param>
-    public virtual TEntityFontAttributes Set(DotFont attributes) => Set(attributes.Name, attributes.Size, attributes.Color);
+    public virtual TEntityFontAttributes Set(DotFont attributes) => (TEntityFontAttributes) this.Set(attributes.Name, attributes.Size, attributes.Color);
 }

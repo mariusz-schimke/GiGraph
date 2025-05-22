@@ -1,5 +1,6 @@
 using System.Drawing;
 using GiGraph.Dot.Entities.Html.Font;
+using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Types.Fonts;
 using Xunit;
 
