@@ -1,4 +1,5 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
+using GiGraph.Dot.Entities.Nodes;
 using GiGraph.Dot.Entities.Nodes.Attributes;
 using GiGraph.Dot.Types.Geometry;
 using Xunit;
@@ -10,6 +11,7 @@ public class DotNodeGeometryAttributesTest
     [Fact]
     public void setter_with_params_sets_all_properties()
     {
+        new DotNode().Geometry.Set()
         var geometry = new DotNodeGeometryAttributes(new DotAttributeCollection());
         geometry.SetGeometry(5, true);
         Assert.Equal(5, geometry.Sides);
@@ -25,7 +27,7 @@ public class DotNodeGeometryAttributesTest
     public void setter_with_polygon_sets_all_properties()
     {
         var geometry = new DotNodeGeometryAttributes(new DotAttributeCollection());
-        geometry.Set(new DotPolygon(5, true, 45.0, 1.5, 2.0));
+        geometry.SetGeometry(new DotPolygon(5, true, 45.0, 1.5, 2.0));
         Assert.Equal(5, geometry.Sides);
         Assert.Equal(true, geometry.Regular);
         Assert.Equal(45.0, geometry.Rotation);

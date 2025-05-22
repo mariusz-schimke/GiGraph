@@ -84,6 +84,13 @@ public partial class DotNodeGeometryAttributes : DotEntityAttributesWithMetadata
     /// <param name="attributes">
     ///     The attributes to set.
     /// </param>
-    public virtual DotNodeGeometryAttributes Set(DotPolygon attributes) => SetGeometry(attributes.Sides, attributes.Regular)
-        .SetTransform(attributes.Rotation, attributes.Skew, attributes.Distortion);
+    public virtual DotNodeGeometryAttributes SetGeometry(DotPolygon attributes) => SetGeometry(attributes.Sides, attributes.Regular);
+
+    /// <summary>
+    ///     Sets polygon transform attributes.
+    /// </summary>
+    /// <param name="attributes">
+    ///     The attributes to set.
+    /// </param>
+    public virtual DotNodeGeometryAttributes SetTransform(DotTransform attributes) => SetTransform(attributes.Rotation, attributes.Skew, attributes.Distortion);
 }
