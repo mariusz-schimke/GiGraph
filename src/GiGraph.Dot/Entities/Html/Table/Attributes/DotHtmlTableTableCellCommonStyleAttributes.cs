@@ -14,9 +14,12 @@ public abstract partial class DotHtmlTableTableCellCommonStyleAttributes<TIHtmlT
     DotHtmlAttributeCollection attributes,
     Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup
 )
-    : DotEntityAttributes<TIHtmlTableTableCellStyleAttributeProperties, THtmlTableTableCellStyleAttributeProperties>(attributes, attributeKeyLookup), IDotHtmlTableTableCellCommonStyleAttributes, IDotHasStyleOptions<DotHtmlTableStyles>
+    : DotEntityAttributes<TIHtmlTableTableCellStyleAttributeProperties, THtmlTableTableCellStyleAttributeProperties>(attributes, attributeKeyLookup),
+        IDotHtmlTableTableCellCommonStyleAttributes, IDotHasStyleOptions<DotHtmlTableStyles>
     where TIHtmlTableTableCellStyleAttributeProperties : IDotHtmlTableTableCellCommonStyleAttributes
-    where THtmlTableTableCellStyleAttributeProperties : DotHtmlTableTableCellCommonStyleAttributes<TIHtmlTableTableCellStyleAttributeProperties, THtmlTableTableCellStyleAttributeProperties>, TIHtmlTableTableCellStyleAttributeProperties
+    where THtmlTableTableCellStyleAttributeProperties :
+    DotHtmlTableTableCellCommonStyleAttributes<TIHtmlTableTableCellStyleAttributeProperties, THtmlTableTableCellStyleAttributeProperties>,
+    TIHtmlTableTableCellStyleAttributeProperties
 {
     protected const string StyleAttributeKey = "style";
 

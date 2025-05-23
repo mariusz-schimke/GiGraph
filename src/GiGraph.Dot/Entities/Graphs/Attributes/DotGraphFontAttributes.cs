@@ -1,9 +1,7 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Font;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
-using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Output.Metadata;
-using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Fonts;
 using GiGraph.Dot.Types.Graphs.Font;
 
@@ -31,31 +29,6 @@ public partial class DotGraphFontAttributes : DotFontAttributes<IDotGraphFontAtt
     /// <inheritdoc cref="IDotGraphFontAttributes.Convention"/>
     [DotAttributeKey(DotAttributeKeys.FontNames)]
     public virtual partial DotFontConvention? Convention { get; set; }
-
-    /// <summary>
-    ///     Sets font attributes.
-    /// </summary>
-    /// <param name="name">
-    ///     Font name.
-    /// </param>
-    /// <param name="size">
-    ///     Font size.
-    /// </param>
-    /// <param name="color">
-    ///     Font color.
-    /// </param>
-    /// <param name="directories">
-    ///     The directories to search for fonts.
-    /// </param>
-    /// <param name="convention">
-    ///     The font convention to use.
-    /// </param>
-    public virtual DotGraphFontAttributes Set(string? name, double? size, DotColor? color, string? directories, DotFontConvention? convention)
-    {
-        Directories = directories;
-        Convention = convention;
-        return this.Set(name, size, color);
-    }
 
     /// <summary>
     ///     Sets font attributes.
