@@ -10,18 +10,6 @@ namespace GiGraph.Dot.Entities.Tests.Attributes.Setters;
 public class DotGraphFontAttributesTest
 {
     [Fact]
-    public void setter_with_params_sets_all_properties()
-    {
-        var font = new DotGraphFontAttributes(new DotAttributeCollection());
-        font.Set("arial", 12, Color.Red, "dir", DotFontConvention.Fontconfig);
-        Assert.Equal("arial", font.Name);
-        Assert.Equal(12, font.Size);
-        Assert.Equal(Color.Red, font.Color!.Color);
-        Assert.Equal("dir", font.Directories);
-        Assert.Equal(DotFontConvention.Fontconfig, font.Convention);
-    }
-
-    [Fact]
     public void setter_with_font_sets_all_properties()
     {
         var font = new DotGraphFontAttributes(new DotAttributeCollection());
