@@ -4,10 +4,5 @@ using GiGraph.Dot.Entities.Edges.Attributes;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 
-public abstract class DotEdgeEndpointHyperlinkAttributes : DotEdgeHyperlinkAttributes
-{
-    protected DotEdgeEndpointHyperlinkAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
-        : base(attributes, attributeKeyLookup)
-    {
-    }
-}
+public abstract class DotEdgeEndpointHyperlinkAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+    : DotEdgeHyperlinkAttributes(attributes, attributeKeyLookup);

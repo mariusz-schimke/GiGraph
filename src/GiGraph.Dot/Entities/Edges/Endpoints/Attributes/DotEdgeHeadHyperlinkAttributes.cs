@@ -8,14 +8,9 @@ using GiGraph.Dot.Types.Hyperlinks;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 
-public partial class DotEdgeHeadHyperlinkAttributes : DotEdgeEndpointHyperlinkAttributes
+public partial class DotEdgeHeadHyperlinkAttributes(DotAttributeCollection attributes) : DotEdgeEndpointHyperlinkAttributes(attributes, AttributeKeyLookup)
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeHeadHyperlinkAttributes, IDotEdgeHyperlinkAttributes>().BuildLazy();
-
-    public DotEdgeHeadHyperlinkAttributes(DotAttributeCollection attributes)
-        : base(attributes, AttributeKeyLookup)
-    {
-    }
 
     /// <summary>
     ///     If defined, it is output as part of the head <see cref="IDotEdgeEndpointAttributes.Label" /> of the edge (svg, map only).

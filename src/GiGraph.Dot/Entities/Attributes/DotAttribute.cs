@@ -7,17 +7,12 @@ using GiGraph.Dot.Types;
 
 namespace GiGraph.Dot.Entities.Attributes;
 
-public abstract class DotAttribute : IDotEntity, IDotAnnotatable, IDotEncodable, IDotOrderable
+public abstract class DotAttribute(string key) : IDotEntity, IDotAnnotatable, IDotEncodable, IDotOrderable
 {
-    protected DotAttribute(string key)
-    {
-        Key = key ?? throw new ArgumentNullException(nameof(key), "Attribute key must not be null.");
-    }
-
     /// <summary>
     ///     Gets the key of the attribute.
     /// </summary>
-    public string Key { get; }
+    public string Key { get; } = key ?? throw new ArgumentNullException(nameof(key), "Attribute key must not be null.");
 
     public virtual bool HasValue => GetValue() is not null;
 

@@ -7,16 +7,11 @@ using GiGraph.Dot.Types.Hyperlinks;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common.Hyperlink;
 
-public abstract partial class DotHyperlinkAttributes<TIEntityHyperlinkAttributes, TEntityHyperlinkAttributes>
-    : DotEntityAttributesWithMetadata<TIEntityHyperlinkAttributes, TEntityHyperlinkAttributes>, IDotHyperlinkAttributes, IDotHasHyperlinkAttributes
+public abstract partial class DotHyperlinkAttributes<TIEntityHyperlinkAttributes, TEntityHyperlinkAttributes>(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+    : DotEntityAttributesWithMetadata<TIEntityHyperlinkAttributes, TEntityHyperlinkAttributes>(attributes, attributeKeyLookup), IDotHyperlinkAttributes, IDotHasHyperlinkAttributes
     where TIEntityHyperlinkAttributes : IDotHyperlinkAttributes
     where TEntityHyperlinkAttributes : DotHyperlinkAttributes<TIEntityHyperlinkAttributes, TEntityHyperlinkAttributes>, TIEntityHyperlinkAttributes
 {
-    protected DotHyperlinkAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
-        : base(attributes, attributeKeyLookup)
-    {
-    }
-
     /// <inheritdoc cref="IDotHyperlinkAttributes.Url"/>
     [DotAttributeKey(DotAttributeKeys.Url)]
     public virtual partial DotEscapeString? Url { get; set; }

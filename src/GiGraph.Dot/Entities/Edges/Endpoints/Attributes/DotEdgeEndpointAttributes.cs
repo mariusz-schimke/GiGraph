@@ -8,18 +8,15 @@ using GiGraph.Dot.Types.Edges.Arrowheads;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 
-public abstract class DotEdgeEndpointAttributes : DotEntityAttributesWithMetadata<IDotEdgeEndpointAttributes, DotEdgeEndpointAttributes>, IDotEdgeEndpointRootAttributes
+public abstract class DotEdgeEndpointAttributes(
+    DotAttributeCollection attributes,
+    Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
+    DotEdgeEndpointHyperlinkAttributes hyperlinkAttributes
+)
+    : DotEntityAttributesWithMetadata<IDotEdgeEndpointAttributes, DotEdgeEndpointAttributes>(attributes, attributeKeyLookup), IDotEdgeEndpointRootAttributes
 {
-    protected DotEdgeEndpointAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
-        DotEdgeEndpointHyperlinkAttributes hyperlinkAttributes
-    )
-        : base(attributes, attributeKeyLookup)
-    {
-        Hyperlink = hyperlinkAttributes;
-    }
-
     /// <inheritdoc cref="IDotEdgeEndpointRootAttributes.Hyperlink" />
-    public DotEdgeEndpointHyperlinkAttributes Hyperlink { get; }
+    public DotEdgeEndpointHyperlinkAttributes Hyperlink { get; } = hyperlinkAttributes;
 
     /// <inheritdoc cref="IDotEdgeEndpointAttributes.Label" />
     public abstract DotLabel? Label { get; set; }
