@@ -10,7 +10,8 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes;
 
 public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetadata<IDotNodeStyleAttributes, DotNodeStyleAttributes>, IDotNodeStyleAttributes
 {
-    private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeStyleAttributes, IDotNodeStyleAttributes>().BuildLazy();
+    private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup =
+        new DotMemberAttributeKeyLookupBuilder<DotNodeStyleAttributes, IDotNodeStyleAttributes>().BuildLazy();
 
     public DotNodeStyleAttributes(DotAttributeCollection attributes)
         : base(attributes, AttributeKeyLookup)
@@ -100,4 +101,20 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// <inheritdoc cref="IDotNodeStyleAttributes.Peripheries"/>
     [DotAttributeKey(DotAttributeKeys.Peripheries)]
     public virtual partial int? Peripheries { get; set; }
+
+    /// <summary>
+    ///     Sets border style.
+    /// </summary>
+    /// <param name="color">
+    ///     The color to set.
+    /// </param>
+    /// <param name="width">
+    ///     The width to set.
+    /// </param>
+    public virtual DotNodeStyleAttributes SetBorderStyle(DotColor? color, double? width)
+    {
+        Color = color;
+        BorderWidth = width;
+        return this;
+    }
 }
