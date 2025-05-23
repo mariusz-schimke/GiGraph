@@ -26,18 +26,37 @@ public partial class DotHtmlTableStyleAttributes : DotHtmlTableTableCellCommonSt
     /// <summary>
     ///     Sets border style.
     /// </summary>
-    /// <param name="color">
-    ///     The color to set.
-    /// </param>
-    /// <param name="width">
+    /// <param name="tableBorderWidth">
     ///     The border width to set.
     /// </param>
     /// <param name="cellBorderWidth">
     ///     The cell border width to set.
     /// </param>
-    public virtual DotHtmlTableStyleAttributes SetBorderStyle(DotColor? color, int? width, int? cellBorderWidth)
+    /// <param name="color">
+    ///     The color to set.
+    /// </param>
+    public virtual DotHtmlTableStyleAttributes SetBorderStyle(int? tableBorderWidth, int? cellBorderWidth, DotColor? color)
     {
+        // !!! mind the order of arguments in the overload of this method in the base class to keep them consistent !!!
+        // (see also the methods in DotHasBorderStyleAttributesExtension)
+
+        BorderColor = color;
+        return SetBorderWidths(tableBorderWidth, cellBorderWidth);
+    }
+
+    /// <summary>
+    ///     Sets border widths.
+    /// </summary>
+    /// <param name="tableBorderWidth">
+    ///     The border width to set for the table.
+    /// </param>
+    /// <param name="cellBorderWidth">
+    ///     The border width to set for the cells.
+    /// </param>
+    public virtual DotHtmlTableStyleAttributes SetBorderWidths(int? tableBorderWidth, int? cellBorderWidth)
+    {
+        BorderWidth = tableBorderWidth;
         CellBorderWidth = cellBorderWidth;
-        return SetBorderStyle(color, width);
+        return this;
     }
 }
