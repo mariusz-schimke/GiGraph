@@ -106,7 +106,9 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     ///     Sets border style.
     /// </summary>
     /// <param name="color">
-    ///     The color to set.
+    ///     The color to set for the node's border. Note: this color also acts as the fill color if <see cref="FillStyle"/> is specified,
+    ///     unless <see cref="FillColor"/> is specified separately. To ensure the color is used only for the border, set both
+    ///     <see cref="Color"/> and <see cref="FillColor"/> or don't use a filled style.
     /// </param>
     /// <param name="width">
     ///     The width to set.
