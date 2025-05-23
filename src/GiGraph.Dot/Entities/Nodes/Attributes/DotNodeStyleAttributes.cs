@@ -1,6 +1,7 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
+using GiGraph.Dot.Entities.Qualities;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Nodes.Style;
@@ -8,7 +9,8 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Nodes.Attributes;
 
-public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetadata<IDotNodeStyleAttributes, DotNodeStyleAttributes>, IDotNodeStyleAttributes
+public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetadata<IDotNodeStyleAttributes, DotNodeStyleAttributes>, IDotNodeStyleAttributes,
+    IDotHasBorderStyleAttributes
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup =
         new DotMemberAttributeKeyLookupBuilder<DotNodeStyleAttributes, IDotNodeStyleAttributes>().BuildLazy();
@@ -101,22 +103,4 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// <inheritdoc cref="IDotNodeStyleAttributes.Peripheries"/>
     [DotAttributeKey(DotAttributeKeys.Peripheries)]
     public virtual partial int? Peripheries { get; set; }
-
-    /// <summary>
-    ///     Sets border style.
-    /// </summary>
-    /// <param name="color">
-    ///     The color to set for the node's border. Note: this color also acts as the fill color if <see cref="FillStyle"/> is specified,
-    ///     unless <see cref="FillColor"/> is specified separately. To ensure the color is used only for the border, set both
-    ///     <see cref="Color"/> and <see cref="FillColor"/> or don't use a filled style.
-    /// </param>
-    /// <param name="width">
-    ///     The width to set.
-    /// </param>
-    public virtual DotNodeStyleAttributes SetBorderStyle(DotColor? color, double? width)
-    {
-        Color = color;
-        BorderWidth = width;
-        return this;
-    }
 }

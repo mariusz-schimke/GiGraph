@@ -1,6 +1,7 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
+using GiGraph.Dot.Entities.Qualities;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Clusters.Style;
 using GiGraph.Dot.Types.Colors;
@@ -12,7 +13,8 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
     DotAttributeCollection attributes,
     Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup
 )
-    : DotEntityStyleAttributesWithMetadata<TIEntityAttributeProperties, TEntityAttributeProperties>(attributes, attributeKeyLookup), IDotGraphClusterCommonStyleAttributes
+    : DotEntityStyleAttributesWithMetadata<TIEntityAttributeProperties, TEntityAttributeProperties>(attributes, attributeKeyLookup),
+        IDotGraphClusterCommonStyleAttributes, IDotHasBorderStyleAttributes
     where TEntityAttributeProperties : DotGraphClusterCommonStyleAttributes<TIEntityAttributeProperties, TEntityAttributeProperties>, TIEntityAttributeProperties
 {
     /// <summary>
