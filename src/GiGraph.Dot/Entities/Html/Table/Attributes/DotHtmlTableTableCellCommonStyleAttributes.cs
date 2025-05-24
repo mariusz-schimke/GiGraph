@@ -86,16 +86,19 @@ public abstract partial class DotHtmlTableTableCellCommonStyleAttributes<TIHtmlT
     /// <summary>
     ///     Sets border style.
     /// </summary>
-    /// <param name="color">
-    ///     The color to set.
-    /// </param>
     /// <param name="width">
     ///     The width to set.
     /// </param>
-    public virtual THtmlTableTableCellStyleAttributeProperties SetBorderStyle(DotColor? color, int? width)
+    /// <param name="color">
+    ///     The color to set.
+    /// </param>
+    public virtual THtmlTableTableCellStyleAttributeProperties SetBorderStyle(int? width, DotColor? color)
     {
-        BorderColor = color;
+        // !!! mind the order of arguments in the overload of this method in descendant classes to keep them consistent !!!
+        // (see also the methods in DotHasBorderStyleAttributesExtension)
+
         BorderWidth = width;
+        BorderColor = color;
         return (THtmlTableTableCellStyleAttributeProperties) this;
     }
 
