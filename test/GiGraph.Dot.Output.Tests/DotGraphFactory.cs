@@ -50,7 +50,7 @@ public class DotGraphFactory
             cluster =>
             {
                 cluster.Label = "cluster label";
-                cluster.Padding = 10;
+                cluster.Layout.Padding = 10;
 
                 cluster.Nodes.Style.Color = Color.Chartreuse;
                 cluster.Nodes.Label = "nodes label";

@@ -235,7 +235,7 @@
   },
   "margin": {
     "Graph": "Canvas.Margin: DotPoint",
-    "Cluster": "Padding: DotPoint",
+    "Cluster": "Layout.Padding: DotPoint",
     "Node": "LabelOptions.Margin: DotPoint"
   },
   "mclimit": {

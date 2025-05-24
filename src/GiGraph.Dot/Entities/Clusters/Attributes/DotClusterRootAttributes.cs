@@ -8,7 +8,6 @@ using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.EscapeString;
-using GiGraph.Dot.Types.Geometry;
 
 namespace GiGraph.Dot.Entities.Clusters.Attributes;
 
@@ -84,10 +83,6 @@ public partial class DotClusterRootAttributes : DotEntityAttributesWithMetadata<
     /// <inheritdoc cref="IDotClusterAttributes.Tooltip"/>
     [DotAttributeKey(DotAttributeKeys.Tooltip)]
     public virtual partial DotEscapeString? Tooltip { get; set; }
-
-    /// <inheritdoc cref="IDotClusterAttributes.Padding"/>
-    [DotAttributeKey(DotAttributeKeys.Margin)]
-    public virtual partial DotPoint? Padding { get; set; }
 
     /// <inheritdoc cref="IDotClusterAttributes.ObjectId"/>
     [DotAttributeKey(DotAttributeKeys.Id)]
