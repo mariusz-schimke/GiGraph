@@ -69,12 +69,12 @@ public class DotHtmlTableStyleAttributeOptionsTest
     public void set_border_style_helper_method_sets_all_attributes()
     {
         var table = new DotHtmlTable();
-        table.Style.SetBorderStyle(Color.Azure, 4);
+        table.Style.SetBorderStyle(4, Color.Azure);
 
         Assert.Equal(Color.Azure, table.Style.BorderColor!.Color);
         Assert.Equal(4, table.Style.BorderWidth);
 
-        table.Style.SetBorderStyle(Color.Bisque, 5, 4);
+        table.Style.SetBorderStyle(5, 4, Color.Bisque);
 
         Assert.Equal(Color.Bisque, table.Style.BorderColor!.Color);
         Assert.Equal(5, table.Style.BorderWidth);
