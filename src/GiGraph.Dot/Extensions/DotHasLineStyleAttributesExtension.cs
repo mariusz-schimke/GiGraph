@@ -10,16 +10,16 @@ namespace GiGraph.Dot.Extensions;
 public static class DotHasLineStyleAttributesExtension
 {
     /// <summary>
-    ///     Sets border style.
+    ///     Sets line style.
     /// </summary>
     /// <param name="entity">
     ///     The current object.
     /// </param>
     /// <param name="style">
-    ///     The border style to set.
+    ///     The line style to set.
     /// </param>
     /// <param name="width">
-    ///     The border width to set.
+    ///     The line width to set.
     /// </param>
     public static T SetLineStyle<T>(this T entity, DotLineStyle style, double? width)
         where T : IDotHasLineStyleAttributes
@@ -30,21 +30,19 @@ public static class DotHasLineStyleAttributesExtension
     }
 
     /// <summary>
-    ///     Sets border style.
+    ///     Sets line style.
     /// </summary>
     /// <param name="entity">
     ///     The current object.
     /// </param>
     /// <param name="style">
-    ///     The border style to set.
+    ///     The line style to set.
     /// </param>
     /// <param name="width">
-    ///     The border width to set.
+    ///     The line width to set.
     /// </param>
     /// <param name="color">
-    ///     The color to set for the border. Note: this color also acts as the fill color if a fill style is specified, unless a fill
-    ///     color is specified separately. To ensure the color is used only for the border, set both the color and a fill color, or don't
-    ///     apply a filled style.
+    ///     The color to set for the line.
     /// </param>
     public static T SetLineStyle<T>(this T entity, DotLineStyle style, double? width, DotColorDefinition? color)
         where T : IDotHasLineStyleAttributes
@@ -54,16 +52,16 @@ public static class DotHasLineStyleAttributesExtension
     }
 
     /// <summary>
-    ///     Sets border style.
+    ///     Sets line style.
     /// </summary>
     /// <param name="entity">
     ///     The current object.
     /// </param>
     /// <param name="style">
-    ///     The border style to set.
+    ///     The line style to set.
     /// </param>
     /// <param name="weight">
-    ///     The border weight to set.
+    ///     The line weight to set.
     /// </param>
     public static T SetLineStyle<T>(this T entity, DotLineStyle style, DotLineWeight weight)
         where T : IDotHasLineStyleAttributes
@@ -74,21 +72,19 @@ public static class DotHasLineStyleAttributesExtension
     }
 
     /// <summary>
-    ///     Sets border style.
+    ///     Sets line style.
     /// </summary>
     /// <param name="entity">
     ///     The current object.
     /// </param>
     /// <param name="style">
-    ///     The border style to set.
+    ///     The line style to set.
     /// </param>
     /// <param name="weight">
-    ///     The border weight to set.
+    ///     The line weight to set.
     /// </param>
     /// <param name="color">
-    ///     The color to set for the border. Note: this color also acts as the fill color if a fill style is specified, unless a fill
-    ///     color is specified separately. To ensure the color is used only for the border, set both the color and a fill color, or don't
-    ///     apply a filled style.
+    ///     The color to set for the line.
     /// </param>
     public static T SetLineStyle<T>(this T entity, DotLineStyle style, DotLineWeight weight, DotColorDefinition? color)
         where T : IDotHasLineStyleAttributes
