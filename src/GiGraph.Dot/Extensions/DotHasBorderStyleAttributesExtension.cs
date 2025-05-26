@@ -4,6 +4,9 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Extensions;
 
+// see also DotHasLineStyleAttributesExtension which is pretty much the same
+// mind that DotColor is accepted here (rather than the complex DotColorDefinition) because the border can have only one, plain color, so it could be misleading if the complex type was accepted
+
 public static class DotHasBorderStyleAttributesExtension
 {
     /// <summary>
