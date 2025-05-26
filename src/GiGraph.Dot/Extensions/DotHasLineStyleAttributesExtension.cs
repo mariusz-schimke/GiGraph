@@ -4,10 +4,10 @@ using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Extensions;
 
-// see also DotHasLineStyleAttributesExtension which is pretty much the same
-// mind that DotColor is accepted here (rather than the complex DotColorDefinition) because the border can have only one, plain color, so it could be misleading if the complex type was accepted
+// see also DotHasBorderStyleAttributesExtension which is pretty much the same
+// mind that DotColorDefinition is accepted here (rather than the simple DotColor) because complex colors impact the way the line is visualized (multicolor or multiline)
 
-public static class DotHasBorderStyleAttributesExtension
+public static class DotHasLineStyleAttributesExtension
 {
     /// <summary>
     ///     Sets border style.
@@ -21,11 +21,11 @@ public static class DotHasBorderStyleAttributesExtension
     /// <param name="width">
     ///     The border width to set.
     /// </param>
-    public static T SetBorderStyle<T>(this T entity, DotBorderStyle style, double? width)
-        where T : IDotHasBorderStyleAttributes
+    public static T SetLineStyle<T>(this T entity, DotLineStyle style, double? width)
+        where T : IDotHasLineStyleAttributes
     {
-        entity.BorderStyle = style;
-        entity.BorderWidth = width;
+        entity.LineStyle = style;
+        entity.LineWidth = width;
         return entity;
     }
 
@@ -46,11 +46,11 @@ public static class DotHasBorderStyleAttributesExtension
     ///     color is specified separately. To ensure the color is used only for the border, set both the color and a fill color, or don't
     ///     apply a filled style.
     /// </param>
-    public static T SetBorderStyle<T>(this T entity, DotBorderStyle style, double? width, DotColor? color)
-        where T : IDotHasBorderStyleAttributes
+    public static T SetLineStyle<T>(this T entity, DotLineStyle style, double? width, DotColorDefinition? color)
+        where T : IDotHasLineStyleAttributes
     {
-        entity.Color = color;
-        return entity.SetBorderStyle(style, width);
+        entity.LineColor = color;
+        return entity.SetLineStyle(style, width);
     }
 
     /// <summary>
@@ -65,11 +65,11 @@ public static class DotHasBorderStyleAttributesExtension
     /// <param name="weight">
     ///     The border weight to set.
     /// </param>
-    public static T SetBorderStyle<T>(this T entity, DotBorderStyle style, DotBorderWeight weight)
-        where T : IDotHasBorderStyleAttributes
+    public static T SetLineStyle<T>(this T entity, DotLineStyle style, DotLineWeight weight)
+        where T : IDotHasLineStyleAttributes
     {
-        entity.BorderStyle = style;
-        entity.BorderWeight = weight;
+        entity.LineStyle = style;
+        entity.LineWeight = weight;
         return entity;
     }
 
@@ -90,10 +90,10 @@ public static class DotHasBorderStyleAttributesExtension
     ///     color is specified separately. To ensure the color is used only for the border, set both the color and a fill color, or don't
     ///     apply a filled style.
     /// </param>
-    public static T SetBorderStyle<T>(this T entity, DotBorderStyle style, DotBorderWeight weight, DotColor? color)
-        where T : IDotHasBorderStyleAttributes
+    public static T SetLineStyle<T>(this T entity, DotLineStyle style, DotLineWeight weight, DotColorDefinition? color)
+        where T : IDotHasLineStyleAttributes
     {
-        entity.Color = color;
-        return entity.SetBorderStyle(style, weight);
+        entity.LineColor = color;
+        return entity.SetLineStyle(style, weight);
     }
 }
