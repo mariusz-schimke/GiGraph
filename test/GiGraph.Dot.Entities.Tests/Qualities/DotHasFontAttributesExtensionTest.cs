@@ -9,7 +9,7 @@ using Xunit;
 
 namespace GiGraph.Dot.Entities.Tests.Qualities;
 
-public class DotHasFontAttributesTest
+public class DotHasFontAttributesExtensionTest
 {
     [Fact]
     public void graph_font_setters_set_all_properties()

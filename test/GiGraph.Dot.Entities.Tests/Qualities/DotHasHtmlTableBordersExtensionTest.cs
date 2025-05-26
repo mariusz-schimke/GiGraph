@@ -3,9 +3,9 @@ using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Types.Html.Table;
 using Xunit;
 
-namespace GiGraph.Dot.Entities.Tests.Html.Table;
+namespace GiGraph.Dot.Entities.Tests.Qualities;
 
-public class DotHtmlTableBordersTest
+public class DotHasHtmlTableBordersExtensionTest
 {
     [Fact]
     public void table_borders_setter_sets_correct_borders()
