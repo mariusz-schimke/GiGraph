@@ -10,7 +10,7 @@ using Xunit;
 
 namespace GiGraph.Dot.Entities.Tests.Qualities;
 
-public class DotHasBorderStyleAttributesTest
+public class DotHasBorderStyleAttributesExtensionTest
 {
     [Fact]
     public void node_border_style_setter_sets_all_properties()
