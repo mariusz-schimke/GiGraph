@@ -15,24 +15,24 @@ public class DotHasFontAttributesExtensionTest
     public void graph_font_setters_set_all_properties()
     {
         var fontAttributes = new DotGraphFontAttributes(new DotAttributeCollection());
-        TestMethodsOfFont(fontAttributes);
+        TestExtensionMethods(fontAttributes);
     }
 
     [Fact]
     public void font_attributes_setters_set_all_properties()
     {
         var fontAttributes = new DotFontAttributes(new DotAttributeCollection());
-        TestMethodsOfFont(fontAttributes);
+        TestExtensionMethods(fontAttributes);
     }
 
     [Fact]
     public void html_font_setters_set_all_properties()
     {
         var font = new DotHtmlFont();
-        TestMethodsOfFont(font);
+        TestExtensionMethods(font);
     }
 
-    private void TestMethodsOfFont<T>(T entity)
+    private void TestExtensionMethods<T>(T entity)
         where T : IDotHasFontAttributes
     {
         Assert.Null(entity.Name);

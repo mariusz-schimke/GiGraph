@@ -14,34 +14,34 @@ public class DotHasHyperlinkAttributesExtensionTest
     public void table_hyperlink_setter_with_params_sets_all_properties()
     {
         var table = new DotHtmlTable();
-        TestMethodsOfHasHyperlink(table.Hyperlink);
-        TestMethodsOfHasHyperlinkWithTooltip(table.Hyperlink);
+        TestExtensionMethodsOfHasHyperlink(table.Hyperlink);
+        TestExtensionMethodsOfHasHyperlinkWithTooltip(table.Hyperlink);
     }
 
     [Fact]
     public void table_cell_hyperlink_setter_with_params_sets_all_properties()
     {
         var cell = new DotHtmlTableCell();
-        TestMethodsOfHasHyperlink(cell.Hyperlink);
-        TestMethodsOfHasHyperlinkWithTooltip(cell.Hyperlink);
+        TestExtensionMethodsOfHasHyperlink(cell.Hyperlink);
+        TestExtensionMethodsOfHasHyperlinkWithTooltip(cell.Hyperlink);
     }
 
     [Fact]
     public void edge_hyperlink_setter_with_params_sets_all_properties()
     {
         var edge = new DotEdge("node1", "node2");
-        TestMethodsOfHasHyperlink(edge.Hyperlink);
+        TestExtensionMethodsOfHasHyperlink(edge.Hyperlink);
     }
 
     [Fact]
     public void edge_edge_hyperlink_with_params_setter_sets_all_properties()
     {
         var edge = new DotEdge("node1", "node2");
-        TestMethodsOfHasHyperlink(edge.EdgeHyperlink);
-        TestMethodsOfHasHyperlinkWithTooltip(edge.EdgeHyperlink);
+        TestExtensionMethodsOfHasHyperlink(edge.EdgeHyperlink);
+        TestExtensionMethodsOfHasHyperlinkWithTooltip(edge.EdgeHyperlink);
     }
 
-    private void TestMethodsOfHasHyperlink<T>(T entity)
+    private void TestExtensionMethodsOfHasHyperlink<T>(T entity)
         where T : IDotHasHyperlinkAttributes
     {
         var hyperlink = CreateRandomHyperlink();
@@ -61,7 +61,7 @@ public class DotHasHyperlinkAttributesExtensionTest
         Assert.Equal(DotHyperlinkTargets.Blank, entity.Target);
     }
 
-    private void TestMethodsOfHasHyperlinkWithTooltip<T>(T entity)
+    private void TestExtensionMethodsOfHasHyperlinkWithTooltip<T>(T entity)
         where T : IDotHasHyperlinkAttributesWithTooltip
     {
         var hyperlink = CreateRandomHyperlink();

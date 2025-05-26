@@ -12,17 +12,17 @@ public class DotHasHtmlTableBordersExtensionTest
     public void table_borders_setter_sets_correct_borders()
     {
         var table = new DotHtmlTable();
-        TestSettingBorders(table);
+        TestExtensionMethods(table);
     }
 
     [Fact]
     public void table_cell_borders_setter_sets_correct_borders()
     {
         var cell = new DotHtmlTableCell();
-        TestSettingBorders(cell);
+        TestExtensionMethods(cell);
     }
 
-    private void TestSettingBorders<T>(T entity)
+    private void TestExtensionMethods<T>(T entity)
         where T : IDotHasHtmlTableBorders
     {
         Assert.Null(entity.Borders);

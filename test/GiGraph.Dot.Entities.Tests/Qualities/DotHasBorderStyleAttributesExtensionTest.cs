@@ -16,24 +16,24 @@ public class DotHasBorderStyleAttributesExtensionTest
     public void node_border_style_setter_sets_all_properties()
     {
         var node = new DotNode("n");
-        TestMethodsOfHasBorderStyle(node.Style);
+        TestExtensionMethods(node.Style);
     }
 
     [Fact]
     public void cluster_border_style_setter_sets_all_properties()
     {
         var cluster = new DotCluster("c");
-        TestMethodsOfHasBorderStyle(cluster.Style);
+        TestExtensionMethods(cluster.Style);
     }
 
     [Fact]
     public void graph_clusters_border_style_setter_sets_all_properties()
     {
         var graph = new DotGraph();
-        TestMethodsOfHasBorderStyle(graph.Clusters.Style);
+        TestExtensionMethods(graph.Clusters.Style);
     }
 
-    private static void TestMethodsOfHasBorderStyle<T>(T entity)
+    private static void TestExtensionMethods<T>(T entity)
         where T : IDotHasBorderStyleAttributes
     {
         ClearEntity(entity);
