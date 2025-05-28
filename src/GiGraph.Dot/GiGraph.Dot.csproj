@@ -23,7 +23,7 @@
 
         <Deterministic>true</Deterministic>
 
-        <Version>5.0.0-rc.2</Version>
+        <Version>5.0.0-rc.3</Version>
         <IncludeSourceRevisionInInformationalVersion>true</IncludeSourceRevisionInInformationalVersion>
 
         <PackageId>GiGraph.Dot</PackageId>
@@ -59,9 +59,9 @@
 
 - The `SaveToFile` method has been renamed to `Save` for consistency with the new naming convention.
 
-- Several convenience methods have been added to graph layout for setting packing and rank separation parameters, as well as methods for configuring simple and composite arrowheads at the head and tail of an edge.
+- Multiple convenience methods have been added to graph elements to simplify setting related or composite attributes in a single call.
 
-- Convenience methods on element collections have been redesigned to reduce the number of overloads by leveraging the new collection initializer syntax ([]). 
+- Convenience methods on element collections have been redesigned to reduce the number of overloads by leveraging the new collection initializer syntax (`[]`). 
 
 - Refactoring and optimizations.
 
