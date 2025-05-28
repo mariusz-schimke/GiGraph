@@ -37,6 +37,26 @@ public static class DotHasFontAttributesExtension
     /// <param name="size">
     ///     Font size.
     /// </param>
+    public static T Set<T>(this T entity, string? name, double? size)
+        where T : IDotHasFontAttributes
+    {
+        entity.Name = name;
+        entity.Size = size;
+        return entity;
+    }
+
+    /// <summary>
+    ///     Sets font attributes.
+    /// </summary>
+    /// <param name="entity">
+    ///     The current object.
+    /// </param>
+    /// <param name="name">
+    ///     Font name.
+    /// </param>
+    /// <param name="size">
+    ///     Font size.
+    /// </param>
     /// <param name="color">
     ///     Font color.
     /// </param>

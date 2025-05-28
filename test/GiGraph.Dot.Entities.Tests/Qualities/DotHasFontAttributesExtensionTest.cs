@@ -45,9 +45,14 @@ public class DotHasFontAttributesExtensionTest
         Assert.Equal(12, entity.Size);
         Assert.Equal(Color.Red, entity.Color!.Color);
 
-        entity.Set("helvetica", 13, Color.Blue);
+        entity.Set("helvetica", 13);
         Assert.Equal("helvetica", entity.Name);
         Assert.Equal(13, entity.Size);
+        Assert.Equal(Color.Red, entity.Color!.Color);
+
+        entity.Set("times-roman", 14, Color.Blue);
+        Assert.Equal("times-roman", entity.Name);
+        Assert.Equal(14, entity.Size);
         Assert.Equal(Color.Blue, entity.Color!.Color);
     }
 }
