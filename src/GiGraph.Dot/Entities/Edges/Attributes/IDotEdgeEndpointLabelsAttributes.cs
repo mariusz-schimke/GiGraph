@@ -5,7 +5,7 @@ namespace GiGraph.Dot.Entities.Edges.Attributes;
 public interface IDotEdgeEndpointLabelsAttributes
 {
     /// <summary>
-    ///     Multiplicative scaling factor adjusting the distance that the the head and tail labels are from the head/tail nodes (see
+    ///     Multiplicative scaling factor adjusting the distance that the head and tail labels are from the head/tail nodes (see
     ///     <see cref="IDotEdgeEndpointAttributes.Label"/> on the head and the tail of the edge). The default distance is 10 points, the
     ///     minimum is 0.0. See also <see cref="Angle"/>.
     /// </summary>

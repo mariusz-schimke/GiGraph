@@ -23,17 +23,17 @@ public partial class DotEdgeLayoutAttributes : DotEntityAttributesWithMetadata<I
     [DotAttributeKey(DotAttributeKeys.Weight)]
     public virtual partial double? Weight { get; set; }
 
-    /// <inheritdoc cref="IDotEdgeLayoutAttributes.Length"/>
+    /// <inheritdoc cref="IDotEdgeLayoutAttributes.PreferredLength"/>
     [DotAttributeKey(DotAttributeKeys.Len)]
-    public virtual partial double? Length { get; set; }
+    public virtual partial double? PreferredLength { get; set; }
 
     /// <inheritdoc cref="IDotEdgeLayoutAttributes.MinLength"/>
     [DotAttributeKey(DotAttributeKeys.MinLen)]
     public virtual partial int? MinLength { get; set; }
 
-    /// <inheritdoc cref="IDotEdgeLayoutAttributes.EnableLabelFloating"/>
+    /// <inheritdoc cref="IDotEdgeLayoutAttributes.AllowLabelFloating"/>
     [DotAttributeKey(DotAttributeKeys.LabelFloat)]
-    public virtual partial bool? EnableLabelFloating { get; set; }
+    public virtual partial bool? AllowLabelFloating { get; set; }
 
     /// <inheritdoc cref="IDotEdgeLayoutAttributes.IncludeInNodeRanking"/>
     [DotAttributeKey(DotAttributeKeys.Constraint)]

@@ -8,9 +8,7 @@ namespace GiGraph.Dot.Types.Clusters.Style;
 /// </summary>
 public enum DotClusterFillStyle
 {
-    /// <summary>
-    ///     No fill.
-    /// </summary>
+    /// <inheritdoc cref="DotFillStyle.None"/>
     None = DotFillStyle.None,
 
     /// <summary>

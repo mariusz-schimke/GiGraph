@@ -13,9 +13,9 @@ namespace GiGraph.Dot.Types.Styling;
 public enum DotStyles
 {
     /// <summary>
-    ///     Indicates that the normal default style should be assigned to the current element. This setting can be used in order to
-    ///     restore the style of the element to the default value when a custom style has been set globally for this type of element on a
-    ///     graph or a subgraph, using global edge attributes or global node attributes.
+    ///     Indicates that the default style should be assigned to the current element. This setting can be used in order to restore the
+    ///     style of the element to the default value when a custom style has been set globally for this type of element on a graph or a
+    ///     subgraph, using global edge attributes or global node attributes.
     /// </summary>
     [DotAttributeValue(null)]
     Default = 0,
@@ -65,15 +65,15 @@ public enum DotStyles
 
     /// <summary>
     ///     Causes the fill to be done as a set of vertical stripes. The colors are specified via a color list (see
-    ///     <see cref="DotMulticolor" />), and drawn from left to right in list order. Optional color weights can be specified to
-    ///     indicate the proportional widths of the bars. If the sum of the weights is less than 1, the remainder is divided evenly among
-    ///     the colors with no weight. Applicable to clusters and rectangularly-shaped nodes.
+    ///     <see cref="DotMulticolor"/>), and drawn from left to right in list order. Optional color weights can be specified to indicate
+    ///     the proportional widths of the bars. If the sum of the weights is less than 1, the remainder is divided evenly among the
+    ///     colors with no weight. Applicable to clusters and rectangularly-shaped nodes.
     /// </summary>
     [DotAttributeValue("striped")]
     Striped = 1 << 7,
 
     /// <summary>
-    ///     Causes the fill to be done as a set of wedges. The colors are specified via a color list (see <see cref="DotMulticolor" />),
+    ///     Causes the fill to be done as a set of wedges. The colors are specified via a color list (see <see cref="DotMulticolor"/>),
     ///     with the colors drawn counter-clockwise starting at angle 0. Optional color weights can be specified to indicate the
     ///     proportional widths of the bars. If the sum of the weights is less than 1, the remainder is divided evenly among the colors
     ///     with no weight. Applicable to elliptically-shaped nodes.
@@ -82,7 +82,7 @@ public enum DotStyles
     Wedged = 1 << 8,
 
     /// <summary>
-    ///     Indicates a radial-style gradient fill when colors are specified via a color list (see <see cref="DotGradientColor" />).
+    ///     Indicates a radial-style gradient fill when colors are specified via a color list (see <see cref="DotGradientColor"/>).
     ///     Applicable to nodes, clusters, and graphs.
     /// </summary>
     [DotAttributeValue("radial")]
@@ -95,14 +95,14 @@ public enum DotStyles
     ///     </para>
     ///     <para>
     ///         The edge starts with the width specified in the attributes, and tapers to width 1, in points. The directions attribute
-    ///         determines whether the tapering goes from tail to head (<see cref="DotEdgeDirections.Forward" /> ), from head to tail (
-    ///         <see cref="DotEdgeDirections.Backward" />), from the middle to both the head and tail (
-    ///         <see cref="DotEdgeDirections.Both" />), or no tapering at all (<see cref="DotEdgeDirections.None" />). If the attribute
-    ///         is not explicitly set, the default for the graph type is used.
+    ///         determines whether the tapering goes from tail to head (<see cref="DotEdgeDirections.Forward"/> ), from head to tail (
+    ///         <see cref="DotEdgeDirections.Backward"/>), from the middle to both the head and tail (
+    ///         <see cref="DotEdgeDirections.Both"/>), or no tapering at all (<see cref="DotEdgeDirections.None"/>). If the attribute is
+    ///         not explicitly set, the default for the graph type is used.
     ///     </para>
     ///     <para>
     ///         Arrowheads and arrow tails are also drawn based on the value of the directions attribute. To avoid this, set the
-    ///         arrowhead attribute for the head or the tail to <see cref="DotArrowheadShape.None" />.
+    ///         arrowhead attribute for the head or the tail to <see cref="DotArrowheadShape.None"/>.
     ///     </para>
     /// </summary>
     [DotAttributeValue("tapered")]

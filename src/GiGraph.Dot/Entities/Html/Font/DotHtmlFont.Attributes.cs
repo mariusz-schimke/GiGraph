@@ -1,10 +1,12 @@
 using GiGraph.Dot.Entities.Html.Font.Attributes;
+using GiGraph.Dot.Entities.Qualities;
+using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Types.Colors;
 using GiGraph.Dot.Types.Fonts;
 
 namespace GiGraph.Dot.Entities.Html.Font;
 
-public partial class DotHtmlFont : IDotHtmlFontAttributes
+public partial class DotHtmlFont : IDotHtmlFontAttributes, IDotHasFontAttributes
 {
     /// <inheritdoc cref="IDotHtmlFontAttributes.Name"/>
     public virtual string? Name
@@ -30,30 +32,8 @@ public partial class DotHtmlFont : IDotHtmlFontAttributes
     /// <summary>
     ///     Sets font attributes.
     /// </summary>
-    /// <param name="name">
-    ///     Font name.
-    /// </param>
-    /// <param name="size">
-    ///     Font size.
-    /// </param>
-    /// <param name="color">
-    ///     Font color.
-    /// </param>
-    public virtual void Set(string? name = null, double? size = null, DotColor? color = null)
-    {
-        Size = size;
-        Color = color;
-        Name = name;
-    }
-
-    /// <summary>
-    ///     Sets font attributes.
-    /// </summary>
     /// <param name="attributes">
     ///     The attributes to set.
     /// </param>
-    public virtual void Set(DotFont attributes)
-    {
-        Set(attributes.Name, attributes.Size, attributes.Color);
-    }
+    public virtual DotHtmlFont Set(DotFont attributes) => this.Set(attributes.Name, attributes.Size, attributes.Color);
 }

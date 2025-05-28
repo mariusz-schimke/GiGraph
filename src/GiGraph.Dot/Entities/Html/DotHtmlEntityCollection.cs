@@ -94,10 +94,7 @@ public class DotHtmlEntityCollection : List<IDotHtmlEntity>, IDotHtmlContentEnti
     /// <param name="html">
     ///     The html to add to the content of the element.
     /// </param>
-    public virtual void AddHtml(string? html)
-    {
-        Add(new DotHtml(html), init: null);
-    }
+    public virtual DotHtml AddHtml(string? html) => Add(new DotHtml(html), init: null);
 
     public override string ToString() => ToHtml();
 

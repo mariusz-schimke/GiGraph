@@ -3,6 +3,7 @@ using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Qualities;
 using GiGraph.Dot.Output.Metadata;
+using GiGraph.Dot.Types.EnumHelpers;
 using GiGraph.Dot.Types.Styling;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
@@ -35,6 +36,11 @@ public abstract class DotEntityStyleAttributesWithMetadata<TIEntityStyleAttribut
         set => Style = value;
     }
 
+    void IDotHasStyleOptions.NullifyStyle()
+    {
+        Style = null;
+    }
+
     /// <summary>
     ///     Determines if the default style is assigned to the element, that is, if the Graphviz 'style' attribute is set and has the
     ///     value of <see cref="DotStyles.Default"/>. Use the <see cref="SetDefaultStyleOptions"/> method to set the default style on the
@@ -48,8 +54,20 @@ public abstract class DotEntityStyleAttributesWithMetadata<TIEntityStyleAttribut
     ///     and needs to be restored to the default value for the current element. To check if the default style is set for the current
     ///     element, use the <see cref="HasDefaultStyleOptions"/> method.
     /// </summary>
-    public virtual void SetDefaultStyleOptions()
+    public virtual TEntityStyleAttributeProperties SetDefaultStyleOptions()
     {
         Style = DotStyles.Default;
+        return (TEntityStyleAttributeProperties) this;
+    }
+
+    protected virtual void SetStyleOption(DotStyles option, bool value)
+    {
+        Style = DotEnumHelper.SetFlag(Style.GetValueOrDefault(), option, value);
+    }
+
+    protected virtual void SetPartialStyleOption<TPartialStyle>(TPartialStyle option)
+        where TPartialStyle : struct, Enum
+    {
+        Style = DotPartialEnumMapper.ReplacePartialFlags(Style.GetValueOrDefault(), option);
     }
 }

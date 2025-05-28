@@ -6,9 +6,11 @@ using GiGraph.Dot.Types.Geometry;
 
 namespace GiGraph.Dot.Entities.Html.Table.Attributes;
 
-public partial class DotHtmlTableTableCellSizeAttributes : DotEntityAttributes<IDotHtmlTableTableCellSizeAttributes, DotHtmlTableTableCellSizeAttributes>, IDotHtmlTableTableCellSizeAttributes
+public partial class DotHtmlTableTableCellSizeAttributes : DotEntityAttributes<IDotHtmlTableTableCellSizeAttributes, DotHtmlTableTableCellSizeAttributes>,
+    IDotHtmlTableTableCellSizeAttributes
 {
-    private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlTableTableCellSizeAttributes, IDotHtmlTableTableCellSizeAttributes>().BuildLazy();
+    private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup =
+        new DotMemberAttributeKeyLookupBuilder<DotHtmlTableTableCellSizeAttributes, IDotHtmlTableTableCellSizeAttributes>().BuildLazy();
 
     public DotHtmlTableTableCellSizeAttributes(DotHtmlAttributeCollection attributes)
         : base(attributes, AttributeKeyLookup)
@@ -41,14 +43,29 @@ public partial class DotHtmlTableTableCellSizeAttributes : DotEntityAttributes<I
     /// <param name="height">
     ///     The width to set.
     /// </param>
-    /// <param name="isFixed">
-    ///     Specifies whether the values given by the <paramref name="width"/> and <paramref name="height"/> attributes are enforced.
-    /// </param>
-    public virtual void Set(int? width = null, int? height = null, bool? isFixed = null)
+    public virtual DotHtmlTableTableCellSizeAttributes Set(int? width, int? height)
     {
         Width = width;
         Height = height;
-        Fixed = isFixed;
+        return this;
+    }
+
+    /// <summary>
+    ///     Sets size attributes.
+    /// </summary>
+    /// <param name="width">
+    ///     The width to set.
+    /// </param>
+    /// <param name="height">
+    ///     The width to set.
+    /// </param>
+    /// <param name="asFixed">
+    ///     Specifies whether the values given by the <paramref name="width"/> and <paramref name="height"/> attributes are enforced.
+    /// </param>
+    public virtual DotHtmlTableTableCellSizeAttributes Set(int? width, int? height, bool? asFixed)
+    {
+        Fixed = asFixed;
+        return Set(width, height);
     }
 
     /// <summary>
@@ -57,12 +74,11 @@ public partial class DotHtmlTableTableCellSizeAttributes : DotEntityAttributes<I
     /// <param name="attributes">
     ///     The attributes to set. Note that double values will be cast to integers, potentially losing the fractional part.
     /// </param>
-    /// <param name="isFixed">
-    ///     Specifies whether the values given by the <see cref="DotSize.Width"/> and <see cref="DotSize.Height"/> attributes are
-    ///     enforced.
-    /// </param>
-    public virtual void Set(DotSize attributes, bool? isFixed = null)
+    public virtual DotHtmlTableTableCellSizeAttributes Set(DotSize attributes)
     {
-        Set((int?) attributes.Width, (int?) attributes.Height, isFixed);
+        var asFixed = attributes.Mode is { } mode
+            ? mode == DotSizing.Fixed
+            : (bool?) null;
+        return Set((int?) attributes.Width, (int?) attributes.Height, asFixed);
     }
 }

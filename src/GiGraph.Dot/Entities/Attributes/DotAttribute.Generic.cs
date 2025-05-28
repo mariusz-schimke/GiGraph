@@ -2,20 +2,14 @@
 
 namespace GiGraph.Dot.Entities.Attributes;
 
-public abstract class DotAttribute<T> : DotAttribute
+public abstract class DotAttribute<T>(string key, T value) : DotAttribute(key)
 {
-    protected DotAttribute(string key, T value)
-        : base(key)
-    {
-        Value = value;
-    }
-
     /// <summary>
     ///     Gets the value of the attribute.
     /// </summary>
-    public T Value { get; }
+    public T Value { get; } = value;
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public override object? GetValue() => Value;
 
     protected internal override string? GetDotEncodedValue(DotSyntaxOptions options, DotSyntaxRules syntaxRules) => Value?.ToString();

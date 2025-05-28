@@ -19,7 +19,7 @@ public class DotHtmlTableCellSpanTest
         Assert.Equal(columnSpan, table.ColumnSpan);
         Assert.Equal(rowSpan, table.RowSpan);
 
-        table.SetSpan();
+        table.SetSpan(null, null);
         Assert.Null(table.ColumnSpan);
         Assert.Null(table.RowSpan);
     }

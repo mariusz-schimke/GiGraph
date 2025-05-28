@@ -8,14 +8,9 @@ using GiGraph.Dot.Types.Edges.Arrowheads;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 
-public partial class DotEdgeHeadAttributes : DotEdgeEndpointAttributes
+public partial class DotEdgeHeadAttributes(DotAttributeCollection attributes) : DotEdgeEndpointAttributes(attributes, AttributeKeyLookup, new DotEdgeHeadHyperlinkAttributes(attributes))
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeHeadAttributes, IDotEdgeEndpointAttributes>().BuildLazy();
-
-    public DotEdgeHeadAttributes(DotAttributeCollection attributes)
-        : base(attributes, AttributeKeyLookup, new DotEdgeHeadHyperlinkAttributes(attributes))
-    {
-    }
 
     /// <inheritdoc cref="IDotEdgeEndpointAttributes.Label" />
     [DotAttributeKey(DotAttributeKeys.HeadLabel)]

@@ -27,6 +27,11 @@ public interface IDotNodeRootAttributes : IDotNodeAttributes
     DotNodeGeometryAttributes Geometry { get; }
 
     /// <summary>
+    ///     Node transform attributes applicable if the <see cref="IDotNodeAttributes.Shape"/> is polygonal.
+    /// </summary>
+    DotNodeTransformAttributes Transform { get; }
+
+    /// <summary>
     ///     Node image attributes.
     /// </summary>
     DotNodeImageAttributes Image { get; }

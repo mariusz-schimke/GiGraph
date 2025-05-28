@@ -4,6 +4,7 @@ using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Output.Metadata.Html;
 using GiGraph.Dot.Types.Clusters.Style;
 using GiGraph.Dot.Types.Fonts;
+using GiGraph.Dot.Types.Html.Table;
 using GiGraph.Dot.Types.Nodes.Style;
 using GiGraph.Dot.Types.Styling;
 using Xunit;
@@ -22,7 +23,9 @@ public class DotEnumAttributeValueKeyTest
         typeof(DotCornerStyle),
         typeof(DotLineStyle),
         typeof(DotLineWeight),
-        typeof(DotFontStyles)
+        typeof(DotFontStyles),
+        typeof(DotHtmlTableFillStyle),
+        typeof(DotHtmlTableCornerStyle)
     ];
 
     public static IEnumerable<object[]> EnumTypes { get; } = DotEnumsTest.GetAllEnumTypes()

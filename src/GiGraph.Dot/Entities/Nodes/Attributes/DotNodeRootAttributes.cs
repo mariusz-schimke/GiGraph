@@ -21,6 +21,7 @@ public partial class DotNodeRootAttributes : DotEntityAttributesWithMetadata<IDo
             AttributeKeyLookup,
             new DotFontAttributes(attributes),
             new DotNodeGeometryAttributes(attributes),
+            new DotNodeTransformAttributes(attributes),
             new DotHyperlinkAttributes(attributes),
             new DotNodeImageAttributes(attributes),
             new DotNodeSizeAttributes(attributes),
@@ -37,6 +38,7 @@ public partial class DotNodeRootAttributes : DotEntityAttributesWithMetadata<IDo
         Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup,
         DotFontAttributes fontAttributes,
         DotNodeGeometryAttributes geometryAttributes,
+        DotNodeTransformAttributes transformAttributes,
         DotHyperlinkAttributes hyperlinkAttributes,
         DotNodeImageAttributes imageAttributes,
         DotNodeSizeAttributes sizeAttributes,
@@ -49,6 +51,7 @@ public partial class DotNodeRootAttributes : DotEntityAttributesWithMetadata<IDo
     {
         Font = fontAttributes;
         Geometry = geometryAttributes;
+        Transform = transformAttributes;
         Hyperlink = hyperlinkAttributes;
         Image = imageAttributes;
         Size = sizeAttributes;
@@ -63,6 +66,9 @@ public partial class DotNodeRootAttributes : DotEntityAttributesWithMetadata<IDo
 
     /// <inheritdoc cref="IDotNodeRootAttributes.Geometry"/>
     public DotNodeGeometryAttributes Geometry { get; }
+
+    /// <inheritdoc cref="IDotNodeRootAttributes.Transform"/>
+    public DotNodeTransformAttributes Transform { get; }
 
     /// <inheritdoc cref="IDotNodeRootAttributes.Hyperlink"/>
     public DotHyperlinkAttributes Hyperlink { get; }

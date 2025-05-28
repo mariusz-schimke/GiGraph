@@ -42,7 +42,7 @@ public static class Annotation
             edge.Tail.Endpoint.Annotation = "tail";
 
             edge.Attributes.Annotation = "edge attributes";
-            edge.Style.Attributes.SetValue(a => a.Color, Color.Red).Annotation = "color";
+            edge.Style.Attributes.SetValue(a => a.LineColor, Color.Red).Annotation = "color";
         }).Annotation = "edge comment";
 
         // subsections

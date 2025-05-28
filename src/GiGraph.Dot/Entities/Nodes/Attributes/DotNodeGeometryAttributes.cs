@@ -6,9 +6,11 @@ using GiGraph.Dot.Types.Geometry;
 
 namespace GiGraph.Dot.Entities.Nodes.Attributes;
 
-public partial class DotNodeGeometryAttributes : DotEntityAttributesWithMetadata<IDotNodeGeometryAttributes, DotNodeGeometryAttributes>, IDotNodeGeometryAttributes
+public partial class DotNodeGeometryAttributes : DotEntityAttributesWithMetadata<IDotNodeGeometryAttributes, DotNodeGeometryAttributes>,
+    IDotNodeGeometryAttributes
 {
-    private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeGeometryAttributes, IDotNodeGeometryAttributes>().BuildLazy();
+    private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup =
+        new DotMemberAttributeKeyLookupBuilder<DotNodeGeometryAttributes, IDotNodeGeometryAttributes>().BuildLazy();
 
     public DotNodeGeometryAttributes(DotAttributeCollection attributes)
         : base(attributes, AttributeKeyLookup)
@@ -28,18 +30,6 @@ public partial class DotNodeGeometryAttributes : DotEntityAttributesWithMetadata
     [DotAttributeKey(DotAttributeKeys.Regular)]
     public virtual partial bool? Regular { get; set; }
 
-    /// <inheritdoc cref="IDotNodeGeometryAttributes.Rotation"/>
-    [DotAttributeKey(DotAttributeKeys.Orientation)]
-    public virtual partial double? Rotation { get; set; }
-
-    /// <inheritdoc cref="IDotNodeGeometryAttributes.Skew"/>
-    [DotAttributeKey(DotAttributeKeys.Skew)]
-    public virtual partial double? Skew { get; set; }
-
-    /// <inheritdoc cref="IDotNodeGeometryAttributes.Distortion"/>
-    [DotAttributeKey(DotAttributeKeys.Distortion)]
-    public virtual partial double? Distortion { get; set; }
-
     /// <summary>
     ///     Sets polygon geometry attributes.
     /// </summary>
@@ -49,22 +39,11 @@ public partial class DotNodeGeometryAttributes : DotEntityAttributesWithMetadata
     /// <param name="regular">
     ///     Determines whether the shape should be regular.
     /// </param>
-    /// <param name="rotation">
-    ///     The rotation angle.
-    /// </param>
-    /// <param name="skew">
-    ///     The skew factor.
-    /// </param>
-    /// <param name="distortion">
-    ///     The distortion factor.
-    /// </param>
-    public virtual void Set(int? sides = null, bool? regular = null, double? rotation = null, double? skew = null, double? distortion = null)
+    public virtual DotNodeGeometryAttributes Set(int? sides, bool? regular)
     {
         Sides = sides;
         Regular = regular;
-        Rotation = rotation;
-        Skew = skew;
-        Distortion = distortion;
+        return this;
     }
 
     /// <summary>
@@ -73,8 +52,5 @@ public partial class DotNodeGeometryAttributes : DotEntityAttributesWithMetadata
     /// <param name="attributes">
     ///     The attributes to set.
     /// </param>
-    public virtual void Set(DotPolygon attributes)
-    {
-        Set(attributes.Sides, attributes.Regular, attributes.Rotation, attributes.Skew, attributes.Distortion);
-    }
+    public virtual DotNodeGeometryAttributes Set(DotPolygon attributes) => Set(attributes.Sides, attributes.Regular);
 }

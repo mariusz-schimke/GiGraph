@@ -1,6 +1,7 @@
 using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
+using GiGraph.Dot.Entities.Qualities;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Clusters.Style;
 using GiGraph.Dot.Types.Colors;
@@ -12,7 +13,8 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
     DotAttributeCollection attributes,
     Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup
 )
-    : DotEntityStyleAttributesWithMetadata<TIEntityAttributeProperties, TEntityAttributeProperties>(attributes, attributeKeyLookup), IDotGraphClusterCommonStyleAttributes
+    : DotEntityStyleAttributesWithMetadata<TIEntityAttributeProperties, TEntityAttributeProperties>(attributes, attributeKeyLookup),
+        IDotGraphClusterCommonStyleAttributes, IDotHasBorderStyleAttributes
     where TEntityAttributeProperties : DotGraphClusterCommonStyleAttributes<TIEntityAttributeProperties, TEntityAttributeProperties>, TIEntityAttributeProperties
 {
     /// <summary>
@@ -21,7 +23,7 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
     public virtual DotClusterFillStyle FillStyle
     {
         get => this.GetPartialStyleOption<DotClusterFillStyle, DotStyles>();
-        set => this.SetPartialStyleOption(value);
+        set => SetPartialStyleOption(value);
     }
 
     /// <summary>
@@ -30,7 +32,7 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
     public virtual DotBorderStyle BorderStyle
     {
         get => this.GetPartialStyleOption<DotBorderStyle, DotStyles>();
-        set => this.SetPartialStyleOption(value);
+        set => SetPartialStyleOption(value);
     }
 
     /// <summary>
@@ -39,7 +41,7 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
     public virtual DotBorderWeight BorderWeight
     {
         get => this.GetPartialStyleOption<DotBorderWeight, DotStyles>();
-        set => this.SetPartialStyleOption(value);
+        set => SetPartialStyleOption(value);
     }
 
     /// <summary>
@@ -48,7 +50,7 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
     public virtual DotCornerStyle CornerStyle
     {
         get => this.GetPartialStyleOption<DotCornerStyle, DotStyles>();
-        set => this.SetPartialStyleOption(value);
+        set => SetPartialStyleOption(value);
     }
 
     /// <summary>
@@ -57,7 +59,7 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
     public virtual bool Invisible
     {
         get => this.HasStyleOption(DotStyles.Invisible);
-        set => this.SetStyleOption(DotStyles.Invisible, value);
+        set => SetStyleOption(DotStyles.Invisible, value);
     }
 
     [DotAttributeKey(DotAttributeKeys.Color)]
@@ -71,48 +73,4 @@ public abstract partial class DotGraphClusterCommonStyleAttributes<TIEntityAttri
 
     [DotAttributeKey(DotAttributeKeys.PenWidth)]
     public virtual partial double? BorderWidth { get; set; }
-
-    /// <summary>
-    ///     Applies the specified style options.
-    /// </summary>
-    /// <param name="options">
-    ///     The options to apply.
-    /// </param>
-    public virtual void SetStyleOptions(DotClusterStyleOptions options)
-    {
-        SetStyleOptions(options.FillStyle, options.BorderStyle, options.BorderWeight, options.CornerStyle, options.Invisible);
-    }
-
-    /// <summary>
-    ///     Applies the specified style options.
-    /// </summary>
-    /// <param name="fillStyle">
-    ///     The fill style to set.
-    /// </param>
-    /// <param name="borderStyle">
-    ///     The border style to set.
-    /// </param>
-    /// <param name="borderWeight">
-    ///     The border weight to set.
-    /// </param>
-    /// <param name="cornerStyle">
-    ///     The corner style to set.
-    /// </param>
-    /// <param name="invisible">
-    ///     Determines whether the node should be invisible.
-    /// </param>
-    public virtual void SetStyleOptions(
-        DotClusterFillStyle fillStyle = default,
-        DotBorderStyle borderStyle = default,
-        DotBorderWeight borderWeight = default,
-        DotCornerStyle cornerStyle = default,
-        bool invisible = false
-    )
-    {
-        FillStyle = fillStyle;
-        BorderStyle = borderStyle;
-        BorderWeight = borderWeight;
-        CornerStyle = cornerStyle;
-        Invisible = invisible;
-    }
 }

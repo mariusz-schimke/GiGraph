@@ -5,7 +5,6 @@ using GiGraph.Dot.Entities.Attributes.Properties.Common.SvgStyleSheet;
 using GiGraph.Dot.Entities.Clusters.Attributes;
 using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Types.EscapeString;
-using GiGraph.Dot.Types.Geometry;
 
 namespace GiGraph.Dot.Entities.Clusters;
 
@@ -41,13 +40,6 @@ public partial class DotClusterSection : IDotClusterRootAttributes
     {
         get => Attributes.Implementation.Tooltip;
         set => Attributes.Implementation.Tooltip = value;
-    }
-
-    /// <inheritdoc cref="IDotClusterAttributes.Padding"/>
-    public virtual DotPoint? Padding
-    {
-        get => Attributes.Implementation.Padding;
-        set => Attributes.Implementation.Padding = value;
     }
 
     /// <inheritdoc cref="IDotClusterAttributes.ObjectId"/>

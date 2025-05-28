@@ -2,10 +2,10 @@
 using GiGraph.Dot.Entities.Attributes.Properties.Common.Style;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Html.Attributes.Collections;
-using GiGraph.Dot.Entities.Html.Rule;
 using GiGraph.Dot.Entities.Qualities;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.Colors;
+using GiGraph.Dot.Types.EnumHelpers;
 using GiGraph.Dot.Types.Html.Table;
 
 namespace GiGraph.Dot.Entities.Html.Table.Attributes;
@@ -14,32 +14,31 @@ public abstract partial class DotHtmlTableTableCellCommonStyleAttributes<TIHtmlT
     DotHtmlAttributeCollection attributes,
     Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup
 )
-    : DotEntityAttributes<TIHtmlTableTableCellStyleAttributeProperties, THtmlTableTableCellStyleAttributeProperties>(attributes, attributeKeyLookup), IDotHtmlTableTableCellCommonStyleAttributes, IDotHasStyleOptions<DotHtmlTableStyles>
+    : DotEntityAttributes<TIHtmlTableTableCellStyleAttributeProperties, THtmlTableTableCellStyleAttributeProperties>(attributes, attributeKeyLookup),
+        IDotHtmlTableTableCellCommonStyleAttributes, IDotHasStyleOptions<DotHtmlTableStyles>
     where TIHtmlTableTableCellStyleAttributeProperties : IDotHtmlTableTableCellCommonStyleAttributes
-    where THtmlTableTableCellStyleAttributeProperties : DotHtmlTableTableCellCommonStyleAttributes<TIHtmlTableTableCellStyleAttributeProperties, THtmlTableTableCellStyleAttributeProperties>, TIHtmlTableTableCellStyleAttributeProperties
+    where THtmlTableTableCellStyleAttributeProperties :
+    DotHtmlTableTableCellCommonStyleAttributes<TIHtmlTableTableCellStyleAttributeProperties, THtmlTableTableCellStyleAttributeProperties>,
+    TIHtmlTableTableCellStyleAttributeProperties
 {
     protected const string StyleAttributeKey = "style";
 
     /// <summary>
-    ///     True indicates that the element will have rounded corners. This probably works best if the outmost cells have no borders, or
-    ///     their cell spacing is sufficiently large. If it is desirable to have borders around the cells, use HR (
-    ///     <see cref="DotHtmlHorizontalRule"/>) and VR (<see cref="DotHtmlVerticalRule"/>) elements, or the column and row formatting
-    ///     attributes of the table.
+    ///     Gets or sets a fill style.
     /// </summary>
-    public virtual bool RoundedCorners
+    public virtual DotHtmlTableFillStyle FillStyle
     {
-        get => this.HasStyleOption(DotHtmlTableStyles.Rounded);
-        set => this.SetStyleOption(DotHtmlTableStyles.Rounded, value);
+        get => this.GetPartialStyleOption<DotHtmlTableFillStyle, DotHtmlTableStyles>();
+        set => SetPartialStyleOption(value);
     }
 
     /// <summary>
-    ///     True indicates that the element will have a radial gradient fill if a <see cref="DotGradientColor"/> is specified for
-    ///     <see cref="BackgroundColor"/>.
+    ///     Gets or sets a corner style.
     /// </summary>
-    public virtual bool RadialFill
+    public virtual DotHtmlTableCornerStyle CornerStyle
     {
-        get => this.HasStyleOption(DotHtmlTableStyles.Radial);
-        set => this.SetStyleOption(DotHtmlTableStyles.Radial, value);
+        get => this.GetPartialStyleOption<DotHtmlTableCornerStyle, DotHtmlTableStyles>();
+        set => SetPartialStyleOption(value);
     }
 
     protected virtual DotHtmlTableStyles? Style
@@ -52,6 +51,11 @@ public abstract partial class DotHtmlTableTableCellCommonStyleAttributes<TIHtmlT
     {
         get => Style;
         set => Style = value;
+    }
+
+    void IDotHasStyleOptions.NullifyStyle()
+    {
+        Style = null;
     }
 
     [DotAttributeKey(StyleAttributeKey)]
@@ -80,32 +84,30 @@ public abstract partial class DotHtmlTableTableCellCommonStyleAttributes<TIHtmlT
     public virtual partial int? GradientFillAngle { get; set; }
 
     /// <summary>
-    ///     Applies the specified style options to the element.
+    ///     Sets border style.
     /// </summary>
-    /// <param name="options">
-    ///     The options to apply.
+    /// <param name="width">
+    ///     The width to set.
     /// </param>
-    public virtual void SetStyleOptions(DotHtmlTableStyleOptions options)
+    /// <param name="color">
+    ///     The color to set.
+    /// </param>
+    public virtual THtmlTableTableCellStyleAttributeProperties SetBorderStyle(int? width, DotColor? color)
     {
-        SetStyleOptions(options.RoundedCorners, options.RadialFill);
+        // !!! mind the order of arguments in the overload of this method in descendant classes to keep them consistent !!!
+        // (see also the methods in DotHasBorderStyleAttributesExtension)
+
+        BorderWidth = width;
+        BorderColor = color;
+        return (THtmlTableTableCellStyleAttributeProperties) this;
     }
 
-    /// <summary>
-    ///     Applies the specified style options to the element.
-    /// </summary>
-    /// <param name="roundedCorners">
-    ///     True indicates that the element will have rounded corners. This probably works best if the outmost cells have no borders, or
-    ///     their cell spacing is sufficiently large. If it is desirable to have borders around the cells, use HR (
-    ///     <see cref="DotHtmlHorizontalRule"/>) and VR (<see cref="DotHtmlVerticalRule"/>) elements, or the column and row formatting
-    ///     attributes of the table.
-    /// </param>
-    /// <param name="radialFill">
-    ///     True indicates that the element will have a radial gradient fill if a <see cref="DotGradientColor"/> is specified for
-    ///     <see cref="BackgroundColor"/>.
-    /// </param>
-    public virtual void SetStyleOptions(bool roundedCorners = false, bool radialFill = false)
+    protected virtual void SetPartialStyleOption<TPartialStyle>(TPartialStyle option)
+        where TPartialStyle : struct, Enum
     {
-        RoundedCorners = roundedCorners;
-        RadialFill = radialFill;
+        var style = DotPartialEnumMapper.ReplacePartialFlags(Style.GetValueOrDefault(), option);
+
+        // since the style option may be set through helper methods, setting regular fill style would implicitly cause an empty style attribute to be rendered, which makes no sense
+        Style = DotEnumHelper.IsDefault(style) ? null : style;
     }
 }

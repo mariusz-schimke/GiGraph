@@ -11,17 +11,17 @@ public static class DotPartialEnumMapper
     /// <param name="complete">
     ///     The full enum value that may have more bits than the partial enum supports.
     /// </param>
-    /// <typeparam name="TPartial">
-    ///     The partial enum type that defines which bits are valid.
-    /// </typeparam>
     /// <typeparam name="TComplete">
     ///     The full enum type.
+    /// </typeparam>
+    /// <typeparam name="TPartial">
+    ///     The partial enum type that defines which bits are valid.
     /// </typeparam>
     /// <returns>
     ///     A value of the partial enum type, containing only the valid bits from the complete value.
     /// </returns>
     [Pure]
-    public static TPartial ExtractPartialFlags<TPartial, TComplete>(TComplete complete)
+    public static TPartial ExtractPartialFlags<TComplete, TPartial>(TComplete complete)
         where TPartial : struct, Enum
         where TComplete : struct, Enum
     {
@@ -41,22 +41,22 @@ public static class DotPartialEnumMapper
     /// <param name="complete">
     ///     The full enum value to update.
     /// </param>
-    /// <typeparam name="TPartial">
-    ///     The partial enum type, defining which bits should be updated.
-    /// </typeparam>
     /// <typeparam name="TComplete">
     ///     The full enum type.
+    /// </typeparam>
+    /// <typeparam name="TPartial">
+    ///     The partial enum type, defining which bits should be updated.
     /// </typeparam>
     /// <returns>
     ///     A new complete enum value with bits from the partial value merged into it.
     /// </returns>
     [Pure]
-    public static TComplete ReplacePartialFlags<TPartial, TComplete>(TPartial partial, TComplete complete)
-        where TPartial : struct, Enum
+    public static TComplete ReplacePartialFlags<TComplete, TPartial>(TComplete complete, TPartial partial)
         where TComplete : struct, Enum
+        where TPartial : struct, Enum
     {
         var partialInt = Convert.ToInt32(partial);
-        return ReplacePartialFlags<TPartial, TComplete>(partialInt, complete);
+        return ReplacePartialFlags<TComplete, TPartial>(complete, partialInt);
     }
 
     /// <summary>
@@ -66,20 +66,21 @@ public static class DotPartialEnumMapper
     /// <param name="complete">
     ///     The full enum value to clear bits from.
     /// </param>
-    /// <typeparam name="TPartial">
-    ///     The partial enum type defining which bits should be cleared.
-    /// </typeparam>
     /// <typeparam name="TComplete">
     ///     The full enum type.
+    /// </typeparam>
+    /// <typeparam name="TPartial">
+    ///     The partial enum type defining which bits should be cleared.
     /// </typeparam>
     /// <returns>
     ///     A new complete enum value with the specified bits cleared.
     /// </returns>
     [Pure]
-    public static TComplete ClearPartialFlags<TPartial, TComplete>(TComplete complete)
+    public static TComplete ClearPartialFlags<TComplete, TPartial>(TComplete complete)
+        where TComplete : struct, Enum
         where TPartial : struct, Enum
-        where TComplete : struct, Enum =>
-        ReplacePartialFlags<TPartial, TComplete>(partial: 0, complete);
+        =>
+            ReplacePartialFlags<TComplete, TPartial>(complete, partial: 0);
 
     /// <summary>
     ///     Merges the specified partial enums into one, complete enum. It is assumed that all specified partial enums partially overlap
@@ -101,9 +102,9 @@ public static class DotPartialEnumMapper
         return DotEnumHelper.ConvertTo<TComplete>(complete);
     }
 
-    private static TComplete ReplacePartialFlags<TPartial, TComplete>(int partial, TComplete complete)
-        where TPartial : struct, Enum
+    private static TComplete ReplacePartialFlags<TComplete, TPartial>(TComplete complete, int partial)
         where TComplete : struct, Enum
+        where TPartial : struct, Enum
     {
         var partialMask = GetBitMaskOf<TPartial>();
         var completeInt = Convert.ToInt32(complete);

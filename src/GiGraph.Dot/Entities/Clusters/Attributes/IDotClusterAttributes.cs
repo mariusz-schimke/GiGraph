@@ -4,7 +4,6 @@ using GiGraph.Dot.Entities.Labels;
 using GiGraph.Dot.Entities.Subgraphs;
 using GiGraph.Dot.Output.Options;
 using GiGraph.Dot.Types.EscapeString;
-using GiGraph.Dot.Types.Geometry;
 using GiGraph.Dot.Types.Html;
 
 namespace GiGraph.Dot.Entities.Clusters.Attributes;
@@ -46,11 +45,6 @@ public interface IDotClusterAttributes
     ///     defined.
     /// </summary>
     DotEscapeString? Tooltip { get; set; }
-
-    /// <summary>
-    ///     Specifies the space between the nodes in the cluster and bounding box of the cluster. By default, this is 8 points.
-    /// </summary>
-    DotPoint? Padding { get; set; }
 
     /// <summary>
     ///     <para>

@@ -1,3 +1,4 @@
+using System.Drawing;
 using GiGraph.Dot.Entities.Html.Table;
 using GiGraph.Dot.Extensions;
 using GiGraph.Dot.Types.Html.Table;
@@ -8,33 +9,32 @@ namespace GiGraph.Dot.Entities.Tests.Html.Table;
 public class DotHtmlTableStyleAttributeOptionsTest
 {
     [Fact]
-    public void setting_last_style_option_default_preserves_default_style()
+    public void setting_last_style_option_default_removes_style()
     {
         var table = new DotHtmlTable();
+        Assert.Equal(DotHtmlTableFillStyle.Regular, table.Style.FillStyle);
+        Assert.Equal(DotHtmlTableCornerStyle.Sharp, table.Style.CornerStyle);
         Assert.False(table.Style.HasStyleOptions());
 
-        Assert.False(table.Style.RoundedCorners);
-        Assert.False(table.Style.RadialFill);
-
-        table.Style.RoundedCorners = true;
-        Assert.True(table.Style.RoundedCorners);
-        Assert.False(table.Style.RadialFill);
+        table.Style.CornerStyle = DotHtmlTableCornerStyle.Rounded;
+        Assert.Equal(DotHtmlTableFillStyle.Regular, table.Style.FillStyle);
+        Assert.Equal(DotHtmlTableCornerStyle.Rounded, table.Style.CornerStyle);
         Assert.True(table.Style.HasStyleOptions());
 
-        table.Style.RadialFill = true;
-        Assert.True(table.Style.RoundedCorners);
-        Assert.True(table.Style.RadialFill);
+        table.Style.FillStyle = DotHtmlTableFillStyle.Radial;
+        Assert.Equal(DotHtmlTableFillStyle.Radial, table.Style.FillStyle);
+        Assert.Equal(DotHtmlTableCornerStyle.Rounded, table.Style.CornerStyle);
         Assert.True(table.Style.HasStyleOptions());
 
-        table.Style.RoundedCorners = false;
-        Assert.False(table.Style.RoundedCorners);
-        Assert.True(table.Style.RadialFill);
+        table.Style.CornerStyle = DotHtmlTableCornerStyle.Sharp;
+        Assert.Equal(DotHtmlTableFillStyle.Radial, table.Style.FillStyle);
+        Assert.Equal(DotHtmlTableCornerStyle.Sharp, table.Style.CornerStyle);
         Assert.True(table.Style.HasStyleOptions());
 
-        table.Style.RadialFill = false;
-        Assert.False(table.Style.RoundedCorners);
-        Assert.False(table.Style.RadialFill);
-        Assert.True(table.Style.HasStyleOptions());
+        table.Style.FillStyle = DotHtmlTableFillStyle.Regular;
+        Assert.Equal(DotHtmlTableFillStyle.Regular, table.Style.FillStyle);
+        Assert.Equal(DotHtmlTableCornerStyle.Sharp, table.Style.CornerStyle);
+        Assert.False(table.Style.HasStyleOptions());
     }
 
     [Fact]
@@ -43,7 +43,7 @@ public class DotHtmlTableStyleAttributeOptionsTest
         var table = new DotHtmlTable();
         Assert.False(table.Style.HasStyleOptions());
 
-        table.Style.SetStyleOptions(roundedCorners: true);
+        table.Style.CornerStyle = DotHtmlTableCornerStyle.Rounded;
         Assert.True(table.Style.HasStyleOptions());
 
         table.Style.RemoveStyleOptions();
@@ -51,35 +51,33 @@ public class DotHtmlTableStyleAttributeOptionsTest
     }
 
     [Fact]
-    public void helper_methods_set_all_style_options()
+    public void set_plain_fill_helper_method_does_not_place_empty_style_attribute_for_regular_fill()
     {
         var table = new DotHtmlTable();
+        Assert.Equal(DotHtmlTableFillStyle.Regular, table.Style.FillStyle);
+        Assert.Equal(DotHtmlTableCornerStyle.Sharp, table.Style.CornerStyle);
         Assert.False(table.Style.HasStyleOptions());
 
-        table.Style.SetStyleOptions(
-            new DotHtmlTableStyleOptions(
-                RoundedCorners: true,
-                RadialFill: false
-            )
-        );
+        table.Style.SetPlainFill(Color.Red);
+        Assert.False(table.Style.HasStyleOptions());
 
-        Assert.True(table.Style.RoundedCorners);
-        Assert.False(table.Style.RadialFill);
+        table.Style.SetRadialGradientFill(Color.Red, Color.Blue);
         Assert.True(table.Style.HasStyleOptions());
+    }
 
-        table.Style.SetStyleOptions();
-        Assert.False(table.Style.RoundedCorners);
-        Assert.False(table.Style.RadialFill);
-        Assert.True(table.Style.HasStyleOptions());
+    [Fact]
+    public void set_border_style_helper_method_sets_all_attributes()
+    {
+        var table = new DotHtmlTable();
+        table.Style.SetBorderStyle(4, Color.Azure);
 
-        table.Style.SetStyleOptions(roundedCorners: true);
-        Assert.True(table.Style.RoundedCorners);
-        Assert.False(table.Style.RadialFill);
-        Assert.True(table.Style.HasStyleOptions());
+        Assert.Equal(Color.Azure, table.Style.BorderColor!.Color);
+        Assert.Equal(4, table.Style.BorderWidth);
 
-        table.Style.SetStyleOptions(radialFill: true);
-        Assert.True(table.Style.RadialFill);
-        Assert.False(table.Style.RoundedCorners);
-        Assert.True(table.Style.HasStyleOptions());
+        table.Style.SetBorderStyle(5, 4, Color.Bisque);
+
+        Assert.Equal(Color.Bisque, table.Style.BorderColor!.Color);
+        Assert.Equal(5, table.Style.BorderWidth);
+        Assert.Equal(4, table.Style.CellBorderWidth);
     }
 }

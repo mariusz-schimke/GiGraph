@@ -8,7 +8,8 @@ namespace GiGraph.Dot.Entities.Clusters.Attributes;
 
 public partial class DotClusterStyleAttributes : DotGraphClusterCommonStyleAttributes<IDotClusterStyleAttributes, DotClusterStyleAttributes>, IDotClusterStyleAttributes
 {
-    private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotClusterStyleAttributes, IDotClusterStyleAttributes>().BuildLazy();
+    private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup =
+        new DotMemberAttributeKeyLookupBuilder<DotClusterStyleAttributes, IDotClusterStyleAttributes>().BuildLazy();
 
     public DotClusterStyleAttributes(DotAttributeCollection attributes)
         : base(attributes, AttributeKeyLookup)

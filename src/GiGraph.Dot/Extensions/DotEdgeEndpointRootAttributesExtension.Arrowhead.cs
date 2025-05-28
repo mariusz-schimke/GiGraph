@@ -3,7 +3,7 @@ using GiGraph.Dot.Types.Edges.Arrowheads;
 
 namespace GiGraph.Dot.Extensions;
 
-public static class IDotEdgeEndpointRootAttributesExtension
+public static partial class DotEdgeEndpointRootAttributesExtension
 {
     /// <summary>
     ///     <para>
@@ -26,14 +26,16 @@ public static class IDotEdgeEndpointRootAttributesExtension
     /// <param name="visibleParts">
     ///     Determines whether and how to clip the shape, leaving visible only the part to the left or to the right of the edge.
     /// </param>
-    public static void SetArrowhead(
-        this IDotEdgeEndpointRootAttributes attributes,
+    public static T SetArrowhead<T>(
+        this T attributes,
         DotArrowheadShape shape = DotArrowheadShape.Normal,
         bool filled = true,
         DotArrowheadParts visibleParts = DotArrowheadParts.Both
     )
+        where T : IDotEdgeEndpointRootAttributes
     {
         attributes.Arrowhead = new DotArrowhead(shape, filled, visibleParts);
+        return attributes;
     }
 
     /// <summary>
@@ -54,14 +56,13 @@ public static class IDotEdgeEndpointRootAttributesExtension
     /// <param name="visibleParts">
     ///     Determines whether and how to clip the shape, leaving visible only the part to the left or to the right of the edge.
     /// </param>
-    public static void SetEmptyArrowhead(
-        this IDotEdgeEndpointRootAttributes attributes,
+    public static T SetEmptyArrowhead<T>(
+        this T attributes,
         DotArrowheadShape shape = DotArrowheadShape.Normal,
         DotArrowheadParts visibleParts = DotArrowheadParts.Both
     )
-    {
+        where T : IDotEdgeEndpointRootAttributes =>
         attributes.SetArrowhead(shape, filled: false, visibleParts);
-    }
 
     /// <summary>
     ///     <para>
@@ -89,9 +90,11 @@ public static class IDotEdgeEndpointRootAttributesExtension
     /// <example>
     ///     SetCompositeArrowhead(DotArrowheadShape.Dot, new DotArrowhead(DotArrowheadShape.Vee, filled: false))
     /// </example>
-    public static void SetCompositeArrowhead(this IDotEdgeEndpointRootAttributes attributes, params DotArrowhead[] arrowheads)
+    public static T SetCompositeArrowhead<T>(this T attributes, params DotArrowhead[] arrowheads)
+        where T : IDotEdgeEndpointRootAttributes
     {
         attributes.Arrowhead = new DotCompositeArrowhead(arrowheads);
+        return attributes;
     }
 
     /// <summary>
@@ -111,8 +114,10 @@ public static class IDotEdgeEndpointRootAttributesExtension
     ///     specified, occur further from the node. Also, a shape of <see cref="DotArrowheadShape.None"/> uses space, so it can be used
     ///     as a separator between two consecutive shapes.
     /// </param>
-    public static void SetCompositeArrowhead(this IDotEdgeEndpointRootAttributes attributes, params DotArrowheadShape[] arrowheads)
+    public static T SetCompositeArrowhead<T>(this T attributes, params DotArrowheadShape[] arrowheads)
+        where T : IDotEdgeEndpointRootAttributes
     {
         attributes.Arrowhead = new DotCompositeArrowhead(arrowheads);
+        return attributes;
     }
 }

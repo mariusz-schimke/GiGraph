@@ -13,8 +13,8 @@ public class DotShapableNodeExtensionTest
     {
         var graph = new DotGraph();
 
-        graph.Nodes.Add("node1").SetPolygonalShape(6, true, 30, 10, 5);
-        graph.Nodes.Add("node2").SetPolygonalShape(new DotPolygon(6, true, 30, 10, 5));
+        graph.Nodes.Add("node1").SetPolygonalShape(6, true);
+        graph.Nodes.Add("node2").SetPolygonalShape(new DotPolygon(6, true));
 
         Snapshot.Match(graph.ToDot(), "polygonal_nodes");
     }

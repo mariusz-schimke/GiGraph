@@ -2,6 +2,7 @@ using GiGraph.Dot.Entities.Attributes.Collections;
 using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Output.Metadata;
+using GiGraph.Dot.Types.Geometry;
 using GiGraph.Dot.Types.Graphs.Layout.Spacing;
 
 namespace GiGraph.Dot.Entities.Clusters.Attributes;
@@ -19,6 +20,10 @@ public partial class DotClusterLayoutAttributes : DotEntityAttributesWithMetadat
         : base(attributes, attributeKeyLookup)
     {
     }
+
+    /// <inheritdoc cref="IDotClusterLayoutAttributes.Padding"/>
+    [DotAttributeKey(DotAttributeKeys.Margin)]
+    public virtual partial DotPoint? Padding { get; set; }
 
     /// <inheritdoc cref="IDotClusterLayoutAttributes.NodeRank"/>
     [DotAttributeKey(DotAttributeKeys.Rank)]

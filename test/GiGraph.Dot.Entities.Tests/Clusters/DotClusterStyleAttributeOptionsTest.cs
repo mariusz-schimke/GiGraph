@@ -16,33 +16,17 @@ public class DotClusterStyleAttributeOptionsTest
         var graph = new DotGraph();
         var cluster = graph.Clusters.Add("c1");
 
-        // set by class
-        cluster.Style.SetStyleOptions(
-            new DotClusterStyleOptions(
-                DotClusterFillStyle.Striped,
-                DotBorderStyle.Dotted,
-                DotBorderWeight.Bold,
-                DotCornerStyle.Rounded,
-                true
-            )
-        );
+        cluster.Style.FillStyle = DotClusterFillStyle.Striped;
+        cluster.Style.BorderStyle = DotBorderStyle.Dotted;
+        cluster.Style.BorderWeight = DotBorderWeight.Bold;
+        cluster.Style.CornerStyle = DotCornerStyle.Rounded;
+        cluster.Style.Invisible = true;
 
         Snapshot.Match(graph.ToDot(), snapshotName);
 
         Assert.False(cluster.Style.HasDefaultStyleOptions());
         cluster.Style.SetDefaultStyleOptions();
         Assert.True(cluster.Style.HasDefaultStyleOptions());
-
-        // set the same another way
-        cluster.Style.SetStyleOptions(
-            DotClusterFillStyle.Striped,
-            DotBorderStyle.Dotted,
-            DotBorderWeight.Bold,
-            DotCornerStyle.Rounded,
-            true
-        );
-
-        Snapshot.Match(graph.ToDot(), snapshotName);
     }
 
     [Fact]
@@ -74,14 +58,14 @@ public class DotClusterStyleAttributeOptionsTest
 
         Assert.Equal(DotClusterFillStyle.None, cluster.Style.FillStyle);
         Assert.Equal(DotBorderStyle.Default, cluster.Style.BorderStyle);
-        Assert.Equal(DotBorderWeight.Default, cluster.Style.BorderWeight);
+        Assert.Equal(DotBorderWeight.Normal, cluster.Style.BorderWeight);
         Assert.False(cluster.Style.Invisible);
 
         cluster.Style.RemoveStyleOptions();
 
         Assert.Equal(DotClusterFillStyle.None, cluster.Style.FillStyle);
         Assert.Equal(DotBorderStyle.Default, cluster.Style.BorderStyle);
-        Assert.Equal(DotBorderWeight.Default, cluster.Style.BorderWeight);
+        Assert.Equal(DotBorderWeight.Normal, cluster.Style.BorderWeight);
         Assert.False(cluster.Style.Invisible);
     }
 }

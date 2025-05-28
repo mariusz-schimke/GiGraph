@@ -19,6 +19,9 @@ public abstract partial class DotNodeDefinition : IDotNodeRootAttributes
     /// <inheritdoc cref="IDotNodeRootAttributes.Geometry"/>
     public DotNodeGeometryAttributes Geometry => Attributes.Implementation.Geometry;
 
+    /// <inheritdoc cref="IDotNodeRootAttributes.Transform"/>
+    public DotNodeTransformAttributes Transform => Attributes.Implementation.Transform;
+
     /// <inheritdoc cref="IDotNodeRootAttributes.Size"/>
     public DotNodeSizeAttributes Size => Attributes.Implementation.Size;
 

@@ -1,0 +1,6 @@
+﻿digraph
+{
+    edge [ headport = e, tailport = port ]
+
+    node1 -> node2 [ headport = "port1:nw", tailport = "port2:se" ]
+}

@@ -35,7 +35,7 @@
     "Graph": "Clusters.Style.Color: DotColorDefinition",
     "Cluster": "Style.Color: DotColorDefinition",
     "Node": "Style.Color: DotColorDefinition",
-    "Edge": "Style.Color: DotColorDefinition"
+    "Edge": "Style.LineColor: DotColorDefinition"
   },
   "colorscheme": {
     "Graph": "Style.ColorScheme: String",
@@ -58,13 +58,13 @@
     "Edge": "Layout.IncludeInNodeRanking: Boolean?"
   },
   "decorate": {
-    "Edge": "Style.DrawLabelConnector: Boolean?"
+    "Edge": "LabelOptions.LabelConnector: Boolean?"
   },
   "dir": {
     "Edge": "Directions: DotEdgeDirections?"
   },
   "distortion": {
-    "Node": "Geometry.Distortion: Double?"
+    "Node": "Transform.Distortion: Double?"
   },
   "dpi": {
     "Graph": "Canvas.Dpi: Double?"
@@ -85,10 +85,10 @@
     "Graph": "Clusters.Style.FillColor: DotColorDefinition",
     "Cluster": "Style.FillColor: DotColorDefinition",
     "Node": "Style.FillColor: DotColorDefinition",
-    "Edge": "Style.FillColor: DotColorDefinition"
+    "Edge": "Style.ArrowheadFillColor: DotColorDefinition"
   },
   "fixedsize": {
-    "Node": "Size.Mode: DotNodeSizing?"
+    "Node": "Size.Mode: DotSizing?"
   },
   "fontcolor": {
     "Graph": "Font.Color: DotColor",
@@ -186,7 +186,7 @@
     "Edge": "EndpointLabels.Distance: Double?"
   },
   "labelfloat": {
-    "Edge": "Layout.EnableLabelFloating: Boolean?"
+    "Edge": "Layout.AllowLabelFloating: Boolean?"
   },
   "labelfontcolor": {
     "Edge": "EndpointLabels.Font.Color: DotColor"
@@ -225,7 +225,7 @@
     "Graph": "Layout.Engine: String"
   },
   "len": {
-    "Edge": "Layout.Length: Double?"
+    "Edge": "Layout.PreferredLength: Double?"
   },
   "lhead": {
     "Edge": "Head.ClusterId: DotClusterId"
@@ -235,7 +235,7 @@
   },
   "margin": {
     "Graph": "Canvas.Margin: DotPoint",
-    "Cluster": "Padding: DotPoint",
+    "Cluster": "Layout.Padding: DotPoint",
     "Node": "LabelOptions.Margin: DotPoint"
   },
   "mclimit": {
@@ -265,7 +265,7 @@
   },
   "orientation": {
     "Graph": "Canvas.Orientation: DotOrientation?",
-    "Node": "Geometry.Rotation: Double?"
+    "Node": "Transform.Rotation: Double?"
   },
   "outputorder": {
     "Graph": "Layout.OutputOrder: DotOutputOrder?"
@@ -342,7 +342,7 @@
     "Graph": "Canvas.Size: DotPoint"
   },
   "skew": {
-    "Node": "Geometry.Skew: Double?"
+    "Node": "Transform.Skew: Double?"
   },
   "sortv": {
     "Graph": "Layout.SortIndex: Int32?",

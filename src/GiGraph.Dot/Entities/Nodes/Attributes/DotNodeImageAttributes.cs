@@ -9,7 +9,8 @@ namespace GiGraph.Dot.Entities.Nodes.Attributes;
 
 public partial class DotNodeImageAttributes : DotEntityAttributesWithMetadata<IDotNodeImageAttributes, DotNodeImageAttributes>, IDotNodeImageAttributes
 {
-    private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotNodeImageAttributes, IDotNodeImageAttributes>().BuildLazy();
+    private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup =
+        new DotMemberAttributeKeyLookupBuilder<DotNodeImageAttributes, IDotNodeImageAttributes>().BuildLazy();
 
     public DotNodeImageAttributes(DotAttributeCollection attributes)
         : base(attributes, AttributeKeyLookup)
@@ -45,11 +46,12 @@ public partial class DotNodeImageAttributes : DotEntityAttributesWithMetadata<ID
     /// <param name="scaling">
     ///     The scaling option to apply to the image.
     /// </param>
-    public virtual void Set(string? path, DotAlignment? alignment = null, DotImageScaling? scaling = null)
+    public virtual DotNodeImageAttributes Set(string? path, DotAlignment? alignment, DotImageScaling? scaling)
     {
         Path = path;
         Alignment = alignment;
         Scaling = scaling;
+        return this;
     }
 
     /// <summary>
@@ -58,8 +60,5 @@ public partial class DotNodeImageAttributes : DotEntityAttributesWithMetadata<ID
     /// <param name="attributes">
     ///     The image attributes to set.
     /// </param>
-    public virtual void Set(DotImage attributes)
-    {
-        Set(attributes.Path, attributes.Alignment, attributes.Scaling);
-    }
+    public virtual DotNodeImageAttributes Set(DotImage attributes) => Set(attributes.Path, attributes.Alignment, attributes.Scaling);
 }

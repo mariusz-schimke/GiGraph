@@ -84,9 +84,10 @@ public partial class DotHtmlTable : IDotHtmlTableAttributes
     /// <param name="rowFormat">
     ///     The row format to set. See <see cref="DotHtmlTableRowFormat"/> for accepted values.
     /// </param>
-    public virtual void SetFormat(string? columnFormat = null, string? rowFormat = null)
+    public virtual DotHtmlTable SetFormat(string? columnFormat, string? rowFormat)
     {
         ColumnFormat = columnFormat;
         RowFormat = rowFormat;
+        return this;
     }
 }

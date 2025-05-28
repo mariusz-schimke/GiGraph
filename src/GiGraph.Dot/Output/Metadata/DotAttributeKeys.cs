@@ -168,10 +168,12 @@ public static class DotAttributeKeys
     [DotAttributeMetadata(DotCompatibleElements.Node)]
     public const string Height = "height";
 
-    [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Cluster | DotCompatibleElements.Node | DotCompatibleElements.Edge, compatibleOutputs: DotCompatibleOutputs.Svg | DotCompatibleOutputs.PostScript | DotCompatibleOutputs.Map)]
+    [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Cluster | DotCompatibleElements.Node | DotCompatibleElements.Edge,
+        compatibleOutputs: DotCompatibleOutputs.Svg | DotCompatibleOutputs.PostScript | DotCompatibleOutputs.Map)]
     public const string Href = "href";
 
-    [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Cluster | DotCompatibleElements.Node | DotCompatibleElements.Edge, compatibleOutputs: DotCompatibleOutputs.Svg | DotCompatibleOutputs.PostScript | DotCompatibleOutputs.Map)]
+    [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Cluster | DotCompatibleElements.Node | DotCompatibleElements.Edge,
+        compatibleOutputs: DotCompatibleOutputs.Svg | DotCompatibleOutputs.PostScript | DotCompatibleOutputs.Map)]
     public const string Id = "id";
 
     [DotAttributeMetadata(DotCompatibleElements.Node)]
@@ -439,7 +441,16 @@ public static class DotAttributeKeys
     [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.Dot, isImplemented: false)]
     public const string SearchSize = "searchsize";
 
-    [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.NotDot, isImplemented: false)]
+    [DotAttributeMetadata(
+        DotCompatibleElements.Graph,
+        DotCompatibleLayoutEngines.Fdp
+        | DotCompatibleLayoutEngines.Neato
+        | DotCompatibleLayoutEngines.Sfdp
+        | DotCompatibleLayoutEngines.Osage
+        | DotCompatibleLayoutEngines.Circo
+        | DotCompatibleLayoutEngines.Twopi,
+        isImplemented: false
+    )]
     public const string Sep = "sep";
 
     [DotAttributeMetadata(DotCompatibleElements.Node)]
@@ -502,19 +513,22 @@ public static class DotAttributeKeys
     [DotAttributeMetadata(DotCompatibleElements.Edge, compatibleOutputs: DotCompatibleOutputs.Svg | DotCompatibleOutputs.Map)]
     public const string TailUrl = "tailURL";
 
-    [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Cluster | DotCompatibleElements.Node | DotCompatibleElements.Edge, compatibleOutputs: DotCompatibleOutputs.Svg | DotCompatibleOutputs.Map)]
+    [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Cluster | DotCompatibleElements.Node | DotCompatibleElements.Edge,
+        compatibleOutputs: DotCompatibleOutputs.Svg | DotCompatibleOutputs.Map)]
     public const string Target = "target";
 
     [DotAttributeMetadata(DotCompatibleElements.Graph, DotCompatibleLayoutEngines.Dot)]
     public const string TbBalance = "TBbalance";
 
-    [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Cluster | DotCompatibleElements.Node | DotCompatibleElements.Edge, compatibleOutputs: DotCompatibleOutputs.Svg | DotCompatibleOutputs.Cmap)]
+    [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Cluster | DotCompatibleElements.Node | DotCompatibleElements.Edge,
+        compatibleOutputs: DotCompatibleOutputs.Svg | DotCompatibleOutputs.Cmap)]
     public const string Tooltip = "tooltip";
 
     [DotAttributeMetadata(DotCompatibleElements.Graph, compatibleOutputs: DotCompatibleOutputs.Bitmap, isImplemented: false)]
     public const string TrueColor = "truecolor";
 
-    [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Cluster | DotCompatibleElements.Node | DotCompatibleElements.Edge, compatibleOutputs: DotCompatibleOutputs.Svg | DotCompatibleOutputs.PostScript | DotCompatibleOutputs.Map)]
+    [DotAttributeMetadata(DotCompatibleElements.Graph | DotCompatibleElements.Cluster | DotCompatibleElements.Node | DotCompatibleElements.Edge,
+        compatibleOutputs: DotCompatibleOutputs.Svg | DotCompatibleOutputs.PostScript | DotCompatibleOutputs.Map)]
     public const string Url = "URL";
 
     [DotAttributeMetadata(DotCompatibleElements.Node, DotCompatibleLayoutEngines.None, isImplemented: false)]

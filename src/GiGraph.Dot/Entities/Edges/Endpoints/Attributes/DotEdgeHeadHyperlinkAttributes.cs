@@ -8,14 +8,9 @@ using GiGraph.Dot.Types.Hyperlinks;
 
 namespace GiGraph.Dot.Entities.Edges.Endpoints.Attributes;
 
-public partial class DotEdgeHeadHyperlinkAttributes : DotEdgeEndpointHyperlinkAttributes
+public partial class DotEdgeHeadHyperlinkAttributes(DotAttributeCollection attributes) : DotEdgeEndpointHyperlinkAttributes(attributes, AttributeKeyLookup)
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotEdgeHeadHyperlinkAttributes, IDotEdgeHyperlinkAttributes>().BuildLazy();
-
-    public DotEdgeHeadHyperlinkAttributes(DotAttributeCollection attributes)
-        : base(attributes, AttributeKeyLookup)
-    {
-    }
 
     /// <summary>
     ///     If defined, it is output as part of the head <see cref="IDotEdgeEndpointAttributes.Label" /> of the edge (svg, map only).
@@ -33,7 +28,7 @@ public partial class DotEdgeHeadHyperlinkAttributes : DotEdgeEndpointHyperlinkAt
 
     /// <summary>
     ///     If <see cref="Url" /> is specified, this attribute determines which window of the browser is used for the URL (svg, map
-    ///     only). Setting it to <see cref="DotHyperlinkTargets.NewWindow" /> will open a new window if it doesn't already exist, or
+    ///     only). Setting it to <see cref="DotHyperlinkTargets.Graphviz" /> will open a new window if it doesn't already exist, or
     ///     reuse it if it does. If undefined, the value of the edge's <see cref="IDotEdgeRootAttributes.Hyperlink" />
     ///     <see cref="IDotHyperlinkAttributes.Target" /> is used.
     /// </summary>

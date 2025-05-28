@@ -170,7 +170,7 @@ graph.Nodes.Add("Foo", node =>
 graph.Edges.Add("Foo", "Bar", edge =>
 {
     edge.Label = "My Foo-Bar edge";
-    edge.Style.Color = Color.Red;
+    edge.Style.LineColor = Color.Red;
 });
 ```
 
@@ -272,7 +272,7 @@ graph.Nodes.Style.Color = Color.Orange;
 
 ```c#
 // edge attributes on the graph level (they apply to all edges of the graph)
-graph.Edges.Style.Color = Color.Red;
+graph.Edges.Style.LineColor = Color.Red;
 ```
 
 ```dot
@@ -876,7 +876,7 @@ The code below adds an edge, and specifies which sides of its endpoints it shoul
 graph.Edges.Add("Foo", "Bar", edge =>
 {
     edge.Label = "Baz";
-    edge.Style.Color = Color.Blue;
+    edge.Style.LineColor = Color.Blue;
 
     // the tail and the head of the edge will be attached to the left side of the nodes
     edge.Tail.Port = DotCompassPoint.West;
@@ -912,7 +912,7 @@ edge = new DotEdge(
 );
 
 edge.Label = "Baz";
-edge.Style.Color = Color.Blue;
+edge.Style.LineColor = Color.Blue;
 
 graph.Edges.Add(edge);
 ```
@@ -1130,7 +1130,7 @@ graph.Edges.AddManyToMany(
     edge =>
     {
         // attributes specified here affect all edges drawn based on this entry
-        edge.Style.Color = Color.Red;
+        edge.Style.LineColor = Color.Red;
     });
 
 // the code above is equivalent to
@@ -1138,7 +1138,7 @@ var edge = new DotEdge<DotSubgraphEndpoint, DotSubgraphEndpoint>(
     new DotSubgraphEndpoint("Foo", "Bar"),
     new DotSubgraphEndpoint("Baz", "Qux"));
 
-edge.Style.Color = Color.Red;
+edge.Style.LineColor = Color.Red;
 
 graph.Edges.Add(edge);
 ```
@@ -1226,7 +1226,7 @@ graph.Edges.AddSequence(
     edge =>
     {
         // attributes specified here affect all edges in this sequence
-        edge.Style.Color = Color.Red;
+        edge.Style.LineColor = Color.Red;
     }
 );
 
@@ -1237,7 +1237,7 @@ var edgeSequence = new DotEdgeSequence(
     new DotEndpoint("Quux", DotCompassPoint.North)
 );
 
-edgeSequence.Style.Color = Color.Red;
+edgeSequence.Style.LineColor = Color.Red;
 
 graph.Edges.Add(edgeSequence);
 ```
@@ -1553,7 +1553,7 @@ graph.Subgraphs.Add(sg =>
     sg.Nodes.Style.FillColor = Color.Orange;
     sg.Nodes.Shape = DotNodeShape.Circle;
 
-    sg.Edges.Style.Color = Color.RoyalBlue;
+    sg.Edges.Style.LineColor = Color.RoyalBlue;
 
     sg.Edges.Add("A", "B").Label = "PLAIN COLOR";
 });
@@ -2075,7 +2075,7 @@ graph.Edges.Add("foo", "bar", edge =>
     edge.Tail.Endpoint.Annotation = "tail";
 
     edge.Attributes.Annotation = "edge attributes";
-    edge.Style.Attributes.SetValue(a => a.Color, Color.Red).Annotation = "color";
+    edge.Style.Attributes.SetValue(a => a.LineColor, Color.Red).Annotation = "color";
 });
 
 // subsections

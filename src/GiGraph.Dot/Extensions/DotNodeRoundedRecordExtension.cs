@@ -22,10 +22,12 @@ public static class DotNodeRoundedRecordExtension
     /// <param name="record">
     ///     The record to use as the label of the node.
     /// </param>
-    public static void SetRoundedRecordAsLabel(this DotNodeDefinition node, DotRecord? record)
+    public static T SetRoundedRecordAsLabel<T>(this T node, DotRecord? record)
+        where T : DotNodeDefinition
     {
         node.Shape = DotNodeShape.RoundedRecord;
         node.Label = record;
+        return node;
     }
 
     /// <summary>
@@ -45,11 +47,12 @@ public static class DotNodeRoundedRecordExtension
     ///     <see cref="DotLayoutDirection.LeftToRight"/> or <see cref="DotLayoutDirection.RightToLeft"/>, corresponding to horizontal
     ///     layouts, the top-level fields are displayed vertically.
     /// </param>
-    public static void SetRoundedRecordAsLabel(this DotNodeDefinition node, Action<DotRecordBuilder>? buildRecord, bool flip = false)
+    public static T SetRoundedRecordAsLabel<T>(this T node, Action<DotRecordBuilder>? buildRecord, bool flip = false)
+        where T : DotNodeDefinition
     {
         var builder = new DotRecordBuilder();
         buildRecord?.Invoke(builder);
 
-        SetRoundedRecordAsLabel(node, builder.Build(flip));
+        return SetRoundedRecordAsLabel(node, builder.Build(flip));
     }
 }

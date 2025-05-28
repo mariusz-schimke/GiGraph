@@ -5,9 +5,11 @@ using GiGraph.Dot.Output.Metadata;
 
 namespace GiGraph.Dot.Entities.Graphs.Attributes;
 
-public partial class DotGraphSvgStyleSheetAttributes : DotSvgStyleSheetAttributes<IDotGraphSvgStyleSheetAttributes, DotGraphSvgStyleSheetAttributes>, IDotGraphSvgStyleSheetAttributes
+public partial class DotGraphSvgStyleSheetAttributes : DotSvgStyleSheetAttributes<IDotGraphSvgStyleSheetAttributes, DotGraphSvgStyleSheetAttributes>,
+    IDotGraphSvgStyleSheetAttributes
 {
-    private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphSvgStyleSheetAttributes, IDotGraphSvgStyleSheetAttributes>().BuildLazy();
+    private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup =
+        new DotMemberAttributeKeyLookupBuilder<DotGraphSvgStyleSheetAttributes, IDotGraphSvgStyleSheetAttributes>().BuildLazy();
 
     public DotGraphSvgStyleSheetAttributes(DotAttributeCollection attributes)
         : base(attributes, AttributeKeyLookup)
@@ -32,9 +34,10 @@ public partial class DotGraphSvgStyleSheetAttributes : DotSvgStyleSheetAttribute
     /// <param name="class">
     ///     The CSS class to set.
     /// </param>
-    public virtual void Set(string? url = null, string? @class = null)
+    public virtual DotGraphSvgStyleSheetAttributes Set(string? url, string? @class)
     {
         Url = url;
         Class = @class;
+        return this;
     }
 }

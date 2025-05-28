@@ -9,43 +9,24 @@ namespace GiGraph.Dot.Entities.Tests.Edges;
 public class DotEdgeEndpointArrowheadSettersTest
 {
     [Fact]
-    public void converts_node_to_record_node()
+    public void sets_arrowhead_variants()
     {
         var graph = new DotGraph();
 
         graph.Edges.Head.SetArrowhead(DotArrowheadShape.Dot, filled: true, DotArrowheadParts.Right);
         graph.Edges.Tail.SetEmptyArrowhead(DotArrowheadShape.Diamond, DotArrowheadParts.Left);
 
-        graph.Edges
-            .Add("node1", "node2")
-            .Head
-            .SetArrowhead(DotArrowheadShape.Crow, filled: false, DotArrowheadParts.Left);
+        graph.Edges.Add("node1", "node2")
+            .Head.SetArrowhead(DotArrowheadShape.Crow, filled: false, DotArrowheadParts.Left);
 
         graph.Edges
             .Add("node3", "node4")
-            .Tail
-            .SetCompositeArrowhead(DotArrowheadShape.Crow, DotArrowheadShape.Box);
+            .Tail.SetCompositeArrowhead(DotArrowheadShape.Crow, DotArrowheadShape.Box);
 
         graph.Edges
             .Add("node5", "node6")
-            .Tail
-            .SetCompositeArrowhead(new DotArrowhead(DotArrowheadShape.Tee, filled: true, DotArrowheadParts.Right));
+            .Tail.SetCompositeArrowhead(new DotArrowhead(DotArrowheadShape.Tee, filled: true, DotArrowheadParts.Right));
 
-        Snapshot.Match(
-            graph.ToDot(),
-            "edge_endpoints_arrowheads"
-        );
-    }
-
-    [Fact]
-    public void converts_node_to_record_node_from_builder()
-    {
-        var graph = new DotGraph();
-        graph.Nodes.Add("node1").SetRecordAsLabel(b => b.AppendFields("field1", "field2"));
-
-        Snapshot.Match(
-            graph.ToDot(),
-            "graph_with_record_node_from_builder"
-        );
+        Snapshot.Match(graph.ToDot(), "edge_endpoints_arrowheads");
     }
 }

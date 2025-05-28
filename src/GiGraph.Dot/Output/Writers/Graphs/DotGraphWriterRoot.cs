@@ -4,22 +4,14 @@ using GiGraph.Dot.Output.Writers.TokenWriter;
 
 namespace GiGraph.Dot.Output.Writers.Graphs;
 
-public class DotGraphWriterRoot : IDotGraphWriterRoot
+public class DotGraphWriterRoot(DotTokenWriter tokenWriter, DotFormattingOptions formattingOptions) : IDotGraphWriterRoot
 {
-    protected readonly DotFormattingOptions _formattingOptions;
-    protected readonly DotTokenWriter _tokenWriter;
     protected bool _initializeIndentation = true;
-
-    public DotGraphWriterRoot(DotTokenWriter tokenWriter, DotFormattingOptions formattingOptions)
-    {
-        _tokenWriter = tokenWriter;
-        _formattingOptions = formattingOptions;
-    }
 
     public virtual IDotGraphWriter BeginGraph(bool directed)
     {
         InitializeIndentation();
-        return new DotGraphWriter(_tokenWriter, new DotEntityWriterConfiguration(directed, _formattingOptions));
+        return new DotGraphWriter(tokenWriter, new DotEntityWriterConfiguration(directed, formattingOptions));
     }
 
     public virtual void EndGraph()
@@ -29,19 +21,19 @@ public class DotGraphWriterRoot : IDotGraphWriterRoot
     public virtual IDotCommentWriter BeginComment(bool preferBlockComment)
     {
         InitializeIndentation();
-        return new DotCommentWriter(_tokenWriter, preferBlockComment);
+        return new DotCommentWriter(tokenWriter, preferBlockComment);
     }
 
     public virtual void EndComment()
     {
-        _tokenWriter.NewLine(linger: true, enforceLineBreak: true);
+        tokenWriter.NewLine(linger: true, enforceLineBreak: true);
     }
 
     protected virtual void InitializeIndentation()
     {
         if (_initializeIndentation)
         {
-            _tokenWriter.Indentation(linger: true);
+            tokenWriter.Indentation(linger: true);
             _initializeIndentation = false;
         }
     }

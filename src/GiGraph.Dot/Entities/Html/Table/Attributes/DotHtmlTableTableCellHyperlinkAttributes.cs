@@ -1,13 +1,15 @@
 ﻿using GiGraph.Dot.Entities.Attributes.Properties;
 using GiGraph.Dot.Entities.Attributes.Properties.KeyLookup;
 using GiGraph.Dot.Entities.Html.Attributes.Collections;
+using GiGraph.Dot.Entities.Qualities;
 using GiGraph.Dot.Output.Metadata;
 using GiGraph.Dot.Types.EscapeString;
 using GiGraph.Dot.Types.Hyperlinks;
 
 namespace GiGraph.Dot.Entities.Html.Table.Attributes;
 
-public partial class DotHtmlTableTableCellHyperlinkAttributes : DotEntityAttributes<IDotHtmlTableTableCellHyperlinkAttributes, DotHtmlTableTableCellHyperlinkAttributes>, IDotHtmlTableTableCellHyperlinkAttributes
+public partial class DotHtmlTableTableCellHyperlinkAttributes : DotEntityAttributes<IDotHtmlTableTableCellHyperlinkAttributes, DotHtmlTableTableCellHyperlinkAttributes>,
+    IDotHtmlTableTableCellHyperlinkAttributes, IDotHasHyperlinkAttributesWithTooltip
 {
     private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotHtmlTableTableCellHyperlinkAttributes, IDotHtmlTableTableCellHyperlinkAttributes>().BuildLazy();
 
@@ -40,34 +42,15 @@ public partial class DotHtmlTableTableCellHyperlinkAttributes : DotEntityAttribu
     /// <summary>
     ///     Specifies hyperlink attributes.
     /// </summary>
-    /// <param name="href">
-    ///     The URL of the hyperlink.
-    /// </param>
-    /// <param name="target">
-    ///     The target of the hyperlink. See <see cref="DotHyperlinkTargets"/> for accepted values.
-    /// </param>
-    /// <param name="tooltip">
-    ///     The tooltip of the hyperlink. Equivalent to <paramref name="title"/>.
-    /// </param>
-    /// <param name="title">
-    ///     The tooltip of the hyperlink. Equivalent to <paramref name="tooltip"/>.
-    /// </param>
-    public virtual void Set(DotEscapeString? href = null, DotEscapeString? target = null, DotEscapeString? tooltip = null, DotEscapeString? title = null)
-    {
-        Href = href;
-        Target = target;
-        Tooltip = tooltip;
-        Title = title;
-    }
-
-    /// <summary>
-    ///     Specifies hyperlink attributes.
-    /// </summary>
     /// <param name="attributes">
     ///     The attributes to set.
     /// </param>
-    public virtual void Set(DotHyperlink attributes)
+    public virtual DotHtmlTableTableCellHyperlinkAttributes Set(DotHyperlink attributes)
     {
-        Set(attributes.Href, attributes.Target, attributes.Tooltip, attributes.Title);
+        Href = attributes.Href;
+        Target = attributes.Target;
+        Title = attributes.Title;
+        Tooltip = attributes.Tooltip;
+        return this;
     }
 }

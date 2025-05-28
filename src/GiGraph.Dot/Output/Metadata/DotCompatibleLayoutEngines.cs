@@ -23,7 +23,7 @@ public enum DotCompatibleLayoutEngines
     Dot = 1 << 0,
 
     /// <summary>
-    ///     The attribute may be used by any layout engine, but is not used by <see cref="Dot" />.
+    ///     The attribute may be used by any layout engine, but is not used by <see cref="Dot"/>.
     /// </summary>
     NotDot = 1 << 1,
 
@@ -35,37 +35,42 @@ public enum DotCompatibleLayoutEngines
     Neato = 1 << 2,
 
     /// <summary>
-    ///     The attribute is used by the fdp layout engine that draws “spring model” layouts similar to those of <see cref="Neato" />,
-    ///     but does this by reducing forces rather than working with energy.
+    ///     The attribute is used by the Osage layout engine that draws clustered graphs.
     /// </summary>
-    Fdp = 1 << 3,
+    Osage = 1 << 3,
 
     /// <summary>
-    ///     The attribute is used by the sfdp layout engine. It is a multiscale version of <see cref="Fdp" /> for the layout of large
+    ///     The attribute is used by the fdp layout engine that draws “spring model” layouts similar to those of <see cref="Neato"/>, but
+    ///     does this by reducing forces rather than working with energy.
+    /// </summary>
+    Fdp = 1 << 4,
+
+    /// <summary>
+    ///     The attribute is used by the sfdp layout engine. It is a multiscale version of <see cref="Fdp"/> for the layout of large
     ///     graphs.
     /// </summary>
-    Sfdp = 1 << 4,
+    Sfdp = 1 << 5,
 
     /// <summary>
     ///     The attribute is used by the circo layout engine that draws circular layouts. This is suitable for certain diagrams of
     ///     multiple cyclic structures, such as certain telecommunications networks.
     /// </summary>
-    Circo = 1 << 5,
+    Circo = 1 << 6,
 
     /// <summary>
     ///     The attribute is used by the twopi layout engine that draws radial layouts. Nodes are placed on concentric circles depending
     ///     their distance from a given root node.
     /// </summary>
-    Twopi = 1 << 6,
+    Twopi = 1 << 7,
 
     /// <summary>
     ///     The attribute is used by the patchwork layout engine that draws the graph as a squarified treemap. The clusters of the graph
     ///     are used to specify the tree.
     /// </summary>
-    Patchwork = 1 << 7,
+    Patchwork = 1 << 8,
 
     /// <summary>
     ///     The attribute is valid only when the PRoxImity Stress Model algorithm is in use.
     /// </summary>
-    Prism = 1 << 8
+    Prism = 1 << 9
 }

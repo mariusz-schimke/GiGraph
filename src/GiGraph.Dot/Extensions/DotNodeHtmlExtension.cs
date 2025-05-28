@@ -28,10 +28,9 @@ public static class DotNodeHtmlExtension
     /// <param name="html">
     ///     The HTML text to assign to node label.
     /// </param>
-    public static void SetHtmlAsLabel(this DotNodeDefinition node, string? html)
-    {
+    public static T SetHtmlAsLabel<T>(this T node, string? html)
+        where T : DotNodeDefinition =>
         node.SetHtmlAsLabel((DotHtmlLabel?) (DotHtmlString?) html);
-    }
 
     /// <summary>
     ///     Converts the current node to an HTML node by assigning HTML to its label attribute and setting its shape to
@@ -44,10 +43,9 @@ public static class DotNodeHtmlExtension
     /// <param name="html">
     ///     The HTML entity to assign to node label.
     /// </param>
-    public static void SetHtmlAsLabel(this DotNodeDefinition node, IDotHtmlEntity html)
-    {
+    public static T SetHtmlAsLabel<T>(this T node, IDotHtmlEntity html)
+        where T : DotNodeDefinition =>
         node.SetHtmlAsLabel(new DotHtmlLabel(html));
-    }
 
     /// <summary>
     ///     Converts the current node to an HTML node by assigning HTML to its label attribute and setting its shape to
@@ -60,12 +58,13 @@ public static class DotNodeHtmlExtension
     /// <param name="buildHtml">
     ///     A method delegate that provides an HTML builder to compose the node's content.
     /// </param>
-    public static void SetHtmlAsLabel(this DotNodeDefinition node, Action<DotHtmlBuilder>? buildHtml)
+    public static T SetHtmlAsLabel<T>(this T node, Action<DotHtmlBuilder>? buildHtml)
+        where T : DotNodeDefinition
     {
         var builder = new DotHtmlBuilder();
         buildHtml?.Invoke(builder);
 
-        SetHtmlAsLabel(node, builder.Build());
+        return SetHtmlAsLabel(node, builder.Build());
     }
 
     /// <summary>
@@ -78,12 +77,13 @@ public static class DotNodeHtmlExtension
     /// <param name="buildTable">
     ///     A method delegate that provides an HTML table to compose the node's content.
     /// </param>
-    public static void SetHtmlTableAsLabel(this DotNodeDefinition node, Action<DotHtmlTable>? buildTable)
+    public static T SetHtmlTableAsLabel<T>(this T node, Action<DotHtmlTable>? buildTable)
+        where T : DotNodeDefinition
     {
         var table = new DotHtmlTable();
         buildTable?.Invoke(table);
 
-        SetHtmlAsLabel(node, table);
+        return SetHtmlAsLabel(node, table);
     }
 
     /// <summary>
@@ -96,14 +96,15 @@ public static class DotNodeHtmlExtension
     /// <param name="table">
     ///     The HTML table to assign to node label.
     /// </param>
-    public static void SetHtmlTableAsLabel(this DotNodeDefinition node, DotHtmlTable table)
-    {
+    public static T SetHtmlTableAsLabel<T>(this T node, DotHtmlTable table)
+        where T : DotNodeDefinition =>
         SetHtmlAsLabel(node, table);
-    }
 
-    private static void SetHtmlAsLabel(this DotNodeDefinition node, DotHtmlLabel? label)
+    private static T SetHtmlAsLabel<T>(this T node, DotHtmlLabel? label)
+        where T : DotNodeDefinition
     {
         node.Shape = DotNodeShape.Plain;
         node.Label = label;
+        return node;
     }
 }
