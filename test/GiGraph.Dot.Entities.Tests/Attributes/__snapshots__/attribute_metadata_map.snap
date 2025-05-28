@@ -854,7 +854,7 @@
   "sep": {
     "Key": "sep",
     "CompatibleElements": "Graph",
-    "CompatibleLayoutEngines": "NotDot",
+    "CompatibleLayoutEngines": "Neato, Osage, Fdp, Sfdp, Circo, Twopi",
     "CompatibleOutputs": "Any"
   },
   "shape": {
