@@ -16,13 +16,13 @@ public interface IDotEdgeLayoutAttributes
     /// <summary>
     ///     Preferred edge length, in inches (fdp, neato only). Default: 1.0 (neato), 0.3 (fdp).
     /// </summary>
-    double? Length { get; set; }
+    double? PreferredLength { get; set; }
 
     /// <summary>
     ///     Weight of the edge. In dot, the heavier the weight, the shorter, straighter and more vertical the edge is. Note that weights
     ///     in dot must be integers. For twopi, a weight of 0 indicates the edge should not be used in constructing a spanning tree from
     ///     the root. For other layouts, a larger weight encourages the layout to make the edge length closer to that specified by the
-    ///     <see cref="Length"/> attribute. Default: 1. Minimum: 0 [int] (dot, twopi), 1 [double] (neato, fdp).
+    ///     <see cref="PreferredLength"/> attribute. Default: 1. Minimum: 0 [int] (dot, twopi), 1 [double] (neato, fdp).
     /// </summary>
     double? Weight { get; set; }
 

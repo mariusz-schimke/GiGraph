@@ -225,7 +225,7 @@
     "Graph": "Layout.Engine: String"
   },
   "len": {
-    "Edge": "Layout.Length: Double?"
+    "Edge": "Layout.PreferredLength: Double?"
   },
   "lhead": {
     "Edge": "Head.ClusterId: DotClusterId"
