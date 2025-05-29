@@ -22,5 +22,5 @@ public interface IDotEdgeLabelOptionsAttributes
     ///     If true, attaches label to the edge by a 2-segment polyline, underlining the label, then going to the closest point of
     ///     spline. Default: false.
     /// </summary>
-    bool? LabelConnector { get; set; }
+    bool? DrawLabelConnector { get; set; }
 }
