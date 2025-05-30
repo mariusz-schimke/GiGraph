@@ -16,7 +16,7 @@ public static class DotStylableEdgeExtension
     /// <param name="startWidth">
     ///     The width to start with.
     /// </param>
-    public static T SetTaperedStyle<T>(this T edge, double startWidth)
+    public static T SetTaperedLineStyle<T>(this T edge, double startWidth)
         where T : IDotStylableEdge
     {
         edge.SetLineStyle(DotLineStyle.Tapered);
@@ -37,9 +37,9 @@ public static class DotStylableEdgeExtension
     ///     weighted colors are provided, the weights must sum to at most 1. If both colors with and without weights are provided, the
     ///     sum of the weighted ones should be below 1, as otherwise those without weights will be ignored by the visualization tool.
     /// </param>
-    public static T SetSegmentedStyle<T>(this T edge, params DotColor[] segments)
+    public static T SetSegmentedLineStyle<T>(this T edge, params DotColor[] segments)
         where T : IDotStylableEdge =>
-        edge.SetSegmentedStyle(new DotMulticolor(segments));
+        edge.SetSegmentedLineStyle(new DotMulticolor(segments));
 
     /// <summary>
     ///     Composes the edge's line from segments with the specified colors. At least one of the colors has to have a weight specified
@@ -54,7 +54,7 @@ public static class DotStylableEdgeExtension
     ///     weighted colors are provided, the weights must sum to at most 1. If both colors with and without weights are provided, the
     ///     sum of the weighted ones should be below 1, as otherwise those without weights will be ignored by the visualization tool.
     /// </param>
-    public static T SetSegmentedStyle<T>(this T edge, DotMulticolor segments)
+    public static T SetSegmentedLineStyle<T>(this T edge, DotMulticolor segments)
         where T : IDotStylableEdge
     {
         if (!segments.Colors.Any(item => item is DotWeightedColor))
@@ -79,11 +79,11 @@ public static class DotStylableEdgeExtension
     ///     The color to assign to individual lines the edge will be composed of. If not specified,
     ///     <see cref="System.Drawing.Color.Black"/> is used.
     /// </param>
-    public static T SetMultilineStyle<T>(this T edge, int lineCount, DotColor? color = null)
+    public static T SetParallelLineStyle<T>(this T edge, int lineCount, DotColor? color = null)
         where T : IDotStylableEdge
     {
         var colors = Enumerable.Range(0, lineCount).Select(_ => color ??= Color.Black);
-        return edge.SetMultilineStyle(colors.ToArray());
+        return edge.SetParallelLineStyle(colors.ToArray());
     }
 
     /// <summary>
@@ -96,9 +96,9 @@ public static class DotStylableEdgeExtension
     ///     The colors to assign to individual lines the edge will be composed of. Note that weighted colors (
     ///     <see cref="DotWeightedColor"/>) must not be used among the colors.
     /// </param>
-    public static T SetMultilineStyle<T>(this T edge, params DotColor[] lines)
+    public static T SetParallelLineStyle<T>(this T edge, params DotColor[] lines)
         where T : IDotStylableEdge =>
-        edge.SetMultilineStyle(new DotMulticolor(lines));
+        edge.SetParallelLineStyle(new DotMulticolor(lines));
 
     /// <summary>
     ///     Converts the edge to multiple parallel lines.
@@ -110,7 +110,7 @@ public static class DotStylableEdgeExtension
     ///     The colors to assign to individual lines the edge will be composed of. Note that weighted colors (
     ///     <see cref="DotWeightedColor"/>) must not be used among the colors.
     /// </param>
-    public static T SetMultilineStyle<T>(this T edge, DotMulticolor lines)
+    public static T SetParallelLineStyle<T>(this T edge, DotMulticolor lines)
         where T : IDotStylableEdge
     {
         if (lines.Colors.Any(color => color is DotWeightedColor))

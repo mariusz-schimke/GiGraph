@@ -983,10 +983,10 @@ Consider the following example:
 using GiGraph.Dot.Extensions;
 
 graph.Edges.Add("Foo", "Bar")
-    .Style.SetSegmentedStyle(new DotWeightedColor(Color.RoyalBlue, 0.5), Color.Turquoise);
+    .Style.SetSegmentedLineStyle(new DotWeightedColor(Color.RoyalBlue, 0.5), Color.Turquoise);
 
 graph.Edges.Add("Foo", "Bar")
-    .Style.SetMultilineStyle(Color.RoyalBlue, Color.Turquoise);
+    .Style.SetParallelLineStyle(Color.RoyalBlue, Color.Turquoise);
 ```
 
 Note that in the case of multicolor segments, at least one color has to have a weight specified. The weight is interpreted as a length proportion of that segment in relation to other segments. Other colors may be provided without weights, in which case the lengths of their segments are distributed proportionally within the remaining part of an edge.
@@ -1493,7 +1493,7 @@ graph.Subgraphs.Add(sg =>
         edge.Directions = DotEdgeDirections.Both;
 
         // this will render two parallel splines (but more of them may be specified)
-        edge.Style.SetMultilineStyle(Color.Turquoise, Color.RoyalBlue);
+        edge.Style.SetParallelLineStyle(Color.Turquoise, Color.RoyalBlue);
     });
 });
 
@@ -1509,7 +1509,7 @@ graph.Subgraphs.Add(sg =>
         edge.Directions = DotEdgeDirections.Both;
 
         // this will render a multicolor edge where each color may optionally have an area proportion determined by the weight parameter
-        edge.Style.SetSegmentedStyle(
+        edge.Style.SetSegmentedLineStyle(
             new DotWeightedColor(Color.Turquoise, 0.33),
             new DotWeightedColor(Color.Gray, 0.33),
             Color.Navy);

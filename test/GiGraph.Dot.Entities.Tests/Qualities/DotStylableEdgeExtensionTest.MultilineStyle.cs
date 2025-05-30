@@ -15,10 +15,10 @@ public partial class DotStylableEdgeExtensionTest
         var graph = new DotGraph();
         var edge = graph.Edges.Add("a", "b");
 
-        Assert.Throws<ArgumentException>(() => edge.Style.SetMultilineStyle(4, new DotWeightedColor(Color.Red, 0.5)));
+        Assert.Throws<ArgumentException>(() => edge.Style.SetParallelLineStyle(4, new DotWeightedColor(Color.Red, 0.5)));
 
-        Assert.Throws<ArgumentException>(() => edge.Style.SetMultilineStyle(new DotWeightedColor(Color.Red, 0.5)));
-        Assert.Throws<ArgumentException>(() => edge.Style.SetMultilineStyle(new DotMulticolor(new DotWeightedColor(Color.Red, 0.5))));
+        Assert.Throws<ArgumentException>(() => edge.Style.SetParallelLineStyle(new DotWeightedColor(Color.Red, 0.5)));
+        Assert.Throws<ArgumentException>(() => edge.Style.SetParallelLineStyle(new DotMulticolor(new DotWeightedColor(Color.Red, 0.5))));
     }
 
     [Fact]
@@ -26,11 +26,11 @@ public partial class DotStylableEdgeExtensionTest
     {
         var graph = new DotGraph();
 
-        graph.Edges.Add("a", "b").Style.SetMultilineStyle(4);
-        graph.Edges.Add("c", "d").Style.SetMultilineStyle(4, Color.Red);
+        graph.Edges.Add("a", "b").Style.SetParallelLineStyle(4);
+        graph.Edges.Add("c", "d").Style.SetParallelLineStyle(4, Color.Red);
 
-        graph.Edges.Add("e", "f").Style.SetMultilineStyle(Color.Red, Color.Black, Color.Green);
-        graph.Edges.Add("g", "h").Style.SetMultilineStyle(new DotMulticolor(Color.Red, Color.Black, Color.Green));
+        graph.Edges.Add("e", "f").Style.SetParallelLineStyle(Color.Red, Color.Black, Color.Green);
+        graph.Edges.Add("g", "h").Style.SetParallelLineStyle(new DotMulticolor(Color.Red, Color.Black, Color.Green));
 
         Snapshot.Match(graph.ToDot(), "multiline_edges");
     }
@@ -40,10 +40,10 @@ public partial class DotStylableEdgeExtensionTest
     {
         var graph = new DotGraph();
 
-        graph.Edges.Style.SetMultilineStyle(4);
-        graph.Subsections.Add().Edges.Style.SetMultilineStyle(4, Color.Red);
-        graph.Subsections.Add().Edges.Style.SetMultilineStyle(Color.Red, Color.Black, Color.Green);
-        graph.Subsections.Add().Edges.Style.SetMultilineStyle(new DotMulticolor(Color.Red, Color.Black, Color.Green));
+        graph.Edges.Style.SetParallelLineStyle(4);
+        graph.Subsections.Add().Edges.Style.SetParallelLineStyle(4, Color.Red);
+        graph.Subsections.Add().Edges.Style.SetParallelLineStyle(Color.Red, Color.Black, Color.Green);
+        graph.Subsections.Add().Edges.Style.SetParallelLineStyle(new DotMulticolor(Color.Red, Color.Black, Color.Green));
 
         Snapshot.Match(graph.ToDot(), "multiline_edge_collections");
     }
