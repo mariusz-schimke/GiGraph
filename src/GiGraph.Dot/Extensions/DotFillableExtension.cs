@@ -18,6 +18,9 @@ public static class DotFillableExtension
     public static T SetPlainFill<T>(this T entity, DotColor color)
         where T : IDotFillable
     {
+        // Note that this method has the word `plain` in its name because it doesn't accept a gradient color, so a plain color will be applied.
+        // The fill style enum, on the other hand, uses the word `regular` instead because this fill style can either cause a plain color fill or a gradient fill.
+
         entity.SetFillStyle(DotFillStyle.Regular);
         entity.SetFillColor(color);
         return entity;
