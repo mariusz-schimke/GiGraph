@@ -20,7 +20,7 @@ public interface IDotClusterRootAttributes : IDotClusterAttributes
     /// <summary>
     ///     Label options attributes.
     /// </summary>
-    DotLabelOptionsAttributes LabelOptions { get; }
+    DotGraphClusterLabelOptionsAttributes LabelOptions { get; }
 
     /// <summary>
     ///     Style sheet attributes used for SVG output.

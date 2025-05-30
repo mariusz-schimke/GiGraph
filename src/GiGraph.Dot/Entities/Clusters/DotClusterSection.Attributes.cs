@@ -17,7 +17,7 @@ public partial class DotClusterSection : IDotClusterRootAttributes
     public DotClusterStyleAttributes Style => Attributes.Implementation.Style;
 
     /// <inheritdoc cref="IDotClusterRootAttributes.LabelOptions"/>
-    public DotLabelOptionsAttributes LabelOptions => Attributes.Implementation.LabelOptions;
+    public DotGraphClusterLabelOptionsAttributes LabelOptions => Attributes.Implementation.LabelOptions;
 
     /// <inheritdoc cref="IDotClusterRootAttributes.SvgStyleSheet"/>
     public DotSvgStyleSheetAttributes SvgStyleSheet => Attributes.Implementation.SvgStyleSheet;

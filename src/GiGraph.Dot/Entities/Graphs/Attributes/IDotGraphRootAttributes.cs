@@ -38,7 +38,7 @@ public interface IDotGraphRootAttributes : IDotGraphAttributes
     /// <summary>
     ///     Label options attributes.
     /// </summary>
-    DotLabelOptionsAttributes LabelOptions { get; }
+    DotGraphClusterLabelOptionsAttributes LabelOptions { get; }
 
     /// <summary>
     ///     Hyperlink attributes.

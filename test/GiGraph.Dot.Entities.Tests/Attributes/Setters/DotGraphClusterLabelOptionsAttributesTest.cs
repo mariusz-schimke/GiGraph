@@ -5,12 +5,12 @@ using Xunit;
 
 namespace GiGraph.Dot.Entities.Tests.Attributes.Setters;
 
-public class DotLabelOptionsAttributesTest
+public class DotGraphClusterLabelOptionsAttributesTest
 {
     [Fact]
     public void setter_with_params_sets_all_properties()
     {
-        var options = new DotLabelOptionsAttributes(new DotAttributeCollection());
+        var options = new DotGraphClusterLabelOptionsAttributes(new DotAttributeCollection());
         options.SetAlignment(DotHorizontalAlignment.Left, DotVerticalAlignment.Top);
         Assert.Equal(DotHorizontalAlignment.Left, options.HorizontalAlignment);
         Assert.Equal(DotVerticalAlignment.Top, options.VerticalAlignment);
@@ -19,7 +19,7 @@ public class DotLabelOptionsAttributesTest
     [Fact]
     public void setter_with_alignment_sets_all_properties()
     {
-        var options = new DotLabelOptionsAttributes(new DotAttributeCollection());
+        var options = new DotGraphClusterLabelOptionsAttributes(new DotAttributeCollection());
         options.SetAlignment(DotAlignment.BottomCenter);
         Assert.Equal(DotHorizontalAlignment.Center, options.HorizontalAlignment);
         Assert.Equal(DotVerticalAlignment.Bottom, options.VerticalAlignment);
@@ -28,7 +28,7 @@ public class DotLabelOptionsAttributesTest
     [Fact]
     public void setter_with_alignment_options_sets_all_properties()
     {
-        var options = new DotLabelOptionsAttributes(new DotAttributeCollection());
+        var options = new DotGraphClusterLabelOptionsAttributes(new DotAttributeCollection());
         options.SetAlignment(new DotAlignmentOptions(DotAlignment.MiddleLeft));
         Assert.Equal(DotHorizontalAlignment.Left, options.HorizontalAlignment);
         Assert.Equal(DotVerticalAlignment.Center, options.VerticalAlignment);
