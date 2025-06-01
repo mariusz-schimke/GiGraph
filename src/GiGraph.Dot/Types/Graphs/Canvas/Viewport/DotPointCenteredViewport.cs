@@ -12,14 +12,14 @@ namespace GiGraph.Dot.Types.Graphs.Canvas.Viewport;
 ///     The height of the final image, in points.
 /// </param>
 /// <param name="x">
-///     The x-coordinate of the center of the viewport.
+///     The x-coordinate of the viewport center.
 /// </param>
 /// <param name="y">
-///     The y-coordinate of the center of the viewport.
+///     The y-coordinate of the viewport center.
 /// </param>
 /// <param name="zoom">
-///     The zoom factor. The image in the original layout will be <see cref="DotViewport.Width" /> / <see cref="DotViewport.Zoom" />
-///     by <see cref="DotViewport.Height" /> / <see cref="DotViewport.Zoom" /> points in size. By default, the zoom factor is 1.
+///     The zoom factor. The image in the original layout will be <paramref name="width"/> / <paramref name="zoom"/> by
+///     <paramref name="height"/> / <paramref name="zoom"/> points in size. By default, the zoom factor is 1.
 /// </param>
 public class DotPointCenteredViewport(double width, double height, double x, double y, double zoom = DotViewport.DefaultZoom)
     : DotViewport(width, height, zoom)

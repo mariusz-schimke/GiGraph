@@ -13,12 +13,12 @@ namespace GiGraph.Dot.Types.Graphs.Canvas.Viewport;
 ///     The height of the final image, in points.
 /// </param>
 /// <param name="zoom">
-///     The zoom factor. The image in the original layout will be <see cref="Width" /> / <see cref="Zoom" /> by <see cref="Height" />
-///     / <see cref="Zoom" /> points in size. By default, the zoom factor is 1.
+///     The zoom factor. The image in the original layout will be <paramref name="width"/> / <paramref name="zoom"/> by
+///     <paramref name="height"/> / <paramref name="zoom"/> points in size. By default, the zoom factor is 1.
 /// </param>
 public class DotViewport(double width, double height, double zoom = DotViewport.DefaultZoom) : IDotEncodable
 {
-    protected const double DefaultZoom = 1;
+    public const double DefaultZoom = 1;
 
     /// <summary>
     ///     The width of the final image, in points.
@@ -31,8 +31,8 @@ public class DotViewport(double width, double height, double zoom = DotViewport.
     public double Height { get; } = height;
 
     /// <summary>
-    ///     The zoom factor. The image in the original layout will be <see cref="Width" /> / <see cref="Zoom" /> by <see cref="Height" />
-    ///     / <see cref="Zoom" /> points in size. By default, the zoom factor is 1.
+    ///     The zoom factor. The image in the original layout will be <see cref="Width"/> / <see cref="Zoom"/> by <see cref="Height"/> /
+    ///     <see cref="Zoom"/> points in size. By default, the zoom factor is 1.
     /// </summary>
     public double Zoom { get; } = zoom;
 
