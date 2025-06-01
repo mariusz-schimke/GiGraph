@@ -72,14 +72,14 @@ public partial class DotEdgeStyleAttributes : DotEntityStyleAttributesWithMetada
     /// <summary>
     ///     Sets the arrowhead style.
     /// </summary>
+    /// <param name="scale">
+    ///     The multiplicative scale factor (default: 1.0, minimum: 0.0).
+    /// </param>
     /// <param name="fillColor">
     ///     The color to use to fill the arrowhead, assuming it has a filled style. If null is specified, <see cref="LineColor"/> will be
     ///     used.
     /// </param>
-    /// <param name="scale">
-    ///     The multiplicative scale factor (default: 1.0, minimum: 0.0).
-    /// </param>
-    public virtual DotEdgeStyleAttributes SetArrowheadStyle(DotColorDefinition? fillColor, double? scale)
+    public virtual DotEdgeStyleAttributes SetArrowheadStyle(double? scale, DotColorDefinition? fillColor)
     {
         ArrowheadFillColor = fillColor;
         ArrowheadScale = scale;
