@@ -65,7 +65,7 @@ public partial class DotNodeStyleAttributes : DotEntityStyleAttributesWithMetada
     ///     When set, causes small chords to be drawn near the vertices of the node’s polygon or, in case of circles and ellipses, two
     ///     chords near the top and the bottom of the shape.
     /// </summary>
-    public virtual bool Diagonals
+    public virtual bool DrawDiagonals
     {
         get => this.HasStyleOption(DotStyles.Diagonals);
         set => SetStyleOption(DotStyles.Diagonals, value);

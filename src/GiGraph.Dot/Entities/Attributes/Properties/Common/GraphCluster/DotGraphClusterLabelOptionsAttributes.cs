@@ -5,29 +5,29 @@ using GiGraph.Dot.Types.Alignment;
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common.GraphCluster;
 
-public partial class DotLabelOptionsAttributes : DotEntityAttributesWithMetadata<IDotLabelOptionsAttributes, DotLabelOptionsAttributes>, IDotLabelOptionsAttributes
+public partial class DotGraphClusterLabelOptionsAttributes : DotEntityAttributesWithMetadata<IDotGraphClusterLabelOptionsAttributes, DotGraphClusterLabelOptionsAttributes>, IDotGraphClusterLabelOptionsAttributes
 {
-    private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotLabelOptionsAttributes, IDotLabelOptionsAttributes>().BuildLazy();
+    private static readonly Lazy<DotMemberAttributeKeyLookup> AttributeKeyLookup = new DotMemberAttributeKeyLookupBuilder<DotGraphClusterLabelOptionsAttributes, IDotGraphClusterLabelOptionsAttributes>().BuildLazy();
 
-    public DotLabelOptionsAttributes(DotAttributeCollection attributes)
+    public DotGraphClusterLabelOptionsAttributes(DotAttributeCollection attributes)
         : base(attributes, AttributeKeyLookup)
     {
     }
 
-    protected DotLabelOptionsAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
+    protected DotGraphClusterLabelOptionsAttributes(DotAttributeCollection attributes, Lazy<DotMemberAttributeKeyLookup> attributeKeyLookup)
         : base(attributes, attributeKeyLookup)
     {
     }
 
-    /// <inheritdoc cref="IDotLabelOptionsAttributes.HorizontalAlignment"/>
+    /// <inheritdoc cref="IDotGraphClusterLabelOptionsAttributes.HorizontalAlignment"/>
     [DotAttributeKey(DotAttributeKeys.LabelJust)]
     public virtual partial DotHorizontalAlignment? HorizontalAlignment { get; set; }
 
-    /// <inheritdoc cref="IDotLabelOptionsAttributes.VerticalAlignment"/>
+    /// <inheritdoc cref="IDotGraphClusterLabelOptionsAttributes.VerticalAlignment"/>
     [DotAttributeKey(DotAttributeKeys.LabelLoc)]
     public virtual partial DotVerticalAlignment? VerticalAlignment { get; set; }
 
-    /// <inheritdoc cref="IDotLabelOptionsAttributes.DisableJustification"/>
+    /// <inheritdoc cref="IDotGraphClusterLabelOptionsAttributes.DisableJustification"/>
     [DotAttributeKey(DotAttributeKeys.NoJustify)]
     public virtual partial bool? DisableJustification { get; set; }
 
@@ -40,7 +40,7 @@ public partial class DotLabelOptionsAttributes : DotEntityAttributesWithMetadata
     /// <param name="vertical">
     ///     The vertical label alignment to set.
     /// </param>
-    public virtual DotLabelOptionsAttributes SetAlignment(DotHorizontalAlignment? horizontal, DotVerticalAlignment? vertical)
+    public virtual DotGraphClusterLabelOptionsAttributes SetAlignment(DotHorizontalAlignment? horizontal, DotVerticalAlignment? vertical)
     {
         HorizontalAlignment = horizontal;
         VerticalAlignment = vertical;
@@ -53,7 +53,7 @@ public partial class DotLabelOptionsAttributes : DotEntityAttributesWithMetadata
     /// <param name="alignment">
     ///     The alignment to set.
     /// </param>
-    public virtual DotLabelOptionsAttributes SetAlignment(DotAlignment alignment) => SetAlignment(new DotAlignmentOptions(alignment));
+    public virtual DotGraphClusterLabelOptionsAttributes SetAlignment(DotAlignment alignment) => SetAlignment(new DotAlignmentOptions(alignment));
 
     /// <summary>
     ///     Sets label alignment.
@@ -61,5 +61,5 @@ public partial class DotLabelOptionsAttributes : DotEntityAttributesWithMetadata
     /// <param name="alignment">
     ///     The alignment to set.
     /// </param>
-    public virtual DotLabelOptionsAttributes SetAlignment(DotAlignmentOptions alignment) => SetAlignment(alignment.Horizontal, alignment.Vertical);
+    public virtual DotGraphClusterLabelOptionsAttributes SetAlignment(DotAlignmentOptions alignment) => SetAlignment(alignment.Horizontal, alignment.Vertical);
 }

@@ -23,7 +23,7 @@ public partial class DotClusterRootAttributes : DotEntityAttributesWithMetadata<
             new DotFontAttributes(attributes),
             new DotClusterStyleAttributes(attributes),
             new DotSvgStyleSheetAttributes(attributes),
-            new DotLabelOptionsAttributes(attributes),
+            new DotGraphClusterLabelOptionsAttributes(attributes),
             new DotClusterLayoutAttributes(attributes)
         )
     {
@@ -36,7 +36,7 @@ public partial class DotClusterRootAttributes : DotEntityAttributesWithMetadata<
         DotFontAttributes fontAttributes,
         DotClusterStyleAttributes styleAttributes,
         DotSvgStyleSheetAttributes svgStyleSheetAttributes,
-        DotLabelOptionsAttributes labelOptionsAttributes,
+        DotGraphClusterLabelOptionsAttributes labelOptionsAttributes,
         DotClusterLayoutAttributes layoutAttributes
     )
         : base(attributes, attributeKeyLookup)
@@ -65,7 +65,7 @@ public partial class DotClusterRootAttributes : DotEntityAttributesWithMetadata<
     public DotClusterStyleAttributes Style { get; }
 
     /// <inheritdoc cref="IDotClusterRootAttributes.LabelOptions"/>
-    public DotLabelOptionsAttributes LabelOptions { get; }
+    public DotGraphClusterLabelOptionsAttributes LabelOptions { get; }
 
     /// <inheritdoc cref="IDotClusterRootAttributes.SvgStyleSheet"/>
     public DotSvgStyleSheetAttributes SvgStyleSheet { get; }

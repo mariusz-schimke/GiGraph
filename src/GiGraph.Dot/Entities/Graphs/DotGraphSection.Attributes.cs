@@ -27,7 +27,7 @@ public partial class DotGraphSection : IDotGraphRootAttributes
     public DotGraphCanvasAttributes Canvas => Attributes.Implementation.Canvas;
 
     /// <inheritdoc cref="IDotGraphRootAttributes.LabelOptions"/>
-    public DotLabelOptionsAttributes LabelOptions => Attributes.Implementation.LabelOptions;
+    public DotGraphClusterLabelOptionsAttributes LabelOptions => Attributes.Implementation.LabelOptions;
 
     /// <inheritdoc cref="IDotGraphRootAttributes.Hyperlink"/>
     public DotHyperlinkAttributes Hyperlink => Attributes.Implementation.Hyperlink;

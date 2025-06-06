@@ -20,7 +20,7 @@ public class DotNodeStyleAttributeOptionsTest
         node.Style.BorderStyle = DotBorderStyle.Dashed;
         node.Style.BorderWeight = DotBorderWeight.Bold;
         node.Style.CornerStyle = DotCornerStyle.Rounded;
-        node.Style.Diagonals = true;
+        node.Style.DrawDiagonals = true;
         node.Style.Invisible = true;
 
         Snapshot.Match(graph.ToDot(), snapshotName);
@@ -43,7 +43,7 @@ public class DotNodeStyleAttributeOptionsTest
         Assert.True(node.Style.HasStyleOptions());
         Assert.True(node.Style.HasDefaultStyleOptions());
 
-        node.Style.Diagonals = false;
+        node.Style.DrawDiagonals = false;
         Assert.True(node.Style.HasDefaultStyleOptions());
     }
 
@@ -61,7 +61,7 @@ public class DotNodeStyleAttributeOptionsTest
         Assert.Equal(DotBorderStyle.Default, node.Style.BorderStyle);
         Assert.Equal(DotBorderWeight.Normal, node.Style.BorderWeight);
         Assert.Equal(DotCornerStyle.Sharp, node.Style.CornerStyle);
-        Assert.False(node.Style.Diagonals);
+        Assert.False(node.Style.DrawDiagonals);
         Assert.False(node.Style.Invisible);
 
         node.Style.RemoveStyleOptions();
@@ -70,7 +70,7 @@ public class DotNodeStyleAttributeOptionsTest
         Assert.Equal(default(DotBorderStyle), node.Style.BorderStyle);
         Assert.Equal(default(DotBorderWeight), node.Style.BorderWeight);
         Assert.Equal(default(DotCornerStyle), node.Style.CornerStyle);
-        Assert.False(node.Style.Diagonals);
+        Assert.False(node.Style.DrawDiagonals);
         Assert.False(node.Style.Invisible);
     }
 }

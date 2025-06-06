@@ -24,7 +24,7 @@ public partial class DotGraphRootAttributes : DotEntityAttributesWithMetadata<ID
             new DotGraphSvgStyleSheetAttributes(attributes),
             new DotGraphLayoutAttributes(attributes),
             new DotGraphCanvasAttributes(attributes),
-            new DotLabelOptionsAttributes(attributes)
+            new DotGraphClusterLabelOptionsAttributes(attributes)
         )
     {
     }
@@ -39,7 +39,7 @@ public partial class DotGraphRootAttributes : DotEntityAttributesWithMetadata<ID
         DotGraphSvgStyleSheetAttributes svgStyleSheetAttributes,
         DotGraphLayoutAttributes layoutAttributes,
         DotGraphCanvasAttributes canvasAttributes,
-        DotLabelOptionsAttributes labelOptionsAttributes
+        DotGraphClusterLabelOptionsAttributes labelOptionsAttributes
     )
         : base(attributes, attributeKeyLookup)
     {
@@ -72,7 +72,7 @@ public partial class DotGraphRootAttributes : DotEntityAttributesWithMetadata<ID
     public DotGraphCanvasAttributes Canvas { get; }
 
     /// <inheritdoc cref="IDotGraphRootAttributes.LabelOptions"/>
-    public DotLabelOptionsAttributes LabelOptions { get; }
+    public DotGraphClusterLabelOptionsAttributes LabelOptions { get; }
 
     /// <inheritdoc cref="IDotGraphRootAttributes.Hyperlink"/>
     public DotHyperlinkAttributes Hyperlink { get; }

@@ -12,7 +12,7 @@ public class DotEdgeStyleAttributesTest
     public void arrowhead_style_setter_sets_both_properties()
     {
         var style = new DotEdgeStyleAttributes(new DotAttributeCollection());
-        style.SetArrowheadStyle(Color.Blue, 3);
+        style.SetArrowheadStyle(3, Color.Blue);
         Assert.Equal(Color.Blue, ((DotColor?) style.ArrowheadFillColor)!.Color);
         Assert.Equal(3, style.ArrowheadScale);
     }

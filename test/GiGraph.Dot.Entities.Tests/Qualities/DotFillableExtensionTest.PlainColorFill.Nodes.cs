@@ -57,7 +57,7 @@ public partial class DotFillableExtensionTest
         nodeStyle.BorderStyle = DotBorderStyle.Solid;
         nodeStyle.BorderWeight = DotBorderWeight.Bold;
         nodeStyle.CornerStyle = DotCornerStyle.Rounded;
-        nodeStyle.Diagonals = true;
+        nodeStyle.DrawDiagonals = true;
         nodeStyle.Invisible = true;
     }
 }

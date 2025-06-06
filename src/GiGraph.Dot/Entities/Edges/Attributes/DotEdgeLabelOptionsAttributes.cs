@@ -23,7 +23,7 @@ public partial class DotEdgeLabelOptionsAttributes : DotEntityAttributesWithMeta
     [DotAttributeKey(DotAttributeKeys.NoJustify)]
     public virtual partial bool? DisableJustification { get; set; }
 
-    /// <inheritdoc cref="IDotEdgeLabelOptionsAttributes.LabelConnector"/>
+    /// <inheritdoc cref="IDotEdgeLabelOptionsAttributes.DrawLabelConnector"/>
     [DotAttributeKey(DotAttributeKeys.Decorate)]
-    public virtual partial bool? LabelConnector { get; set; }
+    public virtual partial bool? DrawLabelConnector { get; set; }
 }

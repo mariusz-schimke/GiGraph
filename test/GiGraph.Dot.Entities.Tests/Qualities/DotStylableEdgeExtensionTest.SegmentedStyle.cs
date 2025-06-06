@@ -15,8 +15,8 @@ public partial class DotStylableEdgeExtensionTest
         var graph = new DotGraph();
         var edge = graph.Edges.Add("a", "b");
 
-        Assert.Throws<ArgumentException>(() => edge.Style.SetSegmentedStyle(Color.Red));
-        Assert.Throws<ArgumentException>(() => edge.Style.SetSegmentedStyle(new DotMulticolor(Color.Red)));
+        Assert.Throws<ArgumentException>(() => edge.Style.SetSegmentedLineStyle(Color.Red));
+        Assert.Throws<ArgumentException>(() => edge.Style.SetSegmentedLineStyle(new DotMulticolor(Color.Red)));
     }
 
     [Fact]
@@ -27,12 +27,12 @@ public partial class DotStylableEdgeExtensionTest
         graph.Edges
             .Add("a", "b")
             .Style
-            .SetSegmentedStyle(Color.Red, Color.Black, new DotWeightedColor(Color.Green, 0.5));
+            .SetSegmentedLineStyle(Color.Red, Color.Black, new DotWeightedColor(Color.Green, 0.5));
 
         graph.Edges
             .Add("c", "d")
             .Style
-            .SetSegmentedStyle(new DotMulticolor(Color.Red, Color.Black, new DotWeightedColor(Color.Green, 0.5)));
+            .SetSegmentedLineStyle(new DotMulticolor(Color.Red, Color.Black, new DotWeightedColor(Color.Green, 0.5)));
 
         Snapshot.Match(graph.ToDot(), "segmented_edges");
     }
@@ -46,13 +46,13 @@ public partial class DotStylableEdgeExtensionTest
             .Add()
             .Edges
             .Style
-            .SetSegmentedStyle(Color.Red, Color.Black, new DotWeightedColor(Color.Green, 0.5));
+            .SetSegmentedLineStyle(Color.Red, Color.Black, new DotWeightedColor(Color.Green, 0.5));
 
         graph.Subsections
             .Add()
             .Edges
             .Style
-            .SetSegmentedStyle(new DotMulticolor(Color.Red, Color.Black, new DotWeightedColor(Color.Green, 0.5)));
+            .SetSegmentedLineStyle(new DotMulticolor(Color.Red, Color.Black, new DotWeightedColor(Color.Green, 0.5)));
 
         Snapshot.Match(graph.ToDot(), "segmented_edge_collections");
     }

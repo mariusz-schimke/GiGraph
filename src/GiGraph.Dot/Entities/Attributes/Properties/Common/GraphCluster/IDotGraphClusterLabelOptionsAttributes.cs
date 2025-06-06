@@ -2,7 +2,7 @@
 
 namespace GiGraph.Dot.Entities.Attributes.Properties.Common.GraphCluster;
 
-public interface IDotLabelOptionsAttributes
+public interface IDotGraphClusterLabelOptionsAttributes
 {
     /// <summary>
     ///     Justification for the label. Note that clusters inherit attributes from their parent. Thus, if the root graph sets this

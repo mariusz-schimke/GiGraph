@@ -15,8 +15,8 @@ namespace GiGraph.Dot.Types.Graphs.Canvas.Viewport;
 ///     The identifier of a node whose center should be used as the focus.
 /// </param>
 /// <param name="zoom">
-///     The zoom factor. The image in the original layout will be <see cref="DotViewport.Width"/> / <see cref="DotViewport.Zoom"/> by
-///     <see cref="DotViewport.Height"/> / <see cref="DotViewport.Zoom"/> points in size. By default, the zoom factor is 1.
+///     The zoom factor. The image in the original layout will be <paramref name="width"/> / <paramref name="zoom"/> by
+///     <paramref name="height"/> / <paramref name="zoom"/> points in size. By default, the zoom factor is 1.
 /// </param>
 public class DotNodeCenteredViewport(double width, double height, string nodeId, double zoom = DotViewport.DefaultZoom)
     : DotViewport(width, height, zoom)
