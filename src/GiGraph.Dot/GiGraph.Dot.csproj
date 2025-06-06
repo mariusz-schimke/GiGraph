@@ -23,7 +23,7 @@
 
         <Deterministic>true</Deterministic>
 
-        <Version>5.0.0-rc.3</Version>
+        <Version>5.0.0</Version>
         <IncludeSourceRevisionInInformationalVersion>true</IncludeSourceRevisionInInformationalVersion>
 
         <PackageId>GiGraph.Dot</PackageId>
@@ -50,6 +50,10 @@
         <PackageReleaseNotes>- All style-related attributes have been consolidated under the `Style` property of the graph and its elements. This includes attributes such as `Color`, `FillColor`, `BackgroundColor`, and others, which are now exposed in a more structured and consistent way.
 
 - Similarly, layout-related properties have been consolidated under the `Layout` property of the graph and its elements.
+
+- Node geometry properties have been split into geometry and transform properties, with convenience setter methods added in both the groups.
+
+- Several other properties have been moved into related existing or new property groups on different graph elements.
 
 - Related attributes of HTML tables and cells have been reorganized into grouped properties. Setter methods have been added to make configuration more convenient.
 
