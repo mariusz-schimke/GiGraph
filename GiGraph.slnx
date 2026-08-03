@@ -1,0 +1,37 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="Publish" />
+    <BuildType Name="Release" />
+  </Configurations>
+  <Folder Name="/src/">
+    <Project Path="src/GiGraph.Dot.Examples/GiGraph.Dot.Examples.csproj">
+      <BuildType Solution="Publish|*" Project="?" />
+      <Platform Solution="Publish|*" Project="?" />
+      <Build Solution="Publish|*" Project="false" />
+    </Project>
+    <Project Path="src/GiGraph.Dot.SourceGenerators/GiGraph.Dot.SourceGenerators.csproj">
+      <BuildType Solution="Publish|*" Project="?" />
+      <Platform Solution="Publish|*" Project="?" />
+      <Build Solution="Publish|*" Project="false" />
+    </Project>
+    <Project Path="src/GiGraph.Dot/GiGraph.Dot.csproj" />
+  </Folder>
+  <Folder Name="/test/">
+    <Project Path="test/GiGraph.Dot.Entities.Tests/GiGraph.Dot.Entities.Tests.csproj">
+      <BuildType Solution="Publish|*" Project="?" />
+      <Platform Solution="Publish|*" Project="?" />
+      <Build Solution="Publish|*" Project="false" />
+    </Project>
+    <Project Path="test/GiGraph.Dot.Output.Tests/GiGraph.Dot.Output.Tests.csproj">
+      <BuildType Solution="Publish|*" Project="?" />
+      <Platform Solution="Publish|*" Project="?" />
+      <Build Solution="Publish|*" Project="false" />
+    </Project>
+    <Project Path="test/GiGraph.Dot.Types.Tests/GiGraph.Dot.Types.Tests.csproj">
+      <BuildType Solution="Publish|*" Project="?" />
+      <Platform Solution="Publish|*" Project="?" />
+      <Build Solution="Publish|*" Project="false" />
+    </Project>
+  </Folder>
+</Solution>
